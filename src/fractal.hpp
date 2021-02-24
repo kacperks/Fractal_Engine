@@ -18,11 +18,13 @@
 
 //Headers
 #include "Components/Transform/transform.hpp"
+#include "vendor/imgui/imgui.h"
 
 //Open GL 
-//#include <GLFW/glfw3.h>
-//#include <GL/glew.h>
-//#include <glm/glm.hpp>
+
+#include <GLFW/glfw3.h>
+#include <GL/glew.h>
+#include <glm/glm.hpp>
 
 //SFML
 
