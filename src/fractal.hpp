@@ -3,9 +3,10 @@
 #ifndef FRACTAL
 #define FRACTAL
 
-//Basic
+// BASIC
 #include <set>
 #include <map>
+#include <queue>
 #include <vector>
 #include <string>
 #include <memory>
@@ -16,16 +17,39 @@
 #include <algorithm>
 #include <functional>
 
+// HEADERS
+
 //Headers
-#include "Components/Transform/transform.hpp"
+
 #include "vendor/imgui/imgui.h"
+#include "Engine/Engine.h"
+#include "ECS/Base/BaseComponent.h"
+#include "ECS/Base/BaseSystem.h"
+#include "ECS/Base/CompList.h"
+#include "ECS/Base/Entity.h"
+#include "ECS/Base/EntityManager.h"
+#include "ECS/Base/Types.h"
 
-//Open GL 
+// OPENGL
+#include <GLEW/glew.h>
 
-//#include <GLFW/glfw3.h>
-//#include <GL/glew.h>
-//#include <glm/glm.hpp>
+// GLFW
+#include <GLFW/glfw3.h>
 
-//SFML
+// GLM
+#include <GLM/glm.hpp>
+#include <GLM/gtc/type_ptr.hpp>
+#include <GLM/gtc/matrix_transform.hpp>
 
+#ifdef FO3D_WINDOW
+	// window platform related stuff
+#endif
+
+#ifdef FO3D_LINUX
+	// linux platform related stuff
+#endif
+
+#ifdef FO3D_MAC
+	// mac platform related stuff
+#endif
 #endif
