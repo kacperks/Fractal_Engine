@@ -1,7 +1,9 @@
 #include "fractal.hpp"
+#include "App.hpp"
 
 using namespace std;
 using namespace fr;
+using namespace MN;
 
 string font[2];
 string graphics[6];
