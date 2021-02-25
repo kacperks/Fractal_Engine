@@ -51,14 +51,14 @@ int main(int argc, char** argv) {
 
 	mgr.Update();
 
-	FO3D::Core.Initialize();
-	FO3D::Timer.Initialize();
-	FO3D::Event.Initialiaze();
+	fr::Core.Initialize();
+	fr::Timer.Initialize();
+	fr::Event.Initialiaze();
 
-	while (FO3D::Core.Run()) {
-		FO3D::Timer.Tick();
-		FO3D::Event.Poll();
-		FO3D::Core.Update();
+	while (fr::Core.Run()) {
+		fr::Timer.Tick();
+		fr::Event.Poll();
+		fr::Core.Update();
 	}
 
 	return EXIT_SUCCESS;

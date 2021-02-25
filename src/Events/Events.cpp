@@ -1,7 +1,7 @@
 #include "../fractal.hpp"
 #include "Events.h"
 
-namespace FO3D {
+namespace fr {
 
 	// callback function definition
 	void WindowCloseCallback(GLFWwindow* window);

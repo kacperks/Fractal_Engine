@@ -1,6 +1,6 @@
 #pragma once
 
-namespace FO3D {
+namespace fr {
 
 	class T_Timer {
 

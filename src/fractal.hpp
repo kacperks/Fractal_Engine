@@ -41,15 +41,15 @@
 #include <GLM/gtc/type_ptr.hpp>
 #include <GLM/gtc/matrix_transform.hpp>
 
-#ifdef FO3D_WINDOW
+#ifdef FR_WINDOW
 	// window platform related stuff
 #endif
 
-#ifdef FO3D_LINUX
+#ifdef FR_LINUX
 	// linux platform related stuff
 #endif
 
-#ifdef FO3D_MAC
+#ifdef FR_MAC
 	// mac platform related stuff
 #endif
 #endif

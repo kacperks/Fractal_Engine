@@ -1,7 +1,7 @@
 #include "../fractal.hpp"
 #include "Timer.h"
 
-namespace FO3D {
+namespace fr {
 
 	T_Timer::T_Timer() : deltaTime(0.0f), lastFrame(0.0f) {
 

@@ -1,7 +1,7 @@
 #include "../fractal.hpp"
 #include "Engine.h"
 
-namespace FO3D {
+namespace fr {
 
 	Engine::Engine() : run(true), window(NULL), dispWidth(SCREEN_WIDTH), dispHeight(SCREEN_HEIGHT) {
 
