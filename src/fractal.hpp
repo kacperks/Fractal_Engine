@@ -23,6 +23,8 @@
 
 #include "vendor/imgui/imgui.h"
 #include "Engine/Engine.h"
+#include "Timer/Timer.h"
+#include "Events/Events.h"
 #include "ECS/Base/BaseComponent.h"
 #include "ECS/Base/BaseSystem.h"
 #include "ECS/Base/CompList.h"
@@ -31,15 +33,20 @@
 #include "ECS/Base/Types.h"
 
 // OPENGL
-#include <GLEW/glew.h>
+
+#include <GL/glew.h>
 
 // GLFW
 #include <GLFW/glfw3.h>
 
 // GLM
-#include <GLM/glm.hpp>
-#include <GLM/gtc/type_ptr.hpp>
-#include <GLM/gtc/matrix_transform.hpp>
+#include <glm/glm.hpp>
+#include <glm/vec3.hpp> 
+#include <glm/vec4.hpp> 
+#include <glm/mat4x4.hpp> 
+#include <glm/ext/matrix_transform.hpp> 
+#include <glm/ext/matrix_clip_space.hpp>
+#include <glm/ext/scalar_constants.hpp>
 
 #ifdef FR_WINDOW
 	// window platform related stuff
