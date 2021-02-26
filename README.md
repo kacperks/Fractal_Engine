@@ -4,6 +4,8 @@
 
 Fractal Engine its 3D Game Engine with Editor
 
+Not Finished
+
 Features to do:
 
 * Editor
