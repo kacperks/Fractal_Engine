@@ -2,17 +2,18 @@
   <img src="res/Graphics/Logo.png" size=1>
 </p>
 
-Fractal Engine its 3D gameEngine with editor
+Fractal Engine its 3D Game Engine with Editor
 
 Features to do:
 
 * Editor
-* C#,Lua and C++ Support
+* Launcher
+* C# and Lua Support
 * loading 3D models
 
 Done :
 * Component System
-* 
+* Entities System
 
 # Bulid
 
