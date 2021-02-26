@@ -22,6 +22,6 @@ namespace fr {
 	// callback function implementation
 
 	void WindowCloseCallback(GLFWwindow* window) {		
-		FO3D::Core.Quit();
+		fr::Core.Quit();
 	}
 }
