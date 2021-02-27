@@ -31,45 +31,23 @@ struct TestComp2 : public ECS::BaseComponent {
 };
 
 struct TestSystem1 : public ECS::BaseSystem {
-	TestSystem1() {
-		AddComponentSignature<TestComp1>();
-	}
-};
-
-struct TestSystem2 : public ECS::BaseSystem {
-	TestSystem2() {
-		AddComponentSignature<TestComp2>();
-	}
-};
-
-struct TestSystem3 : public ECS::BaseSystem {
 	TestSystem3() {
-		AddComponentSignature<TestComp1>();
+		AddComponentSignature<Transform>();
 		AddComponentSignature<TestComp2>();
+		AddComponentSignature<TestComp1>();
 	}
 };
 
 int main(int argc, char** argv) {
 
 	ECS::EntityManager mgr;
-
-
 	mgr.RegisterSystem<TestSystem1>();
-	mgr.RegisterSystem<TestSystem2>();
-	mgr.RegisterSystem<TestSystem3>();
 
 	auto entity1 = mgr.AddNewEntity();
 	ECS::Entity ent(entity1, &mgr);
 
-	ent.AddComponent<TestComp1>();
-
-	auto entity2 = mgr.AddNewEntity();
-	mgr.AddComponent<TestComp2>(entity2);
-
-	auto entity3 = mgr.AddNewEntity();
-	mgr.AddComponent<TestComp1>(entity3);
-	mgr.AddComponent<TestComp2>(entity3);
-
+	ent.AddComponent<Transform>();
+	ent.Transform.position.x = 1;
 	mgr.Update();
 
 	fr::Core.Initialize();
