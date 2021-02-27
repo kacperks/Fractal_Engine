@@ -42,7 +42,7 @@ int main(int argc, char** argv) {
 	ECS::Entity ent(entity1, &mgr);
 
 	ent.AddComponent<TestComp1>();
-	ent.AddComponent<Transform>();
+	ent.AddComponent<tr::Transform>();
 	ent.Transform.position.x = 0.0f;
 
 	auto entity2 = mgr.AddNewEntity();
