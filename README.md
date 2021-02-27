@@ -1,5 +1,5 @@
 <p align="left">
-  <img src="res/Graphics/Logo.png" width="180" height="180">
+  <img src="res/Graphics/Logo.png" width="350" height="350">
 </p>
 
 Fractal Engine its 3D Game Engine with Editor
