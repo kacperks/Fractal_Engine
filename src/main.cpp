@@ -1,5 +1,4 @@
 #include "fractal.hpp"
-#include "App.hpp"
 
 using namespace std;
 using namespace fr;
