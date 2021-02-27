@@ -2,7 +2,7 @@
 
 using namespace std;
 using namespace fr;
-using namespace MN;
+using namespace ECS;
 
 string font[2];
 string graphics[6];
