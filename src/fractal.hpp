@@ -31,6 +31,7 @@
 #include "ECS/Base/Entity.h"
 #include "ECS/Base/EntityManager.h"
 #include "ECS/Base/Types.h"
+#include "ECS/Components/Transform.hpp"
 
 // OPENGL
 
