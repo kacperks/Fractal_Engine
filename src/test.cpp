@@ -53,7 +53,7 @@ int main(int argc, char** argv) {
 
 	ent.AddComponent<TestComp1>();
 	ent.AddComponent<Transform>();
-	ent.Transform.position.x = 0.0f;
+	ent.GetComponent<Transform>().position.x = 0.0f;
 
 	auto entity2 = mgr.AddNewEntity();
 	mgr.AddComponent<TestComp2>(entity2);
