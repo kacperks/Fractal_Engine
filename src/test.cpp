@@ -1,5 +1,13 @@
 #include "fractal.hpp"
 
+struct Vector3{
+	float x, y, z;
+};
+struct Transform : public ECS::BaseComponent{
+	Vector3 position;
+	Vector3 rotation;
+	Vector3 scale;
+};
 struct TestComp1 : public ECS::BaseComponent {
 	int A = 5;
 };
@@ -24,6 +32,7 @@ struct TestSystem3 : public ECS::BaseSystem {
 	TestSystem3() {
 		AddComponentSignature<TestComp1>();
 		AddComponentSignature<TestComp2>();
+		AddComponentSignature<Transform>();
 	}
 };
 
@@ -41,6 +50,8 @@ int main(int argc, char** argv) {
 	ECS::Entity ent(entity1, &mgr);
 
 	ent.AddComponent<TestComp1>();
+	ent.AddComponent<Transform>();
+	ent.Transform.position.x = 0.0f;
 
 	auto entity2 = mgr.AddNewEntity();
 	mgr.AddComponent<TestComp2>(entity2);
