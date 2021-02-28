@@ -45,6 +45,7 @@
 #include "ECS/Base/EntityManager.h"
 #include "ECS/Base/Types.h"
 #include "ECS/Components/Transform.hpp"
+#include "vendor/STB/stb_image.h"
 
 // OPENGL
 

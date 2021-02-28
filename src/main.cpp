@@ -1,28 +1,12 @@
 #include "fractal.hpp"
 
-using namespace std;
-using namespace fr;
-using namespace ECS;
+int main(int argc, char** argv) {
 
-string font[2];
-string graphics[6];
+	FuseOrbit3D::Core.Initialize();
 
-bool debug = false;
+	while (FuseOrbit3D::Core.OnRunApp()) {
+		FuseOrbit3D::Core.Update();
+	}
 
-void setup(){
-            font[0] = "../res/Fonts/Roboto-Black.ttf";
-            font[1] = "../res/Fonts/Roboto-BlackItalic.ttf";
-            font[2] = "../res/Fonts/Roboto-Bo";
-
-            graphics[0] = "../res/Graphics/add.png";
-            graphics[1] = "../res/Graphics/camera.png";
-            graphics[2] = "../res/Graphics/Logo.png";
-            graphics[3] = "../res/Graphics/mesh render.png";
-            graphics[4] = "../res/Graphics/remove.png";
-            graphics[5] = "../res/Graphics/RigidBody.png";
-            graphics[6] = "../res/Graphics/transform.png";
-}
-
-int main(){
-    setup();
+	return FuseOrbit3D::EXIT_PROG_SUCCESS;
 }

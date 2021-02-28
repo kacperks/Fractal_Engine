@@ -3,10 +3,10 @@
 #include "Errors/ErrorLog.h"
 #include "Resource/Resource.h"
 
-#include "ECS/Core/BaseSystem.h"
-#include "GLObjects/Shader.h"
-#include "ECS/Components/Light.h"
-#include "ECS/Components/Transform3D.h"
+#include "../Base/BaseSystem.h"
+#include "../../GLObjects/Shader.h"
+#include "../Components/Light.h"
+#include "../Components/Transform3D.h"
 
 
 class LightSystem : public ECS::BaseSystem {

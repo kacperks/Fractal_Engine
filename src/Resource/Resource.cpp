@@ -6,8 +6,8 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
-#include "Errors/ErrorLog.h"
-#include "Vendor/STB/stb_image.h"
+#include "../Errors/ErrorLog.h"
+#include "../vendor/STB/stb_image.h"
 
 Resource::Resource() {
 
@@ -40,22 +40,22 @@ void Resource::Initialize() {
 	LoadMeshes("");
 
 	// shaders
-	BuildShader("SHADER", "Resource/Shaders/RenderVertex.shader", "Resource/Shaders/RenderFrag.shader");
-	BuildShader("SKYBOX", "Resource/Shaders/SkyboxVertex.shader", "Resource/Shaders/SkyboxFrag.shader");
+	BuildShader("SHADER", "res/Shaders/RenderVertex.shader", "res/Shaders/RenderFrag.shader");
+	BuildShader("SKYBOX", "res/Shaders/SkyboxVertex.shader", "res/Shaders/SkyboxFrag.shader");
 
 	// textures	
-	AddTex2D("container0", LoadTex2D("Resource/Textures/container0.jpg"));
-	AddTex2D("container1", LoadTex2D("Resource/Textures/container1.png"));
-	AddTex2D("container2", LoadTex2D("Resource/Textures/container2.png"));
+	AddTex2D("container0", LoadTex2D("res/Textures/container0.jpg"));
+	AddTex2D("container1", LoadTex2D("res/Textures/container1.png"));
+	AddTex2D("container2", LoadTex2D("res/Textures/container2.png"));
 
 	// cubemaps
 	std::vector<const GLchar*> facepaths;
-	facepaths.push_back("Resource/Textures/skybox/right.jpg");
-	facepaths.push_back("Resource/Textures/skybox/left.jpg");
-	facepaths.push_back("Resource/Textures/skybox/top.jpg");
-	facepaths.push_back("Resource/Textures/skybox/bottom.jpg");
-	facepaths.push_back("Resource/Textures/skybox/back.jpg");
-	facepaths.push_back("Resource/Textures/skybox/front.jpg");
+	facepaths.push_back("res/Textures/skybox/right.jpg");
+	facepaths.push_back("res/Textures/skybox/left.jpg");
+	facepaths.push_back("res/Textures/skybox/top.jpg");
+	facepaths.push_back("res/Textures/skybox/bottom.jpg");
+	facepaths.push_back("res/Textures/skybox/back.jpg");
+	facepaths.push_back("res/Textures/skybox/front.jpg");
 
 	LoadCubemap("skybox", facepaths);
 }
