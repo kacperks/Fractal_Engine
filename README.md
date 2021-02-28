@@ -11,11 +11,11 @@ Features to do:
 * Editor
 * Launcher
 * C# and Lua Support
-* loading 3D models
 
 Done :
 * Component System
 * Entities System
+* Loading 3D models
 
 # Bulid
 
