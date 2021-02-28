@@ -13,9 +13,13 @@ Features to do:
 * C# and Lua Support
 
 Done :
-* Component System
-* Entities System
+* Entity Component System
 * Loading 3D models
+* Errors System
+* Component (Transform3D)
+* Component (Camera)
+* Component (Material)
+* Component (Light)
 
 # Bulid
 
@@ -25,7 +29,8 @@ To bulid you need :
 * SFML
 * Glew
 * GLFW
-* Cmake or visual studio 2019
+
+and C++ compiler
 
 To install this libaries on linux type
 
