@@ -1,7 +1,7 @@
 #pragma once
 
-#include "ECS/Core/BaseComponent.h"
-#include <GLM/ext/vector_float3.hpp>
+#include "../Base/BaseComponent.h"
+#include <glm/ext/vector_float3.hpp>
 
 constexpr glm::vec3 AXIS_X(1.0f, 0.0f, 0.0f);
 constexpr glm::vec3 AXIS_Y(0.0f, 1.0f, 0.0f);

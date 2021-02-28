@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ECS/Core/BaseComponent.h"
+#include "../Base/BaseComponent.h"
 
 enum class AxisType { ARROWS = 0, ADSW = 1, ADSWQE = 2, NUMERIC_ARROWS = 3 };
 

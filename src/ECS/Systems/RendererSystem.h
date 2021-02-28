@@ -1,16 +1,16 @@
 #pragma once
 
-#include "ECS/Core/BaseSystem.h"
-#include "ECS/Components/Material.h"
-#include "ECS/Components/Transform3D.h"
+#include "../Base/BaseSystem.h"
+#include "../Components/Material.h"
+#include "../Components/Transform3D.h"
 
-#include "Engine/Engine.h"
-#include "Errors/ErrorLog.h"
-#include "Resource/Resource.h"
+#include "../../Engine/Engine.h"
+#include "../../Errors/ErrorLog.h"
+#include "../../Resource/Resource.h"
 
-#include "GLObjects/Shader.h"
-#include "GLObjects/VertexArray.h"
-#include "GLObjects/FrameBuffer.h"
+#include "../../GLObjects/Shader.h"
+#include "../../GLObjects/VertexArray.h"
+#include "../../GLObjects/FrameBuffer.h"
 
 class RendererSystem : public ECS::BaseSystem {
 

@@ -1,8 +1,8 @@
 #pragma once
 
-#include <GLM/trigonometric.hpp>
-#include <GLM/ext/vector_float3.hpp>
-#include "ECS/Core/BaseComponent.h"
+#include <glm/trigonometric.hpp>
+#include <glm/ext/vector_float3.hpp>
+#include "../Base/BaseComponent.h"
 
 struct Light : public ECS::BaseComponent {
 	Light() = default;

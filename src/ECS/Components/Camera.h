@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../Base/BaseComponent.h"
-#include <GLM/ext/vector_float3.hpp>
+#include <glm/ext/vector_float3.hpp>
 
 const float YAW = -90.0f;
 const float ZOOM = 45.0f;

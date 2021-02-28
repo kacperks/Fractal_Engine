@@ -1,8 +1,8 @@
 #pragma once
 
 #include <GL/glew.h>
-#include <GLM/ext/vector_float3.hpp>
-#include "ECS/Core/BaseComponent.h"
+#include <glm/ext/vector_float3.hpp>
+#include "../Base/BaseComponent.h"
 
 struct Material : public ECS::BaseComponent {
 	Material() = default;

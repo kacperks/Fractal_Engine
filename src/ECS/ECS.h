@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Core/Entity.h"
-#include "Core/EntityManager.h"
+#include "Base/Entity.h"
+#include "Base/EntityManager.h"
 
 

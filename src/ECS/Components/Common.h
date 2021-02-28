@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../Base/BaseComponent.h"
-#include "Resource/Resource.h"
+#include "../../Resource/Resource.h"
 
 #include <GL/glew.h>
 #include <iostream>

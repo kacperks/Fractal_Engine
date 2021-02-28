@@ -21,6 +21,19 @@
 
 //Headers
 
+#include "ECS/Components/Camera.h"
+#include "ECS/Components/Common.h"
+#include "ECS/Components/Components.h"
+#include "Gui/Gui.h"
+#include "GLObjects/FrameBuffer.h"
+#include "GLObjects/Shader.h"
+#include "GLObjects/VertexArray.h"
+#include "Errors/ErrorLog.h"
+#include "Inputs/Inputs.h"
+#include "Resource/Resource.h"
+#include "Gui/Gui.h"
+#include "ECS/Systems/Systems.h"
+#include "ECS/ECS.h"
 #include "vendor/imgui/imgui.h"
 #include "Engine/Engine.h"
 #include "Timer/Timer.h"

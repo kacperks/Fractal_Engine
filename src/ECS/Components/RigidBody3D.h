@@ -1,6 +1,6 @@
 #pragma once
-#include <GLM/ext/vector_float3.hpp>
-#include "ECS/Core/BaseComponent.h"
+#include <glm/ext/vector_float3.hpp>
+#include "../Base/BaseComponent.h"
 
 static const glm::vec3 GRAVITY(0.0f, -10.0f, 0.0f);
 
