@@ -63,7 +63,7 @@ private:
 	float screenWidth, screenHeight;	
 };
 
-namespace FuseOrbit3D {
+namespace fr {
 	const static int EXIT_PROG_SUCCESS = 0;
 	const static int EXIT_PROG_FAILURE = -1;
 

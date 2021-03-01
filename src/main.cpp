@@ -2,11 +2,11 @@
 
 int main(int argc, char** argv) {
 
-	FuseOrbit3D::Core.Initialize();
+	fr::Core.Initialize();
 
-	while (FuseOrbit3D::Core.OnRunApp()) {
-		FuseOrbit3D::Core.Update();
+	while (fr::Core.OnRunApp()) {
+		fr::Core.Update();
 	}
 
-	return FuseOrbit3D::EXIT_PROG_SUCCESS;
+	return fr::EXIT_PROG_SUCCESS;
 }
