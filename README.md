@@ -34,4 +34,4 @@ and C++ compiler
 
 To install this libaries on linux type
 
-$ sh lib.sh
+    $ sh lib.sh
