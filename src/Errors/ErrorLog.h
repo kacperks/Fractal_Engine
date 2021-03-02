@@ -1,6 +1,5 @@
 #pragma once
-#include <iostream>
-#include <GL/glew.h>
+#include "../fractal.hpp"
 
 #define ASSERT(boolean) if (!(boolean)) __debugbreak();
 #define GLCALL(func) GLClearError(); func; ASSERT(GLLogCall(#func, __FILE__, __LINE__))
