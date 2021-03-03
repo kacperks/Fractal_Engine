@@ -94,33 +94,7 @@ void OnImGui(std::string directoryPath)
 	}
 	Widget::Window::End();
 
-	//ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2{ 0.0f, 0.0f });
 
-	//ImGui::Begin("Assets");
-
-	//if (ImGui::CollapsingHeader("Assets"))
-	//{
-	//	uint32_t count = 0;
-	//	for (const auto& entry : std::filesystem::recursive_directory_iterator(directoryPath))
-	//		count++;
-
-	//	static int selection_mask = 0;
-
-	//	auto clickState = DirectoryTreeViewRecursive(directoryPath, &count, &selection_mask);
-
-	//	if (clickState.first)
-	//	{
-	//		// Update selection state
-	//		// (process outside of tree loop to avoid visual inconsistencies during the clicking frame)
-	//		//if (ImGui::GetIO().KeyCtrl)
-	//			//selection_mask ^= BIT(clickState.second);          // CTRL+click to toggle
-	//		//else //if (!(selection_mask & (1 << clickState.second))) // Depending on selection behavior you want, may want to preserve selection when clicking on item that is part of the selection
-	//			//selection_mask = BIT(clickState.second);           // Click to single-select
-	//	}
-	//}
-	//ImGui::End();
-
-	//ImGui::PopStyleVar();
 }
 
 class Gui {
