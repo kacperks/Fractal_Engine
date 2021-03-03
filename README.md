@@ -6,12 +6,7 @@ Fractal Engine its 3D Game Engine
 
 Not Finished yet
 
-Features to do:
-
-* Launcher
-* C# and Lua Support
-
-Done :
+Features:
 * GUI
 * Entity Component System
 * Loading 3D models
@@ -21,6 +16,13 @@ Done :
 * Component (Material)
 * Component (Light)
 
+Features to do:
+
+* Launcher
+* Particle System
+* Bulid for Linux,Windows,Android,OSX
+* C# and Lua Support
+* 
 # Bulid
 
 To bulid you need :
@@ -32,7 +34,7 @@ To bulid you need :
 
 and C++ compiler
 
-To install this libaries on linux type
-```batch
+To install this libaries on Ubuntu/Debian type
+```sh
 $ sh lib.sh
 ```
