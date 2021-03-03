@@ -4,7 +4,7 @@
 
 Fractal Engine its 3D Game Engine
 
-Not Finished
+Not Finished yet
 
 Features to do:
 
