@@ -8,11 +8,11 @@ Not Finished yet
 
 Features to do:
 
-* Editor
 * Launcher
 * C# and Lua Support
 
 Done :
+* GUI
 * Entity Component System
 * Loading 3D models
 * Errors System
@@ -33,5 +33,6 @@ To bulid you need :
 and C++ compiler
 
 To install this libaries on linux type
-
-    $ sh lib.sh
+```batch
+$ sh lib.sh
+```
