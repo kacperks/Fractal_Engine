@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Errors/ErrorLog.h"
-#include "Resource/Resource.h"
+#include "../../Errors/ErrorLog.h"
+#include "../../Resource/Resource.h"
 
 #include "../Base/BaseSystem.h"
 #include "../../GLObjects/Shader.h"

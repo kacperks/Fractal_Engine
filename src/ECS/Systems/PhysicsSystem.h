@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Engine/Engine.h"
-#include "ECS/Core/BaseSystem.h"
-#include "ECS/Components/Transform3D.h"
-#include "ECS/Components/RigidBody3D.h"
+#include "../../Engine/Engine.h"
+#include "../Base/BaseSystem.h"
+#include "../Components/Transform3D.h"
+#include "../Components/RigidBody3D.h"
 
 
 class PhysicsSystem : public ECS::BaseSystem {

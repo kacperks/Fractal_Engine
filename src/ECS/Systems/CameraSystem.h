@@ -1,13 +1,13 @@
 #pragma once
 
-#include "Engine/Engine.h"
-#include "Inputs/Inputs.h"
-#include "Errors/ErrorLog.h"
+#include "../../Engine/Engine.h"
+#include "../../Inputs/Inputs.h"
+#include "../../Errors/ErrorLog.h"
 
-#include "ECS/Core/BaseSystem.h"
-#include "GLObjects/Shader.h"
-#include "ECS/Components/Camera.h"
-#include "ECS/Components/Transform3D.h"
+#include "../Base/BaseSystem.h"
+#include "../../GLObjects/Shader.h"
+#include "../Components/Camera.h"
+#include "../Components/Transform3D.h"
 
 class CameraSystem : public ECS::BaseSystem {
 

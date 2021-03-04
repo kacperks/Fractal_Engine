@@ -1,12 +1,12 @@
 #pragma once
 
 #include <GLFW/glfw3.h>
-#include "Engine/Engine.h"
-#include "Inputs/Inputs.h"
+#include "../../Engine/Engine.h"
+#include "../../Inputs/Inputs.h"
 
-#include "ECS/Core/BaseSystem.h"
-#include "ECS/Components/KeyMotion.h"
-#include "ECS/Components/Transform3D.h"
+#include "../Base/BaseSystem.h"
+#include "../Components/KeyMotion.h"
+#include "../Components/Transform3D.h"
 
 class KeyMotionSystem : public ECS::BaseSystem {
 public:
