@@ -17,12 +17,15 @@
 #include <algorithm>
 #include <functional>
 
+// ASSIMP
+
+#include <ASSIMP/postprocess.h>
+#include <ASSIMP/Importer.hpp>
+#include <ASSIMP/scene.h>
+#include <ASSIMP/camera.h>
+
 // HEADERS
 
-//Headers
-
-#include "ECS/Components/Camera.h"
-#include "ECS/Components/Common.h"
 #include "ECS/Components/Components.h"
 #include "Gui/Gui.h"
 #include "GLObjects/FrameBuffer.h"
@@ -44,7 +47,6 @@
 #include "ECS/Base/Entity.h"
 #include "ECS/Base/EntityManager.h"
 #include "ECS/Base/Types.h"
-#include "ECS/Components/Transform.hpp"
 #include "vendor/STB/stb_image.h"
 
 // OPENGL
