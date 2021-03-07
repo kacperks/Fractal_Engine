@@ -1,9 +1,6 @@
 <p align="left">
   <img src="res/Graphics/Logo.png" width="350" height="350">
 </p>
-<p align="left">
-  <img src="res/Gui/unknown.png">
-</p>
 Fractal Engine its 3D Game Engine
 
 Not Finished yet
