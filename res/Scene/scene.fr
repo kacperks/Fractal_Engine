@@ -1,0 +1,64 @@
+﻿<?xml version="1.0"?>
+<Scene>
+    <Entity>
+        <EntityName value="Main Camera"/>
+        <Transform x="4" y="18.5" z="62.957004547119141" rx="-27.899999618530273" ry="27" rz="0" sx="1.5" sy="1.4999996423721313" sz="1.4999996423721313"/>
+        <Camera/>
+        <SpriteRenderer name="camera"/>
+    </Entity>
+    <Entity>
+        <EntityName value="Tree1"/>
+        <Transform x="11.543473243713379" y="-0.53582310676574707" z="26.636222839355469" rx="0" ry="-0" rz="0" sx="1" sy="1" sz="1"/>
+        <ModelRenderer name="PACK"/>
+    </Entity>
+    <Entity>
+        <EntityName value="Ground"/>
+        <Transform x="-4.4849653244018555" y="-0.21628451347351074" z="-0.11202049255371094" rx="0" ry="-0" rz="0" sx="79.606826782226563" sy="0.96988105773925781" sz="79.606773376464844"/>
+        <MeshRenderer name="CUBE">
+            <Material ao="1" metallic="0.0099999997764825821" roughness="1" albedoR="0.999991774559021" albedoG="1" albedoB="0.99998998641967773"/>
+        </MeshRenderer>
+    </Entity>
+    <Entity>
+        <EntityName value="Tree2"/>
+        <Transform x="14.709878921508789" y="1.6180806159973145" z="-53.384757995605469" rx="0" ry="-0" rz="0" sx="1" sy="1" sz="1"/>
+        <ModelRenderer name="PACK"/>
+    </Entity>
+    <Entity>
+        <EntityName value="Tree3"/>
+        <Transform x="-32.688625335693359" y="0" z="5.8992805480957031" rx="0" ry="56.705867767333984" rz="0" sx="0.99999970197677612" sy="1" sz="0.99999970197677612"/>
+        <ModelRenderer name="PACK"/>
+    </Entity>
+    <Entity>
+        <EntityName value="Tree4"/>
+        <Transform x="3.8356509208679199" y="0" z="-21.410228729248047" rx="0" ry="-0" rz="0" sx="2.7799999713897705" sy="2.7799999713897705" sz="2.7799999713897705"/>
+        <ModelRenderer name="PACK"/>
+    </Entity>
+    <Entity>
+        <EntityName value="Entity7"/>
+        <Transform x="-14.796799659729004" y="0" z="30.444477081298828" rx="0" ry="-34.338359832763672" rz="0" sx="0.99999994039535522" sy="1" sz="0.99999994039535522"/>
+        <ModelRenderer name="PACK"/>
+    </Entity>
+    <Entity>
+        <EntityName value="Directional Light"/>
+        <Transform x="28.291336059570313" y="5.7037100791931152" z="-8.7477359771728516" rx="-179.99993896484375" ry="45.000003814697266" rz="-179.99993896484375" sx="0.99999886751174927" sy="0.99999827146530151" sz="0.99999821186065674"/>
+        <MeshRenderer name="CUBE">
+            <Material ao="1" metallic="0.20000000298023224" roughness="0.10000000149011612" albedoR="0.60000002384185791" albedoG="0.60000002384185791" albedoB="0.60000002384185791"/>
+        </MeshRenderer>
+        <DirectionalLight colorR="1" colorG="1" colorB="0.99998998641967773" dirX="-0.10000000149011612" dirY="-0.10000000149011612" dirZ="0.10000000149011612" intensity="1"/>
+    </Entity>
+    <Entity>
+        <EntityName value="point light"/>
+        <Transform x="23.213027954101563" y="7.213282585144043" z="7.8358278274536133" rx="0" ry="-0" rz="0" sx="0.99999994039535522" sy="0.9999997615814209" sz="0.99999958276748657"/>
+        <MeshRenderer name="CUBE">
+            <Material ao="1" metallic="0.20000000298023224" roughness="0.10000000149011612" albedoR="0" albedoG="0.40449881553649902" albedoB="1"/>
+        </MeshRenderer>
+        <PointLight colorR="1" colorG="0.48000001907348633" colorB="0" intensity="391"/>
+    </Entity>
+    <Entity>
+        <EntityName value="Entity9"/>
+        <Transform x="22.525997161865234" y="0" z="6.4505405426025391" rx="0" ry="-0" rz="0" sx="1" sy="1" sz="1"/>
+        <MeshRenderer name="CUBE">
+            <Material ao="1" metallic="0.10000000149011612" roughness="0.89999997615814209" albedoR="0.60000002384185791" albedoG="0.60000002384185791" albedoB="0.60000002384185791"/>
+        </MeshRenderer>
+    </Entity>
+</Scene>
