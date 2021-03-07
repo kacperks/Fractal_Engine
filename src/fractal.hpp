@@ -48,6 +48,7 @@
 #include "ECS/Base/EntityManager.h"
 #include "ECS/Base/Types.h"
 #include "vendor/STB/stb_image.h"
+#include "Managers/Managers.hpp"
 
 // OPENGL
 

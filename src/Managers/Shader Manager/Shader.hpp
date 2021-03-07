@@ -1,4 +1,5 @@
 #pragma once
+#include "../../fractal.hpp"
 
 class Shader {
 
@@ -60,6 +61,9 @@ public:
 
 	void SetMatrix4f(const GLchar* uName, const GLfloat* mtx) {
 		GLCALL(glUniformMatrix4fv(glGetUniformLocation(program, uName), 1, GL_FALSE, mtx));
+	}
+	void SetUniform(){
+		
 	}
 
 	GLuint Program() const {

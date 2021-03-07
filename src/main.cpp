@@ -1,5 +1,11 @@
 #include "fractal.hpp"
 
+void NCS(){
+	Managers::Script script;
+	script.Filename = "../res/Scripts/New.cs"
+	Managers::NewScript(script);
+}
+
 int main(int argc, char** argv) {
 
 	fr::Core.Initialize();

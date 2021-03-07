@@ -33,15 +33,14 @@ public struct Transform {
 
 
 
-public class Orbit3DScript
-{
+public class FractalScript
     static void Main(string[] args)
     {
         Console.WriteLine(args.Length);
     }   
 }
 
-public class TestScript : Orbit3DScript
+public class TestScript : FractalScript
 {
 	public float SpinSpeed = 90;
     public void Start() 

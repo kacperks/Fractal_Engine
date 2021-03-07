@@ -1,5 +1,5 @@
 #pragma once
-
+#include "../fractal.hpp"
 class SamplerBuffer {
 
 public:

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Objects/Shader.h"
+#include "../fractal.hpp"
 
 struct Material {
 	Material() = default;

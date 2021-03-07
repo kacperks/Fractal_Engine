@@ -33,8 +33,7 @@ public struct Transform {
 
 
 
-public class Orbit3DScript
-{
+public class FractalScript
     static void Main(string[] args)
     {
         Console.WriteLine(args.Length);

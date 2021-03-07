@@ -5,8 +5,8 @@
 #include <ASSIMP/pbrmaterial.h>
 #include <ASSIMP/postprocess.h>
 
-#include "GLMesh.h"
-#include "Vendor/STB/stb_image.h"
+#include "../../GLObjects/GLMesh.h"
+#include "../../vendor/STB/stb_image.h"
 
 class Model3D {
 
