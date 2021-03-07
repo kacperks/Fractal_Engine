@@ -1,16 +1,10 @@
 #pragma once
 
-#include <GL/glew.h>
-#include <glm/glm.hpp>
-#include "../Errors/ErrorLog.h"
-#include <glm/gtc/type_ptr.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-
 class Shader {
 
 public:
 	Shader() : program(0) {}
-	Shader(const GLuint id): program(id){}
+	Shader(const GLuint id) : program(id) {}
 
 	void Bind() {
 		GLCALL(glUseProgram(program));
