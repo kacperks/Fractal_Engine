@@ -62,9 +62,12 @@ public:
 	void SetMatrix4f(const GLchar* uName, const GLfloat* mtx) {
 		GLCALL(glUniformMatrix4fv(glGetUniformLocation(program, uName), 1, GL_FALSE, mtx));
 	}
-	void SetUniform(){
-		
-	}
+
+	void SetUniform(const char * name, glm::mat4 * matrix);
+
+	void SetUniform(const char * name, int n);
+
+	void CreateUniform(const char * name);
 
 	GLuint Program() const {
 		return program;
