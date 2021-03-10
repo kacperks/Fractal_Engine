@@ -2,44 +2,43 @@
 
 namespace ECS {
 
+	class Entity;
 	class BaseSystem;
-	struct BaseComponent;	
+	class BaseComponent;
+	class EntityManager;
 
-	// constants
-	const size_t MAX_ENTITY_COUNT = 5000;
-	const size_t MAX_COMP_COUNT = 32;
+	// global constantes
+	constexpr int INVALID_TYPE_ID = 0;
+	constexpr int INVALID_ENTITY = -1;
+	constexpr int MAX_COMP_COUNT = 32;
+	constexpr int MAX_ENTITY_COUNT = 5000;
 
-	// custom types
-	using EntityID = size_t;
-	using SystemTypeID = size_t;
-	using ComponentTypeID = size_t;
+	// typedefs
+	using EntityID = int;
+	using SystemTypeID = int;
+	using ComponentTypeID = int;
 	using Signature = std::set<ComponentTypeID>;
+	using FactoryType = std::shared_ptr<BaseComponent>;
 
-	// returns component runtime type id
-	inline static const ComponentTypeID GetRuntimeComponentTypeID() {
-		static ComponentTypeID typeID = 0u;
+	// Runtime type
+	inline int GetRuntimeTypeID() {
+		static int typeID = 1u;
 		return typeID++;
 	}
 
-	// return system runtime type id
-	inline static const SystemTypeID GetRuntimeSystemTypeID() {
-		static SystemTypeID typeID = 0u;
-		return typeID++;
-	}
-
-	// attach type id to component class and return it
 	template<typename T>
-	inline static const ComponentTypeID CompType() noexcept {
-		static_assert((std::is_base_of<BaseComponent, T>::value && !std::is_same<BaseComponent, T>::value), "INVALIDE TEMPLATE TYPE");
-		static const ComponentTypeID typeID = GetRuntimeComponentTypeID();
+	inline SystemTypeID SystemType() noexcept {
+		static_assert((std::is_base_of<BaseSystem, T>::value && !std::is_same<BaseSystem, T>::value), "Invalid template type");
+		static const SystemTypeID typeID = GetRuntimeTypeID();
 		return typeID;
 	}
 
-	// attach type id to system class and return it
 	template<typename T>
-	inline static const SystemTypeID SystemType() noexcept {
-		static_assert((std::is_base_of<BaseSystem, T>::value && !std::is_same<BaseSystem, T>::value), "INVALIDE TEMPLATE TYPE");
-		static const SystemTypeID typeID = GetRuntimeSystemTypeID();
+	inline ComponentTypeID CompType() noexcept {
+		static_assert((std::is_base_of<BaseComponent, T>::value && !std::is_same<BaseComponent, T>::value), "Invalid template type");
+		static const ComponentTypeID typeID = GetRuntimeTypeID();
 		return typeID;
 	}
 }
+
+

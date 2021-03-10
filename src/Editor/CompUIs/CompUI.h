@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Resource/Resource.h"
-#include "ECS/Base/EntityManager.h"
-#include "Editor/Controls/Widgets.h"
+#include "../../Resource/Resource.h"
+#include "../../ECS/Base/EntityManager.h"
+#include "../Controls/Widgets.h"
 
 static const float DRAG_WIDTH = 60;
 static const ImVec2 BUT_SIZE = ImVec2(20, 18);

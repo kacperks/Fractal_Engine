@@ -1,29 +1,32 @@
 #pragma once
 
-#include "../../Engine/Engine.h"
-#include "../Base/BaseSystem.h"
-#include "../Components/Transform3D.h"
-#include "../Components/RigidBody3D.h"
+#include "Timer/Timer.h"
+#include "Engine/Engine.h"
+#include "ECS/Base/BaseSystem.h"
+#include "ECS/Base/EntityManager.h"
 
+#include "ECS/Components/Transform.h"
+#include "ECS/Components/RigidBody.h"
+
+using namespace Orbit3D;
 
 class PhysicsSystem : public ECS::BaseSystem {
 
 public:
-	PhysicsSystem() = default;
-	~PhysicsSystem() = default;
-
-	void OnStart() {
-		AddComponentSignature<Transform3D>();
-		AddComponentSignature<RigidBody3D>();
+	PhysicsSystem() {
+		AddComponentSignature<Transform>();
+		AddComponentSignature<RigidBody>();
 	}
 
-	void OnUpdate() {
+	void Update() {
 		for (auto entity : entities) {
-			auto& transform = FuseOrbit3D::Manager.GetComponent<Transform3D>(entity);
-			auto& rigidbody = FuseOrbit3D::Manager.GetComponent<RigidBody3D>(entity);
+			auto& transform = ECS::Manager.GetComponent<Transform>(entity);
+			auto& rigidbody = ECS::Manager.GetComponent<RigidBody>(entity);
 
-			rigidbody.Accelaration = GRAVITY * rigidbody.GravityScale;
-			transform.Position -= rigidbody.Velocity * rigidbody.Speed * FuseOrbit3D::Core.DeltaTime();
+			rigidbody.Force += GRAVITY * (rigidbody.Mass * rigidbody.GravityScale);
+			rigidbody.Velocity += rigidbody.Force / rigidbody.Mass * Timer.DeltaTime();
+			transform.Position += rigidbody.Velocity * Timer.DeltaTime();
+			rigidbody.Force = glm::vec3(0);			
 		}
 	}
 };

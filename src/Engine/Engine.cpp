@@ -1,102 +1,145 @@
 #include "Engine.h"
 
-#include "../Gui/Gui.h"
-#include "../Errors/ErrorLog.h"
-#include "../Resource/Resource.h"
+namespace fr {
 
-#include "../ECS/Systems/Systems.h"
-#include "../ECS/Components/Common.h"
+	Engine::~Engine() {
+		glfwTerminate();
+	}
 
-Engine::Engine(): deltaTime(0.0f), lastFrame(0.0f), window(nullptr), OnRun(true),
-	screenWidth(SCREEN_WIDTH), screenHeight(SCREEN_HEIGHT), mode(OperationMode::EDIT_MODE) {
+	Engine::Engine(): isRuning(true), isGameRunnig(false), viewSize(0), window(nullptr), outputBuffer(nullptr) {
+		glfwInit();
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
+		glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
-	glfwInit();
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
-	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+		auto vMode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 
-	const GLFWvidmode* videoMode = glfwGetVideoMode(glfwGetPrimaryMonitor());
-	glfwWindowHint(GLFW_RED_BITS, videoMode->redBits);
-	glfwWindowHint(GLFW_GREEN_BITS, videoMode->greenBits);
-	glfwWindowHint(GLFW_BLUE_BITS, videoMode->blueBits);
-	glfwWindowHint(GLFW_REFRESH_RATE, videoMode->refreshRate);
+		glfwWindowHint(GLFW_SAMPLES, 4);
+		glfwWindowHint(GLFW_MAXIMIZED, GL_TRUE);		
+		glfwWindowHint(GLFW_RED_BITS, vMode->redBits);
+		glfwWindowHint(GLFW_BLUE_BITS, vMode->blueBits);
+		glfwWindowHint(GLFW_GREEN_BITS, vMode->greenBits);
+		glfwWindowHint(GLFW_REFRESH_RATE, vMode->refreshRate);
 
-	window = glfwCreateWindow(videoMode->width, videoMode->height, "FuseOrbit3D", nullptr, nullptr);
-	assert(window && "ERROR::GFLW::FAILED TO CREATE WINDOW!");
-	glfwMakeContextCurrent(window);
-	glfwSwapInterval(1);
+		window = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Orbit3D", nullptr, nullptr);
+		assert(window && "ERROR::GFLW::FAILED TO CREATE WINDOW!");
+		glfwMakeContextCurrent(window);
 
-	assert(glewInit() == GLEW_OK && "ERROR::GLEW::INIT FAILED!");
-	glewExperimental = GL_TRUE;
+		assert(glewInit() == GLEW_OK && "ERROR::GLEW INIT FAILED!");
+		glewExperimental = GL_TRUE;			
+
+		GLCALL(glEnable(GL_STENCIL_TEST));
+		GLCALL(glEnable(GL_DEPTH_TEST));
+		GLCALL(glEnable(GL_MULTISAMPLE))		
+
+		shadowBuffer = new DepthBuffer(SHADOW_WIDTH, SHADOW_HEIGHT);
+		outputBuffer = new SamplerBuffer(SCREEN_WIDTH, SCREEN_HEIGHT);
+		GLCALL(glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT));
+		viewSize = glm::ivec2(SCREEN_WIDTH, SCREEN_HEIGHT);
+	}
+
+	void Engine::Initialize() {	
+
+		// register component list
+		ECS::Manager.RegisterCompList<Camera>();
+		ECS::Manager.RegisterCompList<CsScript>();
+		ECS::Manager.RegisterCompList<Transform>();
+		ECS::Manager.RegisterCompList<RigidBody>();
+		ECS::Manager.RegisterCompList<SpotLight>();
+		ECS::Manager.RegisterCompList<EntityName>();
+		ECS::Manager.RegisterCompList<PointLight>();
+		ECS::Manager.RegisterCompList<MeshRenderer>();
+		ECS::Manager.RegisterCompList<ModelRenderer>();
+		ECS::Manager.RegisterCompList<SpriteRenderer>();
+		ECS::Manager.RegisterCompList<DirectionalLight>();
+
+		// register component factory
+		ECS::Registrar<Camera>("Camera");
+		ECS::Registrar<CsScript>("Script");
+		ECS::Registrar<RigidBody>("RigidBody");
+		ECS::Registrar<SpotLight>("Spot Light");
+		ECS::Registrar<PointLight>("Point Light");
+		ECS::Registrar<MeshRenderer>("MeshRenderer");
+		ECS::Registrar<ModelRenderer>("ModelRenderer");
+		ECS::Registrar<SpriteRenderer>("SpriteRenderer");
+		ECS::Registrar<DirectionalLight>("Directional Light");
+
+		// register systems
+		ECS::Manager.AddSystem<SpotLightSystem>();
+		ECS::Manager.AddSystem<PointLightSystem>();
+		ECS::Manager.AddSystem<DirectionalLightSystem>();
+		ECS::Manager.AddSystem<SkyBoxRendererSystem>();		
+
+		ECS::Manager.AddSystem<MeshRendererSystem>();		
+		ECS::Manager.AddSystem<ModelRendererSystem>();
+		ECS::Manager.AddSystem<SpriteRendererSystem>();	
+
+		// editor system will be removed at runtime
+		ECS::Manager.AddEditorSystem<EditorCameraSystem>();
+		ECS::Manager.AddEditorSystem<GridRendererSystem>();
+
+		// runtime systems will be added at runtime
+		ECS::Manager.AddRuntimeSystem<CameraSystem>();
+		ECS::Manager.AddRuntimeSystem<PhysicsSystem>();
+		ECS::Manager.AddRuntimeSystem<CSharpScriptSystem>();
+
+		ECS::Manager.ActivateEditorSystems();
+		ECS::Manager.Start();
+
+		Orbit3D::UI.Initialiaze();
+		Serializer.LoadScene("Resource/Scene/scene.o3d");
+
+		glfwSetKeyCallback(window, GlfwImpl::KeyboardCallback);
+		glfwSetScrollCallback(window, GlfwImpl::MouseScrollCallback);
+		glfwSetCursorPosCallback(window, GlfwImpl::MouseMotionCallback);
+		glfwSetWindowCloseCallback(window, GlfwImpl::WindowCloseCallback);
+		glfwSetMouseButtonCallback(window, GlfwImpl::MouseButtonCallback);
+		glfwSetFramebufferSizeCallback(window, GlfwImpl::WindowResizedCallback);
+
+		Dispatcher.AddListener<WindowCloseEvent>(std::bind(&Engine::OnQuit, this, _1));
+		Dispatcher.AddListener<ViewportResizedEvent>(std::bind(&Engine::OnViewportResized, this, _1));
+	}
+
+	void Engine::Update() {
+		ECS::Manager.Update();
+
+		if (!isGameRunnig) {
+			SetViewport(UI.ViewSize());
+			outputBuffer->Clear();
+			ECS::Manager.Render();
+		}
+		else {
+			if (Events.IsKeyPressed(GLFW_KEY_ESCAPE)) { 
+				StopGame(); 				
+			}
+			glfwGetWindowSize(window, &viewSize.x, &viewSize.y);
+			GLCALL(glViewport(0, 0, viewSize.x, viewSize.y));
+		}
+	}
+
+	void Engine::Render() {	
+		GLCALL(glBindFramebuffer(GL_FRAMEBUFFER, 0));
+		GLCALL(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT));
+
+		if (!isGameRunnig) {
+			Orbit3D::UI.Display();
+		}
+		else {			
+			ECS::Manager.Render();
+		}
+
+		glfwSwapBuffers(window);
+	}
+
+	void Engine::StartGame() {		
+		ECS::Manager.DeactivateEditorSystems();
+		ECS::Manager.ActivateRuntimeSystems();
+		isGameRunnig = true;
+	}
+
+	void Engine::StopGame() {
+		isGameRunnig = false;
+		ECS::Manager.DeactivateRuntimeSystems();
+		ECS::Manager.ActivateEditorSystems();
+	}
 }
-
-Engine::~Engine(){
-	glfwTerminate();
-}
-
-void Engine::Initialize() {
-	// init resources
-	RESOURCE.Initialize();
-	// initialise entities
-	InitializeEntities();
-	// initialize gui layer
-	GUI.Initialize();
-}
-
-void Engine::Update() {	
-	UpdateDeltaTime();
-	glfwPollEvents();
-	screenBuffer.Clear();
-
-	Manager.Update();
-	if (mode == OperationMode::EDIT_MODE) { GUI.Display(); }
-
-	glfwSwapBuffers(window);	
-}
-
-void Engine::InitializeEntities() {
-
-	Manager.RegisterSystem<CameraSystem>();
-	Manager.RegisterSystem<KeyMotionSystem>();
-	Manager.RegisterSystem<LightSystem>();
-	Manager.RegisterSystem<PhysicsSystem>();
-	Manager.RegisterSystem<RendererSystem>();
-
-	// init entities
-	ECS::Entity cube1(Manager.AddEntity());
-	cube1.AddComponent<Name>();
-	cube1.AddComponent<Transform3D>(glm::vec3(-0.5f, -2.6f, -10.0f));
-	cube1.AddComponent<Material>(RESOURCE.GetTex2D("container0"));
-
-	// init entities
-	ECS::Entity cube2(Manager.AddEntity());
-	cube2.AddComponent<Name>();
-	cube2.AddComponent<Transform3D>(glm::vec3(0.0f, -3.1f, -10.0f), glm::vec3(2.0f));
-	cube2.AddComponent<Material>(RESOURCE.GetTex2D("container1"));
-
-	ECS::Entity cube3(Manager.AddEntity());
-	cube3.AddComponent<Name>();
-	cube3.AddComponent<Transform3D>(glm::vec3(0.0f, -8.0f, -10.0f), glm::vec3(10.0f, 0.1f, 10.0f));
-	cube3.AddComponent<Material>();	
-
-	ECS::Entity camera(Manager.AddEntity());
-	camera.AddComponent<Name>("MainCamera");
-	camera.AddComponent<Transform3D>(glm::vec3(0.0f, 0.0f, 3.0f));
-	camera.AddComponent<Camera>();
-
-	// init scene light
-	ECS::Entity light(Manager.AddEntity());
-	light.AddComponent<Name>("Global Light");
-	light.AddComponent<Transform3D>(glm::vec3(0.0f, 2.0f, 0.5f));
-	light.AddComponent<Light>(1);
-	light.AddComponent<Material>();
-
-	GUI.AddExistingEntity(camera.GetHandle());
-	GUI.AddExistingEntity(light.GetHandle());
-}
-
-void Engine::UpdateDeltaTime() {
-	deltaTime = glfwGetTime() - lastFrame;
-	lastFrame = glfwGetTime();
-}
-

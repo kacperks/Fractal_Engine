@@ -1,86 +1,72 @@
 #pragma once
 
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
-
-#include "../ECS/ECS.h"
-#include "../GLObjects/FrameBuffer.h"
-
-#include <glm/glm.hpp>
-#include <glm/gtc/type_ptr.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-
-constexpr int SCREEN_WIDTH(1280);
-constexpr int SCREEN_HEIGHT(720);
-
-enum class OperationMode { GAME_MODE = 0, EDIT_MODE = 1 };
-
-class Engine {
-public:	
-	OperationMode mode;
-	float Zoom;
-	glm::mat4 View;
-	glm::mat4 Projection;
-	glm::vec3 MainCameraPostion;
-	ECS::EntityManager Manager;
-
-	~Engine();
-	static Engine& Get() {
-		static Engine instance;
-		return instance;
-	}
-
-	void Update();
-	void Initialize();
-
-	void Quit() {
-		OnRun = false;
-	}
-
-	void UpdateScreenSize(float w, float h) {
-		screenWidth = w;
-		screenHeight = h;
-	}
-	float DisplayWidth() { return screenWidth; }
-	float DisplayHeight() { return screenHeight; }
-
-	inline const bool OnRunApp() const { return OnRun; }
-	inline GLFWwindow& Window() { return *window; }
-	inline const float DeltaTime() { return deltaTime; }
-	const bool Run() { return !glfwWindowShouldClose(window); }
-	inline ECS::EntityManager& GetManager() { return Manager; }
-
-private:
-	Engine();
-	void UpdateDeltaTime();
-	void InitializeEntities();
-
-private:	
-	bool OnRun;
-	GLFWwindow* window;	
-	FrameBuffer screenBuffer;
-	float lastFrame, deltaTime;
-	float screenWidth, screenHeight;	
-};
+#include "fractal.hpp"
 
 namespace fr {
-	const static int EXIT_PROG_SUCCESS = 0;
-	const static int EXIT_PROG_FAILURE = -1;
 
-	static Engine& Core = Engine::Get();
-	static ECS::EntityManager& Manager = Core.Manager;
+	const int SCREEN_WIDTH(1280);
+	const int SCREEN_HEIGHT(720);
 
-	static float& Zoom = Core.Zoom;
-	static glm::mat4& View = Core.View;
-	static glm::mat4& Projection = Core.Projection;
-	static glm::vec3& MainCameraPostion = Core.MainCameraPostion;
+	const int SHADOW_WIDTH = 1024;
+	const int SHADOW_HEIGHT = 1024;
 
-	static float DispWidth() {
-		return Core.DisplayWidth();
-	}
+	class Engine {
 
-	static float DispHeight() {
-		return Core.DisplayHeight();
-	}
+	public:
+		~Engine();
+		Engine(const Engine&) = delete;
+		Engine& operator=(const Engine&) = delete;
+		static Engine& Ref() {
+			static Engine reference;
+			return reference;
+		}
+
+		void OnQuit(const Event& e) {
+			isRuning = false;
+			glfwSetWindowShouldClose(window, GLFW_TRUE);
+		}
+
+		void OnViewportResized(const Event& e) {
+			auto event = Dispatcher.Cast<ViewportResizedEvent>(e);
+			viewSize.x = event.Width();
+			viewSize.y = event.Height();
+			outputBuffer->SetSize(viewSize.x, viewSize.y);
+			glViewport(0, 0, viewSize.x, viewSize.y);
+
+			std::cout << "viewport resised! " << viewSize.x << "\n";
+		}
+
+		void SetViewport(glm::vec2 size) {
+			viewSize = size;
+			outputBuffer->SetSize(size.x, size.y);
+			glViewport(0, 0, size.x, size.y);
+		}
+
+		void Update();
+		void Render();
+		void StopGame();
+		void StartGame();
+		void Initialize();
+
+		inline glm::vec2 ViewSize() const { return viewSize; }
+		inline DepthBuffer* ShadowBuffer() const { return shadowBuffer; }
+		inline SamplerBuffer* GetSceneBufferID() const { return outputBuffer; }
+
+		inline GLFWwindow& Window() { return *window; }
+		inline const bool Run() const { return isRuning; }
+
+	private:
+		Engine();
+
+	private:
+		bool isRuning;
+		bool isGameRunnig;
+		GLFWwindow* window;
+
+		glm::ivec2 viewSize;	
+		DepthBuffer* shadowBuffer;
+		SamplerBuffer* outputBuffer;
+	};
+
+	static Engine& Core = Engine::Ref();	
 }
-

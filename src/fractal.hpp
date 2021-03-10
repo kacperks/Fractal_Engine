@@ -26,7 +26,6 @@
 
 // HEADERS
 
-#include "ECS/Components/Components.h"
 #include "Gui/Gui.h"
 #include "GLObjects/FrameBuffer.h"
 #include "GLObjects/Shader.h"
@@ -35,7 +34,6 @@
 #include "Inputs/Inputs.h"
 #include "Resource/Resource.h"
 #include "Gui/Gui.h"
-#include "ECS/Systems/Systems.h"
 #include "ECS/ECS.h"
 #include "vendor/imgui/imgui.h"
 #include "Engine/Engine.h"
@@ -47,7 +45,10 @@
 #include "ECS/Base/Entity.h"
 #include "ECS/Base/EntityManager.h"
 #include "ECS/Base/Types.h"
-#include "vendor/STB/stb_image.h"
+#include "Serializer/XMLSerializer.h"
+#include "Editor/UiLayer.h"
+#include "Events/EventsCore.hpp"
+#include "Editor/Ecore.hpp"
 #include "Managers/Managers.hpp"
 
 // OPENGL
@@ -65,6 +66,12 @@
 #include <glm/ext/matrix_transform.hpp> 
 #include <glm/ext/matrix_clip_space.hpp>
 #include <glm/ext/scalar_constants.hpp>
+
+
+// VENDOR_
+
+#include "vendor/IMGUI/imgui.h"
+#include "vendor/STB/stb_image.h"
 
 #ifdef FR_WINDOW
 	// window platform related stuff

@@ -1,0 +1,128 @@
+newmtl BranchSG
+illum 4
+Kd 0.18 0.08 0.04
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.05 0.02 0.01
+Ns 23.00
+newmtl BranchSG1
+illum 4
+Kd 0.57 0.34 0.16
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.14 0.08 0.04
+Ns 23.00
+newmtl Bush1SG
+illum 4
+Kd 0.22 0.48 0.06
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.05 0.12 0.01
+Ns 23.00
+newmtl Grass1SG
+illum 4
+Kd 0.06 0.21 0.03
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.02 0.05 0.01
+Ns 23.00
+newmtl Mushroom1SG
+illum 4
+Kd 0.80 0.80 0.80
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.20 0.20 0.20
+Ns 23.00
+newmtl Mushroom1SG1
+illum 4
+Kd 0.80 0.03 0.04
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.20 0.01 0.01
+Ns 23.00
+newmtl Mushroom2SG
+illum 4
+Kd 1.00 0.68 0.39
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.25 0.17 0.10
+Ns 23.00
+newmtl Mushroom2SG1
+illum 4
+Kd 0.77 0.27 0.06
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.19 0.07 0.01
+Ns 23.00
+newmtl Rock1SG
+illum 4
+Kd 0.21 0.21 0.21
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.05 0.05 0.05
+Ns 23.00
+newmtl Rock2SG
+illum 4
+Kd 0.28 0.25 0.23
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.07 0.06 0.06
+Ns 23.00
+newmtl Stump1SG
+illum 4
+Kd 0.15 0.07 0.03
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.04 0.02 0.01
+Ns 23.00
+newmtl Stump1SG1
+illum 4
+Kd 0.47 0.21 0.07
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.12 0.05 0.02
+Ns 23.00
+newmtl Tree1SG
+illum 4
+Kd 0.13 0.07 0.02
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.03 0.02 0.00
+Ns 23.00
+newmtl Tree1SG1
+illum 4
+Kd 0.09 0.19 0.01
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.02 0.05 0.00
+Ns 23.00
+newmtl Tree2SG
+illum 4
+Kd 0.06 0.04 0.02
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.02 0.01 0.00
+Ns 23.00
+newmtl Tree2SG1
+illum 4
+Kd 0.03 0.16 0.01
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.01 0.04 0.00
+Ns 23.00

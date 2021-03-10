@@ -1,8 +1,8 @@
 #pragma once
 
 #include "CompUI.h"
-#include "Resource/Resource.h"
-#include "ECS/Components/MeshRenderer.h"
+#include "../../Resource/Resource.h"
+#include "../../ECS/Components/MeshRenderer.h"
 
 class MeshUI : public CompUI {
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Base/Entity.h"
-#include "Base/EntityManager.h"
-
+#include "Base/Base.hpp"
+#include "Components/Components.h"
+#include "Systems/Systems.hpp"
 

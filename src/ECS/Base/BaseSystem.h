@@ -9,35 +9,23 @@ namespace ECS {
 		BaseSystem() = default;
 		virtual ~BaseSystem() = default;
 
-		void RemoveEntity(const EntityID entity) {
-			entities.erase(entity);
-		}
+		inline const Signature GetSignature() const { return signature; }
 
-		void AddEntity(const EntityID entity) {
-			entities.insert(entity);
-		}
-
-		const Signature GetSignature() const {
-			return signature;
-		}
+		inline void EraseEntity(const EntityID entity) { entities.erase(entity); }
+		inline void PushEntity(const EntityID entity) { entities.insert(entity); }
 
 		template<typename T>
-		void AddComponentSignature() {
-			signature.insert(CompType<T>());
-		}
+		inline void AddComponentSignature() { signature.insert(CompType<T>()); }	
 
-		virtual void Start() { }
-		virtual void Update() { 
-			for (auto i : entities) { 
-				std::cout << i << " ";
-			}
-			std::cout << std::endl;
-		}
-		virtual void Render() { }
-		virtual void Destroy() { }
+		inline const bool IsEmpty() const { return (entities.size() == 0);}
+		inline const bool HasEntity(EntityID entity) const { return (entities.count(entity) > 0);}
+
+		virtual void Stop() {}
+		virtual void Start() {}
+		virtual void Render() {}
+		virtual void Update() {}
 
 	protected:
-		friend class EntityManager;
 		Signature signature;
 		std::set<EntityID> entities;
 	};

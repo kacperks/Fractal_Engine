@@ -1,18 +1,18 @@
 #include "fractal.hpp"
 
-void NCS(){
-	Managers::Script script;
-	script.Filename = "../res/Scripts/New.cs"
-	Managers::NewScript(script);
-}
+using namespace fr;
 
 int main(int argc, char** argv) {
+	Resource.Initialize();
+	Core.Initialize();
+	Timer.Initialize();
 
-	fr::Core.Initialize();
-
-	while (fr::Core.OnRunApp()) {
-		fr::Core.Update();
+	while (Core.Run()) {
+		Timer.Tick();
+		Events.Poll();
+		Core.Update();
+		Core.Render();
 	}
 
-	return fr::EXIT_PROG_SUCCESS;
+	return EXIT_SUCCESS;
 }

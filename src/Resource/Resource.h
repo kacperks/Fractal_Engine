@@ -1,48 +1,74 @@
 #pragma once
 
-#include <map>
-#include <string>
-#include <vector>
-#include <GL/glew.h>
+#include "../GLObjects/Model.h"
+#include "../GLObjects/GLMesh.h"
 
-class Resource {
-public:
-	~Resource();	
+const std::string ICON_PATH = "../../res/Icons/";
+const std::string MODEL_PATH = "../../res/Models/";
+const std::string SHADERS_PATH = "../../res/Shaders/";
+const std::string TEXTURE_PATH = "../../res/extures/";
 
-	static Resource& Get() {
-		static Resource instance;
-		return instance;
-	}
+namespace fr {
 
-	void Initialize();
+	class RsrcManager{
+	public:
+		~RsrcManager();
+		RsrcManager(const RsrcManager&) = delete;
+		RsrcManager& operator=(const RsrcManager&) = delete;
+		static RsrcManager& Ref() {
+			static RsrcManager reference;
+			return reference;
+		}
 
-	// Meshes
-	void LoadMeshes(const GLchar* filename);
-	const GLuint GetMesh(const char* name);
+		void Initialize();
 
-	// Textures
-	GLuint LoadTex2D(const char* filename);
-	const GLuint GetTex2D(const char* name);
-	void AddTex2D(const char* name, const GLuint texID);
+		// texture
+		const GLuint LoadTex2D(std::string filename);
+		void AddTex2D(std::string name, const GLuint texID);
+		const GLuint Tex2D(std::string name) {
+			assert(texture2ds.find(name) != texture2ds.end() && "TexID out of range!");
+			return texture2ds.at(name);
+		}
 
-	// Cubemap texture
-	const GLuint GetCubemap(const char* name);
-	void LoadCubemap(const char* name, std::vector<const char*> faces);
+		// Cubemap texture
+		void LoadCubeMap(std::string name, std::vector<std::string> faces);
+		const GLuint CubeMap(std::string name) {
+			assert(cubemaps.find(name) != cubemaps.end() && "Cubemap out of range!");
+			return cubemaps.at(name);
+		}
 
-	// shaders
-	const GLuint GetShader(const char* name);
-	void BuildShader(const char* name, const char* vertex, const char* fragment);
+		// meshes
+		void LoadMeshes();
+		const GLMesh& GetMesh(std::string name) {
+			assert(meshes.find(name) != meshes.end() && "Mesh out of range!");
+			return meshes[name];
+		}
 
-private:
-	Resource();
-	const std::string LoadShader(const char* filename);
-	const GLuint ComplieShader(GLenum type, const GLchar* src);
+		// models
+		void LoadModel(std::string name, std::string filename);
+		std::shared_ptr<Model3D> GetModel(std::string name) {
+			assert(models.find(name) != models.end() && "Model out of range!");
+			return models[name];
+		}
 
-private:
-	std::map<std::string, GLuint> meshes;
-	std::map<std::string, GLuint> shaders;
-	std::map<std::string, GLuint> cubemaps;
-	std::map<std::string, GLuint> texture2ds;
-};
+		// shaders
+		const GLuint Program(std::string name);
+		void CreateProgram(std::string name, std::string vtxFile, std::string fragFile);
 
-static Resource& RESOURCE = Resource::Get();
+	private:
+		RsrcManager();
+		void CreateSphere(GLuint X_SEGMENTS = 64, GLuint Y_SEGMENTS = 64);
+		std::string LoadShaderSource(std::string filename);
+		const GLuint ComplieShaderSource(GLenum type, const GLchar* src);
+
+	private:
+		std::map<std::string, GLMesh> meshes;
+		std::map<std::string, GLuint> shaders;
+		std::map<std::string, GLuint> cubemaps;
+		std::map<std::string, GLuint> texture2ds;
+		std::map<std::string, std::shared_ptr<Model3D>> models;
+	};
+
+	static RsrcManager& Resource = RsrcManager::Ref();
+}
+

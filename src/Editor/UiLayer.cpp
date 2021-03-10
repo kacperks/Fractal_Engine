@@ -1,11 +1,9 @@
-#include "pch.h"
+#include "../fractal.hpp"
 #include "UiLayer.h"
-#include "Engine/Engine.h"
-#include "Events/EventSystem.h"
 
-#include "Vendor/IMGUI/imgui_internal.h"
-#include "Vendor/IMGUI/imgui_impl_glfw.h"
-#include "Vendor/IMGUI/imgui_impl_opengl3.h"
+#include "../../vendor/IMGUI/imgui_internal.h"
+#include "../../vendor/IMGUI/imgui_impl_glfw.h"
+#include "../../vendor/IMGUI/imgui_impl_opengl3.h"
 
 #include "ECS/Base/Entity.h"
 #include "Serializer/XMLSerializer.h"
@@ -16,7 +14,7 @@
 #include "CompUIs/NameTagUI.h"
 #include "CompUIs/MeshUI.h"
 
-namespace Orbit3D {
+namespace fr {
 
 	const ImVec4 dark = ImVec4(0.2f, 0.2f, 0.2f, 1.0f);
 	static const char* names[] = { "Camera", "RigidBody", "MeshRenderer",

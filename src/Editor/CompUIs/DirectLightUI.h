@@ -1,7 +1,7 @@
 #pragma once
 
 #include "CompUI.h"
-#include "ECS/Components/DirectionalLight.h"
+#include "../../ECS/Components/DirectionalLight.h"
 
 class DirectLightUI : public CompUI {
 public:
