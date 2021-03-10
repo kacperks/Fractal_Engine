@@ -2,7 +2,7 @@
 
 * FOR LINUX YOU CAN RUN SCRIPT 
 ```sh
-libs.sh
+lib.sh
 ```     
  or type
 ```sh
