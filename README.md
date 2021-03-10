@@ -15,13 +15,14 @@ Features:
 * Component (Camera)
 * Component (Material)
 * Component (Light)
+* C# mono scripting
 
 Features to do:
 
 * Launcher
 * Particle System
 * Bulid for Linux,Windows,Android,OSX
-* C# and Lua Support
+* Lua Support
 * 2D version
 * Loading and Crating Projects System
 # Bulid
