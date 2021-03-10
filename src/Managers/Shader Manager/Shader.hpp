@@ -1,79 +1,52 @@
 #pragma once
 #include "../../fractal.hpp"
 
-class Shader {
+namespace glth{
+	class Shader {
 
-public:
-	Shader() : program(0) {}
-	Shader(const GLuint id) : program(id) {}
+		public:
+			Shader() : program(0) {}
+			Shader(const GLuint id) : program(id) {}
 
-	void Bind() {
-		GLCALL(glUseProgram(program));
-	}
+			void Bind() ;
 
-	void UnBind() {
-		GLCALL(glUseProgram(0));
-	}
+			void UnBind() ;
 
-	void SetSample2D(const GLchar* uName, GLuint tex2d, GLint unit = 0) {
-		GLCALL(glActiveTexture(GL_TEXTURE0 + unit));
-		GLCALL(glBindTexture(GL_TEXTURE_2D, tex2d));
-		GLCALL(glUniform1i(glGetUniformLocation(program, uName), unit));
-	}
+			void SetSample2D(const GLchar* uName, GLuint tex2d, GLint unit = 0) ;
 
-	void SetSampleCube(const GLchar* uName, GLuint cube, GLint unit = 0) {
-		GLCALL(glActiveTexture(GL_TEXTURE0 + unit));
-		GLCALL(glBindTexture(GL_TEXTURE_CUBE_MAP, cube));
-		GLCALL(glUniform1i(glGetUniformLocation(program, uName), unit));
-	}
+			void SetSampleCube(const GLchar* uName, GLuint cube, GLint unit = 0) ;
 
-	void Set1i(const GLchar* uName, GLint value) {
-		GLCALL(glUniform1i(glGetUniformLocation(program, uName), value));
-	}
+			void Set1i(const GLchar* uName, GLint value);
 
-	void Set1f(const GLchar* uName, GLfloat value) {
-		GLCALL(glUniform1f(glGetUniformLocation(program, uName), value));
-	}
+			void Set1f(const GLchar* uName, GLfloat value) ;
 
-	void Set2f(const GLchar* uName, GLfloat x, GLfloat y) {
-		GLCALL(glUniform2f(glGetUniformLocation(program, uName), x, y));
-	}
+			void Set2f(const GLchar* uName, GLfloat x, GLfloat y) ;
 
-	void SetV2f(const GLchar* uName, glm::vec2 v) {
-		Set2f(uName, v.x, v.y);
-	}
+			void SetV2f(const GLchar* uName, glm::vec2 v) ;
 
-	void Set3f(const GLchar* uName, GLfloat x, GLfloat y, GLfloat z) {
-		GLCALL(glUniform3f(glGetUniformLocation(program, uName), x, y, z));
-	}
+			void Set3f(const GLchar* uName, GLfloat x, GLfloat y, GLfloat z) ;
 
-	void SetV3f(const GLchar* uName, glm::vec3 v) {
-		Set3f(uName, v.x, v.y, v.z);
-	}
+			void SetV3f(const GLchar* uName, glm::vec3 v) ;
 
-	void Set4f(const GLchar* uName, GLfloat x, GLfloat y, GLfloat z, GLfloat w) {
-		GLCALL(glUniform4f(glGetUniformLocation(program, uName), x, y, z, w));
-	}
+			void Set4f(const GLchar* uName, GLfloat x, GLfloat y, GLfloat z, GLfloat w) ;
 
-	void SetV4f(const GLchar* uName, glm::vec4 v) {
-		Set4f(uName, v.x, v.y, v.z, v.z);
-	}
+			void SetV4f(const GLchar* uName, glm::vec4 v) ;
 
-	void SetMatrix4f(const GLchar* uName, const GLfloat* mtx) {
-		GLCALL(glUniformMatrix4fv(glGetUniformLocation(program, uName), 1, GL_FALSE, mtx));
-	}
+			void SetMatrix4f(const GLchar* uName, const GLfloat* mtx) ;
 
-	void SetUniform(const char * name, glm::mat4 * matrix);
+			void SetUniform(const char * name, glm::mat4 * matrix);
 
-	void SetUniform(const char * name, int n);
+			void SetUniform(const char * name, int n);
 
-	void CreateUniform(const char * name);
+			void CreateUniform(const char * name);
 
-	GLuint Program() const {
-		return program;
-	}
+			GLuint Program() const {
+				return program;
+			}
 
-private:
-	GLuint program;
+		private:
+			GLuint program;
+		};
+
+
 };
-
