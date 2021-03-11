@@ -27,9 +27,7 @@
 // HEADERS
 
 #include "Gui/Gui.h"
-#include "GLObjects/FrameBuffer.h"
-#include "GLObjects/Shader.h"
-#include "GLObjects/VertexArray.h"
+#include "GLObjects/GLthings.hpp"
 #include "Errors/ErrorLog.h"
 #include "Inputs/Inputs.h"
 #include "Resource/Resource.h"
