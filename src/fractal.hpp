@@ -49,6 +49,10 @@
 #include "Editor/Ecore.hpp"
 #include "Managers/Managers.hpp"
 
+// SFML
+
+#include <SFML/Graphics.hpp>
+
 // OPENGL
 
 #include <GL/glew.h>
