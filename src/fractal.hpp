@@ -16,6 +16,7 @@
 #include <iostream>
 #include <algorithm>
 #include <functional>
+#include <stdio.h>
 
 // ASSIMP
 
