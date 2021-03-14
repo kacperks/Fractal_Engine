@@ -8,7 +8,6 @@ Not Finished yet
 Features:
 * GUI
 * ECS(Entity Component System)
-* Scenes System
 * Loading 3D models
 * Errors System
 * Component (Transform3D)
