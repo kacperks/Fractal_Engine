@@ -1,13 +1,13 @@
 #pragma once
 
-#include "ECS/Base/BaseSystem.h"
-#include "ECS/Base/EntityManager.h"
+#include "../Base/BaseSystem.h"
+#include "../Base/EntityManager.h"
 
-#include "Resource/Resource.h"
-#include "ECS/Components/Transform.h"
-#include "ECS/Components/MeshRenderer.h"
+#include "../../Resource/Resource.h"
+#include "../Components/Transform.h"
+#include "../Components/MeshRenderer.h"
 
-using namespace Orbit3D;
+using namespace fr;
 
 class MeshRendererSystem : public ECS::BaseSystem {
 

@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Objects/Shader.h"
-#include "Resource/Resource.h"
-#include "Objects/VertexArray.h"
-#include "ECS/Base/BaseSystem.h"
+#include "../../GLObjects/Shader.h"
+#include "../../Resource/Resource.h"
+#include "../../GLObjects/VertexArray.h"
+#include "../Base/BaseSystem.h"
 
-using namespace Orbit3D;
+using namespace fr;
 
 class SkyBoxRendererSystem : public ECS::BaseSystem {
 public:

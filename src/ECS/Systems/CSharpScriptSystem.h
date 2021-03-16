@@ -1,12 +1,12 @@
 #pragma once
 
-#include "ECS/Base/BaseSystem.h"
-#include "ECS/Base/EntityManager.h"
+#include "../Base/BaseSystem.h"
+#include "../Base/EntityManager.h"
 
-#include "Timer/Timer.h"
-#include "ECS/Components/CsScript.h"
+#include "../../Timer/Timer.h"
+#include "../Components/CsScript.h"
 
-using namespace Orbit3D;
+using namespace fr;
 
 class CSharpScriptSystem : public ECS::BaseSystem {
 

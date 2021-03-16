@@ -75,6 +75,16 @@
 
 #include "vendor/IMGUI/imgui.h"
 #include "vendor/STB/stb_image.h"
+extern "C"
+{
+    #include "vendor/LUA/include/lua.h"
+    #include "vendor/LUA/include/lauxlib.h"
+    #include "vendor/LUA/include/lualib.h"
+}
+
+#ifdef _WIN32
+#pragma comment(lib, "vendor/LUA/liblua54.a")
+#endif
 
 #ifdef FR_WINDOW
 	// window platform related stuff

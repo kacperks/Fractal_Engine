@@ -1,16 +1,16 @@
 #pragma once
 
-#include "Engine/Engine.h"
-#include "Editor/UiLayer.h"
-#include "Resource/Resource.h"
+#include "../../Engine/Engine.h"
+#include "../../Editor/UiLayer.h"
+#include "../../Resource/Resource.h"
 
-#include "ECS/Base/BaseSystem.h"
-#include "ECS/Base/EntityManager.h"
+#include "../Base/BaseSystem.h"
+#include "../Base/EntityManager.h"
 
-#include "ECS/Components/Camera.h"
-#include "ECS/Components/Transform.h"
+#include "../Components/Camera.h"
+#include "../Components/Transform.h"
 
-using namespace Orbit3D;
+using namespace fr;
 
 constexpr auto SCROLL_SPEED = 10.0f;;
 

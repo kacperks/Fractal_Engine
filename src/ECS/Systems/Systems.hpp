@@ -12,3 +12,4 @@
 #include "SkyBoxRendererSystem.h"
 #include "SpotLightSystem.h"
 #include "SpriteRendererSystem.h"
+#include "2DParticleSystem.h"
