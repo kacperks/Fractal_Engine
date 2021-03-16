@@ -18,6 +18,16 @@
 #include <functional>
 #include <stdio.h>
 
+// LUA
+
+extern "C"
+{
+    #include "vendor/LUA/include/lua.h"
+    #include "vendor/LUA/include/lauxlib.h"
+    #include "vendor/LUA/include/lualib.h"
+}
+
+
 // ASSIMP
 
 #include <ASSIMP/postprocess.h>
@@ -75,12 +85,6 @@
 
 #include "vendor/IMGUI/imgui.h"
 #include "vendor/STB/stb_image.h"
-extern "C"
-{
-    #include "vendor/LUA/include/lua.h"
-    #include "vendor/LUA/include/lauxlib.h"
-    #include "vendor/LUA/include/lualib.h"
-}
 
 #ifdef _WIN32
 #pragma comment(lib, "vendor/LUA/liblua54.a")

@@ -13,3 +13,4 @@
 #include "SpotLightSystem.h"
 #include "SpriteRendererSystem.h"
 #include "2DParticleSystem.h"
+#include "LuaSystem.h"
