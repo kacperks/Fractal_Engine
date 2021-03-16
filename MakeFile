@@ -5,7 +5,7 @@ CC = g++
 COMPILER_FLAGS = -w
 
 #LINKER_FLAGS specifies the libraries we're linking against
-LINKER_FLAGS = -lsfml-graphics -lsfml-system -lsfml-window -lsfml-network -lsfml-audio -lglfw3 -lglut -lGL -lGLU -lGLEW -ldl -lm -lpthread -pthread -lSDL2 -assimp-dev -assimp-utils -libxmu-dev -libxi-dev
+LINKER_FLAGS = -lsfml-graphics -lsfml-system -lsfml-window -lsfml-network -lsfml-audio -lglfw3 -lglut -lGL -lGLU -lGLEW -ldl -lm -lpthread -pthread -lSDL2 -lopengl32 -lglu32 -lassimp-dev -lassimp-utils -libxmu-dev -libxi-dev
 
 OBJ_NAME = build/Fractal
 
