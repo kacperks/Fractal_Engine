@@ -4,7 +4,7 @@
 #include "../Editor/UiLayer.h"
 #include "../ECS/Base/EntityManager.h"
 
-namespace Orbit3D {
+namespace fr {
 
 	// SCENE
 	void XMLSerializer::LoadScene(const char* filename) {

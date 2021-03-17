@@ -3,7 +3,7 @@
 #include <TinyXML/tinyxml2.h>
 #include "../ECS/ECS.h"
 
-namespace Orbit3D {
+namespace fr {
 
 	using namespace tinyxml2;
 
