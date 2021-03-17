@@ -1,7 +1,7 @@
-function Start()
-
+function Start(deltatime)
+    
 end
 
-function Update()
-
+function Update(deltatime)
+      
 end
