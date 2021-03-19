@@ -2,6 +2,8 @@
 #include <thread>
 #include <stdlib.h> 
 
+// not finished yet
+
 struct LuaScript : public ECS::BaseComponent {
     lua_State * L = lua_open();
     
