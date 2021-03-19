@@ -1,46 +1,35 @@
-UNAME_S = $(shell uname -s)
+ENGINE_OBJS = src/*.h src/*.hpp src/*.cpp
 
-CC = clang
-CFLAGS = -std=c11 -O3 -g -Wall -Wextra -Wpedantic -Wstrict-aliasing
-CFLAGS += -Wno-pointer-arith -Wno-newline-eof -Wno-unused-parameter -Wno-gnu-statement-expression
-CFLAGS += -Wno-gnu-compound-literal-initializer -Wno-gnu-zero-variadic-macro-arguments
-CFLAGS += -Ilib/cglm/include -Ilib/glad/include -Ilib/glfw/include -Ilib/stb -Ilib/noise -fbracket-depth=1024
-LDFLAGS = lib/glad/src/glad.o lib/cglm/libcglm.a lib/glfw/src/libglfw3.a lib/noise/libnoise.a -lm
+#OBJS specifies which files to compile as part of the project
+OBJS = $(ENGINE_OBJS) src/*.cpp
 
-# GLFW required frameworks on OSX
-ifeq ($(UNAME_S), Darwin)
-	LDFLAGS += -framework OpenGL -framework IOKit -framework CoreVideo -framework Cocoa
-endif
+#CC specifies which compiler we're using
+CC = g++
 
-ifeq ($(UNAME_S), Linux)
-	LDFLAGS += -ldl -lpthread
-endif
+#COMPILER_FLAGS specifies the additional compilation options we're using
+# -w suppresses all warnings
+COMPILER_FLAGS = -w
 
-SRC  = $(wildcard src/**/*.cpp) $(wildcard src/*.cpp) $(wildcard src/**/**/*.cpp) $(wildcard src/**/**/**/*.cpp)
-OBJ  = $(SRC:.c=.o)
-BIN = bin
+#VENDORS
+VENDOR_glad = -lib\Linux/glad/lib -lib\Linuxglad/include lib\Linuxglad/include/glad/glad.c
+VENDOR_GLFW = -lib\Linux/GLFW/lib -lib\LinuxGLFW/include
+VENDOR_glm = -lib\Linux/glm/include
+VENDOR_SOIL2 = -lib\LinuxSOIL2/lib -lib\LinuxSOIL2/include
+VENDOR_SimplexNoise = lib\LinuxSimplexNoise/*.h lib\LinuxSimplexNoise/*.cpp
 
-.PHONY: all clean
+VENDOR = $(VENDOR_glad) $(VENDOR_GLFW) $(VENDOR_glm) $(VENDOR_SOIL2) $(VENDOR_SimplexNoise)
 
-all: dirs libs game
+#LINKER_FLAGS specifies the libraries we're linking against
+LINKER_FLAGS = $(VENDOR) -lopengl32 -lglu32 -lglfw3dll -lsoil2-debug
 
-libs:
-	cd lib/cglm && cmake . -DCGLM_STATIC=ON && make
-	cd lib/glad && $(CC) -o src/glad.o -Iinclude -c src/glad.c
-	cd lib/glfw && cmake . && make
-	cd lib/noise && make
+#OBJ_NAME specifies the name of our exectuable
+OBJ_NAME = bin/Fractal
 
-dirs:
-	mkdir -p ./$(BIN)
-
-run: all
-	$(BIN)/game
-
-game: $(OBJ)
-	$(CC) -o $(BIN)/game $^ $(LDFLAGS)
-
-%.o: %.c
-	$(CC) -o $@ -c $< $(CFLAGS)
-
-clean:
-	rm -rf $(BIN) $(OBJ)
+#This is the target that compiles our executable
+all : $(OBJS)
+	mkdir -p bin
+	mkdir -p bin/res
+	cd ..
+	$(CC) $(OBJS) $(COMPILER_FLAGS) $(LINKER_FLAGS) -o $(OBJ_NAME)
+	cp vendor/dlls/* bin/
+	cp res/* bin/res/
