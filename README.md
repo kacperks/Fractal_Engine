@@ -38,5 +38,5 @@ and C++ compiler
 
 To install this libaries on Ubuntu/Debian type
 ```sh
-$ sh lib.sh
+$ sh lib/lib.sh
 ```
