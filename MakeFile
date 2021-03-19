@@ -11,16 +11,8 @@ CC = g++
 COMPILER_FLAGS = -w
 
 #VENDORS
-VENDOR_glad = -lib\Linux/glad/lib -lib\Linuxglad/include lib\Linuxglad/include/glad/glad.c
-VENDOR_GLFW = -lib\Linux/GLFW/lib -lib\LinuxGLFW/include
-VENDOR_glm = -lib\Linux/glm/include
-VENDOR_SOIL2 = -lib\LinuxSOIL2/lib -lib\LinuxSOIL2/include
-VENDOR_SimplexNoise = lib\LinuxSimplexNoise/*.h lib\LinuxSimplexNoise/*.cpp
-
-VENDOR = $(VENDOR_glad) $(VENDOR_GLFW) $(VENDOR_glm) $(VENDOR_SOIL2) $(VENDOR_SimplexNoise)
-
 #LINKER_FLAGS specifies the libraries we're linking against
-LINKER_FLAGS = $(VENDOR) -lopengl32 -lglu32 -lglfw3dll -lsoil2-debug
+LINKER_FLAGS = -lopengl32 -lglu32 -lglfw3dll -lsoil2-debug
 
 #OBJ_NAME specifies the name of our exectuable
 OBJ_NAME = bin/Fractal
