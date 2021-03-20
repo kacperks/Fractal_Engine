@@ -7,7 +7,7 @@ class TransformUserControl : public UserControl {
 public:
 	void Display(ECS::EntityHandle entity) override {		
 		if (!FuseOrbit3D::Manager.HasComponent<Transform3D>(entity)) { return; }
-		auto& transform = FuseOrbit3D::Manager.GetComponent<Transform3D>(entity);
+		auto& transform = fr::Manager.GetComponent<Transform3D>(entity);
 
 		Widget::ComponentUI::Begin("Transform3D", 128.0f, compIcon);				
 		Widget::DragVec3::Display("Position", transform.Position, posIcon, 0.1f);
