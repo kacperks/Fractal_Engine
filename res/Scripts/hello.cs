@@ -1,21 +1,21 @@
-using System;
 using Fractal;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-
+using System;
 
 public class TestScript : FractalScript
 {
-	public float SpinSpeed = 90;
-    public void Start() 
-    {     
-        Console.WriteLine("Script Started!");
+    static void Main(string[] args)
+    {
+        Console.WriteLine(args.Length);
+    }
+    public void Start()
+    {
+        Console.WriteLine("Script Started!!");
     }
 
-    public void Update(float deltatime, ref Transform transform) 
+    public void Update(float deltatime, ref Transform transform , ref PointLight light)
     {
-      transform.Rotation.X += SpinSpeed * deltatime;
-      transform.Rotation.Z += SpinSpeed * deltatime;
-      transform.Position.X += 10 * deltatime;
+        transform.Rotation.Y += 10 * deltatime;
+        transform.Rotation.X += 10 * deltatime;
+        light.color.R += 10 * deltatime;
     }
 }
