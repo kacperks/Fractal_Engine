@@ -14,8 +14,8 @@ public class TestScript : FractalScript
 
     public void Update(float deltatime, ref Transform transform) 
     {
-		transform.Rotation.X += SpinSpeed * deltatime;
-		transform.Rotation.Z += SpinSpeed * deltatime;
-		transform.Position.X += 10 * deltatime;
+      transform.Rotation.X += SpinSpeed * deltatime;
+      transform.Rotation.Z += SpinSpeed * deltatime;
+      transform.Position.X += 10 * deltatime;
     }
 }
