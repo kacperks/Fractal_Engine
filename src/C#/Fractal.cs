@@ -63,8 +63,47 @@ namespace Fractal
         public float Intensity;
         public int EntityID { get { return Entity; } }
     }
-
-
+    [StructLayout(LayoutKind.Sequential)]
+    public struct MeshRenderer
+    {
+        private int Entity;
+        public string Type;
+        public int EntityID { get { return Entity; } }
+    }
+    [StructLayout(LayoutKind.Sequential)]
+    public struct Material
+    {
+        private int Entity;
+        public Color Albedo;
+        public float AOcclusion;
+        public float Metalic;
+        public float Roughness;
+        public int EntityID { get { return Entity; } }
+    }
+    [StructLayout(LayoutKind.Sequential)]
+    public struct DirectionalLight
+    {
+        private int Entity;
+        public Color color;
+        public Vector3 Direction;
+        public float Intensity;
+        public int EntityID { get { return Entity; } }
+    }
+    [StructLayout(LayoutKind.Sequential)]
+    public struct CsScript
+    {
+        private int Entity;
+        public string Class;
+        public string FileName;
+        public int EntityID { get { return Entity; } }
+    }
+    [StructLayout(LayoutKind.Sequential)]
+    public struct LuaScript
+    {
+        private int Entity;
+        public string FileName;
+        public int EntityID { get { return Entity; } }
+    }
     public class FractalScript
     {
         static void Main(string[] args)
