@@ -1,6 +1,6 @@
 #pragma once
 
-#include "fractal.hpp"
+#include "../fractal.hpp"
 
 namespace fr {
 

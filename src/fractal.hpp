@@ -37,12 +37,12 @@ extern "C"
 
 // HEADERS
 
-#include "Gui/Gui.h"
+//#include "Gui/Gui.h"
 #include "GLObjects/GLthings.hpp"
 #include "Errors/ErrorLog.h"
 #include "Inputs/Inputs.h"
 #include "Resource/Resource.h"
-#include "Gui/Gui.h"
+//#include "Gui/Gui.h"
 #include "ECS/ECS.h"
 #include "vendor/imgui/imgui.h"
 #include "Engine/Engine.h"

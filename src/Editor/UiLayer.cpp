@@ -229,14 +229,28 @@ namespace fr {
 				if (ImGui::MenuItem("Paste", "CTRL+V")) {}
 				ImGui::EndMenu();
 			}
+			if (ImGui::BeginMenu("Window")){
+				if(ImGui::MenuItem("Fractal Store")){}
+				if (ImGui::MenuItem("Scene")){}
+				if (ImGui::MenuItem("Inspector")){}
+				if (ImGui::MenuItem("Console")){}
+				if (ImGui::MenuItem("Resources")){}
+				if (ImGui::MenuItem("Tools")){}
+				if (ImGui::MenuItem("Entities")){}
+			}
 			if (ImGui::BeginMenu("Settings")) {
 				if (ImGui::MenuItem("Customize", "Ctrl+T")) {}
 				ImGui::EndMenu();
 			}
 			if (ImGui::BeginMenu("Help")) {
 				if (ImGui::MenuItem("View Help", "Ctrl+H")) {}
-				if (ImGui::MenuItem("About Soft3D")) {}
+				if (ImGui::MenuItem("About Fractal")) {}
 				ImGui::EndMenu();
+			}
+			if (ImGui::BeginMenu("Tools")){
+				if (ImGui::MenuItem("Rotate")){}
+				if (ImGui::MenuItem("Move")) {}
+				if (ImGui::MenuItem("Scale Tool")) {}
 			}
 
 			ImGui::EndMenuBar();
