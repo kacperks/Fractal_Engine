@@ -5,8 +5,8 @@
 #include "../../vendor/IMGUI/imgui_impl_glfw.h"
 #include "../../vendor/IMGUI/imgui_impl_opengl3.h"
 
-#include "ECS/Base/Entity.h"
-#include "Serializer/XMLSerializer.h"
+#include "../ECS/Base/Entity.h"
+#include "../Serializer/XMLSerializer.h"
 
 #include "CompUIs/DirectLightUI.h"
 #include "CompUIs/PointLightUI.h"

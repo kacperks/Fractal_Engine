@@ -1,8 +1,10 @@
 #pragma once
 
+#include "../fractal.hpp"
+
 #include "CompUIs/CompUI.h"
-#include "Vendor/IMGUI/imgui.h"
-#include "Vendor/GUIZMO/ImGuizmo.h"
+#include "../vendor/IMGUI/imgui.h"
+#include "../vendor/GUIZMO/ImGuizmo.h"
 
 struct Transform;
 
