@@ -3,7 +3,8 @@
 #include <mono/metadata/assembly.h>
 #include <mono/metadata/debug-helpers.h>
 
-#include "ECS/Base/BaseComponent.h"
+#include "../Base/BaseComponent.h"
+#include "../../Editor/CompUIs/CsScriptUI.h"
 
 struct CsScript : public ECS::BaseComponent {
 
@@ -44,5 +45,5 @@ struct CsScript : public ECS::BaseComponent {
 	MonoAssembly* Assembly = nullptr;
 
 	std::string ClassName = "TestScript";
-	std::string AssemblyPath = "Resource/Scripts/hello.dll";
+	std::string AssemblyPath = CsScriptUI::DLLpath;
 };

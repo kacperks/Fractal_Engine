@@ -28,12 +28,9 @@ public:
 			ImGui::PopStyleColor();
 			{
 				ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(3, 3));
-				strcpy_s(buffer, eName->Value.c_str());
+				strcpy_s(buffer, DLLpath->Value.c_str());
 				if(ImGui::InputText("FileName", buffer, IM_ARRAYSIZE(buffer))) {
-					eName->Value = std::string(buffer);
-				}
-                else if(ImGui::InputText("ClassName", buffer, IM_ARRAYSIZE(buffer))) {
-					eName->Value = std::string(buffer);
+					DLLpath->Value = std::string(buffer);
 				}
 				ImGui::PopStyleVar();
 			}
@@ -44,5 +41,6 @@ public:
 
 private:
 	char buffer[20];
-	EntityName* eName;
+	std::string ClassName;
+	std::string DLLpath;
 };
