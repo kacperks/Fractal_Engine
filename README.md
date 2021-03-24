@@ -5,6 +5,10 @@ Fractal Engine its 3D Game Engine
 
 Not Finished yet
 
+<p align="left">
+  <img src="res/Gui/showcase.png" width="1300" height="500">
+</p>
+
 Features:
 * GUI
 * ECS(Entity Component System)
