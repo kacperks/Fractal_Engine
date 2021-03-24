@@ -5,10 +5,6 @@ Fractal Engine its 3D Game Engine
 
 Not Finished yet
 
-<p align="left">
-  <img src="res/Gui/showcase.png" width="1300" height="500">
-</p>
-
 Features:
 * GUI
 * ECS(Entity Component System)
@@ -28,6 +24,12 @@ Features to do:
 * Lua Support
 * 2D version
 * Loading and Crating Projects System
+
+# ShowCase
+
+<p align="left">
+  <img src="res/Gui/showcase.png" width="1300" height="500">
+</p>
 
 # Exemple C# script
 
