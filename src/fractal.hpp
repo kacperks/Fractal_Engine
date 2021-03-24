@@ -101,4 +101,5 @@ extern "C"
 #ifdef FR_MAC
 	// mac platform related stuff
 #endif
+
 #endif

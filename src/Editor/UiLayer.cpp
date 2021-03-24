@@ -18,7 +18,7 @@ namespace fr {
 
 	const ImVec4 dark = ImVec4(0.2f, 0.2f, 0.2f, 1.0f);
 	static const char* names[] = { "Camera", "RigidBody", "MeshRenderer",
-		"ModelRenderer", "SpriteRenderer", "Directional Light", "Point Light", "Spot Light", "Script" };
+		"ModelRenderer", "SpriteRenderer", "Directional Light", "Point Light", "Spot Light", "C# Script" };
 
 	UiLayer::UiLayer() {
 		viewRect.W = SCREEN_WIDTH;

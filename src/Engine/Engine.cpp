@@ -55,8 +55,8 @@ namespace fr {
 
 		// register component factory
 		ECS::Registrar<Camera>("Camera");
-		ECS::Registrar<CsScript>("Script");
-		ECS::Registrar<RigidBody>("RigidBody");
+		ECS::Registrar<CsScript>("C# Script");
+		ECS::Registrar<RigidBody>("RigidBody 3D");
 		ECS::Registrar<SpotLight>("Spot Light");
 		ECS::Registrar<PointLight>("Point Light");
 		ECS::Registrar<MeshRenderer>("MeshRenderer");

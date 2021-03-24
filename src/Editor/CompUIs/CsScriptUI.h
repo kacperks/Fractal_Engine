@@ -11,7 +11,7 @@ public:
 	void Init(ECS::EntityID entity) override {
 		isVisible = false;
 		if (ECS::Manager.HasComponent<CsScript>(entity)) {
-			eName = &ECS::Manager.GetComponent<CsScript>(entity);
+			script = &ECS::Manager.GetComponent<CsScript>(entity);
 			isVisible = true;
 		}
 	}
@@ -40,6 +40,7 @@ public:
 	}
 
 private:
+	CsScript script;
 	char buffer[20];
 	std::string ClassName;
 	std::string DLLpath;

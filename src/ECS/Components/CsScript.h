@@ -45,5 +45,5 @@ struct CsScript : public ECS::BaseComponent {
 	MonoAssembly* Assembly = nullptr;
 
 	std::string ClassName = "TestScript";
-	std::string AssemblyPath = CsScriptUI::DLLpath;
+	std::string AssemblyPath = "";
 };
