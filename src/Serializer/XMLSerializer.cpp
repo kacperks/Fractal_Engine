@@ -20,7 +20,7 @@ namespace fr {
 		for (XMLElement* e = root->FirstChildElement(); e != nullptr; e = e->NextSiblingElement()) {
 			const ECS::EntityID entityid = ECS::Manager.AddNewEntity();			
 			LoadEntity(e, entityid);
-			Orbit3D::UI.AddExistingEntity(entityid);
+			fr::UI.AddExistingEntity(entityid);
 		}
 	}
 	void XMLSerializer::SaveScene(const char* filename) {

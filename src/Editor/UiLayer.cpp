@@ -1,12 +1,14 @@
-#include "../fractal.hpp"
+#include "pch.h"
 #include "UiLayer.h"
+#include "Engine/Engine.h"
+#include "Events/EventSystem.h"
 
-#include "../../vendor/IMGUI/imgui_internal.h"
-#include "../../vendor/IMGUI/imgui_impl_glfw.h"
-#include "../../vendor/IMGUI/imgui_impl_opengl3.h"
+#include "Vendor/IMGUI/imgui_internal.h"
+#include "Vendor/IMGUI/imgui_impl_glfw.h"
+#include "Vendor/IMGUI/imgui_impl_opengl3.h"
 
-#include "../ECS/Base/Entity.h"
-#include "../Serializer/XMLSerializer.h"
+#include "ECS/Base/Entity.h"
+#include "Serializer/XMLSerializer.h"
 
 #include "CompUIs/DirectLightUI.h"
 #include "CompUIs/PointLightUI.h"
@@ -18,7 +20,7 @@ namespace fr {
 
 	const ImVec4 dark = ImVec4(0.2f, 0.2f, 0.2f, 1.0f);
 	static const char* names[] = { "Camera", "RigidBody", "MeshRenderer",
-		"ModelRenderer", "SpriteRenderer", "Directional Light", "Point Light", "Spot Light", "C# Script" };
+		"ModelRenderer", "SpriteRenderer", "Directional Light", "Point Light", "Spot Light", "C# Script","Lua script" };
 
 	UiLayer::UiLayer() {
 		viewRect.W = SCREEN_WIDTH;
@@ -81,22 +83,22 @@ namespace fr {
 	}
 
 	void UiLayer::LoadIcons() {
-		icons.insert({ "obj", (ImTextureID)Orbit3D::Resource.LoadTex2D("Resource/Icons/obj.png") });
-		icons.insert({ "light", (ImTextureID)Orbit3D::Resource.LoadTex2D("Resource/Icons/light.png") });
-		icons.insert({ "camera", (ImTextureID)Orbit3D::Resource.LoadTex2D("Resource/Icons/camera.png") });
+		icons.insert({ "obj", (ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/obj.png") });
+		icons.insert({ "light", (ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/light.png") });
+		icons.insert({ "camera", (ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/camera.png") });
 
-		icons.insert({ "up", (ImTextureID)Orbit3D::Resource.LoadTex2D("Resource/Icons/up.png") });
-		icons.insert({ "down", (ImTextureID)Orbit3D::Resource.LoadTex2D("Resource/Icons/down.png") });
-		icons.insert({ "plus", (ImTextureID)Orbit3D::Resource.LoadTex2D("Resource/Icons/add.png") });
-		icons.insert({ "minus", (ImTextureID)Orbit3D::Resource.LoadTex2D("Resource/Icons/minus.png") });
+		icons.insert({ "up", (ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/up.png") });
+		icons.insert({ "down", (ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/down.png") });
+		icons.insert({ "plus", (ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/add.png") });
+		icons.insert({ "minus", (ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/minus.png") });
 
-		icons.insert({ "play", (ImTextureID)Orbit3D::Resource.LoadTex2D("Resource/Icons/play.png") });
-		icons.insert({ "scale", (ImTextureID)Orbit3D::Resource.LoadTex2D("Resource/Icons/scale.png") });
-		icons.insert({ "move", (ImTextureID)Orbit3D::Resource.LoadTex2D("Resource/Icons/move.png") });
-		icons.insert({ "rotate", (ImTextureID)Orbit3D::Resource.LoadTex2D("Resource/Icons/rotate.png") });
-		icons.insert({ "folder", (ImTextureID)Orbit3D::Resource.LoadTex2D("Resource/Icons/folder.png") });
-		icons.insert({ "save", (ImTextureID)Orbit3D::Resource.LoadTex2D("Resource/Icons/save.png") });
-		icons.insert({ "build", (ImTextureID)Orbit3D::Resource.LoadTex2D("Resource/Icons/build.png") });
+		icons.insert({ "play", (ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/play.png") });
+		icons.insert({ "scale", (ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/scale.png") });
+		icons.insert({ "move", (ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/move.png") });
+		icons.insert({ "rotate", (ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/rotate.png") });
+		icons.insert({ "folder", (ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/folder.png") });
+		icons.insert({ "save", (ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/save.png") });
+		icons.insert({ "build", (ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/build.png") });
 	}
 
 	void UiLayer::SetGuiStyle() {
@@ -114,7 +116,7 @@ namespace fr {
 		colors[ImGuiCol_PopupBg] = ImVec4(0.25f, 0.25f, 0.25f, 1.00f);
 		colors[ImGuiCol_Border] = ImVec4(0.12f, 0.12f, 0.12f, 0.71f);
 		colors[ImGuiCol_BorderShadow] = ImVec4(1.00f, 1.00f, 1.00f, 0.06f);
-		colors[ImGuiCol_FrameBg] = ImVec4(0.42f, 0.42f, 0.42f, 0.54f);
+		colors[ImGuiCol_FrameBg] = ImVec4(0.0f, 0.42f, 0.42f, 0.54f);
 		colors[ImGuiCol_FrameBgHovered] = ImVec4(0.42f, 0.42f, 0.42f, 0.40f);
 		colors[ImGuiCol_FrameBgActive] = ImVec4(0.56f, 0.56f, 0.56f, 0.67f);
 		colors[ImGuiCol_TitleBg] = ImVec4(0.19f, 0.19f, 0.19f, 1.00f);
@@ -214,9 +216,9 @@ namespace fr {
 	void UiLayer::MenuBar() {
 		if (ImGui::BeginMenuBar()) {
 			if (ImGui::BeginMenu("File")) {
-				if (ImGui::MenuItem("New", "Ctrl+N")) {}
+				if (ImGui::MenuItem("New", "Ctrl+N")) { fr::Serializer.SaveScene("Resource/Scene/NewScene.o3d"); }
 				if (ImGui::MenuItem("Open", "Ctrl+O")) {}
-				if (ImGui::MenuItem("Save", "Ctrl+S")) {}
+				if (ImGui::MenuItem("Save", "Ctrl+S")) { fr::Serializer.SaveScene("Resource/Scene/scene.o3d"); }
 				if (ImGui::MenuItem("Save As..")) {}
 				ImGui::EndMenu();
 			}
@@ -229,28 +231,28 @@ namespace fr {
 				if (ImGui::MenuItem("Paste", "CTRL+V")) {}
 				ImGui::EndMenu();
 			}
-			if (ImGui::BeginMenu("Window")){
-				if(ImGui::MenuItem("Fractal Store")){}
-				if (ImGui::MenuItem("Scene")){}
-				if (ImGui::MenuItem("Inspector")){}
-				if (ImGui::MenuItem("Console")){}
-				if (ImGui::MenuItem("Resources")){}
-				if (ImGui::MenuItem("Tools")){}
-				if (ImGui::MenuItem("Entities")){}
-			}
 			if (ImGui::BeginMenu("Settings")) {
 				if (ImGui::MenuItem("Customize", "Ctrl+T")) {}
 				ImGui::EndMenu();
 			}
-			if (ImGui::BeginMenu("Help")) {
-				if (ImGui::MenuItem("View Help", "Ctrl+H")) {}
-				if (ImGui::MenuItem("About Fractal")) {}
+			if (ImGui::BeginMenu("Window")) {
+				if (ImGui::MenuItem("Fractal Store", "soon")) {}
+				if (ImGui::MenuItem("Components")) {}
+				if (ImGui::MenuItem("Entities")) {}
+				if (ImGui::MenuItem("Console")) {}
+				if (ImGui::MenuItem("Resources")) {}
 				ImGui::EndMenu();
 			}
-			if (ImGui::BeginMenu("Tools")){
-				if (ImGui::MenuItem("Rotate")){}
-				if (ImGui::MenuItem("Move")) {}
-				if (ImGui::MenuItem("Scale Tool")) {}
+			if (ImGui::BeginMenu("Tools")) {
+				if (ImGui::MenuItem("Rotate")) { gizmo.Operation = ImGuizmo::OPERATION::ROTATE; }
+				if (ImGui::MenuItem("Move")) { gizmo.Operation = ImGuizmo::OPERATION::TRANSLATE; }
+				if (ImGui::MenuItem("Scale")) { gizmo.Operation = ImGuizmo::OPERATION::SCALE; }
+				ImGui::EndMenu();
+			}
+			if (ImGui::BeginMenu("Help")) {
+				if (ImGui::MenuItem("View Help", "Ctrl+H")) {}
+				if (ImGui::MenuItem("About Fractal Engine")) {}
+				ImGui::EndMenu();
 			}
 
 			ImGui::EndMenuBar();
@@ -277,14 +279,14 @@ namespace fr {
 				ImGui::Dummy(ImVec2(48, 0));
 
 				ImGui::SameLine();
-				if (Widget::ToolButton::Show(icons.at("save"))) { Orbit3D::Serializer.SaveScene("Resource/Scene/scene.o3d"); }
+				if (Widget::ToolButton::Show(icons.at("save"))) { fr::Serializer.SaveScene("Resource/Scene/scene.o3d"); }
 				ImGui::SameLine();
 				ImGui::Dummy(ImVec2(2, 0));
 
 				ImGui::SameLine();
-				if (Widget::ToolButton::Show(icons.at("build"))) {
-					Core.StopGame();
-				}
+				//if (Widget::ToolButton::Show(icons.at("build"))) {
+					//Core.StopGame();
+				//}
 				ImGui::SameLine();
 				ImGui::Dummy(ImVec2(2, 0));
 
