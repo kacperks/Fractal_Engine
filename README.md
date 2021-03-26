@@ -1,3 +1,4 @@
+# Fractal Game Engine!
 <p align="left">
   <img src="res/Graphics/Logo.png" width="350" height="350">
 </p>
@@ -25,32 +26,33 @@ Features to do:
 * 2D version
 * Loading and Crating Projects System
 
-# ShowCase
-
-<p align="left">
-  <img src="res/Gui/showcase.png" width="1300" height="500">
-</p>
-
 # Exemple C# script
 
 ```cpp
 using Fractal;
 using System;
 
-public class TestScript : FractalScript
+public class CamSpinSpin : FractalScript
 {
+    public float Speed;
+    
     public void Start()
     {
-        Console.WriteLine("Script Started!!");
+        Speed = 10;
     }
 
     public void Update(float deltatime, ref Transform transform)
     {
-        transform.Rotation.Y += 10 * deltatime;
-        transform.Rotation.X += 10 * deltatime;
+        transform.Rotation.Y += Speed * deltatime;
+        transform.Rotation.X += Speed * deltatime;
     }
 }
 ```
+# ShowCase
+
+<p align="left">
+  <img src="res/Gui/showcase.png" width="1300" height="500">
+</p>
 
 # Bulid
 
