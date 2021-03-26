@@ -16,11 +16,13 @@
 #include "CompUIs/NameTagUI.h"
 #include "CompUIs/MeshUI.h"
 
-namespace fr {
+#include <windows.h>
 
+namespace fr {
+	const char* console = "Fractal Debug Console";
 	const ImVec4 dark = ImVec4(0.2f, 0.2f, 0.2f, 1.0f);
-	static const char* names[] = { "Camera", "RigidBody", "MeshRenderer",
-		"ModelRenderer", "SpriteRenderer", "Directional Light", "Point Light", "Spot Light", "C# Script","Lua script" };
+	static const char* names[] = { "Camera", "RigidBody 3D", "MeshRenderer",
+		"ModelRenderer", "SpriteRenderer", "Directional Light", "Point Light", "Spot Light", "C# Script" };
 
 	UiLayer::UiLayer() {
 		viewRect.W = SCREEN_WIDTH;
@@ -116,7 +118,7 @@ namespace fr {
 		colors[ImGuiCol_PopupBg] = ImVec4(0.25f, 0.25f, 0.25f, 1.00f);
 		colors[ImGuiCol_Border] = ImVec4(0.12f, 0.12f, 0.12f, 0.71f);
 		colors[ImGuiCol_BorderShadow] = ImVec4(1.00f, 1.00f, 1.00f, 0.06f);
-		colors[ImGuiCol_FrameBg] = ImVec4(0.0f, 0.42f, 0.42f, 0.54f);
+		colors[ImGuiCol_FrameBg] = ImVec4(0.42f, 0.42f, 0.42f, 0.54f);
 		colors[ImGuiCol_FrameBgHovered] = ImVec4(0.42f, 0.42f, 0.42f, 0.40f);
 		colors[ImGuiCol_FrameBgActive] = ImVec4(0.56f, 0.56f, 0.56f, 0.67f);
 		colors[ImGuiCol_TitleBg] = ImVec4(0.19f, 0.19f, 0.19f, 1.00f);
@@ -216,9 +218,32 @@ namespace fr {
 	void UiLayer::MenuBar() {
 		if (ImGui::BeginMenuBar()) {
 			if (ImGui::BeginMenu("File")) {
-				if (ImGui::MenuItem("New", "Ctrl+N")) { fr::Serializer.SaveScene("Resource/Scene/NewScene.o3d"); }
-				if (ImGui::MenuItem("Open", "Ctrl+O")) {}
-				if (ImGui::MenuItem("Save", "Ctrl+S")) { fr::Serializer.SaveScene("Resource/Scene/scene.o3d"); }
+				if (ImGui::MenuItem("New Scene", "Ctrl+N")) {
+					const char* file = "";
+					fr::Serializer.SaveScene(file);
+				}
+
+				if (ImGui::MenuItem("Open Scene", "Ctrl+O")) {
+					//MessageBox(0, "Hello World!", "Greetings", 0);
+					char filename[MAX_PATH];
+					OPENFILENAME ofn;
+					ZeroMemory(&filename, sizeof(filename));
+					ZeroMemory(&ofn, sizeof(ofn));
+					ofn.lStructSize = sizeof(ofn);
+					ofn.hwndOwner = NULL;  // If you have a window to center over, put its HANDLE here
+					ofn.lpstrFilter = "Fractal Scene Files\0*.fr\0Any File\0*.*\0";
+					ofn.lpstrFile = filename;
+					ofn.nMaxFile = MAX_PATH;
+					ofn.lpstrTitle = "Select a File, yo!";
+					ofn.Flags = OFN_DONTADDTORECENT | OFN_FILEMUSTEXIST;
+					if (GetOpenFileNameA(&ofn))
+					{
+						fr::Serializer.LoadScene(filename);
+					}
+				}
+
+				if (ImGui::MenuItem("Save", "Ctrl+S")) { fr::Serializer.SaveScene("Resource/Scene/scene.fr"); }
+
 				if (ImGui::MenuItem("Save As..")) {}
 				ImGui::EndMenu();
 			}
@@ -241,6 +266,10 @@ namespace fr {
 				if (ImGui::MenuItem("Entities")) {}
 				if (ImGui::MenuItem("Console")) {}
 				if (ImGui::MenuItem("Resources")) {}
+				if (ImGui::MenuItem("Visual Studio Code Scripts")) { 
+					system("cd Resource/Scripts");
+					system("code Resource/Scripts/.");
+				}
 				ImGui::EndMenu();
 			}
 			if (ImGui::BeginMenu("Tools")) {
@@ -279,11 +308,11 @@ namespace fr {
 				ImGui::Dummy(ImVec2(48, 0));
 
 				ImGui::SameLine();
-				if (Widget::ToolButton::Show(icons.at("save"))) { fr::Serializer.SaveScene("Resource/Scene/scene.o3d"); }
+				if (Widget::ToolButton::Show(icons.at("save"))) { fr::Serializer.SaveScene("Resource/Scene/scene.fr"); }
 				ImGui::SameLine();
 				ImGui::Dummy(ImVec2(2, 0));
 
-				ImGui::SameLine();
+				//ImGui::SameLine();
 				//if (Widget::ToolButton::Show(icons.at("build"))) {
 					//Core.StopGame();
 				//}
@@ -357,7 +386,10 @@ namespace fr {
 			ImGui::PushStyleColor(ImGuiCol_FrameBg, dark);
 			ImGui::BeginChildFrame(ImGui::GetID("cframe"), ImVec2(0,0));
 			{
-
+				if (ImGui::Button("Clear")) { console = ""; }
+				ImGui::SameLine();
+				ImGui::Text("All logs you can find here!");
+				ImGui::Text(console);
 			}
 			ImGui::PopStyleColor();
 			ImGui::EndChildFrame();
@@ -371,6 +403,13 @@ namespace fr {
 			ImGui::PushStyleColor(ImGuiCol_FrameBg, dark);
 			ImGui::BeginChildFrame(ImGui::GetID("rframe"), ImVec2(0, 0));
 			{
+				if (ImGui::Button("Add new Asset")) {
+
+				}
+				
+				if (ImGui::Button("Open Scripts in VsCode")) {
+					system("code Resource/Scripts/.");
+				}
 				OnImGui("Resource");
 			}
 			ImGui::PopStyleColor();
