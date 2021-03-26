@@ -37,17 +37,19 @@ Features to do:
 using Fractal;
 using System;
 
-public class TestScript : FractalScript
+public class CamSpinSpin : FractalScript
 {
+    public float Speed;
+    
     public void Start()
     {
-        Console.WriteLine("Script Started!!");
+        Speed = 10;
     }
 
     public void Update(float deltatime, ref Transform transform)
     {
-        transform.Rotation.Y += 10 * deltatime;
-        transform.Rotation.X += 10 * deltatime;
+        transform.Rotation.Y += Speed * deltatime;
+        transform.Rotation.X += Speed * deltatime;
     }
 }
 ```
