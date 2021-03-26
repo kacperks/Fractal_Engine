@@ -26,12 +26,6 @@ Features to do:
 * 2D version
 * Loading and Crating Projects System
 
-# ShowCase
-
-<p align="left">
-  <img src="res/Gui/showcase.png" width="1300" height="500">
-</p>
-
 # Exemple C# script
 
 ```cpp
@@ -54,6 +48,11 @@ public class CamSpinSpin : FractalScript
     }
 }
 ```
+# ShowCase
+
+<p align="left">
+  <img src="res/Gui/showcase.png" width="1300" height="500">
+</p>
 
 # Bulid
 
