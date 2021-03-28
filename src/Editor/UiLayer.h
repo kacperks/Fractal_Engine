@@ -1,12 +1,12 @@
 #pragma once
 
 #include "CompUIs/CompUI.h"
-#include "../vendorIMGUI/imgui.h"
+#include "../vendor/imgui/imgui.h"
 #include "../vendor/GUIZMO/ImGuizmo.h"
 
 struct Transform;
 
-namespace Orbit3D {
+namespace fr {
 
 	struct ViewPortRect { 
 		float X, Y, W, H = 0;
@@ -61,6 +61,7 @@ namespace Orbit3D {
 		void Console();
 		void Entities();
 		void Resources();
+		void CodeEditor();
 		void Dockspace();
 
 		// ACTIONS
@@ -73,6 +74,8 @@ namespace Orbit3D {
 
 		void AddComponent(const char* typeName);
 		void RemoveComponent(const char* typeName);
+
+		void AddAsset(const char* Name);
 
 		void InitCompUI();
 		void TransformGizmo();

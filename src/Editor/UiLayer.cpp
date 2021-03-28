@@ -3,9 +3,9 @@
 #include "../Engine/Engine.h"
 #include "../Events/EventSystem.h"
 
-#include "../Vendor/IMGUI/imgui_internal.h"
-#include "../vendor/IMGUI/imgui_impl_glfw.h"
-#include "../vendor/IMGUI/imgui_impl_opengl3.h"
+#include "../vendor/imgui/imgui_internal.h"
+#include "../vendor/imgui/imgui_impl_glfw.h"
+#include "../vendor/imgui/imgui_impl_opengl3.h"
 
 #include "../ECS/Base/Entity.h"
 #include "../Serializer/XMLSerializer.h"
@@ -16,14 +16,16 @@
 #include "CompUIs/NameTagUI.h"
 #include "CompUIs/MeshUI.h"
 
+#include <fstream>
 #include <windows.h>
 
 namespace fr {
 	const char* console = "Fractal Debug Console";
 	const ImVec4 dark = ImVec4(0.2f, 0.2f, 0.2f, 1.0f);
-	static const char* names[] = { "Camera", "RigidBody 3D", "MeshRenderer",
+	static const char* names[] = { "Camera", "RigidBody", "MeshRenderer",
 		"ModelRenderer", "SpriteRenderer", "Directional Light", "Point Light", "Spot Light", "Script" };
 
+	static const char* AssetNames[] = { "C# script","C++ Script", "Folder" , "C++ Component" , "Lua Script" , "GLSL Shader"};
 	UiLayer::UiLayer() {
 		viewRect.W = SCREEN_WIDTH;
 		viewRect.H = SCREEN_HEIGHT;
@@ -274,7 +276,7 @@ namespace fr {
 				if (ImGui::MenuItem("New Scene", "Ctrl+N")) {
 					const char* file = "";
 					//fr::Serializer.SaveScene(file);
-					MessageBox(0, "This Function is not aviable in BETA relase!!", "INFO", 0);
+					//MessageBox(0, "This Function is not aviable in BETA relase!!", "INFO", 0);
 				}
 
 				if (ImGui::MenuItem("Open Scene", "Ctrl+O")) {
@@ -296,7 +298,7 @@ namespace fr {
 							//RemoveEntity();
 						//}
 						//fr::Serializer.LoadScene(filename);
-						MessageBox(0, "This Function is not aviable in BETA relase!!", "INFO", 0);
+						//MessageBox(0, "This Function is not aviable in BETA relase!!", "INFO", 0);
 					//}
 				}
 
@@ -306,7 +308,7 @@ namespace fr {
 				ImGui::EndMenu();
 			}
 			if (ImGui::BeginMenu("Editor")) {
-				if (ImGui::MenuItem("Undo", "CTRL+Z")) {}
+				if (ImGui::MenuItem("Undo", "CTRL+Z")) { MessageBox(0, "What Did you did you", "Twoj projekt is ded", 0); }
 				if (ImGui::MenuItem("Redo", "CTRL+Y", false, false)) {}  // Disabled item
 				ImGui::Separator();
 				if (ImGui::MenuItem("Cut", "CTRL+X")) {}
@@ -315,7 +317,7 @@ namespace fr {
 				ImGui::EndMenu();
 			}
 			if (ImGui::BeginMenu("Settings")) {
-				if (ImGui::MenuItem("Normal Theme")) { DarkTheme(); }
+				if (ImGui::MenuItem("Normal Theme")) { SetGuiStyle(); }
 				if (ImGui::MenuItem("Dark Theme")) { DarkTheme(); }
 				if (ImGui::MenuItem("Light Theme")) {}
 				ImGui::EndMenu();
@@ -402,7 +404,8 @@ namespace fr {
 		}
 		ImGui::End();
 	}
-	
+
+
 	void UiLayer::Components() {
 		ImGui::Begin("Components", nullptr);
 		{
@@ -463,12 +466,25 @@ namespace fr {
 			ImGui::PushStyleColor(ImGuiCol_FrameBg, dark);
 			ImGui::BeginChildFrame(ImGui::GetID("rframe"), ImVec2(0, 0));
 			{
-				if (ImGui::Button("Add new Asset")) {
+				if (Widget::ToolButton::Show(icons.at("plus"), 20.0f)) {
+					ImGui::OpenPopup("compPopup2");
+				}
 
+				ImGui::SameLine();
+				if (ImGui::BeginPopup("compPopup2")) {
+					ImGui::Text("Add Asset");
+					ImGui::Separator();
+
+					for (size_t i = 0; i < IM_ARRAYSIZE(AssetNames); i++) {
+						if (ImGui::Selectable(AssetNames[i])) {
+							AddAsset(AssetNames[i]);
+						}
+					}
+					ImGui::EndPopup();
 				}
 				
-				if (ImGui::Button("Open Scripts in VsCode")) {
-					system("code Resource/Scripts/.");
+				if (ImGui::Button("Open in VsCode")) {
+					system("code Resource/.");
 				}
 				//if (ImGui::Button("Compile All C# Scripts")) {
 				//	system("csc Resource/Scripts/*.cs -target:library");
@@ -601,6 +617,38 @@ namespace fr {
 		if (selectedEntity > ECS::INVALID_ENTITY) {
 			ECS::Manager.RemoveComponent(selectedEntity, typeName);
 			InitCompUI();
+		}
+	}
+
+	void UiLayer::AddAsset(const char* Name) {
+		if (Name == "C# script") {
+			std::fstream file;
+			std::string Path = "Resource/Scripts/Script";
+			std::string f = ".cs";
+			file.open(Path+f, std::ios::out);
+			std::string code;
+			code = "using Fractal;\n\npublic class TestScript : FractalScript\n{\n    public void Start() { // Start Function \n \n \n    }\n    public void Update(float deltatime, ref Transform transform){ \n \n    } \n }";
+			file << code << std::endl;
+			file.close();
+		}
+		if (Name == "GLSL Shader") {
+			std::fstream file;
+			std::string Path = "Resource/Shaders/Shader";
+			std::string f = ".glsl";
+			file.open(Path + f, std::ios::out);
+			std::string code;
+			code = "#version 330 core\n \n void main() {\n\n }";
+			file << code << std::endl;
+			file.close();
+		}
+		if (Name == "C++ Component") {
+
+		}
+		if (Name == "Lua Script") {
+
+		}
+		if (Name == "C++ Script") {
+
 		}
 	}
 
