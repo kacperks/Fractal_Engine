@@ -1,14 +1,12 @@
 #pragma once
 
-#include "../fractal.hpp"
-
 #include "CompUIs/CompUI.h"
-#include "../vendor/IMGUI/imgui.h"
+#include "../vendorIMGUI/imgui.h"
 #include "../vendor/GUIZMO/ImGuizmo.h"
 
 struct Transform;
 
-namespace fr {
+namespace Orbit3D {
 
 	struct ViewPortRect { 
 		float X, Y, W, H = 0;
@@ -38,6 +36,8 @@ namespace fr {
 
 		void Display();
 		void Initialiaze();
+		void LightTheme();
+		void DarkTheme();
 		void AddExistingEntity(const size_t entity);
 		void SetGizmoViewProjection(glm::mat4 view, glm::mat4 proj) {
 			gizmo.View = view;
