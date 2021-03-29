@@ -17,7 +17,14 @@
 #include "CompUIs/MeshUI.h"
 
 #include <fstream>
-#include <windows.h>
+
+#ifdef FR_WINDOW
+	#include <windows.h>
+#endif
+
+#ifdef FR_LINUX
+	#include <bits/stdc++.h>
+#endif
 
 namespace fr {
 	const char* console = "Fractal Debug Console";
@@ -308,7 +315,7 @@ namespace fr {
 				ImGui::EndMenu();
 			}
 			if (ImGui::BeginMenu("Editor")) {
-				if (ImGui::MenuItem("Undo", "CTRL+Z")) { MessageBox(0, "What Did you did you", "Twoj projekt is ded", 0); }
+				if (ImGui::MenuItem("Undo", "CTRL+Z")) {}
 				if (ImGui::MenuItem("Redo", "CTRL+Y", false, false)) {}  // Disabled item
 				ImGui::Separator();
 				if (ImGui::MenuItem("Cut", "CTRL+X")) {}
@@ -497,6 +504,13 @@ namespace fr {
 		ImGui::End();		
 	}
 
+	void UiLayer::CodeEditor() {
+		ImGui::Begin("Scripter", nullptr);
+		{
+			ImGui::PushStyleColor(ImGuiCol_FrameBg, dark);
+		}
+	}
+
 	void UiLayer::Entities() {
 
 		ImGui::Begin("Entities", nullptr);
@@ -642,13 +656,37 @@ namespace fr {
 			file.close();
 		}
 		if (Name == "C++ Component") {
-
+			std::fstream file;
+			std::string Path = "Resource/Components/Component";
+			std::string f = ".h";
+			file.open(Path + f, std::ios::out);
+			std::string code;
+			code = "#pragma once \n\n #include <ECS/Base/BaseComponent.h> \n \n struct Component : public ECS::BaseComponent { \n\n};";
+			file << code << std::endl;
+			file.close();
 		}
 		if (Name == "Lua Script") {
 
 		}
 		if (Name == "C++ Script") {
+			std::fstream file;
+			std::string Path = "Resource/Scripts/CppScript";
+			std::string f = ".h";
+			file.open(Path + f, std::ios::out);
+			std::string code;
+			code = "#pragma once";
+			file << code << std::endl;
+			file.close();
 
+
+			std::fstream file2;
+			std::string Path2 = "Resource/Scripts/CppScript";
+			std::string f2 = ".cpp";
+			file.open(Path2 + f2, std::ios::out);
+			std::string code2;
+			code2 = "#include 'CppScript.h'";
+			file << code2 << std::endl;
+			file.close();
 		}
 	}
 
