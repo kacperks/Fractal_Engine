@@ -1,1 +1,0 @@
-csc hello.cs -target:library
