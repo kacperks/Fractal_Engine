@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <Scene>
     <Entity>
         <EntityName value="Main Camera"/>
@@ -8,14 +8,14 @@
     </Entity>
     <Entity>
         <EntityName value="Ground"/>
-        <Transform x="-4.4849653244018555" y="-0.21628451347351074" z="-0.11202049255371094" rx="0" ry="-0" rz="0" sx="2328.499755859375" sy="0.96988105773925781" sz="5174.4404296875"/>
+        <Transform x="-4.4849653244018555" y="-0.21628451347351074" z="-0.11202049255371094" rx="0" ry="-0" rz="0" sx="79.606826782226563" sy="0.96988105773925781" sz="79.606773376464844"/>
         <MeshRenderer name="CUBE">
-            <Material ao="1" metallic="0.0099999997764825821" roughness="1" albedoR="0.23536510765552521" albedoG="0.73333334922790527" albedoB="0.12711112201213837"/>
+            <Material ao="1" metallic="0.0099999997764825821" roughness="1" albedoR="0.999991774559021" albedoG="1" albedoB="0.99998998641967773"/>
         </MeshRenderer>
     </Entity>
     <Entity>
         <EntityName value="Directional Light"/>
-        <Transform x="-3.6211614608764648" y="-29.433555603027344" z="23.164785385131836" rx="-179.99993896484375" ry="45.000003814697266" rz="-179.99993896484375" sx="0.99999886751174927" sy="0.99999827146530151" sz="0.99999821186065674"/>
+        <Transform x="-3.6211707592010498" y="5.7037191390991211" z="23.164762496948242" rx="179.99998474121094" ry="45.000003814697266" rz="179.99998474121094" sx="0.99999886751174927" sy="0.99999827146530151" sz="0.99999821186065674"/>
         <MeshRenderer name="CUBE">
             <Material ao="1" metallic="0.20000000298023224" roughness="0.10000000149011612" albedoR="0.60000002384185791" albedoG="0.60000002384185791" albedoB="0.60000002384185791"/>
         </MeshRenderer>
@@ -23,18 +23,10 @@
     </Entity>
     <Entity>
         <EntityName value="point light"/>
-        <Transform x="-13.864276885986328" y="2.2003118991851807" z="-1.328916072845459" rx="0" ry="-0" rz="0" sx="0.99999994039535522" sy="0.9999997615814209" sz="0.99999958276748657"/>
+        <Transform x="-22.194664001464844" y="7.213282585144043" z="-9.5391597747802734" rx="0" ry="-0" rz="0" sx="0.99999994039535522" sy="0.9999997615814209" sz="0.99999958276748657"/>
         <MeshRenderer name="CUBE">
             <Material ao="1" metallic="0.20000000298023224" roughness="0.10000000149011612" albedoR="0" albedoG="0.40449881553649902" albedoB="1"/>
         </MeshRenderer>
         <PointLight colorR="1" colorG="0.48000001907348633" colorB="0" intensity="391"/>
-    </Entity>
-    <Entity>
-        <EntityName value="Whiyte House"/>
-        <Transform x="-10.857093811035156" y="0" z="0" rx="0" ry="-0" rz="0" sx="4.0154166221618652" sy="3.813899040222168" sz="6.0677661895751953"/>
-        <MeshRenderer name="CUBE">
-            <Material ao="1" metallic="0.10000000149011612" roughness="0.89999997615814209" albedoR="0.60000002384185791" albedoG="0.60000002384185791" albedoB="0.60000002384185791"/>
-        </MeshRenderer>
-        <ModelRenderer name="PACK"/>
     </Entity>
 </Scene>

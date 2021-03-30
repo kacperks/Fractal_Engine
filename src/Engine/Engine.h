@@ -1,6 +1,7 @@
 #pragma once
 
-#include "../fractal.hpp"
+#include "../GLObjects/DepthBuffer.h"
+#include "../GLObjects/SamplerBuffer.h"
 
 namespace fr {
 
@@ -46,7 +47,7 @@ namespace fr {
 		void Render();
 		void StopGame();
 		void StartGame();
-		void Initialize();
+		void Initialize(const char* scene);
 
 		inline glm::vec2 ViewSize() const { return viewSize; }
 		inline DepthBuffer* ShadowBuffer() const { return shadowBuffer; }

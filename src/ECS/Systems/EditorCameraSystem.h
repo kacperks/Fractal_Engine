@@ -42,13 +42,13 @@ public:
 	void OnDragCallback(const Event& event) {
 		auto e = Dispatcher.Cast<MouseEvent>(event);
 		if (IsMouseOverViewport(e) && !ImGuizmo::IsUsing()) {
-			if (!Events.IsKeyPressed(GLFW_KEY_LEFT_CONTROL) && Events.IsMouseDown(MOUSE_LEFT)) {
+			if (!Events.IsKeyPressed(GLFW_KEY_LEFT_CONTROL) && Events.IsMouseDown(MOUSE_RIGHT)) {
 				camera.Rotation.x -= e.DeltaY() * Timer.DeltaTime();
 				camera.Rotation.y -= e.DeltaX() * Timer.DeltaTime();
 				SetShadersUniforms();
 			}
 
-			if (Events.IsKeyPressed(GLFW_KEY_LEFT_CONTROL) && Events.IsMouseDown(MOUSE_LEFT)) {
+			if (Events.IsKeyPressed(GLFW_KEY_LEFT_CONTROL) && Events.IsMouseDown(MOUSE_RIGHT)) {
 				camera.Position.x += e.DeltaX() * Timer.DeltaTime();
 				camera.Position.y -= e.DeltaY() * Timer.DeltaTime();
 				SetShadersUniforms();

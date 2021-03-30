@@ -27,6 +27,7 @@
 #endif
 
 namespace fr {
+	char buf[20];
 	const char* console = "Fractal Debug Console";
 	const ImVec4 dark = ImVec4(0.2f, 0.2f, 0.2f, 1.0f);
 	static const char* names[] = { "Camera", "RigidBody", "MeshRenderer",
@@ -83,6 +84,8 @@ namespace fr {
 		Entities();
 		Resources();
 		Console();
+		//SceneSelector();
+		AssetBrowser();
 
 		//ImGui::ShowDemoWindow();
 		ImGui::Render();
@@ -331,10 +334,11 @@ namespace fr {
 			}
 			if (ImGui::BeginMenu("Window")) {
 				if (ImGui::MenuItem("Fractal Store", "soon")) {}
-				if (ImGui::MenuItem("Components")) {}
-				if (ImGui::MenuItem("Entities")) {}
-				if (ImGui::MenuItem("Console")) {}
-				if (ImGui::MenuItem("Resources")) {}
+				if (ImGui::MenuItem("Components")) {   }
+				if (ImGui::MenuItem("Entities")) {  }
+				if (ImGui::MenuItem("Console")) {  }
+				if (ImGui::MenuItem("Resources")) {  }
+				if (ImGui::MenuItem("Scene Selector")) { SceneSelector(); }
 				if (ImGui::MenuItem("Visual Studio Code Scripts")) { 
 					system("cd Resource/Scripts");
 					system("code Resource/Scripts/.");
@@ -420,7 +424,7 @@ namespace fr {
 			ImGui::PushStyleColor(ImGuiCol_FrameBg, dark);
 			ImGui::BeginChildFrame(ImGui::GetID("toolbar"), ImVec2(0, 32));
 			{
-				if (Widget::ToolButton::Show(icons.at("plus"), 20.0f)) {
+				if (ImGui::Button("Add Component")) {
 					ImGui::OpenPopup("compPopup");
 				}
 
@@ -447,6 +451,25 @@ namespace fr {
 				}
 			}
 		}
+		ImGui::End();
+	}
+
+	void UiLayer::SceneSelector() {
+		ImGui::Begin("Choose a scene!", nullptr);
+
+
+			ImGui::Text("Type the filename or choose MainScene!");
+
+			if (ImGui::Button("Main Scene!")) {
+				
+			}
+			if (ImGui::InputText("File Name", buf, IM_ARRAYSIZE(buf))) {
+
+			}
+			ImGui::SameLine();
+			if (ImGui::Button("Load")) {
+
+			}
 		ImGui::End();
 	}
 
@@ -509,6 +532,27 @@ namespace fr {
 		{
 			ImGui::PushStyleColor(ImGuiCol_FrameBg, dark);
 		}
+	}
+	void UiLayer::AssetBrowser() {
+		ImGui::Begin("Models Browser", nullptr);
+		if (Widget::ToolButton::Show(icons.at("plus"), 20.0f)) {
+			//ImGui::OpenPopup("compPopup2");
+		}
+		if (ImGui::BeginPopup("compPopup2")) {
+			ImGui::Text("Add Asset");
+			ImGui::Separator();
+
+			for (size_t i = 0; i < IM_ARRAYSIZE(AssetNames); i++) {
+				if (ImGui::Selectable(AssetNames[i])) {
+					AddAsset(AssetNames[i]);
+				}
+			}
+			ImGui::EndPopup();
+		}
+
+		OnImGui("Resource/Models/");
+
+		ImGui::End();
 	}
 
 	void UiLayer::Entities() {

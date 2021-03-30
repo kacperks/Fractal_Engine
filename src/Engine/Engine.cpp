@@ -1,4 +1,13 @@
+#include "../fractal.hpp"
 #include "Engine.h"
+#include "../Editor/UiLayer.h"
+#include "../ECS/Base/Entity.h"
+
+#include "../Events/GLFWImp.h"
+
+#include "../ECS/Systems/Systems.hpp"
+#include "../ECS/Components/Components.h"
+#include "../Serializer/XMLSerializer.h"
 
 namespace fr {
 
@@ -21,7 +30,7 @@ namespace fr {
 		glfwWindowHint(GLFW_GREEN_BITS, vMode->greenBits);
 		glfwWindowHint(GLFW_REFRESH_RATE, vMode->refreshRate);
 
-		window = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Fractal Engine BETA 0.1", nullptr, nullptr);
+		window = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Fractal Engine BETA 1.7", nullptr, nullptr);
 		assert(window && "ERROR::GFLW::FAILED TO CREATE WINDOW!");
 		glfwMakeContextCurrent(window);
 
@@ -38,7 +47,7 @@ namespace fr {
 		viewSize = glm::ivec2(SCREEN_WIDTH, SCREEN_HEIGHT);
 	}
 
-	void Engine::Initialize() {	
+	void Engine::Initialize(const char* scene) {
 
 		// register component list
 		ECS::Manager.RegisterCompList<Camera>();
@@ -55,8 +64,8 @@ namespace fr {
 
 		// register component factory
 		ECS::Registrar<Camera>("Camera");
-		ECS::Registrar<CsScript>("C# Script");
-		ECS::Registrar<RigidBody>("RigidBody 3D");
+		ECS::Registrar<CsScript>("Script");
+		ECS::Registrar<RigidBody>("RigidBody");
 		ECS::Registrar<SpotLight>("Spot Light");
 		ECS::Registrar<PointLight>("Point Light");
 		ECS::Registrar<MeshRenderer>("MeshRenderer");
@@ -87,7 +96,7 @@ namespace fr {
 		ECS::Manager.Start();
 
 		fr::UI.Initialiaze();
-		Serializer.LoadScene("Resource/Scene/scene.fr");
+		Serializer.LoadScene(scene);
 
 		glfwSetKeyCallback(window, GlfwImpl::KeyboardCallback);
 		glfwSetScrollCallback(window, GlfwImpl::MouseScrollCallback);

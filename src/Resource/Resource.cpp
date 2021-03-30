@@ -1,8 +1,9 @@
+
 #include "../fractal.hpp"
 #include "Resource.h"
 #include "../vendor/STB/stb_image.h"
 
-namespace Orbit3D {
+namespace fr {
 	RsrcManager::RsrcManager(){}
 
 	RsrcManager::~RsrcManager(){
@@ -25,11 +26,7 @@ namespace Orbit3D {
 		LoadMeshes();
 
 		// models
-		//LoadModel("PACK", "Resource/Models/sphere.obj");
-		LoadModel("PACK", "Resource/Models/nature/NatureFreePack1.obj");
-		//LoadModel("PACK", "Resource/Models/nature/Tree1.obj");
-		//LoadModel("PACK", "Resource/Models/nature/Rock1.obj");
-		//LoadModel("PACK", "Resource/Models/backpack/backpack.obj");
+		LoadModel("PACK", "Resource/Models/Voxel/house.obj");
 
 		// shaders
 		CreateProgram("SPRITE", "SpriteV.shader", "SpriteF.shader");
@@ -39,8 +36,6 @@ namespace Orbit3D {
 		CreateProgram("GRID", "GridV.shader", "GridF.shader");
 
 		// textures
-		//AddTex2D("box1", LoadTex2D("Resource/Textures/box1.png"));
-		//AddTex2D("box2", LoadTex2D("Resource/Textures/box2.png"));
 		AddTex2D("light", LoadTex2D("Resource/Textures/light.png"));
 		AddTex2D("camera", LoadTex2D("Resource/Textures/camera.png"));
 
