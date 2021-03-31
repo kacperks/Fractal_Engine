@@ -60,6 +60,11 @@ extern "C"
 #include "Editor/Ecore.hpp"
 #include "Managers/Managers.hpp"
 
+// Core
+
+#include "core.hpp"
+
+
 // SFML
 
 #include <SFML/Graphics.hpp>
@@ -90,16 +95,5 @@ extern "C"
 #pragma comment(lib, "vendor/LUA/liblua54.a")
 #endif
 
-#ifdef FR_WINDOW
-	// window platform related stuff
-#endif
-
-#ifdef FR_LINUX
-	// linux platform related stuff
-#endif
-
-#ifdef FR_MAC
-	// mac platform related stuff
-#endif
 
 #endif

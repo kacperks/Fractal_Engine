@@ -18,14 +18,6 @@
 
 #include <fstream>
 
-#ifdef FR_WINDOW
-	#include <windows.h>
-#endif
-
-#ifdef FR_LINUX
-	#include <bits/stdc++.h>
-#endif
-
 namespace fr {
 	char buf[20];
 	const char* console = "Fractal Debug Console";

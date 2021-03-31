@@ -2,8 +2,6 @@
 
 using namespace fr;
 
-#define FRACTAL_WINDOWS
-
 bool start = true;
 const char* SceneName;
 char buf[20];
