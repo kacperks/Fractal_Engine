@@ -60,6 +60,8 @@ extern "C"
 #include "Editor/Ecore.hpp"
 #include "Managers/Managers.hpp"
 
+#include "Lua/LuaMgr.hpp"
+
 // Core
 
 #include "core.hpp"
