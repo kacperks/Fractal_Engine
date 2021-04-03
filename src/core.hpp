@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+
 #define WINDOW_WIDTH 1280
 
 #define WINDOW_HEIGH 720
@@ -14,9 +16,9 @@
 	#error Not Supported Platform!
 #endif
 
-#define GUISTYLE 1
 #define MAX_FPS 70
-#define DEBUG true
+
+#define VERSION = "BETA 1.10"
 
 #ifdef FR_WINDOW
 	// window platform related stuff

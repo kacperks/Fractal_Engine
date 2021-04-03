@@ -8,7 +8,7 @@ struct Transform;
 
 namespace fr {
 
-	struct ViewPortRect { 
+		struct ViewPortRect { 
 		float X, Y, W, H = 0;
 	};
 
@@ -33,6 +33,8 @@ namespace fr {
 			static UiLayer ref;
 			return ref;
 		}
+
+		static const char* FileNameS;
 
 		void Display();
 		void Initialiaze();
@@ -63,6 +65,8 @@ namespace fr {
 		void Resources();
 		void CodeEditor();
 		void Dockspace();
+		void SceneSelector();
+		void AssetBrowser();
 
 		// ACTIONS
 

@@ -8,10 +8,11 @@
 #include "../ECS/Systems/Systems.hpp"
 #include "../ECS/Components/Components.h"
 #include "../Serializer/XMLSerializer.h"
+#include "../core.hpp"
 
 namespace fr {
 
-	Engine::~Engine() {
+		Engine::~Engine() {
 		glfwTerminate();
 	}
 
@@ -30,7 +31,7 @@ namespace fr {
 		glfwWindowHint(GLFW_GREEN_BITS, vMode->greenBits);
 		glfwWindowHint(GLFW_REFRESH_RATE, vMode->refreshRate);
 
-		window = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Fractal Engine BETA 1.7", nullptr, nullptr);
+		window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGH, "Fractal Engine BETA 1.10", nullptr, nullptr);
 		assert(window && "ERROR::GFLW::FAILED TO CREATE WINDOW!");
 		glfwMakeContextCurrent(window);
 
@@ -42,9 +43,9 @@ namespace fr {
 		GLCALL(glEnable(GL_MULTISAMPLE))		
 
 		shadowBuffer = new DepthBuffer(SHADOW_WIDTH, SHADOW_HEIGHT);
-		outputBuffer = new SamplerBuffer(SCREEN_WIDTH, SCREEN_HEIGHT);
-		GLCALL(glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT));
-		viewSize = glm::ivec2(SCREEN_WIDTH, SCREEN_HEIGHT);
+		outputBuffer = new SamplerBuffer(WINDOW_WIDTH, WINDOW_HEIGH);
+		GLCALL(glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGH));
+		viewSize = glm::ivec2(WINDOW_WIDTH, WINDOW_HEIGH);
 	}
 
 	void Engine::Initialize(const char* scene) {
@@ -64,7 +65,7 @@ namespace fr {
 
 		// register component factory
 		ECS::Registrar<Camera>("Camera");
-		ECS::Registrar<CsScript>("Script");
+		ECS::Registrar<CsScript>("C# Script");
 		ECS::Registrar<RigidBody>("RigidBody");
 		ECS::Registrar<SpotLight>("Spot Light");
 		ECS::Registrar<PointLight>("Point Light");
@@ -95,7 +96,7 @@ namespace fr {
 		ECS::Manager.ActivateEditorSystems();
 		ECS::Manager.Start();
 
-		fr::UI.Initialiaze();
+		Orbit3D::UI.Initialiaze();
 		Serializer.LoadScene(scene);
 
 		glfwSetKeyCallback(window, GlfwImpl::KeyboardCallback);
@@ -131,7 +132,7 @@ namespace fr {
 		GLCALL(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT));
 
 		if (!isGameRunnig) {
-			fr::UI.Display();
+			Orbit3D::UI.Display();
 		}
 		else {			
 			ECS::Manager.Render();
