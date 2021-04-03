@@ -1,6 +1,6 @@
 # Fractal Game Engine!
 <p align="left">
-  <img src="res/Graphics/Logo.png" width="350" height="350">
+  <img src="res/Icons/Graphics/Logo.png" width="350" height="350">
 </p>
 Fractal Engine its 3D Game Engine
 
@@ -61,12 +61,6 @@ struct Player : public ECS::BaseComponent
     float Level;
 };
 ```
-
-# ShowCase
-
-<p align="left">
-  <img src="res/Gui/showcase.png" width="1300" height="500">
-</p>
 
 # Bulid
 
