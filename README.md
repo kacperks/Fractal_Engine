@@ -7,26 +7,25 @@ Fractal Engine its 3D Game Engine
 Not Finished yet
 
 Features:
-* GUI
-* ECS(Entity Component System)
+* Editor
 * Loading 3D models
-* Errors System
-* Component (Transform3D)
-* Component (Camera)
-* Component (Material)
-* Component (Light)
-* C# mono scripting
+* Fully Featured ECS(Entity-Component-System)
+* Scene System
+* C# support
+* Lua Support
+* C++ Support
 
 Features to do:
 
 * Launcher
-* Particle System
-* Bulid for Linux,Windows,Android,OSX
-* Lua Support
+* Bulid for Linux,Windows,Android,OSX,IOS
 * 2D version
-* Loading and Crating Projects System
+* C# Comp UI
+* Lua Comp UI
+* Scene Selector
 
-# Exemple C# script
+# Exemples
+Exemple C# script
 
 ```cpp
 using Fractal;
@@ -48,6 +47,21 @@ public class CamSpinSpin : FractalScript
     }
 }
 ```
+
+Exemple C++ Component
+
+```cpp
+#pragma once
+
+#include "ECS/Base/BaseComponent.h"
+
+struct Player : public ECS::BaseComponent
+{
+    std::string Name;
+    float Level;
+};
+```
+
 # ShowCase
 
 <p align="left">
