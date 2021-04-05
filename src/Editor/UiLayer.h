@@ -1,14 +1,14 @@
 #pragma once
 
 #include "CompUIs/CompUI.h"
-#include "../vendor/imgui/imgui.h"
+#include "../vendor/IMGUI/imgui.h"
 #include "../vendor/GUIZMO/ImGuizmo.h"
 
 struct Transform;
 
 namespace fr {
 
-		struct ViewPortRect { 
+	struct ViewPortRect { 
 		float X, Y, W, H = 0;
 	};
 
@@ -67,6 +67,7 @@ namespace fr {
 		void Dockspace();
 		void SceneSelector();
 		void AssetBrowser();
+		void ToolBar();
 
 		// ACTIONS
 

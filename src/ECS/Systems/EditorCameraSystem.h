@@ -4,15 +4,15 @@
 #include "../../Editor/UiLayer.h"
 #include "../../Resource/Resource.h"
 
-#include "../Base/BaseSystem.h"
-#include "../Base/EntityManager.h"
+#include "../../ECS/Base/BaseSystem.h"
+#include "../../ECS/Base/EntityManager.h"
 
-#include "../Components/Camera.h"
-#include "../Components/Transform.h"
+#include "../../ECS/Components/Camera.h"
+#include "../../ECS/Components/Transform.h"
 
 using namespace fr;
 
-constexpr auto SCROLL_SPEED = 10.0f;;
+constexpr auto SCROLL_SPEED = 20.0f;;
 
 class EditorCameraSystem : public ECS::BaseSystem {
 
