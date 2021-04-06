@@ -92,7 +92,7 @@ extern "C"
 #include "vendor/IMGUI/imgui.h"
 #include "vendor/STB/stb_image.h"
 
-#ifdef _WIN32
+#ifdef FRACTAL_WINDOW
 #pragma comment(lib, "vendor/LUA/liblua54.a")
 #endif
 
