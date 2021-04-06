@@ -58,7 +58,6 @@ extern "C"
 #include "Editor/UiLayer.h"
 #include "Events/EventsCore.hpp"
 #include "Editor/Ecore.hpp"
-#include "Managers/Managers.hpp"
 
 #include "Lua/LuaMgr.hpp"
 
