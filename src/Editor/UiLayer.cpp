@@ -26,13 +26,13 @@
 #ifdef FRACTAL_LINUX
 	#include <bits/stdc++.h>
 #endif
-
-namespace fr {
+namespace fr{
 	char buf[20];
 	const char* console = "Fractal Debug Console";
 	const ImVec4 dark = ImVec4(0.2f, 0.2f, 0.2f, 1.0f);
 	static const char* names[] = { "Camera", "RigidBody", "MeshRenderer",
 		"ModelRenderer", "SpriteRenderer", "Directional Light", "Point Light", "Spot Light", "C# Script" };
+	float variable1 = 50;
 
 	static const char* AssetNames[] = { "C# script","C++ Script", "Folder" , "C++ Component" , "Lua Script" , "GLSL Shader"};
 	UiLayer::UiLayer() {
@@ -89,7 +89,7 @@ namespace fr {
 		ToolBar();
 		Console();
 		//SceneSelector();
-		AssetBrowser();
+		//AssetBrowser();
 
 
 		//ImGui::ShowDemoWindow();
@@ -136,7 +136,7 @@ namespace fr {
 		colors[ImGuiCol_PopupBg] = ImVec4(0.25f, 0.25f, 0.25f, 1.00f);
 		colors[ImGuiCol_Border] = ImVec4(0.12f, 0.12f, 0.12f, 0.71f);
 		colors[ImGuiCol_BorderShadow] = ImVec4(1.00f, 1.00f, 1.00f, 0.06f);
-		colors[ImGuiCol_FrameBg] = ImVec4(0.42f, 0.42f, 0.42f, 0.54f);
+		colors[ImGuiCol_FrameBg] = ImVec4(0.2f, 0.42f, 0.42f, 0.54f);
 		colors[ImGuiCol_FrameBgHovered] = ImVec4(0.42f, 0.42f, 0.42f, 0.40f);
 		colors[ImGuiCol_FrameBgActive] = ImVec4(0.56f, 0.56f, 0.56f, 0.67f);
 		colors[ImGuiCol_TitleBg] = ImVec4(0.19f, 0.19f, 0.19f, 1.00f);
@@ -375,12 +375,6 @@ namespace fr {
 				ImGui::SameLine();
 				if (ImGui::Button("Save Scene")) { fr::Serializer.SaveScene("Resource/Scene/scene.fr"); }
 				ImGui::SameLine();
-				if (ImGui::Button("Colision")) {  }
-				ImGui::SameLine();
-				if (ImGui::Button("Sound")) {}
-				ImGui::SameLine();
-				if (ImGui::Button("Add")) {}
-				ImGui::SameLine();
 				ImGui::Dummy(ImVec2(2, 0));
 
 				//ImGui::SameLine();
@@ -442,13 +436,29 @@ namespace fr {
 			}
 			ImGui::PopStyleColor();
 			ImGui::EndChildFrame();
-
+			ImGui::Text("Components: ");
 			// components			
 			if (selectedEntity > ECS::INVALID_ENTITY) {
 				for (auto compUi : activeCompUIs) {
 					compUi->Show();
 				}
-			}
+				const char* TYPE = "C# Script";
+				//ECS::Manager.AddComponent(selectedEntity, "C# Script");
+				if (ECS::Manager.HasComponent<CsScript>(selectedEntity)) {
+					//ImGui::Text("Script Protipies: ");
+					if (ImGui::CollapsingHeader("C# Script")) {
+						//ImGui::PushStyleColor(ImGuiCol_FrameBg, DARK);
+						if (ImGui::InputText("File Name", buf, IM_ARRAYSIZE(buf))) {
+							
+						}
+						if (ImGui::Button("Load")) {
+							ECS::Manager.GetComponent<CsScript>(selectedEntity).AssemblyPath = "Resource/Scripts/" + std::string(buf);
+						}
+					}
+				}
+
+			} 
+
 		}
 		ImGui::End();
 	}
@@ -481,7 +491,7 @@ namespace fr {
 				if (ImGui::Button("Clear")) { console = ""; }
 				ImGui::SameLine();
 				ImGui::Text("All logs you can find here!");
-				//ImGui::Text(console);
+				ImGui::Text(console);
 			}
 			ImGui::PopStyleColor();
 			ImGui::EndChildFrame();
@@ -535,12 +545,54 @@ namespace fr {
 	void UiLayer::ToolBar() {
 		ImGui::Begin("ToolBar", nullptr);
 		{
-			if (ImGui::CollapsingHeader("View Port")) {
+				if (ImGui::Button("Play Game")) { Core.StartGame(); }
+				ImGui::SameLine();
+				if (ImGui::Button("Play Scene")) { Core.StartGame(); }
 
-			}
-			if (ImGui::CollapsingHeader("Models")) {
+				if (ImGui::CollapsingHeader("View Port")) {
+					if (Widget::ToolButton::Show(icons.at("move"))) { gizmo.Operation = ImGuizmo::OPERATION::TRANSLATE; }
+					ImGui::SameLine();
 
-			}
+					ImGui::SameLine();
+					if (Widget::ToolButton::Show(icons.at("rotate"))) { gizmo.Operation = ImGuizmo::OPERATION::ROTATE; }
+					ImGui::SameLine();
+
+					ImGui::SameLine();
+					if (Widget::ToolButton::Show(icons.at("scale"))) { gizmo.Operation = ImGuizmo::OPERATION::SCALE; }
+					ImGui::SameLine();
+
+					if (ImGui::Button("Colision")) {}
+					ImGui::SameLine();
+
+					if (ImGui::Button(" Sound  ")) {}
+					ImGui::SameLine();
+
+					if (ImGui::Button("  Add   ")) {}
+				}
+				if (ImGui::CollapsingHeader("Models Browser")) {
+					if (ImGui::BeginPopup("compPopup2")) {
+						ImGui::Text("Add Asset");
+						ImGui::Separator();
+
+						for (size_t i = 0; i < IM_ARRAYSIZE(AssetNames); i++) {
+							if (ImGui::Selectable(AssetNames[i])) {
+								AddAsset(AssetNames[i]);
+							}
+						}
+						ImGui::EndPopup();
+					}
+
+					OnImGui("Resource/Models/");
+				}
+				if (ImGui::CollapsingHeader("Editor")) {
+					
+					ImGui::Text("Editor Camera Speed");
+					ImGui::DragFloat("##intensity", &variable1, 1.0f, 0, 0, "%.1f");
+
+				}
+				if (ImGui::CollapsingHeader("Inputs")) {}
+				if (ImGui::CollapsingHeader("Physics System")) {}
+				if (ImGui::CollapsingHeader("Scripts")) {}
 		}
 		ImGui::End();
 	}
@@ -577,21 +629,25 @@ namespace fr {
 			{
 				if (Widget::ToolButton::Show(icons.at("plus"), 20.0f)) {
 					AddNewEntity();
+					console = "Added new Entity!";
 				}
 
 				ImGui::SameLine();
 				if (Widget::ToolButton::Show(icons.at("minus"), 20.0f)) {
 					RemoveEntity();
+					console = "Deleted Entity!";
 				}
 
 				ImGui::SameLine();
 				if (Widget::ToolButton::Show(icons.at("up"), 20.0f)) {
 					MoveEntityUp();
+					console = "Moved Entity UP";
 				}
 
 				ImGui::SameLine();
 				if (Widget::ToolButton::Show(icons.at("down"), 20.0f)) {
 					MoveEntityDown();
+					console = "Moved Entity Down";
 				}
 			}
 			ImGui::PopStyleColor();
@@ -652,11 +708,20 @@ namespace fr {
 	}
 
 	void UiLayer::AddNewEntity() {
+		// Creating Entity
 		ECS::Entity entity;
 		selectedEntity = entity.GetID();
 		auto name = "Entity" + std::to_string(selectedEntity);
 		entity.AddComponent<EntityName>(name.c_str());
 		entity.AddComponent<Transform>();
+
+		//if (entity.HasComponent<CsScript>()) {
+			//entity.GetComponent<CsScript>().AssemblyPath = "";
+		//}
+		
+
+		// End
+
 		AddExistingEntity(entity.GetID());
 		InitCompUI();
 	}
