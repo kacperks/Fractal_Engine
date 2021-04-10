@@ -8,14 +8,15 @@
 #include "../vendor/imgui/imgui_impl_opengl3.h"
 
 #include "../ECS/Base/Entity.h"
-#include "../Serializer/XMLSerializer.h"
+#include "Serializer/XMLSerializer.h"
 
 #include "CompUIs/DirectLightUI.h"
 #include "CompUIs/PointLightUI.h"
 #include "CompUIs/TransformUI.h"
 #include "CompUIs/NameTagUI.h"
 #include "CompUIs/MeshUI.h"
-#include "TextEditor/TE.h"
+
+#include "CompUIs/CSUI.h"
 
 #include <fstream>
 
@@ -26,13 +27,15 @@
 #ifdef FRACTAL_LINUX
 	#include <bits/stdc++.h>
 #endif
-namespace fr{
+
+namespace fr {
 	char buf[20];
-	const char* console = "Fractal Debug Console";
-	const ImVec4 dark = ImVec4(0.2f, 0.2f, 0.2f, 1.0f);
+	std::string console = "Fractal Debug Console";
+	const ImVec4 dark = ImVec4(0.17f, 0.17f, 0.17f, 1.0f);
 	static const char* names[] = { "Camera", "RigidBody", "MeshRenderer",
 		"ModelRenderer", "SpriteRenderer", "Directional Light", "Point Light", "Spot Light", "C# Script" };
 	float variable1 = 50;
+	//CsScript script;
 
 	static const char* AssetNames[] = { "C# script","C++ Script", "Folder" , "C++ Component" , "Lua Script" , "GLSL Shader"};
 	UiLayer::UiLayer() {
@@ -50,8 +53,8 @@ namespace fr{
 		IO.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
 		IO.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
 
-		IO.Fonts->AddFontFromFileTTF("Resource/Fonts/Roboto-Bold.ttf", 14.0f);
-		IO.Fonts->AddFontFromFileTTF("Resource/Fonts/Roboto-Bold.ttf", 11.5f);
+		IO.Fonts->AddFontFromFileTTF("Resource/Fonts/Roboto-Medium.ttf", 14.0f);
+		IO.Fonts->AddFontFromFileTTF("Resource/Fonts/Roboto-Medium.ttf", 11.5f);
 
 		ImGui_ImplOpenGL3_Init("#version 330");
 		ImGui_ImplGlfw_InitForOpenGL(&Core.Window(), true);
@@ -71,7 +74,7 @@ namespace fr{
 		compUIs.push_back(std::move(std::make_shared<DirectLightUI>()));
 		compUIs.push_back(std::move(std::make_shared<PointLightUI>()));
 		compUIs.push_back(std::move(std::make_shared<MeshUI>()));
-		//compUIs.push_back(std::move(std::make_shared<CsCompUI>()));
+		compUIs.push_back(std::move(std::make_shared<CsScriptCompUI>()));
 	}
 
 	void UiLayer::Display() {
@@ -120,6 +123,8 @@ namespace fr{
 		icons.insert({ "save", (ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/save.png") });
 		icons.insert({ "build", (ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/build.png") });
 		icons.insert({ "mag",(ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/magnes.png") });
+		icons.insert({ "trash",(ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/trash.png") });
+		icons.insert({ "view",(ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/view.png") });
 	}
 
 	void UiLayer::SetGuiStyle() {
@@ -239,9 +244,9 @@ namespace fr{
 		colors[ImGuiCol_Button] = ImVec4(0.54f, 0.54f, 0.54f, 0.35f);
 		colors[ImGuiCol_ButtonHovered] = ImVec4(0.52f, 0.52f, 0.52f, 0.59f);
 		colors[ImGuiCol_ButtonActive] = ImVec4(0.76f, 0.76f, 0.76f, 1.00f);
-		colors[ImGuiCol_Header] = ImVec4(0.38f, 0.38f, 0.38f, 1.00f);
-		colors[ImGuiCol_HeaderHovered] = ImVec4(0.47f, 0.47f, 0.47f, 1.00f);
-		colors[ImGuiCol_HeaderActive] = ImVec4(0.76f, 0.76f, 0.76f, 0.77f);
+		colors[ImGuiCol_Header] = ImVec4(0.31f, 0.31f, 0.31f, 1.00f);
+		colors[ImGuiCol_HeaderHovered] = ImVec4(0.44f, 0.44f, 0.44f, 1.00f);
+		colors[ImGuiCol_HeaderActive] = ImVec4(0.74f, 0.74f, 0.74f, 0.77f);
 		colors[ImGuiCol_Separator] = ImVec4(0.000f, 0.000f, 0.000f, 0.137f);
 		colors[ImGuiCol_SeparatorHovered] = ImVec4(0.700f, 0.671f, 0.600f, 0.290f);
 		colors[ImGuiCol_SeparatorActive] = ImVec4(0.702f, 0.671f, 0.600f, 0.674f);
@@ -285,9 +290,9 @@ namespace fr{
 
 	void UiLayer::MenuBar() {
 		if (ImGui::BeginMenuBar()) {
-			if(Widget::ToolButton::Show(icons.at("Logo"))){
-			
-			}
+			//if(Widget::ToolButton::Show(icons.at("Logo"))){
+				//console = console + "\n [DEBUG] TAM TAM TAMMMMM";
+			//}
 			if (ImGui::BeginMenu("File")) {
 				if (ImGui::MenuItem("New Scene", "Ctrl+N")) {
 					const char* file = "";
@@ -321,11 +326,10 @@ namespace fr{
 			}
 			if (ImGui::BeginMenu("Window")) {
 				if (ImGui::MenuItem("Fractal Store", "soon")) {}
-				if (ImGui::MenuItem("Components")) {   }
-				if (ImGui::MenuItem("Entities")) {  }
+				if (ImGui::MenuItem("Inspector")) { Components(); InitCompUI(); }
+				if (ImGui::MenuItem("Entities")) { Entities(); }
 				if (ImGui::MenuItem("Console")) {  }
 				if (ImGui::MenuItem("Resources")) {  }
-				if (ImGui::MenuItem("Scene Selector")) { SceneSelector(); }
 				if (ImGui::MenuItem("Visual Studio Code Scripts")) { 
 					system("cd Resource/Scripts");
 					system("code Resource/Scripts/.");
@@ -354,26 +358,30 @@ namespace fr{
 			ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(dark));
 			ImGui::BeginChildFrame(ImGui::GetID("toolbar"), ImVec2(0,32));
 			{
-				if (Widget::ToolButton::Show(icons.at("move"))) { gizmo.Operation = ImGuizmo::OPERATION::TRANSLATE; }
+				if (Widget::ToolButton::Show(icons.at("move"))) { gizmo.Operation = ImGuizmo::OPERATION::TRANSLATE; console = console + "\n [DEBUG] Tool Move "; }
 				ImGui::SameLine();
 				ImGui::Dummy(ImVec2(2, 0));
 
 				ImGui::SameLine();
-				if (Widget::ToolButton::Show(icons.at("rotate"))) { gizmo.Operation = ImGuizmo::OPERATION::ROTATE; }
+				if (Widget::ToolButton::Show(icons.at("rotate"))) { gizmo.Operation = ImGuizmo::OPERATION::ROTATE;  console = console + "\n [DEBUG] Tool Rotate ";}
 				ImGui::SameLine();
 
 				ImGui::SameLine();
-				if (Widget::ToolButton::Show(icons.at("scale"))) { gizmo.Operation = ImGuizmo::OPERATION::SCALE; }
+				if (Widget::ToolButton::Show(icons.at("scale"))) { gizmo.Operation = ImGuizmo::OPERATION::SCALE; console = console + "\n [DEBUG] Tool Scale ";}
 				ImGui::SameLine();
 
 				if (Widget::ToolButton::Show(icons.at("mag"))) {
-
+					console = console + "\n [DEBUG] Tool Magnes ";
+				
 				}
 				ImGui::SameLine();
 				ImGui::Dummy(ImVec2(48, 0));
 
 				ImGui::SameLine();
-				if (ImGui::Button("Save Scene")) { fr::Serializer.SaveScene("Resource/Scene/scene.fr"); }
+				if (ImGui::Button("Save Scene")) { 
+					fr::Serializer.SaveScene("Resource/Scene/scene.fr"); 
+					console = console + "\n [DEBUG] Saved Scene scene.fr!";
+				}
 				ImGui::SameLine();
 				ImGui::Dummy(ImVec2(2, 0));
 
@@ -420,7 +428,8 @@ namespace fr{
 				if (ImGui::Button("Add Component")) {
 					ImGui::OpenPopup("compPopup");
 				}
-
+				ImGui::SameLine();
+				if (Widget::ToolButton::Show(icons.at("trash"), 20.0f)) {}
 				ImGui::SameLine();
 				if (ImGui::BeginPopup("compPopup")) {
 					ImGui::Text("Components");
@@ -429,6 +438,7 @@ namespace fr{
 					for (size_t i = 0; i < IM_ARRAYSIZE(names); i++) {
 						if (ImGui::Selectable(names[i])) {
 							AddComponent(names[i]);
+							console = console + "\n [ECS] Added Component " + names[i];
 						}
 					}
 					ImGui::EndPopup();
@@ -442,18 +452,28 @@ namespace fr{
 				for (auto compUi : activeCompUIs) {
 					compUi->Show();
 				}
-				const char* TYPE = "C# Script";
-				//ECS::Manager.AddComponent(selectedEntity, "C# Script");
-				if (ECS::Manager.HasComponent<CsScript>(selectedEntity)) {
-					//ImGui::Text("Script Protipies: ");
-					if (ImGui::CollapsingHeader("C# Script")) {
-						//ImGui::PushStyleColor(ImGuiCol_FrameBg, DARK);
-						if (ImGui::InputText("File Name", buf, IM_ARRAYSIZE(buf))) {
-							
-						}
-						if (ImGui::Button("Load")) {
-							ECS::Manager.GetComponent<CsScript>(selectedEntity).AssemblyPath = "Resource/Scripts/" + std::string(buf);
-						}
+
+				// Prototype Comp UI's
+
+				//if (ECS::Manager.HasComponent<CsScript>(selectedEntity)) {
+				//	if (ImGui::CollapsingHeader("C# Script")) {
+			//			if (ImGui::InputText("Name", buf, IM_ARRAYSIZE(buf))) { }
+		//				if (ImGui::Button("Load File")) { ECS::Manager.GetComponent<CsScript>(selectedEntity).AssemblyPath = "Resource/Scripts/" + std::string(buf); }
+	//					ImGui::SameLine();
+//						if (ImGui::Button("Clear")) { for (int i =0; i < 20; i++) {  buf[i] = 0; } }
+						//ImGui::SameLine();
+					//	if (ImGui::Button("Edit Script")) { system("code Resource/Scripts/."); }
+				//	}
+			//		
+		//		}
+				if (ECS::Manager.HasComponent<RigidBody>(selectedEntity)) {
+					if (ImGui::CollapsingHeader("Rigidbody")) {
+
+					}
+				}
+				if (ECS::Manager.HasComponent<Camera>(selectedEntity)) {
+					if (ImGui::CollapsingHeader("Camera")) {
+
 					}
 				}
 
@@ -491,7 +511,7 @@ namespace fr{
 				if (ImGui::Button("Clear")) { console = ""; }
 				ImGui::SameLine();
 				ImGui::Text("All logs you can find here!");
-				ImGui::Text(console);
+				ImGui::Text(console.c_str());
 			}
 			ImGui::PopStyleColor();
 			ImGui::EndChildFrame();
@@ -517,6 +537,7 @@ namespace fr{
 					for (size_t i = 0; i < IM_ARRAYSIZE(AssetNames); i++) {
 						if (ImGui::Selectable(AssetNames[i])) {
 							AddAsset(AssetNames[i]);
+							console = console + "\n [DEBUG] Added new Asset! " + AssetNames[i];
 						}
 					}
 					ImGui::EndPopup();
@@ -609,6 +630,7 @@ namespace fr{
 			for (size_t i = 0; i < IM_ARRAYSIZE(AssetNames); i++) {
 				if (ImGui::Selectable(AssetNames[i])) {
 					AddAsset(AssetNames[i]);
+					console = console + "\n [DEBUG] Added new Asset! " + AssetNames[i];
 				}
 			}
 			ImGui::EndPopup();
@@ -629,26 +651,29 @@ namespace fr{
 			{
 				if (Widget::ToolButton::Show(icons.at("plus"), 20.0f)) {
 					AddNewEntity();
-					console = "Added new Entity!";
+					console = console + "\n [DEBUG] Added new Entity!";
 				}
 
 				ImGui::SameLine();
 				if (Widget::ToolButton::Show(icons.at("minus"), 20.0f)) {
 					RemoveEntity();
-					console = "Deleted Entity!";
+					console = console + "\n [DEBUG] Deleted Entity!";
 				}
 
 				ImGui::SameLine();
 				if (Widget::ToolButton::Show(icons.at("up"), 20.0f)) {
 					MoveEntityUp();
-					console = "Moved Entity UP";
+					console = console + "\n [DEBUG] Moved Entity UP";
 				}
 
 				ImGui::SameLine();
 				if (Widget::ToolButton::Show(icons.at("down"), 20.0f)) {
 					MoveEntityDown();
-					console = "Moved Entity Down";
+					console = console + "\n [DEBUG] Moved Entity Down";
 				}
+
+				ImGui::SameLine();
+				if (Widget::ToolButton::Show(icons.at("view"), 20.0f)) {}
 			}
 			ImGui::PopStyleColor();
 			ImGui::EndChildFrame();
