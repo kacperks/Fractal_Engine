@@ -1,6 +1,6 @@
 #pragma once
 
-#include "pch.h"
+#include "../fractal.hpp"
 #include "GLFWImp.h"
 #include "EventSystem.h"
 

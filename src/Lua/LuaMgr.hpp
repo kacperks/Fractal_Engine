@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 
+// not finished yet
+
 // include Lua, assumes it is local to this file
 extern "C"
 {
@@ -27,12 +29,5 @@ namespace fr {
 			// HOST FUNTIONS
 
 			int lua_HostFunction(lua_State* L);
-
-			// GET PROJECT INFO
-
-			void LoadInfo(lua_State* L);
-			void LoadProjectInfo(lua_State* L);
-			void LoadScriptsInfo(lua_State* L);
-			void LoadModelsInfo(lua_State* L);
 	};
 };
