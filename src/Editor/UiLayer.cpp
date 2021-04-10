@@ -53,8 +53,8 @@ namespace fr {
 		IO.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
 		IO.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
 
-		IO.Fonts->AddFontFromFileTTF("Resource/Fonts/Roboto-Medium.ttf", 14.0f);
-		IO.Fonts->AddFontFromFileTTF("Resource/Fonts/Roboto-Medium.ttf", 11.5f);
+		IO.Fonts->AddFontFromFileTTF("res/Fonts/Roboto-Medium.ttf", 14.0f);
+		IO.Fonts->AddFontFromFileTTF("res/Fonts/Roboto-Medium.ttf", 11.5f);
 
 		ImGui_ImplOpenGL3_Init("#version 330");
 		ImGui_ImplGlfw_InitForOpenGL(&Core.Window(), true);
@@ -87,7 +87,7 @@ namespace fr {
 		Viewport();
 		Components();
 		Entities();
-		Resources();
+		ress();
 
 		ToolBar();
 		Console();
@@ -105,26 +105,26 @@ namespace fr {
 	}
 
 	void UiLayer::LoadIcons() {
-		icons.insert({ "obj", (ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/obj.png") });
-		icons.insert({ "light", (ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/light.png") });
-		icons.insert({ "camera", (ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/camera.png") });
+		icons.insert({ "obj", (ImTextureID)fr::res.LoadTex2D("res/Icons/obj.png") });
+		icons.insert({ "light", (ImTextureID)fr::res.LoadTex2D("res/Icons/light.png") });
+		icons.insert({ "camera", (ImTextureID)fr::res.LoadTex2D("res/Icons/camera.png") });
 
-		icons.insert({ "up", (ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/up.png") });
-		icons.insert({ "down", (ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/down.png") });
-		icons.insert({ "plus", (ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/add.png") });
-		icons.insert({ "minus", (ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/minus.png") });
+		icons.insert({ "up", (ImTextureID)fr::res.LoadTex2D("res/Icons/up.png") });
+		icons.insert({ "down", (ImTextureID)fr::res.LoadTex2D("res/Icons/down.png") });
+		icons.insert({ "plus", (ImTextureID)fr::res.LoadTex2D("res/Icons/add.png") });
+		icons.insert({ "minus", (ImTextureID)fr::res.LoadTex2D("res/Icons/minus.png") });
 
-		icons.insert({ "play", (ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/play.png") });
-		icons.insert({ "scale", (ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/scale.png") });
-		icons.insert({ "Logo", (ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/old/folder123.png") });
-		icons.insert({ "move", (ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/move.png") });
-		icons.insert({ "rotate", (ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/rotate.png") });
-		icons.insert({ "folder", (ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/folder.png") });
-		icons.insert({ "save", (ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/save.png") });
-		icons.insert({ "build", (ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/build.png") });
-		icons.insert({ "mag",(ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/magnes.png") });
-		icons.insert({ "trash",(ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/trash.png") });
-		icons.insert({ "view",(ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/view.png") });
+		icons.insert({ "play", (ImTextureID)fr::res.LoadTex2D("res/Icons/play.png") });
+		icons.insert({ "scale", (ImTextureID)fr::res.LoadTex2D("res/Icons/scale.png") });
+		icons.insert({ "Logo", (ImTextureID)fr::res.LoadTex2D("res/Icons/old/folder123.png") });
+		icons.insert({ "move", (ImTextureID)fr::res.LoadTex2D("res/Icons/move.png") });
+		icons.insert({ "rotate", (ImTextureID)fr::res.LoadTex2D("res/Icons/rotate.png") });
+		icons.insert({ "folder", (ImTextureID)fr::res.LoadTex2D("res/Icons/folder.png") });
+		icons.insert({ "save", (ImTextureID)fr::res.LoadTex2D("res/Icons/save.png") });
+		icons.insert({ "build", (ImTextureID)fr::res.LoadTex2D("res/Icons/build.png") });
+		icons.insert({ "mag",(ImTextureID)fr::res.LoadTex2D("res/Icons/magnes.png") });
+		icons.insert({ "trash",(ImTextureID)fr::res.LoadTex2D("res/Icons/trash.png") });
+		icons.insert({ "view",(ImTextureID)fr::res.LoadTex2D("res/Icons/view.png") });
 	}
 
 	void UiLayer::SetGuiStyle() {
@@ -304,7 +304,7 @@ namespace fr {
 
 				}
 
-				if (ImGui::MenuItem("Save", "Ctrl+S")) { fr::Serializer.SaveScene("Resource/Scene/scene.fr"); }
+				if (ImGui::MenuItem("Save", "Ctrl+S")) { fr::Serializer.SaveScene("res/Scene/scene.fr"); }
 
 				if (ImGui::MenuItem("Save As..")) {}
 				ImGui::EndMenu();
@@ -329,10 +329,10 @@ namespace fr {
 				if (ImGui::MenuItem("Inspector")) { Components(); InitCompUI(); }
 				if (ImGui::MenuItem("Entities")) { Entities(); }
 				if (ImGui::MenuItem("Console")) {  }
-				if (ImGui::MenuItem("Resources")) {  }
+				if (ImGui::MenuItem("ress")) {  }
 				if (ImGui::MenuItem("Visual Studio Code Scripts")) { 
-					system("cd Resource/Scripts");
-					system("code Resource/Scripts/.");
+					system("cd res/Scripts");
+					system("code res/Scripts/.");
 				}
 				ImGui::EndMenu();
 			}
@@ -379,7 +379,7 @@ namespace fr {
 
 				ImGui::SameLine();
 				if (ImGui::Button("Save Scene")) { 
-					fr::Serializer.SaveScene("Resource/Scene/scene.fr"); 
+					fr::Serializer.SaveScene("res/Scene/scene.fr"); 
 					console = console + "\n [DEBUG] Saved Scene scene.fr!";
 				}
 				ImGui::SameLine();
@@ -458,11 +458,11 @@ namespace fr {
 				//if (ECS::Manager.HasComponent<CsScript>(selectedEntity)) {
 				//	if (ImGui::CollapsingHeader("C# Script")) {
 			//			if (ImGui::InputText("Name", buf, IM_ARRAYSIZE(buf))) { }
-		//				if (ImGui::Button("Load File")) { ECS::Manager.GetComponent<CsScript>(selectedEntity).AssemblyPath = "Resource/Scripts/" + std::string(buf); }
+		//				if (ImGui::Button("Load File")) { ECS::Manager.GetComponent<CsScript>(selectedEntity).AssemblyPath = "res/Scripts/" + std::string(buf); }
 	//					ImGui::SameLine();
 //						if (ImGui::Button("Clear")) { for (int i =0; i < 20; i++) {  buf[i] = 0; } }
 						//ImGui::SameLine();
-					//	if (ImGui::Button("Edit Script")) { system("code Resource/Scripts/."); }
+					//	if (ImGui::Button("Edit Script")) { system("code res/Scripts/."); }
 				//	}
 			//		
 		//		}
@@ -519,8 +519,8 @@ namespace fr {
 		ImGui::End();
 	}
 
-	void UiLayer::Resources() {
-		ImGui::Begin("Resources Folder", nullptr);
+	void UiLayer::ress() {
+		ImGui::Begin("ress Folder", nullptr);
 		{
 			ImGui::PushStyleColor(ImGuiCol_FrameBg, dark);
 			ImGui::BeginChildFrame(ImGui::GetID("rframe"), ImVec2(0, 0));
@@ -544,12 +544,12 @@ namespace fr {
 				}
 				
 				if (ImGui::Button("Open in VsCode")) {
-					system("code Resource/.");
+					system("code res/.");
 				}
 				//if (ImGui::Button("Compile All C# Scripts")) {
-				//	system("csc Resource/Scripts/*.cs -target:library");
+				//	system("csc res/Scripts/*.cs -target:library");
 				//}
-				OnImGui("Resource");
+				OnImGui("res");
 			}
 			ImGui::PopStyleColor();
 			ImGui::EndChildFrame();
@@ -603,7 +603,7 @@ namespace fr {
 						ImGui::EndPopup();
 					}
 
-					OnImGui("Resource/Models/");
+					OnImGui("res/Models/");
 				}
 				if (ImGui::CollapsingHeader("Editor")) {
 					
@@ -636,7 +636,7 @@ namespace fr {
 			ImGui::EndPopup();
 		}
 
-		OnImGui("Resource/Models/");
+		OnImGui("res/Models/");
 
 		ImGui::End();
 	}
@@ -783,7 +783,7 @@ namespace fr {
 	void UiLayer::AddAsset(const char* Name) {
 		if (Name == "C# script") {
 			std::fstream file;
-			std::string Path = "Resource/Scripts/Script";
+			std::string Path = "res/Scripts/Script";
 			std::string f = ".cs";
 			file.open(Path + f, std::ios::out);
 			std::string code;
@@ -793,7 +793,7 @@ namespace fr {
 		}
 		if (Name == "GLSL Shader") {
 			std::fstream file;
-			std::string Path = "Resource/Shaders/Shader";
+			std::string Path = "res/Shaders/Shader";
 			std::string f = ".glsl";
 			file.open(Path + f, std::ios::out);
 			std::string code;
@@ -803,7 +803,7 @@ namespace fr {
 		}
 		if (Name == "C++ Component") {
 			std::fstream file;
-			std::string Path = "Resource/Components/Component";
+			std::string Path = "res/Components/Component";
 			std::string f = ".h";
 			file.open(Path + f, std::ios::out);
 			std::string code;
@@ -816,13 +816,13 @@ namespace fr {
 		}
 		if (Name == "Folder") {
 			std::fstream file;
-			std::string Path = "Resource/Folder/";
+			std::string Path = "res/Folder/";
 			file.open(Path, std::ios::out);
 			file.close();
 		}
 		if (Name == "C++ Script") {
 			std::fstream file;
-			std::string Path = "Resource/Scripts/CppScript";
+			std::string Path = "res/Scripts/CppScript";
 			std::string f = ".h";
 			file.open(Path + f, std::ios::out);
 			std::string code;
@@ -832,7 +832,7 @@ namespace fr {
 
 
 			std::fstream file2;
-			std::string Path2 = "Resource/Scripts/CppScript";
+			std::string Path2 = "res/Scripts/CppScript";
 			std::string f2 = ".cpp";
 			file.open(Path2 + f2, std::ios::out);
 			std::string code2;

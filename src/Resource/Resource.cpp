@@ -1,6 +1,6 @@
 
 #include "../fractal.hpp"
-#include "Resource.h"
+#include "res.h"
 #include "../vendor/STB/stb_image.h"
 
 namespace fr {
@@ -26,7 +26,7 @@ namespace fr {
 		LoadMeshes();
 
 		// models
-		LoadModel("PACK", "Resource/Models/Voxel/house.obj");
+		LoadModel("PACK", "res/Models/Voxel/house.obj");
 
 		// shaders
 		CreateProgram("SPRITE", "SpriteV.shader", "SpriteF.shader");
@@ -36,17 +36,17 @@ namespace fr {
 		CreateProgram("GRID", "GridV.shader", "GridF.shader");
 
 		// textures
-		AddTex2D("light", LoadTex2D("Resource/Textures/light.png"));
-		AddTex2D("camera", LoadTex2D("Resource/Textures/camera.png"));
+		AddTex2D("light", LoadTex2D("res/Textures/light.png"));
+		AddTex2D("camera", LoadTex2D("res/Textures/camera.png"));
 
 		// skybox cubemap
 		std::vector<std::string> facepaths;
-		facepaths.push_back("Resource/Textures/skybox/right.png");
-		facepaths.push_back("Resource/Textures/skybox/left.png");
-		facepaths.push_back("Resource/Textures/skybox/top.png");
-		facepaths.push_back("Resource/Textures/skybox/bottom.png");
-		facepaths.push_back("Resource/Textures/skybox/back.png");
-		facepaths.push_back("Resource/Textures/skybox/front.png");
+		facepaths.push_back("res/Textures/skybox/right.png");
+		facepaths.push_back("res/Textures/skybox/left.png");
+		facepaths.push_back("res/Textures/skybox/top.png");
+		facepaths.push_back("res/Textures/skybox/bottom.png");
+		facepaths.push_back("res/Textures/skybox/back.png");
+		facepaths.push_back("res/Textures/skybox/front.png");
 		LoadCubeMap("SKYBOX", facepaths);
 	}
 

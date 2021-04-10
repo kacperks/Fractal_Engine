@@ -4,7 +4,7 @@
 #include "../vendor/IMGUI/imgui.h"
 #include "../vendor/GUIZMO/ImGuizmo.h"
 
-struct Transform;
+sstruct Transform;
 
 namespace fr {
 
