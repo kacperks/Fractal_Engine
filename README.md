@@ -12,17 +12,14 @@ Features:
 * Fully Featured ECS(Entity-Component-System)
 * Scene System
 * C# support
-* Lua Support
 * C++ Support
 
 Features to do:
 
 * Launcher
-* Bulid for Linux,Windows,Android,OSX,IOS
+* Bulid system
 * 2D version
-* C# Comp UI
-* Lua Comp UI
-* Scene Selector
+* Lua Scripting
 
 # Exemples
 Exemple C# script
