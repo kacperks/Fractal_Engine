@@ -71,6 +71,8 @@ To bulid you need :
 * Glew
 * GLFW
 * ASSIMP
+* TinyXML
+* Mono
 
 and C++ compiler
 
