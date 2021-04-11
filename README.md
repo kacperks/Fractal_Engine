@@ -11,9 +11,8 @@ Features:
 * Loading 3D models
 * Fully Featured ECS(Entity-Component-System)
 * Scene System
-* C# support
-* C++ Support
-* Cmake Bulid
+* C# Scripting
+* Tools like (Move,Rotate,Scale)
 
 Features to do:
 
@@ -21,6 +20,7 @@ Features to do:
 * Bulid system
 * 2D version
 * Lua Scripting
+* Cmake Bulid
 
 # Exemples
 Exemple C# script
