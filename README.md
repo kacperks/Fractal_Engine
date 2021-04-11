@@ -63,7 +63,17 @@ struct Player : public ECS::BaseComponent
     float Level;
 };
 ```
+* To create your own component you need the source code of the Fractal engine!
 
+# Buliding C# Scripts
+
+
+You must have Mono to build a C# script.
+
+The command to build:
+```sh
+csc YourScript.cs -target:library -r:Fractal.dll
+```
 # Bulid
 
 To bulid you need :
