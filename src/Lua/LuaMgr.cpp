@@ -17,14 +17,14 @@ namespace fr {
 		return true;
 	}
 
-	void LuaMan::Initialize() {
+	void LuaMan::Initialize(const char* name) {
 		// Create Lua State
 		lua_State* L = luaL_newstate();
 
 		// Add standard libraries to Lua Virtual Machine
 		luaL_openlibs(L);
 
-		if (CheckLua(L, luaL_dofile(L, "Resource/ProjectSettings.lua"))) {
+		if (CheckLua(L, luaL_dofile(L, name))) {
 			
 		}
 	}

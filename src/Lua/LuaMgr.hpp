@@ -18,7 +18,7 @@ extern "C"
 namespace fr {
 	class LuaMan {
 		public:
-			void Initialize();
+			void Initialize(const char* name);
 			
 		private:
 

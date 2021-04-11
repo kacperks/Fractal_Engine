@@ -37,17 +37,23 @@ public:
 	}
 
 	void Show() override {
+		
 		if (ImGui::CollapsingHeader("C# Script")) {
-			if (ImGui::InputText("Name", buf, IM_ARRAYSIZE(buf))) {}
-			if (ImGui::Button("Load File")) { script->AssemblyPath = "Resource/Scripts/" + std::string(buf); }
-			ImGui::SameLine();
-			if (ImGui::Button("Clear")) { for (int i = 0; i < 20; i++) { buf[i] = 0; } }
+			
+			if (ImGui::InputText("Script FileName", buf, IM_ARRAYSIZE(buf))) { script->AssemblyPath = "Resource/Scripts/" + std::string(buf); }
+			if (ImGui::Button("Clear")) { script->AssemblyPath = ""; }
 			ImGui::SameLine();
 			if (ImGui::Button("Edit Script")) { system("code Resource/Scripts/."); }
+
+			if (ImGui::InputText("Class Name", buf2, IM_ARRAYSIZE(buf2))) { script->ClassName = std::string(buf2); }
+			if (ImGui::Button("Clear")) { script->ClassName = ""; }
+
+			strcpy_s(buf, script->AssemblyPath.c_str());
+			strcpy_s(buf2, script->ClassName.c_str());
 		}
 	}
 	private:
 		CsScript* script;
-		char buf[20];
+		char buf[40];
+		char buf2[20];
 };
-
