@@ -72,7 +72,7 @@ To bulid you need :
 * TinyXML
 * Mono
 
-and C++ compiler
+and Cmake or Visual Studio
 
 To install this libaries on Ubuntu/Debian type
 ```sh
