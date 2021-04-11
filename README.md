@@ -59,6 +59,7 @@ struct Player : public ECS::BaseComponent
     float Level;
 };
 ```
+* To create your own component you need the source code of the Fractal engine!
 
 # Buliding C# Scripts
 
