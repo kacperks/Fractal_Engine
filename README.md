@@ -6,6 +6,10 @@ Fractal Engine its 3D Game Engine
 
 Not Finished yet
 
+<p align="left">
+  <img src="res/Icons/ScreenShot.png" width="683" height="371">
+</p>
+
 Features:
 * Editor
 * Loading 3D models
