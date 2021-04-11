@@ -60,6 +60,15 @@ struct Player : public ECS::BaseComponent
 };
 ```
 
+# Buliding C# Scripts
+
+
+You must have Mono to build a C# script.
+
+The command to build:
+```sh
+csc YourScript.cs -target:library -r:Fractal.dll
+```
 # Bulid
 
 To bulid you need :
