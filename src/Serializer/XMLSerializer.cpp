@@ -92,6 +92,10 @@ namespace fr {
 				LoadSpriteRenderer(e, entityid);
 				continue;
 			}
+			if (e->Value() == std::string("CsScript")) {
+				LoadCsScript(e, entityid);
+				continue;
+			}
 		}
 	}
 	void XMLSerializer::SaveEntity(XMLPrinter& printer, const ECS::EntityID entityid) {
@@ -106,6 +110,7 @@ namespace fr {
 		SavePointLight(printer, entityid);
 		SaveDirectionalLight(printer, entityid);
 		SaveRigidBody(printer, entityid);
+		SaveCsScript(printer, entityid);
 		printer.CloseElement();
 	}
 
@@ -349,5 +354,20 @@ namespace fr {
 		rigidbody.Drag.z = xRigidbody->FloatAttribute("Dz");
 
 		ECS::Manager.AddComponent(entityid, rigidbody);
+	}
+	// C#
+	void XMLSerializer::SaveCsScript(XMLPrinter& printer, const ECS::EntityID entityid) {
+		if (!ECS::Manager.HasComponent<CsScript>(entityid)) { return; }
+		const CsScript& script = ECS::Manager.GetComponent<CsScript>(entityid);
+		printer.OpenElement("CsScript");
+		printer.PushAttribute("AssemblyPath", script.AssemblyPath.c_str());
+		printer.PushAttribute("ClassName", script.ClassName.c_str());
+		printer.CloseElement();
+	}
+	void XMLSerializer::LoadCsScript(XMLElement* xSharp, const ECS::EntityID entityid) {
+		CsScript script;
+		script.AssemblyPath = xSharp->Attribute("AssemblyPath");
+		script.ClassName = xSharp->Attribute("ClassName");
+		ECS::Manager.AddComponent(entityid, script);
 	}
 }

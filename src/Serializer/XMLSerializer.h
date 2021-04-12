@@ -5,7 +5,7 @@
 
 namespace fr {
 
-	using namespace tinyxml2;
+using namespace tinyxml2;
 
 	class XMLSerializer {
 	public:		
@@ -64,9 +64,14 @@ namespace fr {
 		void SaveDirectionalLight(XMLPrinter& printer, const ECS::EntityID entityid);
 		void LoadDirectionalLight(XMLElement* xLight, const ECS::EntityID entityid);
 
-		// DIRECTIONAL LIGHT
+		// RIGIDBODY
 		void SaveRigidBody(XMLPrinter& printer, const ECS::EntityID entityid);
 		void LoadRigidBody(XMLElement* xRigidbody, const ECS::EntityID entityid);
+
+		// C#
+
+		void SaveCsScript(XMLPrinter& printer, const ECS::EntityID entityid);
+		void LoadCsScript(XMLElement* xSharp, const ECS::EntityID entityid);
 	};
 
 	static XMLSerializer& Serializer = XMLSerializer::Ref();
