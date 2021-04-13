@@ -20,24 +20,15 @@ extern "C"
 using namespace std;
 class LuaSystem : public ECS::BaseSystem{
     public :
-        void Start(string filename){
-            for (auto entity : entities) {
-                auto& script = ECS::Manager.GetComponent<LuaScript>(entity);
-                script.Start(filename);
-            }
+        void Start(){
+
         }
 
-        void Stop(string filename){
-            for (auto entity : entities) {
-                auto& script = ECS::Manager.GetComponent<LuaScript>(entity);
-                script.Stop(filename);
-            }
+        void Stop(){
+
         }
 
-        void Update(string filename){
-            for (auto entity : entities) {
-                auto& script = ECS::Manager.GetComponent<LuaScript>(entity);
-                script.Update(filename);
-            }
+        void Update(){
+
         }
 };
