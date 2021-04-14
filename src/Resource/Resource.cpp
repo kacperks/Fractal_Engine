@@ -1,9 +1,9 @@
-
 #include "../fractal.hpp"
-#include "res.h"
+#include "Resource.h"
 #include "../vendor/STB/stb_image.h"
+#include "../Editor/UiLayer.h"
 
-namespace fr {
+namespace Orbit3D {
 	RsrcManager::RsrcManager(){}
 
 	RsrcManager::~RsrcManager(){
@@ -26,7 +26,11 @@ namespace fr {
 		LoadMeshes();
 
 		// models
-		LoadModel("PACK", "res/Models/Voxel/house.obj");
+		//LoadModel("PACK", "Resource/Models/sphere.obj");
+		//LoadModel("PACK", "Resource/Models/nature/NatureFreePack1.obj");
+		LoadModel("Tree", "Resource/Models/nature/Tree1.obj");
+		LoadModel("Rock", "Resource/Models/nature/Rock1.obj");
+		LoadModel("PACK", "Resource/Models/Voxel/house.obj");
 
 		// shaders
 		CreateProgram("SPRITE", "SpriteV.shader", "SpriteF.shader");
@@ -36,17 +40,19 @@ namespace fr {
 		CreateProgram("GRID", "GridV.shader", "GridF.shader");
 
 		// textures
-		AddTex2D("light", LoadTex2D("res/Textures/light.png"));
-		AddTex2D("camera", LoadTex2D("res/Textures/camera.png"));
+		//AddTex2D("box1", LoadTex2D("Resource/Textures/box1.png"));
+		//AddTex2D("box2", LoadTex2D("Resource/Textures/box2.png"));
+		AddTex2D("light", LoadTex2D("Resource/Textures/light.png"));
+		AddTex2D("camera", LoadTex2D("Resource/Textures/camera.png"));
 
 		// skybox cubemap
 		std::vector<std::string> facepaths;
-		facepaths.push_back("res/Textures/skybox/right.png");
-		facepaths.push_back("res/Textures/skybox/left.png");
-		facepaths.push_back("res/Textures/skybox/top.png");
-		facepaths.push_back("res/Textures/skybox/bottom.png");
-		facepaths.push_back("res/Textures/skybox/back.png");
-		facepaths.push_back("res/Textures/skybox/front.png");
+		facepaths.push_back("Resource/Textures/skybox/right.png");
+		facepaths.push_back("Resource/Textures/skybox/left.png");
+		facepaths.push_back("Resource/Textures/skybox/top.png");
+		facepaths.push_back("Resource/Textures/skybox/bottom.png");
+		facepaths.push_back("Resource/Textures/skybox/back.png");
+		facepaths.push_back("Resource/Textures/skybox/front.png");
 		LoadCubeMap("SKYBOX", facepaths);
 	}
 
@@ -190,7 +196,9 @@ namespace fr {
 
 	void RsrcManager::LoadModel(std::string name, std::string filename) {
 		models.insert({ name, std::make_shared<Model3D>(filename) });
-		std::cout << filename << " loaded!" << std::endl;
+		//std::cout << filename << " loaded!" << std::endl;
+		std::string TEXT = " [RsrcManager] "+filename + " loaded!";
+		UiLayer::AddToConsole(TEXT);
 	}
 
 	// shaders

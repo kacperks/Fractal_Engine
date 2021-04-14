@@ -21,7 +21,6 @@
 #include "CompUIs/RigidbodyUI.h"
 #include "CompUIs/CameraUI.h"
 
-
 #include <fstream>
 
 #ifdef FRACTAL_WINDOWS
@@ -33,7 +32,7 @@
 #endif
 
 namespace fr {
-		char buf[20];
+	char buf[20];
 	std::string console = "Fractal Debug Console";
 	const ImVec4 dark = ImVec4(0.17f, 0.17f, 0.17f, 1.0f);
 	static const char* names[] = { "Camera", "RigidBody", "MeshRenderer",
@@ -42,6 +41,7 @@ namespace fr {
 	//CsScript script;
 
 	static const char* AssetNames[] = { "C# script","C++ Script", "Folder" , "C++ Component" , "Lua Script" , "GLSL Shader"};
+	bool IS;
 	UiLayer::UiLayer() {
 		viewRect.W = SCREEN_WIDTH;
 		viewRect.H = SCREEN_HEIGHT;
@@ -82,6 +82,10 @@ namespace fr {
 		compUIs.push_back(std::move(std::make_shared<ModelCompUI>()));
 		compUIs.push_back(std::move(std::make_shared<RBUI>()));
 		compUIs.push_back(std::move(std::make_shared<CamUI>()));
+
+		console += "\n [Editor] Starting Fractal Editor...";
+		console += "\n [Editor] Fractal Editor 13.04.2021";
+		console += "\n [XMLserializer] Loaded Scene 'scene.fr' ! ";
 	}
 
 	void UiLayer::Display() {
@@ -98,11 +102,8 @@ namespace fr {
 
 		ToolBar();
 		Console();
-		//SceneSelector();
-		//AssetBrowser();
+		AssetBrowser();
 
-
-		//ImGui::ShowDemoWindow();
 		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 		GLFWwindow* backup_current_context = glfwGetCurrentContext();
@@ -272,7 +273,9 @@ namespace fr {
 		colors[ImGuiCol_NavWindowingDimBg] = ImVec4(0.80f, 0.80f, 0.80f, 0.20f);
 	}
 
-	
+	void UiLayer::AddToConsole(std::string Log) {
+		console += "\n" + Log;
+	}
 
 	void UiLayer::Dockspace() {
 		ImGuiViewport* viewport = ImGui::GetMainViewport();
@@ -302,9 +305,7 @@ namespace fr {
 			//}
 			if (ImGui::BeginMenu("File")) {
 				if (ImGui::MenuItem("New Scene", "Ctrl+N")) {
-					const char* file = "";
-					//fr::Serializer.SaveScene(file);
-					//MessageBox(0, "This Function is not aviable in BETA relase!!", "INFO", 0);
+
 				}
 
 				if (ImGui::MenuItem("Open Scene", "Ctrl+O")) {
@@ -354,6 +355,11 @@ namespace fr {
 				if (ImGui::MenuItem("About Fractal Engine")) {}
 				ImGui::EndMenu();
 			}
+			ImGui::Dummy(ImVec2(850, 0));
+			if (Widget::ToolButton::Show(icons.at("move"))) { gizmo.Operation = ImGuizmo::OPERATION::TRANSLATE; console = console + "\n [DEBUG] Tool Move "; }
+			if (Widget::ToolButton::Show(icons.at("rotate"))) { gizmo.Operation = ImGuizmo::OPERATION::ROTATE;  console = console + "\n [DEBUG] Tool Rotate "; }
+			if (Widget::ToolButton::Show(icons.at("scale"))) { gizmo.Operation = ImGuizmo::OPERATION::SCALE; console = console + "\n [DEBUG] Tool Scale "; }
+			ImGui::Text("Fractal Editor 14.03.2021");
 
 			ImGui::EndMenuBar();
 		}
@@ -363,6 +369,7 @@ namespace fr {
 		ImGui::Begin("Scene", nullptr);
 		{			
 			ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(dark));
+			/*
 			ImGui::BeginChildFrame(ImGui::GetID("toolbar"), ImVec2(0,32));
 			{
 				if (Widget::ToolButton::Show(icons.at("move"))) { gizmo.Operation = ImGuizmo::OPERATION::TRANSLATE; console = console + "\n [DEBUG] Tool Move "; }
@@ -408,6 +415,7 @@ namespace fr {
 
 			}
 			ImGui::EndChildFrame();
+			*/
 			ImGui::PopStyleColor();			
 			ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(0,0));	
 			ImGui::BeginChildFrame(ImGui::GetID("sceneFrame"), ImVec2(0,0), ImGuiWindowFlags_NoScrollbar);
@@ -424,6 +432,28 @@ namespace fr {
 		ImGui::End();
 	}
 
+	void UiLayer::SceneTools() {
+		ImGui::Begin("Scene Tools");
+
+					if (Widget::ToolButton::Show(icons.at("move"))) { gizmo.Operation = ImGuizmo::OPERATION::TRANSLATE; console = console + "\n [DEBUG] Tool Move "; }
+					ImGui::SameLine();
+					ImGui::Dummy(ImVec2(2, 0));
+
+					ImGui::SameLine();
+					if (Widget::ToolButton::Show(icons.at("rotate"))) { gizmo.Operation = ImGuizmo::OPERATION::ROTATE;  console = console + "\n [DEBUG] Tool Rotate "; }
+					ImGui::SameLine();
+
+					ImGui::SameLine();
+					if (Widget::ToolButton::Show(icons.at("scale"))) { gizmo.Operation = ImGuizmo::OPERATION::SCALE; console = console + "\n [DEBUG] Tool Scale "; }
+					ImGui::SameLine();
+					if (Widget::ToolButton::Show(icons.at("play"))) {
+						Core.StartGame();
+					}
+					ImGui::SameLine();
+					ImGui::Dummy(ImVec2(2, 0));
+					ImGui::SameLine();
+				ImGui::End();
+	}
 
 	void UiLayer::Components() {
 		ImGui::Begin("Inspector", nullptr);
@@ -533,6 +563,11 @@ namespace fr {
 				if (ImGui::Button("Play Game")) { Core.StartGame(); }
 				ImGui::SameLine();
 				if (ImGui::Button("Play Scene")) { Core.StartGame(); }
+				ImGui::SameLine();
+				if (ImGui::Button("Save Scene")) {
+					fr::Serializer.SaveScene("Resource/Scene/scene.fr");
+					console = console + "\n [DEBUG] Saved Scene scene.fr!";
+				}
 
 				if (ImGui::CollapsingHeader("View Port")) {
 					if (Widget::ToolButton::Show(icons.at("move"))) { gizmo.Operation = ImGuizmo::OPERATION::TRANSLATE; }
@@ -554,54 +589,23 @@ namespace fr {
 
 					if (ImGui::Button("  Add   ")) {}
 				}
-				if (ImGui::CollapsingHeader("Models Browser")) {
-					if (ImGui::BeginPopup("compPopup2")) {
-						ImGui::Text("Add Asset");
-						ImGui::Separator();
-
-						for (size_t i = 0; i < IM_ARRAYSIZE(AssetNames); i++) {
-							if (ImGui::Selectable(AssetNames[i])) {
-								AddAsset(AssetNames[i]);
-							}
-						}
-						ImGui::EndPopup();
-					}
-
-					OnImGui("Resource/Models/");
-				}
-				if (ImGui::CollapsingHeader("Editor")) {
-					
-					ImGui::Text("Editor Camera Speed");
-					ImGui::DragFloat("##intensity", &variable1, 1.0f, 0, 0, "%.1f");
-
-				}
+				if (ImGui::CollapsingHeader("Engine")) {}
+				if (ImGui::CollapsingHeader("OpenGL")) { }
+				if (ImGui::CollapsingHeader("Editor")) { ImGui::Text("Editor Camera Speed"); ImGui::DragFloat("##intensity", &variable1, 1.0f, 0, 0, "%.1f"); }
 				if (ImGui::CollapsingHeader("Inputs")) {}
 				if (ImGui::CollapsingHeader("Physics System")) {}
-				if (ImGui::CollapsingHeader("Scripts")) {}
+				if (ImGui::CollapsingHeader("ECS")) {}
+				if (ImGui::CollapsingHeader("Events")) {}
+				if (ImGui::CollapsingHeader("Resource")) {}
+				if (ImGui::CollapsingHeader("Timer")) {}
 		}
 		ImGui::End();
 	}
 	void UiLayer::AssetBrowser() {
-		//ImGui::PushStyleColor(ImGuiCol_FrameBg, dark);
-		ImGui::Begin("Models Browser", nullptr);
-		//if (Widget::ToolButton::Show(icons.at("plus"), 20.0f)) {
-			//ImGui::OpenPopup("compPopup2");
-		//}
-		if (ImGui::BeginPopup("compPopup2")) {
-			ImGui::Text("Add Asset");
-			ImGui::Separator();
+		ImGui::Begin("Asset Browser");
+		{
 
-			for (size_t i = 0; i < IM_ARRAYSIZE(AssetNames); i++) {
-				if (ImGui::Selectable(AssetNames[i])) {
-					AddAsset(AssetNames[i]);
-					console = console + "\n [DEBUG] Added new Asset! " + AssetNames[i];
-				}
-			}
-			ImGui::EndPopup();
 		}
-
-		OnImGui("Resource/Models/");
-
 		ImGui::End();
 	}
 
@@ -615,25 +619,25 @@ namespace fr {
 			{
 				if (Widget::ToolButton::Show(icons.at("plus"), 20.0f)) {
 					AddNewEntity();
-					console = console + "\n [DEBUG] Added new Entity!";
+					console = console + "\n [ECS] Added new Entity!";
 				}
 
 				ImGui::SameLine();
 				if (Widget::ToolButton::Show(icons.at("minus"), 20.0f)) {
 					RemoveEntity();
-					console = console + "\n [DEBUG] Deleted Entity!";
+					console = console + "\n [ECS] Deleted Entity!";
 				}
 
 				ImGui::SameLine();
 				if (Widget::ToolButton::Show(icons.at("up"), 20.0f)) {
 					MoveEntityUp();
-					console = console + "\n [DEBUG] Moved Entity UP";
+					console = console + "\n [EntList] Moved Entity UP";
 				}
 
 				ImGui::SameLine();
 				if (Widget::ToolButton::Show(icons.at("down"), 20.0f)) {
 					MoveEntityDown();
-					console = console + "\n [DEBUG] Moved Entity Down";
+					console = console + "\n [EntList] Moved Entity Down";
 				}
 
 				ImGui::SameLine();

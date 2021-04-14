@@ -1,12 +1,10 @@
 #pragma once
 
-#include <iostream>
-
 #define WINDOW_WIDTH 1280
 
 #define WINDOW_HEIGH 720
 
-#if defined(_WIN64)
+#if defined(_WIN32)
 #define FRACTAL_WINDOW
 #elif defined(__linux__)
 #define FRACTEL_LINUX
@@ -16,9 +14,7 @@
 	#error Not Supported Platform!
 #endif
 
-#define MAX_FPS 70
-
-#define VERSION = "BETA 1.10"
+#define VERSION = "BETA 1.11"
 
 #ifdef FR_WINDOW
 	// window platform related stuff
@@ -33,3 +29,7 @@
 #ifdef FR_APPLE
 	// mac platform related stuff
 #endif
+
+namespace fr{
+	
+};

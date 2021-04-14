@@ -38,6 +38,7 @@ namespace fr {
 
 		void Display();
 		void Initialiaze();
+		static void AddToConsole(std::string Log);
 		void LightTheme();
 		void DarkTheme();
 		void AddExistingEntity(const size_t entity);
@@ -66,8 +67,10 @@ namespace fr {
 		void CodeEditor();
 		void Dockspace();
 		void SceneSelector();
-		void AssetBrowser();
 		void ToolBar();
+		void SceneTools();
+		void AssetBrowser();
+		void About();
 
 		// ACTIONS
 
