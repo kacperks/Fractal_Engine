@@ -11,7 +11,7 @@ Features:
 * Loading 3D models
 * Fully Featured ECS(Entity-Component-System)
 * Scene System
-* C# Scripting
+* Prototype of C# Scripting
 * Tools like (Move,Rotate,Scale)
 
 Features to do:
