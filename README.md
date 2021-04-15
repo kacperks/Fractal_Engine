@@ -28,47 +28,11 @@ Features to do:
   <img src="res/Icons/ScreenShot.png" width="683" height="371">
 </p>
 
-# Exemples
-Exemple C# script
+# Docs
 
-```cpp
-using Fractal;
-using System;
-
-public class CamSpinSpin : FractalScript
-{
-    public float Speed;
-    
-    public void Start()
-    {
-        Speed = 10;
-    }
-
-    public void Update(float deltatime, ref Transform transform)
-    {
-        transform.Rotation.Y += Speed * deltatime;
-        transform.Rotation.X += Speed * deltatime;
-    }
-}
-```
-
-Exemple C++ Component
-
-```cpp
-#pragma once
-
-#include "ECS/Base/BaseComponent.h"
-
-struct Player : public ECS::BaseComponent
-{
-    std::string Name;
-    float Level;
-};
-```
-* To create your own component you need the source code of the Fractal engine!
+* Documentation Coming Soon
 
 # Buliding C# Scripts
-
 
 You must have Mono to build a C# script.
 
@@ -76,6 +40,8 @@ The command to build:
 ```sh
 csc YourScript.cs -target:library -r:Fractal.dll
 ```
+
+<a href = "https://www.mono-project.com/docs/getting-started/mono-basics/"> More</a>
 # Bulid
 
 To bulid you need :
