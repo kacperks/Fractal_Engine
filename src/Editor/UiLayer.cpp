@@ -133,6 +133,7 @@ namespace fr {
 		icons.insert({ "mag",(ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/magnes.png") });
 		icons.insert({ "trash",(ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/trash.png") });
 		icons.insert({ "view",(ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/view.png") });
+		icons.insert({ "cs",(ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/CS.png") });
 	}
 
 	void UiLayer::SetGuiStyle() {
@@ -514,7 +515,7 @@ namespace fr {
 	}
 
 	void UiLayer::Resources() {
-		ImGui::Begin("Resources Folder", nullptr);
+		ImGui::Begin("File System", nullptr);
 		{
 			ImGui::PushStyleColor(ImGuiCol_FrameBg, dark);
 			ImGui::BeginChildFrame(ImGui::GetID("rframe"), ImVec2(0, 0));
@@ -568,48 +569,72 @@ namespace fr {
 					fr::Serializer.SaveScene("Resource/Scene/scene.fr");
 					console = console + "\n [DEBUG] Saved Scene scene.fr!";
 				}
+				ImGui::SetCurrentFont(ImGui::GetIO().Fonts->Fonts[1]);
+				ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(3, 3));
+					if (ImGui::CollapsingHeader("View Port")) {
+						ImGui::SetCurrentFont(ImGui::GetIO().Fonts->Fonts[0]);
+						if (Widget::ToolButton::Show(icons.at("move"))) { gizmo.Operation = ImGuizmo::OPERATION::TRANSLATE; }
+						ImGui::SameLine();
 
-				if (ImGui::CollapsingHeader("View Port")) {
-					if (Widget::ToolButton::Show(icons.at("move"))) { gizmo.Operation = ImGuizmo::OPERATION::TRANSLATE; }
-					ImGui::SameLine();
+						ImGui::SameLine();
+						if (Widget::ToolButton::Show(icons.at("rotate"))) { gizmo.Operation = ImGuizmo::OPERATION::ROTATE; }
+						ImGui::SameLine();
 
-					ImGui::SameLine();
-					if (Widget::ToolButton::Show(icons.at("rotate"))) { gizmo.Operation = ImGuizmo::OPERATION::ROTATE; }
-					ImGui::SameLine();
+						ImGui::SameLine();
+						if (Widget::ToolButton::Show(icons.at("scale"))) { gizmo.Operation = ImGuizmo::OPERATION::SCALE; }
+						ImGui::SameLine();
 
-					ImGui::SameLine();
-					if (Widget::ToolButton::Show(icons.at("scale"))) { gizmo.Operation = ImGuizmo::OPERATION::SCALE; }
-					ImGui::SameLine();
+						if (ImGui::Button("Colision")) {}
+						ImGui::SameLine();
 
-					if (ImGui::Button("Colision")) {}
-					ImGui::SameLine();
+						if (ImGui::Button(" Sound  ")) {}
+						ImGui::SameLine();
 
-					if (ImGui::Button(" Sound  ")) {}
-					ImGui::SameLine();
-
-					if (ImGui::Button("  Add   ")) {}
-				}
-				if (ImGui::CollapsingHeader("Engine")) {}
-				if (ImGui::CollapsingHeader("OpenGL")) { }
-				if (ImGui::CollapsingHeader("Editor")) { ImGui::Text("Editor Camera Speed"); ImGui::DragFloat("##intensity", &variable1, 1.0f, 0, 0, "%.1f"); }
-				if (ImGui::CollapsingHeader("Inputs")) {}
-				if (ImGui::CollapsingHeader("Physics System")) {}
-				if (ImGui::CollapsingHeader("ECS")) {}
-				if (ImGui::CollapsingHeader("Events")) {}
-				if (ImGui::CollapsingHeader("Resource")) {}
-				if (ImGui::CollapsingHeader("Timer")) {}
+						if (ImGui::Button("  Add   ")) {}
+						ImGui::SetCurrentFont(ImGui::GetIO().Fonts->Fonts[1]);
+					}
+					if (ImGui::CollapsingHeader("Engine")) {}
+					if (ImGui::CollapsingHeader("OpenGL")) {}
+					if (ImGui::CollapsingHeader("Editor")) { ImGui::Text("Editor Camera Speed"); ImGui::DragFloat("##intensity", &variable1, 1.0f, 0, 0, "%.1f"); }
+					if (ImGui::CollapsingHeader("Inputs")) {}
+					if (ImGui::CollapsingHeader("Physics System")) {}
+					if (ImGui::CollapsingHeader("ECS")) {}
+					if (ImGui::CollapsingHeader("Events")) {}
+					if (ImGui::CollapsingHeader("Resource")) {}
+					if (ImGui::CollapsingHeader("Timer")) {}
+					ImGui::PopStyleVar();
+					ImGui::SetCurrentFont(ImGui::GetIO().Fonts->Fonts[0]);
 		}
 		ImGui::End();
 	}
+
+
 	void UiLayer::AssetBrowser() {
+		/*
+		int AssetsCount = 0;
 		ImGui::Begin("Asset Browser");
 		{
+			ImGui::PushStyleColor(ImGuiCol_FrameBg, dark);
+			ImGui::BeginChildFrame(ImGui::GetID("toolbar"), ImVec2(0, 32));
+			{
+				if (ImGui::Button("Add New Asset")) {
+					AssetsCount++;
+				}
+			}
+			ImGui::PopStyleColor();
+			ImGui::EndChildFrame();
+		}
 
+		for (int i = 0; i < AssetsCount; i++) {
+			ImGui::Button("Asset");
 		}
 		ImGui::End();
+		*/
 	}
 
 	void UiLayer::Entities() {
+
+		static const char* Objects[] = { "Camera","Mesh", "Point Light" , "Diractional Light" , "Empty"};
 
 		ImGui::Begin("Entities", nullptr);
 		{
@@ -648,15 +673,15 @@ namespace fr {
 
 			// entities
 
-			ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(8,8));			
+			ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(8, 8));
 			ImGui::PushStyleColor(ImGuiCol_FrameBg, dark);
-			ImGui::BeginChildFrame(ImGui::GetID("eframe"), ImVec2(0,0));
+			ImGui::BeginChildFrame(ImGui::GetID("eframe"), ImVec2(0, 0));
 			{
 				for (const auto& entity : entities) {
 					lastSelectedEntity = selectedEntity;
 					selectedEntity = Widget::Selectable::Show(std::get<1>(entity).c_str(), std::get<0>(entity), selectedEntity, std::get<2>(entity));
-					if (selectedEntity != lastSelectedEntity) { 
-						InitCompUI(); 
+					if (selectedEntity != lastSelectedEntity) {
+						InitCompUI();
 						gizmo.cTransform = &ECS::Manager.GetComponent<Transform>(selectedEntity);
 						gizmo.Model = gizmo.cTransform->Model();
 					}
@@ -665,8 +690,9 @@ namespace fr {
 			ImGui::PopStyleVar();
 			ImGui::PopStyleColor();
 			ImGui::EndChildFrame();
+
+			ImGui::End();
 		}
-		ImGui::End();
 	}
 
 	// ACTIONS
@@ -706,12 +732,7 @@ namespace fr {
 		selectedEntity = entity.GetID();
 		auto name = "Entity" + std::to_string(selectedEntity);
 		entity.AddComponent<EntityName>(name.c_str());
-		entity.AddComponent<Transform>();
-
-		//if (entity.HasComponent<CsScript>()) {
-			//entity.GetComponent<CsScript>().AssemblyPath = "";
-		//}
-		
+		entity.AddComponent<Transform>();	
 
 		// End
 
@@ -744,6 +765,49 @@ namespace fr {
 	void UiLayer::RemoveComponent(const char* typeName) {
 		if (selectedEntity > ECS::INVALID_ENTITY) {
 			ECS::Manager.RemoveComponent(selectedEntity, typeName);
+			InitCompUI();
+		}
+	}
+
+	void UiLayer::AddReady(const char* Name) {
+		static const char* Objects[] = { "Camera","Mesh", "Point Light", "Empty" };
+		if (Name == "Camera") {
+			ECS::Entity entity;
+			selectedEntity = entity.GetID();
+			auto name = "Camera" + std::to_string(selectedEntity);
+			entity.AddComponent<EntityName>(name.c_str());
+			entity.AddComponent<Transform>();
+			entity.AddComponent<Camera>();
+
+			// End
+
+			AddExistingEntity(entity.GetID());
+			InitCompUI();
+		}
+		if (Name == "Mesh") {
+			ECS::Entity entity;
+			selectedEntity = entity.GetID();
+			auto name = "Mesh" + std::to_string(selectedEntity);
+			entity.AddComponent<EntityName>(name.c_str());
+			entity.AddComponent<Transform>();
+			entity.AddComponent<MeshRenderer>();
+
+			// End
+
+			AddExistingEntity(entity.GetID());
+			InitCompUI();
+		}
+		if (Name == "Point Light") {
+			ECS::Entity entity;
+			selectedEntity = entity.GetID();
+			auto name = "PointLight" + std::to_string(selectedEntity);
+			entity.AddComponent<EntityName>(name.c_str());
+			entity.AddComponent<Transform>();
+			entity.AddComponent<PointLight>();
+
+			// End
+
+			AddExistingEntity(entity.GetID());
 			InitCompUI();
 		}
 	}

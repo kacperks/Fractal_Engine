@@ -39,17 +39,34 @@ public:
 	void Show() override {
 		
 		if (ImGui::CollapsingHeader("C# Script")) {
-			
+			//ImGui::SetCurrentFont(ImGui::GetIO().Fonts->Fonts[1]);
+			ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, FRAME_PADDING);
+			ImGui::PushStyleColor(ImGuiCol_FrameBg, DARK);
+
+			ImGui::BeginChildFrame(ImGui::GetID("RB"), ImVec2(0, 110));
+
+			ImGui::PopStyleVar();
+			ImGui::PopStyleColor();
+
+			ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(3, 3));
+
 			if (ImGui::InputText("Script FileName", buf, IM_ARRAYSIZE(buf))) { script->AssemblyPath = "Resource/Scripts/" + std::string(buf); }
+
 			if (ImGui::Button("Clear")) { script->AssemblyPath = ""; }
+
 			ImGui::SameLine();
+
 			if (ImGui::Button("Edit Script")) { system("code Resource/Scripts/."); }
 
 			if (ImGui::InputText("Class Name", buf2, IM_ARRAYSIZE(buf2))) { script->ClassName = std::string(buf2); }
+
 			if (ImGui::Button("Clear")) { script->ClassName = ""; }
 
 			strcpy_s(buf, script->AssemblyPath.c_str());
+
 			strcpy_s(buf2, script->ClassName.c_str());
+			ImGui::PopStyleVar();
+			ImGui::EndChildFrame();
 		}
 	}
 	private:
@@ -57,3 +74,4 @@ public:
 		char buf[40];
 		char buf2[20];
 };
+

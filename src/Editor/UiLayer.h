@@ -84,6 +84,7 @@ namespace fr {
 		void RemoveComponent(const char* typeName);
 
 		void AddAsset(const char* Name);
+		void AddReady(const char* Name);
 
 		void InitCompUI();
 		void TransformGizmo();

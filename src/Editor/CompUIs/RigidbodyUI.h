@@ -40,14 +40,22 @@ public:
 		}
 	}
 	void Show() override {
+
 		if (ImGui::CollapsingHeader("Rigidbody")) {
+			ImGui::PushStyleColor(ImGuiCol_FrameBg, DARK);
+			ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(3, 3));
+			ImGui::BeginChildFrame(ImGui::GetID("RB"), ImVec2(0, 55));
 			ImGui::Button("Mass");
 			ImGui::SameLine();
 			ImGui::DragFloat("##Mass", &rb->Mass, 1.0f, 0, 0, "%.1f");
 			ImGui::Button("Gravity scale");
 			ImGui::SameLine();
 			ImGui::DragFloat("##Gs", &rb->GravityScale, 1.0f, 0, 0, "%.1f");
+			ImGui::PopStyleColor();
+			ImGui::PopStyleVar();
+			ImGui::EndChildFrame();
 		}
+
 	}
 
 private:
