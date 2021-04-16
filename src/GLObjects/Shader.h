@@ -1,7 +1,5 @@
 #pragma once
 
-#include "../fractal.hpp"
-
 class Shader {
 
 public:

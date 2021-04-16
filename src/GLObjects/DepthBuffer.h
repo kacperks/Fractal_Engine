@@ -1,7 +1,7 @@
 #pragma once
 
 #pragma once
-#include "../fractal.hpp"
+
 class DepthBuffer {
 
 public:
