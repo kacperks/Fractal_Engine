@@ -23,16 +23,9 @@
 
 #include <fstream>
 
-#ifdef FRACTAL_WINDOWS
-	#include <windows.h>
-#endif // FRACTAL_WINDOWS
-
-#ifdef FRACTAL_LINUX
-	#include <bits/stdc++.h>
-#endif
-
 namespace fr {
 	char buf[20];
+	char bufr[40];
 	std::string console = "Fractal Debug Console";
 	const ImVec4 dark = ImVec4(0.17f, 0.17f, 0.17f, 1.0f);
 	static const char* names[] = { "Camera", "RigidBody", "MeshRenderer",
@@ -356,7 +349,9 @@ namespace fr {
 				if (ImGui::MenuItem("About Fractal Engine")) {}
 				ImGui::EndMenu();
 			}
-			ImGui::Dummy(ImVec2(850, 0));
+			ImGui::Dummy(ImVec2(810, 0));
+
+			if (Widget::ToolButton::Show(icons.at("save"))) { fr::Serializer.SaveScene("Resource/Scene/scene.fr"); console = console + "\n [DEBUG] Saved Scene scene.fr!";}
 			if (Widget::ToolButton::Show(icons.at("move"))) { gizmo.Operation = ImGuizmo::OPERATION::TRANSLATE; console = console + "\n [DEBUG] Tool Move "; }
 			if (Widget::ToolButton::Show(icons.at("rotate"))) { gizmo.Operation = ImGuizmo::OPERATION::ROTATE;  console = console + "\n [DEBUG] Tool Rotate "; }
 			if (Widget::ToolButton::Show(icons.at("scale"))) { gizmo.Operation = ImGuizmo::OPERATION::SCALE; console = console + "\n [DEBUG] Tool Scale "; }
@@ -422,7 +417,7 @@ namespace fr {
 			ImGui::BeginChildFrame(ImGui::GetID("sceneFrame"), ImVec2(0,0), ImGuiWindowFlags_NoScrollbar);
 			{	
 				const ImVec2& size = ImGui::GetWindowSize();
-				ImGui::Image(sceneFrameTexture, size, ImVec2(0,1), ImVec2(1,0));		
+				ImGui::Image(sceneFrameTexture, size, ImVec2(0,1), ImVec2(1,0));	
 				const ImVec2& pos = ImGui::GetWindowPos();
 				viewRect = { pos.x, pos.y, size.x, size.y };				
 				TransformGizmo();
@@ -431,29 +426,6 @@ namespace fr {
 			ImGui::EndChildFrame();
 		}
 		ImGui::End();
-	}
-
-	void UiLayer::SceneTools() {
-		ImGui::Begin("Scene Tools");
-
-					if (Widget::ToolButton::Show(icons.at("move"))) { gizmo.Operation = ImGuizmo::OPERATION::TRANSLATE; console = console + "\n [DEBUG] Tool Move "; }
-					ImGui::SameLine();
-					ImGui::Dummy(ImVec2(2, 0));
-
-					ImGui::SameLine();
-					if (Widget::ToolButton::Show(icons.at("rotate"))) { gizmo.Operation = ImGuizmo::OPERATION::ROTATE;  console = console + "\n [DEBUG] Tool Rotate "; }
-					ImGui::SameLine();
-
-					ImGui::SameLine();
-					if (Widget::ToolButton::Show(icons.at("scale"))) { gizmo.Operation = ImGuizmo::OPERATION::SCALE; console = console + "\n [DEBUG] Tool Scale "; }
-					ImGui::SameLine();
-					if (Widget::ToolButton::Show(icons.at("play"))) {
-						Core.StartGame();
-					}
-					ImGui::SameLine();
-					ImGui::Dummy(ImVec2(2, 0));
-					ImGui::SameLine();
-				ImGui::End();
 	}
 
 	void UiLayer::Components() {
@@ -562,37 +534,31 @@ namespace fr {
 		ImGui::Begin("ToolBar", nullptr);
 		{
 				if (ImGui::Button("Play Game")) { Core.StartGame(); }
+
 				ImGui::SameLine();
-				if (ImGui::Button("Play Scene")) { Core.StartGame(); }
+				ImGui::NextColumn();
+
+				ImGui::Text("Play Scene");
 				ImGui::SameLine();
+				if (ImGui::ArrowButton("Play Scene", ImGuiDir_Right)) { Core.StartGame(); }
+
+				ImGui::SameLine();
+				ImGui::NextColumn();
+
 				if (ImGui::Button("Save Scene")) {
 					fr::Serializer.SaveScene("Resource/Scene/scene.fr");
 					console = console + "\n [DEBUG] Saved Scene scene.fr!";
 				}
-				ImGui::SetCurrentFont(ImGui::GetIO().Fonts->Fonts[1]);
 				ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(3, 3));
+				/*
 					if (ImGui::CollapsingHeader("View Port")) {
-						ImGui::SetCurrentFont(ImGui::GetIO().Fonts->Fonts[0]);
-						if (Widget::ToolButton::Show(icons.at("move"))) { gizmo.Operation = ImGuizmo::OPERATION::TRANSLATE; }
+						if (Widget::ToolButton::Show(icons.at("move"))) { gizmo.Operation = ImGuizmo::OPERATION::TRANSLATE; console = console + "\n [DEBUG] Tool Move "; }
 						ImGui::SameLine();
-
+						if (Widget::ToolButton::Show(icons.at("rotate"))) { gizmo.Operation = ImGuizmo::OPERATION::ROTATE;  console = console + "\n [DEBUG] Tool Rotate "; }
 						ImGui::SameLine();
-						if (Widget::ToolButton::Show(icons.at("rotate"))) { gizmo.Operation = ImGuizmo::OPERATION::ROTATE; }
-						ImGui::SameLine();
-
-						ImGui::SameLine();
-						if (Widget::ToolButton::Show(icons.at("scale"))) { gizmo.Operation = ImGuizmo::OPERATION::SCALE; }
-						ImGui::SameLine();
-
-						if (ImGui::Button("Colision")) {}
-						ImGui::SameLine();
-
-						if (ImGui::Button(" Sound  ")) {}
-						ImGui::SameLine();
-
-						if (ImGui::Button("  Add   ")) {}
-						ImGui::SetCurrentFont(ImGui::GetIO().Fonts->Fonts[1]);
+						if (Widget::ToolButton::Show(icons.at("scale"))) { gizmo.Operation = ImGuizmo::OPERATION::SCALE; console = console + "\n [DEBUG] Tool Scale "; }
 					}
+					*/
 					if (ImGui::CollapsingHeader("Engine")) {}
 					if (ImGui::CollapsingHeader("OpenGL")) {}
 					if (ImGui::CollapsingHeader("Editor")) { ImGui::Text("Editor Camera Speed"); ImGui::DragFloat("##intensity", &variable1, 1.0f, 0, 0, "%.1f"); }
@@ -603,7 +569,7 @@ namespace fr {
 					if (ImGui::CollapsingHeader("Resource")) {}
 					if (ImGui::CollapsingHeader("Timer")) {}
 					ImGui::PopStyleVar();
-					ImGui::SetCurrentFont(ImGui::GetIO().Fonts->Fonts[0]);
+
 		}
 		ImGui::End();
 	}

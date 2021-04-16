@@ -6,5 +6,6 @@
 #include "CompUIs/NameTagUI.h"
 #include "CompUIs/PointLightUI.h"
 #include "CompUIs/TransformUI.h"
+#include "CompUIs/CSUI.h"
 
 #include "Controls/Widgets.h"
