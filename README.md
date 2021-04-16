@@ -18,9 +18,9 @@ Features to do:
 
 * Launcher
 * Bulid system
-* 2D version
 * Lua Scripting
 * Cmake Bulid
+* Asset Browser
 
 # Screen Shot
 
