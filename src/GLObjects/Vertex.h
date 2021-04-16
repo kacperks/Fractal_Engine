@@ -1,5 +1,7 @@
 #pragma once
 
+#include "../fractal.hpp"
+
 struct Vertex {
 	Vertex() = default;
 	Vertex(float x, float y, float z): Position(glm::vec3(x, y, z)){}

@@ -37,38 +37,64 @@ extern "C"
 
 // HEADERS
 
-//#include "Gui/Gui.h"
-#include "GLObjects/GLthings.hpp"
-#include "Errors/ErrorLog.h"
-#include "Inputs/Inputs.h"
-#include "Resource/Resource.h"
-//#include "Gui/Gui.h"
-#include "ECS/ECS.h"
-#include "vendor/imgui/imgui.h"
-#include "Engine/Engine.h"
-#include "Timer/Timer.h"
-#include "Events/Events.h"
-#include "ECS/Base/BaseComponent.h"
-#include "ECS/Base/BaseSystem.h"
-#include "ECS/Base/CompList.h"
-#include "ECS/Base/Entity.h"
-#include "ECS/Base/EntityManager.h"
-#include "ECS/Base/Types.h"
-#include "Serializer/XMLSerializer.h"
-#include "Editor/UiLayer.h"
-#include "Events/EventsCore.hpp"
-#include "Editor/Ecore.hpp"
+    #include "Errors/ErrorLog.h"
 
-#include "Lua/LuaMgr.hpp"
+    #include "Inputs/Inputs.h"
+
+    #include "Resource/Resource.h"
+
+    #include "ECS/ECS.h"
+
+    #include "Engine/Engine.h"
+
+    #include "Timer/Timer.h"
+
+    // ECS Headers
+    #include "ECS/Base/BaseComponent.h"
+    #include "ECS/Base/BaseSystem.h"
+    #include "ECS/Base/EntityManager.h"
+    #include "ECS/Components/CsScript.h"
+    #include "ECS/Components/EntityName.h"
+
+    #include "Editor/UiLayer.h"
+
+    // XML Heders
+
+    #include "Serializer/XMLSerializer.h"
+
+    // Events Headers
+
+    #include "Events/AppEvents.h"
+    #include "Events/Dispatcher.h"
+    #include "Events/Event.h"
+    #include "Events/EventSystem.h"
+    #include "Events/GLFWImp.h"
+    #include "Events/KeyEvents.h"
+    #include "Events/MouseEvents.h"
+    #include "Events/WindowEvents.h"
+    #include "Editor/Ecore.hpp"
+    // GL Headers
+
+    #include "GLObjects/ColorBuffer.h"
+    #include "GLObjects/DepthBuffer.h"
+    #include "GLObjects/GLMesh.h"
+    #include "GLObjects/GLQuad.h"
+    #include "GLObjects/Material.h"
+    #include "GLObjects/Model.h"
+    #include "GLObjects/SamplerBuffer.h"
+    #include "GLObjects/Shader.h"
+    #include "GLObjects/Vertex.h"
+    #include "GLObjects/VertexArray.h"
 
 // Core
 
 #include "core.hpp"
 
+// MONO
 
-// SFML
-
-#include <SFML/Graphics.hpp>
+#include <mono/jit/jit.h>
+#include <mono/metadata/assembly.h>
+#include <mono/metadata/debug-helpers.h>
 
 // OPENGL
 
@@ -89,12 +115,12 @@ extern "C"
 
 // VENDOR_
 
-#include "vendor/IMGUI/imgui.h"
 #include "vendor/STB/stb_image.h"
 
-#ifdef FRACTAL_WINDOW
-#pragma comment(lib, "vendor/LUA/liblua54.a")
-#endif
+#include "vendor/imgui/imgui.h"
+#include "vendor/imgui/imgui_impl_glfw.h"
+#include "vendor/imgui/imgui_impl_opengl3.h"
 
+#include "vendor/GUIZMO/ImGuizmo.h"
 
 #endif

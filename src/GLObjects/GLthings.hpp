@@ -2,7 +2,6 @@
 
 #include "ColorBuffer.h"
 #include "DepthBuffer.h"
-#include "FrameBuffer.h"
 #include "GLMesh.h"
 #include "GLQuad.h"
 #include "Material.h"

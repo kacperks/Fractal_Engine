@@ -5,11 +5,11 @@
 #define WINDOW_HEIGH 720
 
 #if defined(_WIN32)
-#define FRACTAL_WINDOW
+#define FR_WINDOW
 #elif defined(__linux__)
-#define FRACTEL_LINUX
+#define FR_LINUX
 #elif defined(__APPLE__)
-#define FRACTAL_APPLE
+#define FR_APPLE
 #else
 	#error Not Supported Platform!
 #endif
@@ -19,6 +19,7 @@
 #ifdef FR_WINDOW
 	// window platform related stuff
     #include <windows.h>
+	#pragma comment(lib, "vendor/LUA/liblua54.a")
 #endif
 
 #ifdef FR_LINUX
@@ -29,7 +30,6 @@
 #ifdef FR_APPLE
 	// mac platform related stuff
 #endif
-
 namespace fr{
 	
 };

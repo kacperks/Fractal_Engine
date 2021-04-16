@@ -2,14 +2,10 @@
 
 using namespace fr;
 
-bool start = true;
 const char* SceneName;
-char buf[20];
 
 int main(int argc, char** argv) {
-
 	SceneName = "Resource/Scene/scene.fr";
-	if (start == true) {
 		Resource.Initialize();
 		Core.Initialize(SceneName);
 		Timer.Initialize();
@@ -22,6 +18,4 @@ int main(int argc, char** argv) {
 		}
 
 		return EXIT_SUCCESS;
-	}
-
 }

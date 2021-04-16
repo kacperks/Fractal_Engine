@@ -6,7 +6,8 @@
 #include <ASSIMP/postprocess.h>
 
 #include "GLMesh.h"
-#include "Vendor/STB/stb_image.h"
+#include "../vendor/STB/stb_image.h"
+#include "../fractal.hpp"
 
 class Model3D {
 
