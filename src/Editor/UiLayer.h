@@ -71,6 +71,7 @@ struct ViewPortRect {
 		void SceneTools();
 		void AssetBrowser();
 		void About();
+		void NameDialog();
 
 		// ACTIONS
 

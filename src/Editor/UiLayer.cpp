@@ -25,8 +25,12 @@
 
 namespace fr {
 	bool ed = true;
+	bool NameD;
 	char buf[20];
 	char bufr[40];
+	char bufrotto[30];
+	bool ok;
+	std::string NAMET;
 	std::string console = "Fractal Debug Console";
 	const ImVec4 dark = ImVec4(0.17f, 0.17f, 0.17f, 1.0f);
 	static const char* names[] = { "Camera", "RigidBody", "MeshRenderer",
@@ -34,7 +38,7 @@ namespace fr {
 	float variable1 = 50;
 	//CsScript script;
 
-	static const char* AssetNames[] = { "C# script","C++ Script", "Folder" , "C++ Component" , "Lua Script" , "GLSL Shader"};
+	static const char* AssetNames[] = { "C# script","C++ Script", "Folder" , "Lua Script" , "GLSL Shader" , "Material", "Mesh"};
 	bool IS;
 	UiLayer::UiLayer() {
 		viewRect.W = SCREEN_WIDTH;
@@ -100,7 +104,9 @@ namespace fr {
 		if (ed == true) {
 			SceneSelector();
 		}
-		
+		if (NameD == true) {
+			NameDialog();
+		}
 
 		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
@@ -374,6 +380,19 @@ namespace fr {
 		}
 	}
 
+	void UiLayer::NameDialog() {
+		ImGui::Begin("Type Name !", &NameD);
+
+		if(ImGui::InputText("Name ", bufrotto, IM_ARRAYSIZE(bufrotto))){
+		}
+
+		ImGui::SameLine();
+
+		if (ImGui::Button("OK")) { ok = true; NAMET = std::string(bufrotto); NameD = false; }
+
+		ImGui::End();
+	}
+
 	void UiLayer::Viewport() {		
 		ImGui::Begin("Scene", nullptr);
 		{			
@@ -452,7 +471,7 @@ namespace fr {
 					ImGui::OpenPopup("compPopup");
 				}
 				ImGui::SameLine();
-				if (Widget::ToolButton::Show(icons.at("trash"), 20.0f)) {}
+				if (Widget::ToolButton::Show(icons.at("trash"), 20.0f)) { ImGui::OpenPopup("compPopup9"); }
 				ImGui::SameLine();
 				if (ImGui::BeginPopup("compPopup")) {
 					ImGui::Text("Components");
@@ -462,6 +481,19 @@ namespace fr {
 						if (ImGui::Selectable(names[i])) {
 							AddComponent(names[i]);
 							console = console + "\n [ECS] Added Component " + names[i];
+						}
+					}
+					ImGui::EndPopup();
+				}
+				ImGui::SameLine();
+				if (ImGui::BeginPopup("compPopup9")) {
+					ImGui::Text("Components");
+					ImGui::Separator();
+
+					for (size_t i = 0; i < IM_ARRAYSIZE(names); i++) {
+						if (ImGui::Selectable(names[i])) {
+							RemoveComponent(names[i]);
+							console = console + "\n [ECS] Removed Component " + names[i];
 						}
 					}
 					ImGui::EndPopup();
@@ -786,14 +818,14 @@ namespace fr {
 
 	void UiLayer::AddAsset(const char* Name) {
 		if (Name == "C# script") {
-			std::fstream file;
-			std::string Path = "Resource/Scripts/Script";
-			std::string f = ".cs";
-			file.open(Path + f, std::ios::out);
-			std::string code;
-			code = "using Fractal;\n\npublic class TestScript : FractalScript\n{\n    public void Start() { // Start Function \n \n \n    }\n    public void Update(float deltatime, ref Transform transform){ \n \n    } \n }";
-			file << code << std::endl;
-			file.close();
+				std::fstream file;
+				std::string Path = "Resource/Scripts/NewCs";
+				std::string f = ".cs";
+				file.open(Path + f, std::ios::out);
+				std::string code;
+				code = "using Fractal;\n\npublic class TestScript : FractalScript\n{\n    public void Start() { // Start Function \n \n \n    }\n    public void Update(float deltatime, ref Transform transform){ \n \n    } \n }";
+				file << code << std::endl;
+				file.close();
 		}
 		if (Name == "GLSL Shader") {
 			std::fstream file;
@@ -827,21 +859,11 @@ namespace fr {
 		if (Name == "C++ Script") {
 			std::fstream file;
 			std::string Path = "Resource/Scripts/CppScript";
-			std::string f = ".h";
+			std::string f = ".hpp";
 			file.open(Path + f, std::ios::out);
 			std::string code;
-			code = "#pragma once";
+			code = "#pragma once\n #include <ECS/Base/BaseSystem.h> \n ";
 			file << code << std::endl;
-			file.close();
-
-
-			std::fstream file2;
-			std::string Path2 = "Resource/Scripts/CppScript";
-			std::string f2 = ".cpp";
-			file.open(Path2 + f2, std::ios::out);
-			std::string code2;
-			code2 = "#include 'CppScript.h'";
-			file << code2 << std::endl;
 			file.close();
 		}
 	}
@@ -906,7 +928,7 @@ namespace fr {
 		uint32_t count = 0;
 		static int selection_mask = 0;
 		for (const auto& entry : std::filesystem::recursive_directory_iterator(directoryPath)) { count++; }
-		auto clickState = DirectoryTreeViewRecursive(directoryPath, &count, &selection_mask);
+		auto clickState = DirectoryTreeViewRecursive(directoryPath, &count, &selection_mask); 
 	}
 
 	std::pair<bool, uint32_t> UiLayer::DirectoryTreeViewRecursive(const std::filesystem::path& path, uint32_t* count, int* selection_mask) {
@@ -931,13 +953,15 @@ namespace fr {
 
 			bool node_open = false;
 			bool entryIsFile = !std::filesystem::is_directory(entry.path());
-			if (entryIsFile) {
-				node_flags |= ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_NoTreePushOnOpen;
-			}
-			else {
+			if (entryIsFile == false) {
 				ImGui::Image(icons.at("folder"), ImVec2(15.0f, 15.0f), ImVec2(0, 1), ImVec2(1, 0));
 				ImGui::SameLine();
 				node_open = ImGui::TreeNodeEx((void*)(intptr_t)(*count), node_flags, name.c_str());
+			}
+			else {
+				ImGui::Image(icons.at("obj"), ImVec2(15.0f, 15.0f), ImVec2(0, 1), ImVec2(1, 0));
+				ImGui::SameLine();
+				ImGui::Text(name.c_str());
 			}
 
 			if (ImGui::IsItemClicked()) {
