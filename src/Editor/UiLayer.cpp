@@ -24,6 +24,7 @@
 #include <fstream>
 
 namespace fr {
+	bool ed = true;
 	char buf[20];
 	char bufr[40];
 	std::string console = "Fractal Debug Console";
@@ -77,8 +78,7 @@ namespace fr {
 		compUIs.push_back(std::move(std::make_shared<CamUI>()));
 
 		console += "\n [Editor] Starting Fractal Editor...";
-		console += "\n [Editor] Fractal Editor 13.04.2021";
-		console += "\n [XMLserializer] Loaded Scene 'scene.fr' ! ";
+		console += "\n [Editor] Fractal Editor 18.04.2021";
 	}
 
 	void UiLayer::Display() {
@@ -96,6 +96,11 @@ namespace fr {
 		ToolBar();
 		Console();
 		AssetBrowser();
+
+		if (ed == true) {
+			SceneSelector();
+		}
+		
 
 		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
@@ -127,6 +132,16 @@ namespace fr {
 		icons.insert({ "trash",(ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/trash.png") });
 		icons.insert({ "view",(ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/view.png") });
 		icons.insert({ "cs",(ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/CS.png") });
+		icons.insert({ "log",(ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/Logo.png") });
+	}
+
+	void UiLayer::SceneSelector() {
+		ImGui::Begin("Welcome To Fractal Engine!", &ed);
+		ImGui::Text("Whats New?");
+		ImGui::Text("- Better C# Scripting System");
+		ImGui::Text("- Better UI");
+		ImGui::Text("- Prototype of Lua Scripting!");
+		ImGui::End();
 	}
 
 	void UiLayer::SetGuiStyle() {
@@ -321,14 +336,12 @@ namespace fr {
 				ImGui::EndMenu();
 			}
 			if (ImGui::BeginMenu("Settings")) {
-				if (ImGui::MenuItem("Normal Theme")) { SetGuiStyle(); }
-				if (ImGui::MenuItem("Dark Theme")) { DarkTheme(); }
-				if (ImGui::MenuItem("Light Theme")) {}
+				if (ImGui::MenuItem("Style Editor")) {  }
 				ImGui::EndMenu();
 			}
 			if (ImGui::BeginMenu("Window")) {
 				if (ImGui::MenuItem("Fractal Store", "soon")) {}
-				if (ImGui::MenuItem("Inspector")) { Components(); InitCompUI(); }
+				if (ImGui::MenuItem("Inspector")) { }
 				if (ImGui::MenuItem("Entities")) { Entities(); }
 				if (ImGui::MenuItem("Console")) {  }
 				if (ImGui::MenuItem("Resources")) {  }
@@ -349,13 +362,13 @@ namespace fr {
 				if (ImGui::MenuItem("About Fractal Engine")) {}
 				ImGui::EndMenu();
 			}
-			ImGui::Dummy(ImVec2(810, 0));
-
+			ImGui::Dummy(ImVec2(660, 0));
+			ImGui::Text(" %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 			if (Widget::ToolButton::Show(icons.at("save"))) { fr::Serializer.SaveScene("Resource/Scene/scene.fr"); console = console + "\n [DEBUG] Saved Scene scene.fr!";}
 			if (Widget::ToolButton::Show(icons.at("move"))) { gizmo.Operation = ImGuizmo::OPERATION::TRANSLATE; console = console + "\n [DEBUG] Tool Move "; }
 			if (Widget::ToolButton::Show(icons.at("rotate"))) { gizmo.Operation = ImGuizmo::OPERATION::ROTATE;  console = console + "\n [DEBUG] Tool Rotate "; }
 			if (Widget::ToolButton::Show(icons.at("scale"))) { gizmo.Operation = ImGuizmo::OPERATION::SCALE; console = console + "\n [DEBUG] Tool Scale "; }
-			ImGui::Text("Fractal Editor 14.03.2021");
+			ImGui::Text("Fractal Editor 18.03.2021");
 
 			ImGui::EndMenuBar();
 		}
@@ -522,13 +535,6 @@ namespace fr {
 			ImGui::EndChildFrame();
 		}
 		ImGui::End();		
-	}
-
-	void UiLayer::CodeEditor() {
-		ImGui::Begin("Scripter", nullptr);
-		{
-			ImGui::PushStyleColor(ImGuiCol_FrameBg, dark);
-		}
 	}
 	void UiLayer::ToolBar() {
 		ImGui::Begin("ToolBar", nullptr);

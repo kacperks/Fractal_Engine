@@ -7,7 +7,9 @@
 namespace fr {
 
 	// SCENE
+// SCENE
 	void XMLSerializer::LoadScene(const char* filename) {
+		UiLayer::AddToConsole(" [XMLSerializer] Loaded scene.fr!");
 		tinyxml2::XMLDocument document;
 		document.LoadFile(filename);
 		if (document.Error()) { 
@@ -20,10 +22,11 @@ namespace fr {
 		for (XMLElement* e = root->FirstChildElement(); e != nullptr; e = e->NextSiblingElement()) {
 			const ECS::EntityID entityid = ECS::Manager.AddNewEntity();			
 			LoadEntity(e, entityid);
-			fr::UI.AddExistingEntity(entityid);
+			Orbit3D::UI.AddExistingEntity(entityid);
 		}
 	}
 	void XMLSerializer::SaveScene(const char* filename) {
+		UiLayer::AddToConsole(" [XMLSerializer] Saved scene.fr!");
 		FILE* pFile;
 		fopen_s(&pFile, filename, "w");
 		tinyxml2::XMLPrinter printer(pFile);

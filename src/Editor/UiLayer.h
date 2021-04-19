@@ -40,6 +40,7 @@ struct ViewPortRect {
 		static void AddToConsole(std::string Log);
 		void LightTheme();
 		void DarkTheme();
+		void RemoveAllEnt();
 		void AddExistingEntity(const size_t entity);
 		void SetGizmoViewProjection(glm::mat4 view, glm::mat4 proj) {
 			gizmo.View = view;

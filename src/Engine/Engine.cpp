@@ -12,7 +12,7 @@
 
 namespace fr {
 
-		Engine::~Engine() {
+	Engine::~Engine() {
 		glfwTerminate();
 	}
 
@@ -31,7 +31,7 @@ namespace fr {
 		glfwWindowHint(GLFW_GREEN_BITS, vMode->greenBits);
 		glfwWindowHint(GLFW_REFRESH_RATE, vMode->refreshRate);
 
-		window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGH, "Fractal Engine BETA 1.10", nullptr, nullptr);
+		window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGH, "Fractal Engine BETA 1.12", nullptr, nullptr);
 		assert(window && "ERROR::GFLW::FAILED TO CREATE WINDOW!");
 		glfwMakeContextCurrent(window);
 
@@ -95,8 +95,7 @@ namespace fr {
 
 		ECS::Manager.ActivateEditorSystems();
 		ECS::Manager.Start();
-
-		Orbit3D::UI.Initialiaze();
+		fr::UI.Initialiaze();
 		Serializer.LoadScene(scene);
 
 		glfwSetKeyCallback(window, GlfwImpl::KeyboardCallback);
@@ -132,7 +131,7 @@ namespace fr {
 		GLCALL(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT));
 
 		if (!isGameRunnig) {
-			Orbit3D::UI.Display();
+			fr::UI.Display();
 		}
 		else {			
 			ECS::Manager.Render();
@@ -142,12 +141,14 @@ namespace fr {
 	}
 
 	void Engine::StartGame() {		
+		Serializer.SaveScene("Resource/Scene/scene.fr");
 		ECS::Manager.DeactivateEditorSystems();
 		ECS::Manager.ActivateRuntimeSystems();
 		isGameRunnig = true;
 	}
 
 	void Engine::StopGame() {
+		//Serializer.LoadScene("Resource/Scene/scene.fr");
 		isGameRunnig = false;
 		ECS::Manager.DeactivateRuntimeSystems();
 		ECS::Manager.ActivateEditorSystems();
