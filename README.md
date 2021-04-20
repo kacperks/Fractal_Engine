@@ -16,6 +16,7 @@ Features:
 
 Features to do:
 
+* Collision system
 * Launcher
 * Bulid system
 * Lua Scripting
