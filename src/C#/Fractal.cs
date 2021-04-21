@@ -93,8 +93,8 @@ namespace Fractal
     public struct CsScript
     {
         private int Entity;
-        public string Class;
-        public string FileName;
+        public string ClassName;
+        public string AssemblyPath;
         public int EntityID { get { return Entity; } }
     }
     [StructLayout(LayoutKind.Sequential)]

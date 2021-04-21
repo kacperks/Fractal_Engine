@@ -7,7 +7,7 @@
 sstruct Transform;
 
 namespace fr {
-struct ViewPortRect { 
+	struct ViewPortRect { 
 		float X, Y, W, H = 0;
 	};
 

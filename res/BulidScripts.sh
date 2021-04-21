@@ -1,1 +1,0 @@
-csc Scripts/*.cs -target:library -r:lib/Fractal.dll

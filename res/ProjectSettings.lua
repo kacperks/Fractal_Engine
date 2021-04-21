@@ -1,6 +1,8 @@
 Name = "NewProject"
-Version = "BETA 1.9"
-StartScene = "Resource/Scene/scene.fr"
+Version = "BETA 1.12.2"
 
-ModelName = "PACK"
-ModelPath = "Resource/Models/house/house.obj"
+function start()
+    
+end
+
+-- not working yet

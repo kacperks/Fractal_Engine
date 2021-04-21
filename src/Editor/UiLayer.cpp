@@ -139,6 +139,8 @@ namespace fr {
 		icons.insert({ "view",(ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/view.png") });
 		icons.insert({ "cs",(ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/CS.png") });
 		icons.insert({ "log",(ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/Logo.png") });
+		icons.insert({ "lua",(ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/lua-logo.png") });
+		icons.insert({ "png",(ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/png.jpg") });
 	}
 
 	void UiLayer::SceneSelector() {
@@ -383,8 +385,6 @@ namespace fr {
 	void UiLayer::NameDialog() {
 		ImGui::Begin("Type Name !", &NameD);
 
-		if(ImGui::InputText("Name ", bufrotto, IM_ARRAYSIZE(bufrotto))){
-		}
 
 		ImGui::SameLine();
 
@@ -597,14 +597,45 @@ namespace fr {
 						if (Widget::ToolButton::Show(icons.at("scale"))) { gizmo.Operation = ImGuizmo::OPERATION::SCALE; console = console + "\n [DEBUG] Tool Scale "; }
 					}
 					*/
-					if (ImGui::CollapsingHeader("Engine")) {}
+					if (ImGui::CollapsingHeader("Engine")) {
+						if (ImGui::TreeNodeEx("Systems")) {
+
+							if (ImGui::TreeNodeEx("Runtime")) {
+
+								ImGui::Text("C# Script System");
+								ImGui::Text("Camera System");
+								ImGui::Text("Physics System");
+
+								ImGui::TreePop();
+							}
+
+
+							if (ImGui::TreeNodeEx("General")) {
+
+								ImGui::Text("Mesh Renderer System");
+								ImGui::Text("Model Renderer System");
+								ImGui::Text("SpotLightSystem");
+								ImGui::Text("PointLightSystem");
+								ImGui::TreePop();
+							}
+
+							ImGui::TreePop();
+						}
+					}
 					if (ImGui::CollapsingHeader("OpenGL")) {}
 					if (ImGui::CollapsingHeader("Editor")) { ImGui::Text("Editor Camera Speed"); ImGui::DragFloat("##intensity", &variable1, 1.0f, 0, 0, "%.1f"); }
 					if (ImGui::CollapsingHeader("Inputs")) {}
 					if (ImGui::CollapsingHeader("Physics System")) {}
 					if (ImGui::CollapsingHeader("ECS")) {}
 					if (ImGui::CollapsingHeader("Events")) {}
-					if (ImGui::CollapsingHeader("Resource")) {}
+					if (ImGui::CollapsingHeader("Resource")) {
+						if (ImGui::TreeNodeEx("Model")) {
+						//	if (ImGui::InputText("Model Name", bufrotto, IM_ARRAYSIZE(bufrotto))) {
+							//
+						//	}
+							ImGui::TreePop();
+						}
+					}
 					if (ImGui::CollapsingHeader("Timer")) {}
 					ImGui::PopStyleVar();
 
@@ -959,7 +990,28 @@ namespace fr {
 				node_open = ImGui::TreeNodeEx((void*)(intptr_t)(*count), node_flags, name.c_str());
 			}
 			else {
-				ImGui::Image(icons.at("obj"), ImVec2(15.0f, 15.0f), ImVec2(0, 1), ImVec2(1, 0));
+				if (name.find(".fr") < name.length()) { 
+					ImGui::Image(icons.at("Logo"), ImVec2(15.0f, 15.0f), ImVec2(0, 1), ImVec2(1, 0));
+				}
+				else if (name.find(".lua") < name.length()) {
+					ImGui::Image(icons.at("lua"), ImVec2(15.0f, 15.0f), ImVec2(0, 1), ImVec2(1, 0));
+				}
+				else if (name.find(".cs") < name.length()) {
+					ImGui::Image(icons.at("cs"), ImVec2(15.0f, 15.0f), ImVec2(0, 1), ImVec2(1, 0));
+				}
+				else if (name.find(".shader") < name.length()) {
+					ImGui::Image(icons.at("light"), ImVec2(15.0f, 15.0f), ImVec2(0, 1), ImVec2(1, 0));
+				}
+				else if (name.find(".obj") < name.length()) {
+					ImGui::Image(icons.at("mag"), ImVec2(15.0f, 15.0f), ImVec2(0, 1), ImVec2(1, 0));
+				}
+				else if (name.find(".png") < name.length()) {
+					ImGui::Image(icons.at("png"), ImVec2(15.0f, 15.0f), ImVec2(0, 1), ImVec2(1, 0));
+				}
+				else {
+					ImGui::Image(icons.at("obj"), ImVec2(15.0f, 15.0f), ImVec2(0, 1), ImVec2(1, 0));
+				}
+
 				ImGui::SameLine();
 				ImGui::Text(name.c_str());
 			}

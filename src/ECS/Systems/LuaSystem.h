@@ -4,20 +4,21 @@
 
 #include "../Components/LuaScript.h"
 
+// not finished yet
+
 class LuaSystem : public ECS::BaseSystem {
 public:
 	void Start() override {
 		for (auto entity : entities) {
 			auto& script = ECS::Manager.GetComponent<LuaScript>(entity);
-            OpenFile(script.FileName);
-            script.InvokeStart();
+			//OpenFile(script.FileName);
 		}
 	}
 
-    void Update() override {
-        
-    }
 
+	// LUA
+
+	/*
 	bool CheckLua(lua_State* L, int r)
 	{
 		if (r != LUA_OK)
@@ -49,5 +50,6 @@ public:
 			}
 		}
 	}
+	\*/
 
 };

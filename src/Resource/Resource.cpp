@@ -1,9 +1,6 @@
 #include "../fractal.hpp"
-#include "Resource.h"
-#include "../vendor/STB/stb_image.h"
-#include "../Editor/UiLayer.h"
 
-namespace Orbit3D {
+namespace fr {
 	RsrcManager::RsrcManager(){}
 
 	RsrcManager::~RsrcManager(){
@@ -193,7 +190,6 @@ namespace Orbit3D {
 
 		meshes.insert({ "SPHERE", GLMesh(vertices.data(), vertices.size(), indices.data(), indices.size()) });
 	}
-
 	void RsrcManager::LoadModel(std::string name, std::string filename) {
 		models.insert({ name, std::make_shared<Model3D>(filename) });
 		//std::cout << filename << " loaded!" << std::endl;

@@ -3,10 +3,10 @@
 #include "../GLObjects/Model.h"
 #include "../GLObjects/GLMesh.h"
 
-const std::string ICON_PATH = "../../res/Icons/";
-const std::string MODEL_PATH = "../../res/Models/";
-const std::string SHADERS_PATH = "../../res/Shaders/";
-const std::string TEXTURE_PATH = "../../res/extures/";
+const std::string ICON_PATH = "res/Icons/";
+const std::string MODEL_PATH = "res/Models/";
+const std::string SHADERS_PATH = "res/Shaders/";
+const std::string TEXTURE_PATH = "res/extures/";
 
 namespace fr {
 

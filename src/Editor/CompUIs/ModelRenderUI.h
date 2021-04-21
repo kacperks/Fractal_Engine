@@ -37,8 +37,10 @@ public:
 	}
 	void Show() override {
 		if (ImGui::CollapsingHeader("Model Renderer")) {
+			/*
 			if (ImGui::InputText("Name", buf, IM_ARRAYSIZE(buf))) { model->Name =  std::string(buf); }
 			strcpy_s(buf, model->Name.c_str());
+			*/
 		}
 	}
 
