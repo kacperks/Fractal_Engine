@@ -4,6 +4,8 @@
 
 #define WINDOW_HEIGH 720
 
+// platform stuff
+
 #if defined(_WIN32)
 #define FR_WINDOW
 #elif defined(__linux__)
@@ -14,7 +16,7 @@
 	#error Not Supported Platform!
 #endif
 
-#define VERSION = "BETA 1.11"
+#define VERSION "BETA 1.13"
 
 #ifdef FR_WINDOW
 	// window platform related stuff
@@ -30,6 +32,11 @@
 #ifdef FR_APPLE
 	// mac platform related stuff
 #endif
+
+#ifdef FR_VISUAL_CPP
+	
+#endif
+
 namespace fr{
 	
 };
