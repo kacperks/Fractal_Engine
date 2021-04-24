@@ -6,12 +6,12 @@
 struct ModelRenderer : public ECS::BaseComponent {
 	~ModelRenderer() = default;
 
-	ModelRenderer(): Name("PACK"){
-		Renderer = Orbit3D::Resource.GetModel(Name);
+	ModelRenderer(): Name("Rock"){
+		Renderer = fr::Resource.GetModel(Name);
 	}
 
 	ModelRenderer(std::string name): Name(name) {
-		Renderer = Orbit3D::Resource.GetModel(Name);
+		Renderer = fr::Resource.GetModel(Name);
 	}
 
 	std::string Name;

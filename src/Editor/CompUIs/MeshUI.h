@@ -1,8 +1,8 @@
 #pragma once
 
 #include "CompUI.h"
-#include "../../Resource/Resource.h"
-#include "../../ECS/Components/MeshRenderer.h"
+#include "Resource/Resource.h"
+#include "ECS/Components/MeshRenderer.h"
 
 class MeshUI : public CompUI {
 
@@ -32,13 +32,14 @@ public:
 			ImGui::PopStyleColor();
 			{
 				ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(3, 3));
-				if (ImGui::BeginCombo("Type", mesh->Name.c_str())) {
+
+				if (ImGui::BeginCombo("Filter", mesh->Name.c_str())) {
 					for (int item_index = 0; item_index < IM_ARRAYSIZE(items); item_index++) {
 						const bool is_selected = (currItemIndex == item_index);
 						if (ImGui::Selectable(items[item_index], is_selected)) {
-							currItemIndex = item_index;
-							mesh->Name = items[item_index];
-							mesh->Mesh = Orbit3D::Resource.GetMesh(items[item_index]);
+								currItemIndex = item_index;
+								mesh->Name = items[item_index];
+								mesh->Mesh = fr::Resource.GetMesh(items[item_index]);
 						}
 					}
 					ImGui::EndCombo();
@@ -98,6 +99,7 @@ public:
 private:
 	MeshRenderer* mesh;
 	Material* material;
+	char buffer[20];
     int currItemIndex;
-    const char* items[2] = { "CUBE", "SPHERE" };
+    const char* items[2] = { "CUBE", "SPHERE"};
 };

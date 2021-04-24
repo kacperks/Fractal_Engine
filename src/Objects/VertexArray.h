@@ -2,8 +2,6 @@
 
 #include "Vertex.h"
 
-#include "../fractal.hpp"
-
 class VertexArray {
 public:
 	~VertexArray() = default;

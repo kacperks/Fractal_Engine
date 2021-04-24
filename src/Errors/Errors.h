@@ -1,5 +1,5 @@
 #pragma once
-#include "../fractal.hpp"
+
 
 #define ASSERT(boolean) if (!(boolean)) __debugbreak();
 #define GLCALL(func) GLClearError(); func; ASSERT(GLLogCall(#func, __FILE__, __LINE__))
@@ -10,11 +10,11 @@ static void GLClearError() {
 
 static bool GLLogCall(const char* function, const char* file, int line) {
 	while (GLenum error = glGetError()) {
-		std::cout << 
+		std::cout <<
 			"\nOPENGL::RUNTIME::ERROR::[ " << error << " ]\n"
 			"FUNCTION::[ " << function << " ]\n"
 			"FILE::[ " << file << " ]\n"
-			"LINE::[ " << line << " ]" 
+			"LINE::[ " << line << " ]"
 			<< std::endl;
 		return false;
 	}

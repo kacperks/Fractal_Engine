@@ -1,12 +1,12 @@
 #pragma once
 
-#include "../../Timer/Timer.h"
-#include "../../Engine/Engine.h"
-#include "../Base/BaseSystem.h"
-#include "../Base/EntityManager.h"
+#include "Timer/Timer.h"
+#include "Engine/Engine.h"
+#include "ECS/Base/BaseSystem.h"
+#include "ECS/Base/EntityManager.h"
 
-#include "../Components/Transform.h"
-#include "../Components/RigidBody.h"
+#include "ECS/Components/Transform.h"
+#include "ECS/Components/RigidBody.h"
 
 using namespace fr;
 

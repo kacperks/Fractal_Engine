@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../../GLObjects/Shader.h"
-#include "../Base/BaseComponent.h"
+#include "Objects/Shader.h"
+#include "ECS/Base/BaseComponent.h"
 
 constexpr glm::vec3 RIGHT = glm::vec3(1, 0, 0);
 constexpr glm::vec3 FRONT = glm::vec3(0, 0, -1);

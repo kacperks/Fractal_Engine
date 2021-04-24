@@ -1,12 +1,12 @@
 #pragma once
 
-#include "../GLObjects/Model.h"
-#include "../GLObjects/GLMesh.h"
+#include "Objects/Model.h"
+#include "Objects/GLMesh.h"
 
-const std::string ICON_PATH = "res/Icons/";
-const std::string MODEL_PATH = "res/Models/";
-const std::string SHADERS_PATH = "res/Shaders/";
-const std::string TEXTURE_PATH = "res/extures/";
+const std::string ICON_PATH = "Resource/Icons/";
+const std::string MODEL_PATH = "Resource/MODELS/";
+const std::string SHADERS_PATH = "Resource/Shaders/";
+const std::string TEXTURE_PATH = "Resource/Textures/";
 
 namespace fr {
 

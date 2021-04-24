@@ -1,18 +1,18 @@
 #pragma once
 
-#include "../../Engine/Engine.h"
-#include "../../Editor/UiLayer.h"
-#include "../../Resource/Resource.h"
+#include "Engine/Engine.h"
+#include "Editor/UiLayer.h"
+#include "Resource/Resource.h"
 
-#include "../../ECS/Base/BaseSystem.h"
-#include "../../ECS/Base/EntityManager.h"
+#include "ECS/Base/BaseSystem.h"
+#include "ECS/Base/EntityManager.h"
 
-#include "../../ECS/Components/Camera.h"
-#include "../../ECS/Components/Transform.h"
+#include "ECS/Components/Camera.h"
+#include "ECS/Components/Transform.h"
 
 using namespace fr;
 
-constexpr auto SCROLL_SPEED = 20.0f;;
+constexpr auto SCROLL_SPEED = 70.0f;;
 
 class EditorCameraSystem : public ECS::BaseSystem {
 
@@ -22,7 +22,6 @@ public:
 		skybox = Shader(Resource.Program("SKYBOX"));
 		shaders[0] = Shader(Resource.Program("MESH"));
 		shaders[1] = Shader(Resource.Program("GRID"));
-		shaders[2] = Shader(Resource.Program("SPRITE"));	
 	}
 
 	void Start() {		
@@ -76,5 +75,5 @@ public:
 private:
 	Camera camera;
 	Shader skybox;
-	Shader shaders[3];
+	Shader shaders[2];
 };

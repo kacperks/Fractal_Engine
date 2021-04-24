@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../GLObjects/DepthBuffer.h"
-#include "../GLObjects/SamplerBuffer.h"
+#include "Objects/DepthBuffer.h"
+#include "Objects/SamplerBuffer.h"
 
 namespace fr {
 

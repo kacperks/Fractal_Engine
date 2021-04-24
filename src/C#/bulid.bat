@@ -1,1 +1,0 @@
-csc Fractal.cs -target:library

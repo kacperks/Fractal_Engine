@@ -1,10 +1,10 @@
 #pragma once
-#include "../Base/BaseSystem.h"
-#include "../Base/EntityManager.h"
+#include "ECS/Base/BaseSystem.h"
+#include "ECS/Base/EntityManager.h"
 
-#include "../../Resource/Resource.h"
-#include "../Components/Transform.h"
-#include "../Components/ModelRenderer.h"
+#include "Resource/Resource.h"
+#include "ECS/Components/Transform.h"
+#include "ECS/Components/ModelRenderer.h"
 
 using namespace fr;
 

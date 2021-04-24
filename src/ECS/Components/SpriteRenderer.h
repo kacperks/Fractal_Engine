@@ -7,7 +7,7 @@ struct SpriteRenderer : public ECS::BaseComponent{
 	~SpriteRenderer() = default;
 	SpriteRenderer() = default;
 	SpriteRenderer(std::string name): TexName(name) {
-		TexID = Orbit3D::Resource.Tex2D(TexName);
+		TexID = fr::Resource.Tex2D(TexName);
 	}
 
 	void SetUniform(Shader& shader) {

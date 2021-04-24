@@ -1,10 +1,24 @@
 #pragma once
 
-#include "../../fractal.hpp"
+extern "C" {
+#include "Vendor/LUA/include/lua.h"
+#include "Vendor/LUA/include/lualib.h"
+#include "Vendor/LUA/include/lauxlib.h"
+}
 
-#include "../Components/LuaScript.h"
+#include "ECS/Base/BaseSystem.h"
+#include "ECS/Base/EntityManager.h"
 
-// not finished yet
+#include "ECS/Components/LuaScript.h"
+
+#include "Timer/Timer.h"
+#include "ECS/Components/CsScript.h"
+
+#include "ECS/Components/EntityName.h"
+
+#include "Timer/Timer.h"
+
+#include "pch.h"
 
 class LuaSystem : public ECS::BaseSystem {
 public:
@@ -22,6 +36,7 @@ public:
 	bool CheckLua(lua_State* L, int r)
 	{
 		if (r != LUA_OK)
+
 		{
 			std::string errormsg = lua_tostring(L, -1);
 			std::cout << errormsg << std::endl;

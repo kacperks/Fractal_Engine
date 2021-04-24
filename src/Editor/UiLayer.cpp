@@ -1,13 +1,13 @@
-#include "../fractal.hpp"
+#include "pch.h"
 #include "UiLayer.h"
-#include "../Engine/Engine.h"
-#include "../Events/EventSystem.h"
+#include "Engine/Engine.h"
+#include "Events/EventSystem.h"
 
-#include "../vendor/imgui/imgui_internal.h"
-#include "../vendor/imgui/imgui_impl_glfw.h"
-#include "../vendor/imgui/imgui_impl_opengl3.h"
+#include "Vendor/IMGUI/imgui_internal.h"
+#include "Vendor/IMGUI/imgui_impl_glfw.h"
+#include "Vendor/IMGUI/imgui_impl_opengl3.h"
 
-#include "../ECS/Base/Entity.h"
+#include "ECS/Base/Entity.h"
 #include "Serializer/XMLSerializer.h"
 
 #include "CompUIs/DirectLightUI.h"
@@ -15,6 +15,7 @@
 #include "CompUIs/TransformUI.h"
 #include "CompUIs/NameTagUI.h"
 #include "CompUIs/MeshUI.h"
+#include "Text/EditorT.h"
 
 #include "CompUIs/CSUI.h"
 #include "CompUIs/ModelRenderUI.h"
@@ -22,6 +23,14 @@
 #include "CompUIs/CameraUI.h"
 
 #include <fstream>
+
+#ifdef FRACTAL_WINDOWS
+	#include <windows.h>
+#endif // FRACTAL_WINDOWS
+
+#ifdef FRACTAL_LINUX
+	#include <bits/stdc++.h>
+#endif
 
 namespace fr {
 	bool ed = true;
@@ -421,7 +430,7 @@ namespace fr {
 
 				ImGui::SameLine();
 				if (ImGui::Button("Save Scene")) { 
-					fr::Serializer.SaveScene("Resource/Scene/scene.fr"); 
+					Orbit3D::Serializer.SaveScene("Resource/Scene/scene.fr"); 
 					console = console + "\n [DEBUG] Saved Scene scene.fr!";
 				}
 				ImGui::SameLine();

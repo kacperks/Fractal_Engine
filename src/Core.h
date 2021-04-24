@@ -13,30 +13,25 @@
 #elif defined(__APPLE__)
 #define FR_APPLE
 #else
-	#error Not Supported Platform!
+#error Not Supported Platform!
 #endif
 
 #define VERSION "BETA 1.13"
 
 #ifdef FR_WINDOW
-	// window platform related stuff
-    #include <windows.h>
-	#pragma comment(lib, "vendor/LUA/liblua54.a")
+#include <windows.h>
+//#pragma comment(lib, "vendor/LUA/liblua54.a")
 #endif
 
 #ifdef FR_LINUX
 	// linux platform related stuff
-    #include <bits/stdc++.h>
+#include <bits/stdc++.h>
 #endif
 
 #ifdef FR_APPLE
 	// mac platform related stuff
 #endif
 
-#ifdef FR_VISUAL_CPP
-	
-#endif
+namespace fr {
 
-namespace fr{
-	
 };

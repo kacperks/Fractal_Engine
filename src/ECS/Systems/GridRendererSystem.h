@@ -1,11 +1,11 @@
 #pragma once
 
-#include "../Base/BaseSystem.h"
-#include "../Base/EntityManager.h"
+#include "ECS/Base/BaseSystem.h"
+#include "ECS/Base/EntityManager.h"
 
-#include "../../GLObjects/Shader.h"
-#include "../../GLObjects/GLMesh.h"
-#include "../Components/Transform.h"
+#include "Objects/Shader.h"
+#include "Objects/GLMesh.h"
+#include "ECS/Components/Transform.h"
 
 class GridRendererSystem : public ECS::BaseSystem {
 

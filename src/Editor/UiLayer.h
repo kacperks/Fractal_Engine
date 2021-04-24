@@ -1,12 +1,13 @@
 #pragma once
 
 #include "CompUIs/CompUI.h"
-#include "../vendor/IMGUI/imgui.h"
-#include "../vendor/GUIZMO/ImGuizmo.h"
+#include "Vendor/IMGUI/imgui.h"
+#include "Vendor/GUIZMO/ImGuizmo.h"
 
-sstruct Transform;
+struct Transform;
 
 namespace fr {
+
 	struct ViewPortRect { 
 		float X, Y, W, H = 0;
 	};

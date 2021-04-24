@@ -1,4 +1,7 @@
-#include "../fractal.hpp"
+#include "pch.h"
+#include "Resource.h"
+#include "Vendor/STB/stb_image.h"
+#include "Editor/UiLayer.h"
 
 namespace fr {
 	RsrcManager::RsrcManager(){}

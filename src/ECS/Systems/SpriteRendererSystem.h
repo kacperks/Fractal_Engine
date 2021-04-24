@@ -1,12 +1,12 @@
-#pragma once 
+#pragma oncequaVAO = 
 
-#include "../../GLObjects/GLQuad.h"
-#include "../../Resource/Resource.h"
-#include "../Base/BaseSystem.h"
-#include "../Base/EntityManager.h"
+#include "Objects/GLQuad.h"
+#include "Resource/Resource.h"
+#include "ECS/Base/BaseSystem.h"
+#include "ECS/Base/EntityManager.h"
 
-#include "../Components/Transform.h"
-#include "../Components/SpriteRenderer.h"
+#include "ECS/Components/Transform.h"
+#include "ECS/Components/SpriteRenderer.h"
 
 using namespace fr;
 

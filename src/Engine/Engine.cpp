@@ -1,14 +1,13 @@
-#include "../fractal.hpp"
+#include "pch.h"
 #include "Engine.h"
-#include "../Editor/UiLayer.h"
-#include "../ECS/Base/Entity.h"
+#include "Editor/UiLayer.h"
+#include "ECS/Base/Entity.h"
 
-#include "../Events/GLFWImp.h"
+#include "Events/GLFWImp.h"
 
-#include "../ECS/Systems/Systems.hpp"
-#include "../ECS/Components/Components.h"
-#include "../Serializer/XMLSerializer.h"
-#include "../core.hpp"
+#include "ECS/Systems.h"
+#include "ECS/Components.h"
+#include "Serializer/XMLSerializer.h"
 
 namespace fr {
 

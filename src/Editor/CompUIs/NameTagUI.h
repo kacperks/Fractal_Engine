@@ -1,7 +1,7 @@
 #pragma once
 
 #include "CompUI.h"
-#include "../../ECS/Components/EntityName.h"
+#include "ECS/Components/EntityName.h"
 
 class NameTagUI : public CompUI {
 
@@ -17,8 +17,7 @@ public:
 	}
 
 	void Show() override {	
-
-		if (ImGui::CollapsingHeader("Basic")) {
+		if (ImGui::CollapsingHeader("Name & Tag")) {
 			ImGui::SetCurrentFont(ImGui::GetIO().Fonts->Fonts[1]);
 			ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, FRAME_PADDING);
 			ImGui::PushStyleColor(ImGuiCol_FrameBg, DARK);
@@ -29,7 +28,7 @@ public:
 			{
 				ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(3, 3));
 				strcpy_s(buffer, eName->Value.c_str());
-				if(ImGui::InputText("Name", buffer, IM_ARRAYSIZE(buffer))) {
+				if(ImGui::InputText("Entity Name", buffer, IM_ARRAYSIZE(buffer))) {
 					eName->Value = std::string(buffer);
 				}
 				ImGui::PopStyleVar();

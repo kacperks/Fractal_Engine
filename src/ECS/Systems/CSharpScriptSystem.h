@@ -1,10 +1,12 @@
 #pragma once
 
-#include "../Base/BaseSystem.h"
-#include "../Base/EntityManager.h"
+#include "ECS/Base/BaseSystem.h"
+#include "ECS/Base/EntityManager.h"
 
-#include "../../Timer/Timer.h"
-#include "../Components/CsScript.h"
+#include "Timer/Timer.h"
+#include "ECS/Components/CsScript.h"
+
+#include "ECS/Components/EntityName.h"
 
 using namespace fr;
 
@@ -34,11 +36,12 @@ public:
 
 	void Update() {
 		float deltatime = Timer.DeltaTime();	
-		void* args[2];
+		void* args[3];
 		args[0] = &deltatime;
 
 		for (auto entity : entities) {
 			args[1] = &ECS::Manager.GetComponent<Transform>(entity);
+			args[2] = &ECS::Manager.GetComponent<EntityName>(entity);
 			ECS::Manager.GetComponent<CsScript>(entity).InvokeUpdate(args);
 		}
 	}

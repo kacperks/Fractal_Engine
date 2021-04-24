@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Base/BaseComponent.h"
+#include "ECS/Base/BaseComponent.h"
 
 struct EntityName : public ECS::BaseComponent {
 	~EntityName() = default;
@@ -8,3 +8,4 @@ struct EntityName : public ECS::BaseComponent {
 	EntityName(std::string value): Value(value) { }
 	std::string Value;
 };
+

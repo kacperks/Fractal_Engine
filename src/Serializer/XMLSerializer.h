@@ -1,11 +1,11 @@
 #pragma once
 
 #include <TinyXML/tinyxml2.h>
-#include "../ECS/ECS.h"
+#include "ECS/Components.h"
 
 namespace fr {
 
-using namespace tinyxml2;
+	using namespace tinyxml2;
 
 	class XMLSerializer {
 	public:		
@@ -64,7 +64,7 @@ using namespace tinyxml2;
 		void SaveDirectionalLight(XMLPrinter& printer, const ECS::EntityID entityid);
 		void LoadDirectionalLight(XMLElement* xLight, const ECS::EntityID entityid);
 
-		// RIGIDBODY
+		// DIRECTIONAL LIGHT
 		void SaveRigidBody(XMLPrinter& printer, const ECS::EntityID entityid);
 		void LoadRigidBody(XMLElement* xRigidbody, const ECS::EntityID entityid);
 

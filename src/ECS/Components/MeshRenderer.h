@@ -3,7 +3,7 @@
 #include "Resource/Resource.h"
 #include "ECS/Base/BaseComponent.h"
 
-using namespace Orbit3D;
+using namespace fr;
 
 struct MeshRenderer : public ECS::BaseComponent {
 	~MeshRenderer() = default;

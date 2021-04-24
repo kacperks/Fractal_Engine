@@ -1,9 +1,9 @@
 #pragma once
 
-#include "../../GLObjects/Shader.h"
-#include "../../Resource/Resource.h"
-#include "../../GLObjects/VertexArray.h"
-#include "../Base/BaseSystem.h"
+#include "Objects/Shader.h"
+#include "Resource/Resource.h"
+#include "Objects/VertexArray.h"
+#include "ECS/Base/BaseSystem.h"
 
 using namespace fr;
 

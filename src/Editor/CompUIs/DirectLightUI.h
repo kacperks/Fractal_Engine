@@ -1,7 +1,8 @@
 #pragma once
 
 #include "CompUI.h"
-#include "../../ECS/Components/DirectionalLight.h"
+#include "ECS/Components/DirectionalLight.h"
+#include "ECS/Components/CsScript.h"
 
 class DirectLightUI : public CompUI {
 public:
@@ -19,7 +20,7 @@ public:
 			ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, FRAME_PADDING);
 			ImGui::PushStyleColor(ImGuiCol_FrameBg, DARK);
 
-			ImGui::BeginChildFrame(ImGui::GetID("directframe"), ImVec2(0, 75));
+			ImGui::BeginChildFrame(ImGui::GetID("directframe"), ImVec2(0, 100));
 			ImGui::PopStyleVar();
 			ImGui::PopStyleColor();
 			{
@@ -45,6 +46,13 @@ public:
 				ImGui::SetNextItemWidth(-1);
 				ImGui::DragFloat("##intensity", &light->Intensity, 1.0f, 0, 0, "%.1f");
 
+				// Texture
+				if (ImGui::InputText("Texture Folder Path", buffer, IM_ARRAYSIZE(buffer))) {
+					light->Res = std::string(buffer);
+				}
+				
+				//ImGui::SameLine();
+
 				ImGui::PopStyleColor();
 				ImGui::PopStyleVar();
 			}
@@ -54,5 +62,6 @@ public:
 	}
 
 private:
+	char buffer[20];
 	DirectionalLight* light;
 };

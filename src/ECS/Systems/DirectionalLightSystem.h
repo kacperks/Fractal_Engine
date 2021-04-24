@@ -1,12 +1,12 @@
 #pragma once
 
-#include "../Base/BaseSystem.h"
-#include "../Base/EntityManager.h"
+#include "ECS/Base/BaseSystem.h"
+#include "ECS/Base/EntityManager.h"
 
-#include "../../Engine/Engine.h"
-#include "../../Resource/Resource.h"
-#include "../Components/Transform.h"
-#include "../Components/DirectionalLight.h"
+#include "Engine/Engine.h"
+#include "Resource/Resource.h"
+#include "ECS/Components/Transform.h"
+#include "ECS/Components/DirectionalLight.h"
 
 using namespace fr;
 

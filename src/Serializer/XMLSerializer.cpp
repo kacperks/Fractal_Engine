@@ -1,13 +1,12 @@
-#include "../fractal.hpp"
+#include "pch.h"
 #include "XMLSerializer.h"
 
-#include "../Editor/UiLayer.h"
-#include "../ECS/Base/EntityManager.h"
+#include "Editor/UiLayer.h"
+#include "ECS/Base/EntityManager.h"
 
 namespace fr {
 
 	// SCENE
-// SCENE
 	void XMLSerializer::LoadScene(const char* filename) {
 		UiLayer::AddToConsole(" [XMLSerializer] Loaded scene.fr!");
 		tinyxml2::XMLDocument document;
@@ -22,7 +21,7 @@ namespace fr {
 		for (XMLElement* e = root->FirstChildElement(); e != nullptr; e = e->NextSiblingElement()) {
 			const ECS::EntityID entityid = ECS::Manager.AddNewEntity();			
 			LoadEntity(e, entityid);
-			Orbit3D::UI.AddExistingEntity(entityid);
+			fr::UI.AddExistingEntity(entityid);
 		}
 	}
 	void XMLSerializer::SaveScene(const char* filename) {

@@ -1,4 +1,4 @@
-#include "../fractal.hpp"
+#include "pch.h"
 #include "Timer.h"
 
 namespace fr {

@@ -1,10 +1,10 @@
 #pragma once
 
 #include "AppEvents.h"
-#include "KeyEvents.h"
-#include "MouseEvents.h"
-#include "WindowEvents.h"
-#include "Dispatcher.h"
+#include "Events/KeyEvents.h"
+#include "Events/MouseEvents.h"
+#include "Events/WindowEvents.h"
+#include "Events/Dispatcher.h"
 
 class EventSystem {
 public:

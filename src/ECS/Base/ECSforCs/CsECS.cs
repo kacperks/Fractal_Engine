@@ -4,8 +4,9 @@ using System.Runtime.InteropServices;
 
 namespace Fractal
 {
-	class EntityManager{
-		// Soon For C#
+	class EntityManager
+	{
+		// Not Finished Yet
 	}
-    
+
 }

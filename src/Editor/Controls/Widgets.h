@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../vendor/IMGUI/imgui.h"
+#include "Vendor/IMGUI/imgui.h"
 
 namespace Widget {
 
