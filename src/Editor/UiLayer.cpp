@@ -15,22 +15,11 @@
 #include "CompUIs/TransformUI.h"
 #include "CompUIs/NameTagUI.h"
 #include "CompUIs/MeshUI.h"
-#include "Text/EditorT.h"
 
 #include "CompUIs/CSUI.h"
 #include "CompUIs/ModelRenderUI.h"
 #include "CompUIs/RigidbodyUI.h"
 #include "CompUIs/CameraUI.h"
-
-#include <fstream>
-
-#ifdef FRACTAL_WINDOWS
-	#include <windows.h>
-#endif // FRACTAL_WINDOWS
-
-#ifdef FRACTAL_LINUX
-	#include <bits/stdc++.h>
-#endif
 
 namespace fr {
 	bool ed = true;
@@ -567,9 +556,6 @@ namespace fr {
 				if (ImGui::Button("Open in VsCode")) {
 					system("code Resource/.");
 				}
-				//if (ImGui::Button("Compile All C# Scripts")) {
-				//	system("csc Resource/Scripts/*.cs -target:library");
-				//}
 				OnImGui("Resource");
 			}
 			ImGui::PopStyleColor();
@@ -943,11 +929,8 @@ namespace fr {
 					}
 				}
 
-				//glm::vec3 gizmoRotation(0);
 				ImGuizmo::DecomposeMatrixToComponents(glm::value_ptr(gizmo.Model),
 					&gizmo.cTransform->Position.x, &gizmo.cTransform->Rotation.x, &gizmo.cTransform->Scale.x);
-				//glm::vec3 deltaRotation = gizmoRotation - gizmo.cTransform->Rotation;
-				//gizmo.cTransform->Rotation += deltaRotation;
 			}
 		}
 	}

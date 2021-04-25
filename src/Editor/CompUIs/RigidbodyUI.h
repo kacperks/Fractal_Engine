@@ -17,7 +17,6 @@
 #include "TransformUI.h"
 #include "NameTagUI.h"
 #include "MeshUI.h"
-#include "../Text/EditorT.h"
 
 #include "ECS/Components/CsScript.h"
 

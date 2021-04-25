@@ -12,6 +12,8 @@
 #include "ECS/Components/EntityName.h"
 #include "Editor/UiLayer.h"
 
+// not finished yet!
+
 struct LuaScript : public ECS::BaseComponent {
 	public:
 		std::string FileName = "Resource/Scripts/test.lua";

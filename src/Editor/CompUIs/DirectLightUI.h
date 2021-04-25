@@ -46,10 +46,6 @@ public:
 				ImGui::SetNextItemWidth(-1);
 				ImGui::DragFloat("##intensity", &light->Intensity, 1.0f, 0, 0, "%.1f");
 
-				// Texture
-				if (ImGui::InputText("Texture Folder Path", buffer, IM_ARRAYSIZE(buffer))) {
-					light->Res = std::string(buffer);
-				}
 				
 				//ImGui::SameLine();
 

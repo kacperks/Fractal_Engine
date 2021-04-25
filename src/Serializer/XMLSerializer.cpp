@@ -21,6 +21,8 @@ namespace fr {
 		for (XMLElement* e = root->FirstChildElement(); e != nullptr; e = e->NextSiblingElement()) {
 			const ECS::EntityID entityid = ECS::Manager.AddNewEntity();			
 			LoadEntity(e, entityid);
+			std::string ID = "ID: " + entityid;
+			fr::UI.AddToConsole(" [ECS] Added new Entity! Name:" + ECS::Manager.GetComponent<EntityName>(entityid).Value);
 			fr::UI.AddExistingEntity(entityid);
 		}
 	}
