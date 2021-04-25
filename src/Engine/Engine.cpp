@@ -147,7 +147,7 @@ namespace fr {
 	}
 
 	void Engine::StopGame() {
-		
+		//Serializer.LoadScene("Resource/Scene/scene.fr");
 		isGameRunnig = false;
 		ECS::Manager.DeactivateRuntimeSystems();
 		ECS::Manager.ActivateEditorSystems();

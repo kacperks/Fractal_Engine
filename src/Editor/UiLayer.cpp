@@ -518,9 +518,6 @@ namespace fr {
 			ImGui::PushStyleColor(ImGuiCol_FrameBg, dark);
 			ImGui::BeginChildFrame(ImGui::GetID("cframe"), ImVec2(0,0));
 			{
-				if (ImGui::Button("Clear")) { console = ""; }
-				ImGui::SameLine();
-				ImGui::Text("All logs you can find here!");
 				ImGui::Text(console.c_str());
 			}
 			ImGui::PopStyleColor();
@@ -888,7 +885,7 @@ namespace fr {
 			std::string f = ".hpp";
 			file.open(Path + f, std::ios::out);
 			std::string code;
-			code = "#pragma once\n #include <ECS/Base/BaseSystem.h> \n ";
+			code = "#pragma once\n #include <fractal.hpp> \n ";
 			file << code << std::endl;
 			file.close();
 		}

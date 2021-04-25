@@ -20,7 +20,7 @@ public:
 			ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, FRAME_PADDING);
 			ImGui::PushStyleColor(ImGuiCol_FrameBg, DARK);
 
-			ImGui::BeginChildFrame(ImGui::GetID("directframe"), ImVec2(0, 100));
+			ImGui::BeginChildFrame(ImGui::GetID("directframe"), ImVec2(0, 79));
 			ImGui::PopStyleVar();
 			ImGui::PopStyleColor();
 			{
