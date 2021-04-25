@@ -48,7 +48,6 @@ csc YourScript.cs -target:library -r:Fractal.dll
 To bulid you need :
 
 * GLM
-* SFML
 * Glew
 * GLFW
 * ASSIMP
