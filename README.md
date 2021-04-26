@@ -19,6 +19,7 @@ Features to do:
 * Collision system
 * Launcher
 * Bulid system
+* C++ Scripting
 * Lua Scripting
 * Cmake Bulid
 * Asset Browser
