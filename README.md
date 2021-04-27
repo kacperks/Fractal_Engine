@@ -1,6 +1,6 @@
 # Fractal Game Engine!
 <p align="left">
-  <img src="Resource/Icons/Graphics/Logo.png" width="350" height="350">
+  <img src="Resource/Icons/Logo.png" width="350" height="350">
 </p>
 Fractal Engine its 3D Game Engine
 
