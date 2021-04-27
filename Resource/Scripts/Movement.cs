@@ -16,4 +16,3 @@ public class TestScript : FractalScript
     {
             transform.Rotation.Y += Speed * deltatime;
     }
-}
