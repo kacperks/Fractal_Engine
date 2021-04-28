@@ -14,7 +14,7 @@ workspace "FR"
         objdir ("bin/obj/?%{cfg.buildcfg}/obj")
         
         pchheader "pch.h"
-        pchsource "/src/pch.cpp"  
+        pchsource "src/pch.cpp"  
 
         files {
             "%{prj.name}/**.h",
@@ -24,12 +24,12 @@ workspace "FR"
         includedirs {
             "src",
             "src/Vendor",            
-			"/lib/includes",
+	    "lib/includes",
         }          
 
         libdirs {
-            "/libs/lib/Shared",  
-            "/libs/lib/%{cfg.buildcfg}"        
+            "libs/lib/Shared",  
+            "libs/lib/%{cfg.buildcfg}"        
         }
 
         links {
@@ -44,14 +44,14 @@ workspace "FR"
         }       
 
        	filter "system:windows"
-			systemversion "latest"
+		systemversion "latest"
 			
-		filter "configurations:Debug"
-			defines "FR_DEBUG"
-			runtime "Debug"
-			symbols "on"
+	filter "configurations:Debug"
+		defines "FR_DEBUG"
+		runtime "Debug"
+		symbols "on"
 
-		filter "configurations:Release"
-			defines "FR_RELEASE"
-			runtime "Release"
-			optimize "on"
+	filter "configurations:Release"
+		defines "FR_RELEASE"
+		runtime "Release"
+		optimize "on"
