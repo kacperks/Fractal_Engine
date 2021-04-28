@@ -20,7 +20,6 @@
 #include <functional>
 #include <filesystem>
 #include <unordered_map>
-#include <windows.h>
 
 using namespace std::placeholders;
 
