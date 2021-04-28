@@ -7,8 +7,8 @@ Fractal Engine its 3D Game Engine
 Not Finished yet
 
 Features:
-* Editor
-* Loading 3D models
+* ImGui Editor
+* Loading 3D models with ASSIMP
 * Fully Featured ECS(Entity-Component-System)
 * Scene System
 * Prototype of C# Scripting
@@ -19,10 +19,7 @@ Features to do:
 * Collision system
 * Launcher
 * Bulid system
-* C++ Scripting
 * Lua Scripting
-* Cmake Bulid
-* Asset Browser
 
 # Screen Shot
 
@@ -55,7 +52,7 @@ To bulid you need :
 * TinyXML
 * Mono
 
-and Cmake or Visual Studio
+and premake
 
 To install this libaries on Ubuntu/Debian type
 ```sh

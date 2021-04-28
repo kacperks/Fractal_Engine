@@ -80,13 +80,13 @@ namespace glm
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_DECL vec<L, T, Q> bitfieldRotateLeft(vec<L, T, Q> const& In, int Shift);
 
-	/// Set to 1 a range of bits.
+	/// std::set<T> to 1 a range of bits.
 	///
 	/// @see gtc_bitfield
 	template<typename genIUType>
 	GLM_FUNC_DECL genIUType bitfieldFillOne(genIUType Value, int FirstBit, int BitCount);
 
-	/// Set to 1 a range of bits.
+	/// std::set<T> to 1 a range of bits.
 	///
 	/// @tparam L Integer between 1 and 4 included that qualify the dimension of the vector
 	/// @tparam T Signed and unsigned integer scalar types
@@ -96,13 +96,13 @@ namespace glm
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_DECL vec<L, T, Q> bitfieldFillOne(vec<L, T, Q> const& Value, int FirstBit, int BitCount);
 
-	/// Set to 0 a range of bits.
+	/// std::set<T> to 0 a range of bits.
 	///
 	/// @see gtc_bitfield
 	template<typename genIUType>
 	GLM_FUNC_DECL genIUType bitfieldFillZero(genIUType Value, int FirstBit, int BitCount);
 
-	/// Set to 0 a range of bits.
+	/// std::set<T> to 0 a range of bits.
 	///
 	/// @tparam L Integer between 1 and 4 included that qualify the dimension of the vector
 	/// @tparam T Signed and unsigned integer scalar types

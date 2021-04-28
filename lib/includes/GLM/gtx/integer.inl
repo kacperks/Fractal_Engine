@@ -175,8 +175,8 @@ namespace detail
 		n = n + m;
 		x = x << m;
 
-		y = x >> 14;         // Set y = 0, 1, 2, or 3.
-		m = y & ~(y >> 1);   // Set m = 0, 1, 2, or 2 resp.
+		y = x >> 14;         // std::set<T> y = 0, 1, 2, or 3.
+		m = y & ~(y >> 1);   // std::set<T> m = 0, 1, 2, or 2 resp.
 		return unsigned(n + 2 - m);
 	}
 

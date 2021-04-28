@@ -31,7 +31,7 @@ namespace glm
 		genType const& m,
 		length_t index);
 
-	/// Set a specific row to a matrix.
+	/// std::set<T> a specific row to a matrix.
 	/// @see gtc_matrix_access
 	template<typename genType>
 	GLM_FUNC_DECL genType row(
@@ -46,7 +46,7 @@ namespace glm
 		genType const& m,
 		length_t index);
 
-	/// Set a specific column to a matrix.
+	/// std::set<T> a specific column to a matrix.
 	/// @see gtc_matrix_access
 	template<typename genType>
 	GLM_FUNC_DECL genType column(
