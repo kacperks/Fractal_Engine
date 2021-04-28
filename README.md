@@ -1,6 +1,6 @@
 # Fractal Game Engine!
 <p align="left">
-  <img src="Resource/Icons/Logo.png" width="350" height="350">
+  <img src="bin/Resource/Icons/Logo.png" width="350" height="350">
 </p>
 Fractal Engine its 3D Game Engine
 
@@ -24,7 +24,7 @@ Features to do:
 # Screen Shot
 
 <p align="left">
-  <img src="Resource/Icons/ScreenShot.png" width="683" height="371">
+  <img src="bin/Resource/Icons/ScreenShot.png" width="683" height="371">
 </p>
 
 # Docs
