@@ -42,6 +42,14 @@ using namespace std::placeholders;
 #include "Core.h"
 #include "fractal.hpp"
 
+// mono
+
+#ifdef FRACTAL_CSHARP
+	#include <mono/jit/jit.h>
+	#include <mono/metadata/assembly.h>
+	#include <mono/metadata/debug-helpers.h>
+#endif
+
 // Platform
 #ifdef FR_WINDOW
 	
