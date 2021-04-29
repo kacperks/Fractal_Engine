@@ -6,7 +6,7 @@
 struct ModelRenderer : public ECS::BaseComponent {
 	~ModelRenderer() = default;
 
-	ModelRenderer(): Name("Rock"){
+	ModelRenderer(): Name("Tree"){
 		Renderer = fr::Resource.GetModel(Name);
 	}
 

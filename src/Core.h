@@ -7,7 +7,7 @@
 // platform stuff
 
 #if defined(_WIN32)
-#define FR_WINDOW
+#define FR_WINDOWS
 #elif defined(__linux__)
 #define FR_LINUX
 #elif defined(__APPLE__)
@@ -16,11 +16,11 @@
 #error Not Supported Platform!
 #endif
 
+#define FRACTAL_CSHARP
 #define VERSION "BETA 1.13"
 
-#ifdef FR_WINDOW
-#include <windows.h>
-//#pragma comment(lib, "vendor/LUA/liblua54.a")
+#ifdef FR_WINDOWS
+	#include <windows.h>
 #endif
 
 #ifdef FR_LINUX

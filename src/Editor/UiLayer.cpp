@@ -499,7 +499,6 @@ namespace fr {
 			}
 			ImGui::PopStyleColor();
 			ImGui::EndChildFrame();
-			ImGui::Text("Components: ");
 			// components			
 			if (selectedEntity > ECS::INVALID_ENTITY) {
 				for (auto compUi : activeCompUIs) {
@@ -637,26 +636,7 @@ namespace fr {
 
 
 	void UiLayer::AssetBrowser() {
-		/*
-		int AssetsCount = 0;
-		ImGui::Begin("Asset Browser");
-		{
-			ImGui::PushStyleColor(ImGuiCol_FrameBg, dark);
-			ImGui::BeginChildFrame(ImGui::GetID("toolbar"), ImVec2(0, 32));
-			{
-				if (ImGui::Button("Add New Asset")) {
-					AssetsCount++;
-				}
-			}
-			ImGui::PopStyleColor();
-			ImGui::EndChildFrame();
-		}
 
-		for (int i = 0; i < AssetsCount; i++) {
-			ImGui::Button("Asset");
-		}
-		ImGui::End();
-		*/
 	}
 
 	void UiLayer::Entities() {
@@ -792,49 +772,6 @@ namespace fr {
 	void UiLayer::RemoveComponent(const char* typeName) {
 		if (selectedEntity > ECS::INVALID_ENTITY) {
 			ECS::Manager.RemoveComponent(selectedEntity, typeName);
-			InitCompUI();
-		}
-	}
-
-	void UiLayer::AddReady(const char* Name) {
-		static const char* Objects[] = { "Camera","Mesh", "Point Light", "Empty" };
-		if (Name == "Camera") {
-			ECS::Entity entity;
-			selectedEntity = entity.GetID();
-			auto name = "Camera" + std::to_string(selectedEntity);
-			entity.AddComponent<EntityName>(name.c_str());
-			entity.AddComponent<Transform>();
-			entity.AddComponent<Camera>();
-
-			// End
-
-			AddExistingEntity(entity.GetID());
-			InitCompUI();
-		}
-		if (Name == "Mesh") {
-			ECS::Entity entity;
-			selectedEntity = entity.GetID();
-			auto name = "Mesh" + std::to_string(selectedEntity);
-			entity.AddComponent<EntityName>(name.c_str());
-			entity.AddComponent<Transform>();
-			entity.AddComponent<MeshRenderer>();
-
-			// End
-
-			AddExistingEntity(entity.GetID());
-			InitCompUI();
-		}
-		if (Name == "Point Light") {
-			ECS::Entity entity;
-			selectedEntity = entity.GetID();
-			auto name = "PointLight" + std::to_string(selectedEntity);
-			entity.AddComponent<EntityName>(name.c_str());
-			entity.AddComponent<Transform>();
-			entity.AddComponent<PointLight>();
-
-			// End
-
-			AddExistingEntity(entity.GetID());
 			InitCompUI();
 		}
 	}

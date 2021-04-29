@@ -20,6 +20,11 @@
 #include <functional>
 #include <filesystem>
 #include <unordered_map>
+#include "Core.h"
+
+#ifdef FR_WINDOWS
+#include <windows.h>
+#endif
 
 using namespace std::placeholders;
 
@@ -39,20 +44,12 @@ using namespace std::placeholders;
 // Custom
 #include "Errors/Errors.h"
 #include "Events/EventSystem.h"
-#include "Core.h"
 #include "fractal.hpp"
 
-// mono
-
-#ifdef FRACTAL_CSHARP
-	#include <mono/jit/jit.h>
-	#include <mono/metadata/assembly.h>
-	#include <mono/metadata/debug-helpers.h>
-#endif
 
 // Platform
 #ifdef FR_WINDOW
-	
+
 #endif
 
 #ifdef FR_LINUX
