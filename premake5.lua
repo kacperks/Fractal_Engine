@@ -19,6 +19,7 @@ workspace "FR"
         files {
             "%{prj.name}/**.h",
             "%{prj.name}/**.cpp",
+			"%{prj.name}/**.hpp",
         }
 
         includedirs {
