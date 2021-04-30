@@ -29,8 +29,8 @@ workspace "FR"
         }          
 
         libdirs {
-            "libs/lib/Shared",  
-            "libs/lib/%{cfg.buildcfg}"        
+            "lib/lib/Shared",  
+            "lib/lib/%{cfg.buildcfg}"        
         }
 
         links {
