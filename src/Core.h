@@ -18,9 +18,11 @@
 
 #define VERSION "BETA 1.13"
 
+#define EDITOR_VERSION "30.04.2021"
+
 #ifdef FR_WINDOWS
 	#include <windows.h>
-	#define FRACTAL_CSHARP // I want to define it in project settings or something
+	#define FRACTAL_CSHARP // if your compiler cannot use mono or if you are using linux, remove this line!
 #endif
 
 #ifdef FR_LINUX
@@ -30,6 +32,14 @@
 
 #ifdef FR_APPLE
 	// mac platform related stuff
+#endif
+
+#ifdef FRACTAL_CSHARP
+	// if project is C# project
+#endif
+
+#ifdef FRACTAL_SCRIPT
+	// if project is FR script project
 #endif
 
 namespace fr {

@@ -1,5 +1,7 @@
 #pragma once
 
+#ifdef FRACTAL_CSHARP
+
 #include "ECS/Base/BaseSystem.h"
 #include "ECS/Base/EntityManager.h"
 
@@ -49,3 +51,5 @@ public:
 private:
 	MonoDomain* domain;
 };
+
+#endif

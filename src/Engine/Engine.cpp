@@ -30,7 +30,9 @@ namespace fr {
 		glfwWindowHint(GLFW_GREEN_BITS, vMode->greenBits);
 		glfwWindowHint(GLFW_REFRESH_RATE, vMode->refreshRate);
 
-		window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGH, "Fractal Engine BETA 1.12", nullptr, nullptr);
+		std::string WinName = "Fractal Engine " VERSION;
+
+		window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGH, WinName.c_str(), nullptr, nullptr);
 		assert(window && "ERROR::GFLW::FAILED TO CREATE WINDOW!");
 		glfwMakeContextCurrent(window);
 
@@ -51,7 +53,9 @@ namespace fr {
 
 		// register component list
 		ECS::Manager.RegisterCompList<Camera>();
+#ifdef FRACTAL_CSHARP
 		ECS::Manager.RegisterCompList<CsScript>();
+#endif
 		ECS::Manager.RegisterCompList<Transform>();
 		ECS::Manager.RegisterCompList<RigidBody>();
 		ECS::Manager.RegisterCompList<SpotLight>();
@@ -64,7 +68,9 @@ namespace fr {
 
 		// register component factory
 		ECS::Registrar<Camera>("Camera");
+#ifdef FRACTAL_CSHARP
 		ECS::Registrar<CsScript>("C# Script");
+#endif
 		ECS::Registrar<RigidBody>("RigidBody");
 		ECS::Registrar<SpotLight>("Spot Light");
 		ECS::Registrar<PointLight>("Point Light");

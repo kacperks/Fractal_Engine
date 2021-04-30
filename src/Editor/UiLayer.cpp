@@ -82,7 +82,7 @@ namespace fr {
 		compUIs.push_back(std::move(std::make_shared<CamUI>()));
 
 		console += "\n [Editor] Starting Fractal Editor...";
-		console += "\n [Editor] Fractal Editor 18.04.2021";
+		console += "\n [Editor] Fractal Editor " EDITOR_VERSION;
 	}
 
 	void UiLayer::Display() {
@@ -373,7 +373,7 @@ namespace fr {
 			if (Widget::ToolButton::Show(icons.at("move"))) { gizmo.Operation = ImGuizmo::OPERATION::TRANSLATE; console = console + "\n [DEBUG] Tool Move "; }
 			if (Widget::ToolButton::Show(icons.at("rotate"))) { gizmo.Operation = ImGuizmo::OPERATION::ROTATE;  console = console + "\n [DEBUG] Tool Rotate "; }
 			if (Widget::ToolButton::Show(icons.at("scale"))) { gizmo.Operation = ImGuizmo::OPERATION::SCALE; console = console + "\n [DEBUG] Tool Scale "; }
-			ImGui::Text("Fractal Editor 18.03.2021");
+			ImGui::Text("Fractal Editor " EDITOR_VERSION);
 
 			ImGui::EndMenuBar();
 		}
