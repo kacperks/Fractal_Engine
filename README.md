@@ -19,7 +19,7 @@ Features to do:
 * Collision system
 * Launcher
 * Bulid system
-* Lua Scripting
+* Custom Scripting Language
 
 # Screen Shot
 
@@ -58,3 +58,13 @@ To install this libaries on Ubuntu/Debian type
 ```sh
 $ sh lib/lib.sh
 ```
+
+# Contributors    
+
+<a href = "https://github.com/kacperks"> kacperks </a>
+<br>
+<a href = "https://github.com/lubek-dc"> lubek-dc </a>
+<br>
+<a href = "https://github.com/BoomerDev"> BoomerDev </a>
+
+The people listed above have landed more than 2 commits in the project
