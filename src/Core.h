@@ -20,7 +20,7 @@
 
 #ifdef FR_WINDOWS
 	#include <windows.h>
-	#define FRACTAL_CSHARP
+	#define FRACTAL_CSHARP // I want to define it in project settings or something
 #endif
 
 #ifdef FR_LINUX

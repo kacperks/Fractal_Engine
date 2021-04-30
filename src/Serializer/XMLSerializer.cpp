@@ -360,17 +360,21 @@ namespace fr {
 	}
 	// C#
 	void XMLSerializer::SaveCsScript(XMLPrinter& printer, const ECS::EntityID entityid) {
+#ifdef FRACTAL_CSHARP
 		if (!ECS::Manager.HasComponent<CsScript>(entityid)) { return; }
 		const CsScript& script = ECS::Manager.GetComponent<CsScript>(entityid);
 		printer.OpenElement("CsScript");
 		printer.PushAttribute("AssemblyPath", script.AssemblyPath.c_str());
 		printer.PushAttribute("ClassName", script.ClassName.c_str());
 		printer.CloseElement();
+#endif
 	}
 	void XMLSerializer::LoadCsScript(XMLElement* xSharp, const ECS::EntityID entityid) {
+#ifdef FRACTAL_CSHARP
 		CsScript script;
 		script.AssemblyPath = xSharp->Attribute("AssemblyPath");
 		script.ClassName = xSharp->Attribute("ClassName");
 		ECS::Manager.AddComponent(entityid, script);
+#endif
 	}
 }

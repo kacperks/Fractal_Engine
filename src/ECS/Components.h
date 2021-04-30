@@ -9,7 +9,10 @@
 #include "Components/PointLight.h"
 #include "Components/DirectionalLight.h"
 
+#ifdef FRACTAL_CSHARP
 #include "Components/CsScript.h"
+#endif
+
 #include "Components/KeyMotion.h"
 
 #include "Components/MeshRenderer.h"

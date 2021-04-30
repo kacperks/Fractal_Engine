@@ -317,9 +317,6 @@ namespace fr {
 
 	void UiLayer::MenuBar() {
 		if (ImGui::BeginMenuBar()) {
-			//if(Widget::ToolButton::Show(icons.at("Logo"))){
-				//console = console + "\n [DEBUG] TAM TAM TAMMMMM";
-			//}
 			if (ImGui::BeginMenu("File")) {
 				if (ImGui::MenuItem("New Scene", "Ctrl+N")) {
 
