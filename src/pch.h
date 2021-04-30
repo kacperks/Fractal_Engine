@@ -22,10 +22,6 @@
 #include <unordered_map>
 #include "Core.h"
 
-#ifdef FR_WINDOWS
-#include <windows.h>
-#endif
-
 using namespace std::placeholders;
 
 // OPENGL
@@ -45,19 +41,5 @@ using namespace std::placeholders;
 #include "Errors/Errors.h"
 #include "Events/EventSystem.h"
 #include "fractal.hpp"
-
-
-// Platform
-#ifdef FR_WINDOW
-
-#endif
-
-#ifdef FR_LINUX
-	// linux platform related stuff
-#endif
-
-#ifdef FR_MAC
-	// mac platform related stuff
-#endif
 
 #define VAR_NAME(var) (#var)

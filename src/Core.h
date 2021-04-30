@@ -27,7 +27,7 @@
 
 #ifdef FR_LINUX
 	// linux platform related stuff
-#include <bits/stdc++.h>
+	#include <bits/stdc++.h>
 #endif
 
 #ifdef FR_APPLE
