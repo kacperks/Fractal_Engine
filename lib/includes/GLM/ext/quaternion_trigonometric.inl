@@ -7,10 +7,7 @@ namespace glm
 	{
 		if (abs(x.w) > cos_one_over_two<T>())
 		{
-			T const a = asin(sqrt(x.x * x.x + x.y * x.y + x.z * x.z)) * static_cast<T>(2);
-			if(x.w < static_cast<T>(0))
-				return pi<T>() * static_cast<T>(2) - a;
-			return a;
+			return asin(sqrt(x.x * x.x + x.y * x.y + x.z * x.z)) * static_cast<T>(2);
 		}
 
 		return acos(x.w) * static_cast<T>(2);

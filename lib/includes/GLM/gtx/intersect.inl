@@ -108,7 +108,7 @@ namespace glm
 
 		genType Perpendicular = cross(dir, edge2);
 
-		typename genType::value_type det = dot(edge1, Perpendicular);
+		float det = dot(edge1, Perpendicular);
 
 		if (det > -Epsilon && det < Epsilon)
 			return false;

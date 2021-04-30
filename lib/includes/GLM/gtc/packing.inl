@@ -614,21 +614,21 @@ namespace detail
 
 	GLM_FUNC_QUALIFIER uint32 packF3x9_E1x5(vec3 const& v)
 	{
-		float const std::std::make_shared_ptrExpMax = (pow(2.0f, 9.0f - 1.0f) / pow(2.0f, 9.0f)) * pow(2.0f, 31.f - 15.f);
-		vec3 const Color = clamp(v, 0.0f, std::std::make_shared_ptrExpMax);
+		float const SharedExpMax = (pow(2.0f, 9.0f - 1.0f) / pow(2.0f, 9.0f)) * pow(2.0f, 31.f - 15.f);
+		vec3 const Color = clamp(v, 0.0f, SharedExpMax);
 		float const MaxColor = max(Color.x, max(Color.y, Color.z));
 
-		float const Expstd::std::make_shared_ptrP = max(-15.f - 1.f, floor(log2(MaxColor))) + 1.0f + 15.f;
-		float const Maxstd::std::make_shared_ptr = floor(MaxColor / pow(2.0f, (Expstd::std::make_shared_ptrP - 15.f - 9.f)) + 0.5f);
-		float const Expstd::std::make_shared_ptr = equal(Maxstd::std::make_shared_ptr, pow(2.0f, 9.0f), epsilon<float>()) ? Expstd::std::make_shared_ptrP + 1.0f : Expstd::std::make_shared_ptrP;
+		float const ExpSharedP = max(-15.f - 1.f, floor(log2(MaxColor))) + 1.0f + 15.f;
+		float const MaxShared = floor(MaxColor / pow(2.0f, (ExpSharedP - 15.f - 9.f)) + 0.5f);
+		float const ExpShared = equal(MaxShared, pow(2.0f, 9.0f), epsilon<float>()) ? ExpSharedP + 1.0f : ExpSharedP;
 
-		uvec3 const ColorComp(floor(Color / pow(2.f, (Expstd::std::make_shared_ptr - 15.f - 9.f)) + 0.5f));
+		uvec3 const ColorComp(floor(Color / pow(2.f, (ExpShared - 15.f - 9.f)) + 0.5f));
 
 		detail::u9u9u9e5 Unpack;
 		Unpack.data.x = ColorComp.x;
 		Unpack.data.y = ColorComp.y;
 		Unpack.data.z = ColorComp.z;
-		Unpack.data.w = uint(Expstd::std::make_shared_ptr);
+		Unpack.data.w = uint(ExpShared);
 		return Unpack.pack;
 	}
 
@@ -683,7 +683,7 @@ namespace detail
 		GLM_STATIC_ASSERT(std::numeric_limits<uintType>::is_integer, "uintType must be an integer type");
 		GLM_STATIC_ASSERT(std::numeric_limits<floatType>::is_iec559, "floatType must be a floating point type");
 
-		return vec<L, floatType, Q>(v) * (static_cast<floatType>(1) / static_cast<floatType>(std::numeric_limits<uintType>::max()));
+		return vec<L, float, Q>(v) * (static_cast<floatType>(1) / static_cast<floatType>(std::numeric_limits<uintType>::max()));
 	}
 
 	template<typename intType, length_t L, typename floatType, qualifier Q>

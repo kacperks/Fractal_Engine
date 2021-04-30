@@ -1,8 +1,6 @@
 /// @ref core
 /// @file glm/glm.cpp
 
-#include "pch.h"
-
 #ifndef GLM_ENABLE_EXPERIMENTAL
 #define GLM_ENABLE_EXPERIMENTAL
 #endif
