@@ -1,5 +1,7 @@
 #pragma once
 
+#ifdef FRACTAL_CSHARP
+
 #include "pch.h"
 #include "../UiLayer.h"
 #include "Engine/Engine.h"
@@ -79,3 +81,5 @@ public:
 		char buf2[20];
 };
 
+
+#endif
