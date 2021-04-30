@@ -74,7 +74,9 @@ namespace fr {
 		compUIs.push_back(std::move(std::make_shared<DirectLightUI>()));
 		compUIs.push_back(std::move(std::make_shared<PointLightUI>()));
 		compUIs.push_back(std::move(std::make_shared<MeshUI>()));
+#ifdef FRACTAL_CSHARP
 		compUIs.push_back(std::move(std::make_shared<CsScriptCompUI>()));
+#endif
 		compUIs.push_back(std::move(std::make_shared<ModelCompUI>()));
 		compUIs.push_back(std::move(std::make_shared<RBUI>()));
 		compUIs.push_back(std::move(std::make_shared<CamUI>()));

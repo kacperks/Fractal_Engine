@@ -90,7 +90,9 @@ namespace fr {
 		// runtime systems will be added at runtime
 		ECS::Manager.AddRuntimeSystem<CameraSystem>();
 		ECS::Manager.AddRuntimeSystem<PhysicsSystem>();
+		#ifdef FRACTAL_CSHARP
 		ECS::Manager.AddRuntimeSystem<CSharpScriptSystem>();
+		#endif
 
 		ECS::Manager.ActivateEditorSystems();
 		ECS::Manager.Start();

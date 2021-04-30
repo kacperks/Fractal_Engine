@@ -16,11 +16,11 @@
 #error Not Supported Platform!
 #endif
 
-#define FRACTAL_CSHARP
 #define VERSION "BETA 1.13"
 
 #ifdef FR_WINDOWS
 	#include <windows.h>
+	#define FRACTAL_CSHARP
 #endif
 
 #ifdef FR_LINUX
