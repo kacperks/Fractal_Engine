@@ -11,7 +11,7 @@ workspace "FR"
         staticruntime "on"
 		
         targetdir "bin/%{cfg.buildcfg}"  
-        objdir ("bin/obj/?%{cfg.buildcfg}/obj")
+        objdir ("bin/obj/%{cfg.buildcfg}/obj")
         
         pchheader "pch.h"
         pchsource "src/pch.cpp"  
