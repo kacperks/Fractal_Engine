@@ -50,7 +50,7 @@ To bulid you need :
 * GLFW
 * ASSIMP
 * TinyXML
-* Mono
+* Mono (Optional)
 
 and premake
 
