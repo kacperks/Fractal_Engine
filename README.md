@@ -17,6 +17,7 @@ Features:
 Features to do:
 
 * Collision system
+* Loading models with GUI
 * Launcher
 * Bulid system
 * Custom Scripting Language
