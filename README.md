@@ -22,6 +22,8 @@ Features to do:
 * Bulid system
 * Custom Scripting Language
 
+[![Discord](https://img.shields.io/badge/Fractal%20Server--blue.svg?style=social&logo=Discord)](https://discord.gg/3gkZWNXhK3)
+
 # Screen Shot
 
 <p align="left">
