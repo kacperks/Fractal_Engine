@@ -6,6 +6,7 @@ workspace "FR"
 
     project "src"
         language "C++"    
+		cppdialect "C++17"
         kind "ConsoleApp"
         targetname "Fractal"
         staticruntime "on"
@@ -41,7 +42,6 @@ workspace "FR"
 
         defines {
             "GLEW_STATIC"
-			-- if u use Fractal C# add here "FRACTAL_CSHARP"
         }       
        	filter "system:windows"
 		systemversion "latest"
