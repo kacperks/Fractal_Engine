@@ -3,7 +3,7 @@
 #include "pch.h"
 
 namespace fr {
-	class LuaMan {
+	class Interpreter {
 		public:
 			void Initialize();
 			

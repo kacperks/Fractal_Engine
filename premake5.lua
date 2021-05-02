@@ -23,7 +23,6 @@ workspace "FR"
         }
 
         includedirs {
-            "src",
             "src/Vendor",            
 	        "lib/includes",
         }          
@@ -33,16 +32,17 @@ workspace "FR"
         }
 
         links {
-            "nfd.lib",
 		    "glew32s.lib",
-		    "glfw3dll.lib",
+		    "glfw3.lib",
 		    "opengl32.lib",
+			"assimp-vc142-mt.lib",
+			"tinyxml2d.lib",
 	    }           
 
         defines {
             "GLEW_STATIC"
+			-- if u use Fractal C# add here "FRACTAL_CSHARP"
         }       
--- test
        	filter "system:windows"
 		systemversion "latest"
 			

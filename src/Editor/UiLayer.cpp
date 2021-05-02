@@ -394,53 +394,6 @@ namespace fr {
 		ImGui::Begin("Scene", nullptr);
 		{			
 			ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(dark));
-			/*
-			ImGui::BeginChildFrame(ImGui::GetID("toolbar"), ImVec2(0,32));
-			{
-				if (Widget::ToolButton::Show(icons.at("move"))) { gizmo.Operation = ImGuizmo::OPERATION::TRANSLATE; console = console + "\n [DEBUG] Tool Move "; }
-				ImGui::SameLine();
-				ImGui::Dummy(ImVec2(2, 0));
-
-				ImGui::SameLine();
-				if (Widget::ToolButton::Show(icons.at("rotate"))) { gizmo.Operation = ImGuizmo::OPERATION::ROTATE;  console = console + "\n [DEBUG] Tool Rotate ";}
-				ImGui::SameLine();
-
-				ImGui::SameLine();
-				if (Widget::ToolButton::Show(icons.at("scale"))) { gizmo.Operation = ImGuizmo::OPERATION::SCALE; console = console + "\n [DEBUG] Tool Scale ";}
-				ImGui::SameLine();
-
-				if (Widget::ToolButton::Show(icons.at("mag"))) {
-					console = console + "\n [DEBUG] Tool Magnes ";
-				
-				}
-				ImGui::SameLine();
-				ImGui::Dummy(ImVec2(48, 0));
-
-				ImGui::SameLine();
-				if (ImGui::Button("Save Scene")) { 
-					Orbit3D::Serializer.SaveScene("Resource/Scene/scene.fr"); 
-					console = console + "\n [DEBUG] Saved Scene scene.fr!";
-				}
-				ImGui::SameLine();
-				ImGui::Dummy(ImVec2(2, 0));
-
-				//ImGui::SameLine();
-				//if (Widget::ToolButton::Show(icons.at("build"))) {
-					//Core.StopGame();
-				//}
-
-				ImGui::SameLine();
-				if (Widget::ToolButton::Show(icons.at("play"))) { 					
-					Core.StartGame();
-				}
-				ImGui::SameLine();
-				ImGui::Dummy(ImVec2(2, 0));
-				ImGui::SameLine();
-
-
-			}
-			ImGui::EndChildFrame();
-			*/
 			ImGui::PopStyleColor();			
 			ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(0,0));	
 			ImGui::BeginChildFrame(ImGui::GetID("sceneFrame"), ImVec2(0,0), ImGuiWindowFlags_NoScrollbar);
@@ -578,15 +531,6 @@ namespace fr {
 					console = console + "\n [DEBUG] Saved Scene scene.fr!";
 				}
 				ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(3, 3));
-				/*
-					if (ImGui::CollapsingHeader("View Port")) {
-						if (Widget::ToolButton::Show(icons.at("move"))) { gizmo.Operation = ImGuizmo::OPERATION::TRANSLATE; console = console + "\n [DEBUG] Tool Move "; }
-						ImGui::SameLine();
-						if (Widget::ToolButton::Show(icons.at("rotate"))) { gizmo.Operation = ImGuizmo::OPERATION::ROTATE;  console = console + "\n [DEBUG] Tool Rotate "; }
-						ImGui::SameLine();
-						if (Widget::ToolButton::Show(icons.at("scale"))) { gizmo.Operation = ImGuizmo::OPERATION::SCALE; console = console + "\n [DEBUG] Tool Scale "; }
-					}
-					*/
 					if (ImGui::CollapsingHeader("Engine")) {
 						if (ImGui::TreeNodeEx("Systems")) {
 
@@ -620,9 +564,6 @@ namespace fr {
 					if (ImGui::CollapsingHeader("Events")) {}
 					if (ImGui::CollapsingHeader("Resource")) {
 						if (ImGui::TreeNodeEx("Model")) {
-						//	if (ImGui::InputText("Model Name", bufrotto, IM_ARRAYSIZE(bufrotto))) {
-							//
-						//	}
 							ImGui::TreePop();
 						}
 					}
@@ -910,6 +851,7 @@ namespace fr {
 			bool node_open = false;
 			bool entryIsFile = !std::filesystem::is_directory(entry.path());
 			if (entryIsFile == false) {
+
 				ImGui::Image(icons.at("folder"), ImVec2(15.0f, 15.0f), ImVec2(0, 1), ImVec2(1, 0));
 				ImGui::SameLine();
 				node_open = ImGui::TreeNodeEx((void*)(intptr_t)(*count), node_flags, name.c_str());
