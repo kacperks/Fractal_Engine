@@ -25,12 +25,11 @@ workspace "FR"
         includedirs {
             "src",
             "src/Vendor",            
-	    "lib/includes",
+	        "lib/includes",
         }          
 
         libdirs {
-            "lib/lib/Shared",  
-            "lib/lib/%{cfg.buildcfg}"        
+            "lib/lib/",          
         }
 
         links {
