@@ -17,7 +17,7 @@ Features:
 Features to do:
 
 * Collision system
-* Loading models with GUI
+* Loading models using GUI
 * Launcher
 * Bulid system
 * Custom Scripting Language
@@ -34,7 +34,9 @@ Features to do:
 
 * Documentation Coming Soon
 
-# Buliding C# Scripts
+# Scripting
+
+### C#
 
 You must have Mono to build a C# script.
 
@@ -44,6 +46,11 @@ csc YourScript.cs -target:library -r:Fractal.dll
 ```
 
 <a href = "https://www.mono-project.com/docs/getting-started/mono-basics/"> More</a>
+
+### FR Script
+
+FR Script Comming Soon
+
 # Bulid
 
 To bulid you need :
