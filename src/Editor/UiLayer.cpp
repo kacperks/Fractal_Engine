@@ -144,11 +144,11 @@ namespace fr {
 	}
 
 	void UiLayer::SceneSelector() {
-		ImGui::Begin("Welcome To Fractal Engine!", &ed);
-		ImGui::Text("Whats New?");
-		ImGui::Text("- Better C# Scripting System");
+		ImGui::Begin("Welcome To the Fractal Engine!", &ed);
+		ImGui::Text("Whats new?");
+		ImGui::Text("- optimized so many things");
 		ImGui::Text("- Better UI");
-		ImGui::Text("- Prototype of Lua Scripting!");
+		ImGui::Text("- More Component UI's !");
 		ImGui::End();
 	}
 
@@ -557,8 +557,15 @@ namespace fr {
 						}
 					}
 					if (ImGui::CollapsingHeader("OpenGL")) {}
-					if (ImGui::CollapsingHeader("Editor")) { ImGui::Text("Editor Camera Speed"); ImGui::DragFloat("##intensity", &variable1, 1.0f, 0, 0, "%.1f"); }
-					if (ImGui::CollapsingHeader("Inputs")) {}
+					if (ImGui::CollapsingHeader("Editor")) {
+						if (ImGui::TreeNodeEx("Camera")) {
+							//ImGui::Text("Editor Camera At Runtime ");
+							ImGui::TreePop();
+						}
+						if (ImGui::TreeNodeEx("Tools")) {
+							ImGui::TreePop();
+						}
+					}
 					if (ImGui::CollapsingHeader("Physics System")) {}
 					if (ImGui::CollapsingHeader("ECS")) {}
 					if (ImGui::CollapsingHeader("Events")) {}

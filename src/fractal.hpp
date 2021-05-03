@@ -1,7 +1,5 @@
 #pragma once
 
-// HEADERS
-
 #include "Resource/Resource.h"
 
 #include "ECS/ECS.h"
@@ -10,7 +8,7 @@
 
 #include "Timer/Timer.h"
 
-// ECS Headers
+// ECS stuff
 #include "ECS/Base/BaseComponent.h"
 #include "ECS/Base/BaseSystem.h"
 #include "ECS/Base/EntityManager.h"
@@ -19,11 +17,11 @@
 
 #include "Editor/UiLayer.h"
 
-// XML Heders
+// XML stuff
 
 #include "Serializer/XMLSerializer.h"
 
-// Events Headers
+// Events stuff
 
 #include "Events/AppEvents.h"
 #include "Events/Dispatcher.h"
@@ -34,7 +32,7 @@
 #include "Events/MouseEvents.h"
 #include "Events/WindowEvents.h"
 #include "Editor/UiLayer.h"
-// GL Headers
+// GL stuff
 
 #include "Objects/ColorBuffer.h"
 #include "Objects/DepthBuffer.h"
