@@ -24,6 +24,7 @@ namespace ECS {
 		virtual void Start() {}
 		virtual void Render() {}
 		virtual void Update() {}
+		virtual void Awake() {}
 
 	protected:
 		Signature signature;
