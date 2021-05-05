@@ -34,9 +34,8 @@ namespace fr {
 	static const char* names[] = { "Camera", "RigidBody", "MeshRenderer",
 		"ModelRenderer", "SpriteRenderer", "Directional Light", "Point Light", "Spot Light", "C# Script" };
 	float variable1 = 50;
-	//CsScript script;
 
-	static const char* AssetNames[] = { "C# script","C++ Script", "Folder" , "Lua Script" , "GLSL Shader" , "Material", "Mesh"};
+	static const char* AssetNames[] = { "C# script","C++ Script", "Folder" , "Scene" , "GLSL Shader" , "Material", "Mesh"};
 	bool IS;
 	UiLayer::UiLayer() {
 		viewRect.W = SCREEN_WIDTH;
@@ -754,8 +753,12 @@ namespace fr {
 			file << code << std::endl;
 			file.close();
 		}
-		if (Name == "Lua Script") {
-
+		if (Name == "Scene") {
+			std::fstream file;
+			std::string Path = "Resource/Scene/Scene1";
+			std::string f = ".fr";
+			file.open(Path + f, std::ios::out);
+			file.close();
 		}
 		if (Name == "Folder") {
 			std::fstream file;

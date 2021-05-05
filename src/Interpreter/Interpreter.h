@@ -1,12 +1,15 @@
-#include <iostream>
-#include <string>
-#include "pch.h"
+#pragma once
 
-namespace fr {
+// not finished yet
+
+#include "pch.h"
+#include "Lexer.h"
+
+namespace FRL {
 	class Interpreter {
 		public:
-			void Initialize();
-			
+			static void Initialize(std::string code);
+
 		private:
 
 	};

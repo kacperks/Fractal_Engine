@@ -1,3 +1,5 @@
+#define FR_START
+
 #include "pch.h"
 #include "Timer/Timer.h"
 #include "Engine/Engine.h"
@@ -7,15 +9,9 @@
 
 using namespace fr;
 
-bool start;
-const char* SceneName;
-char buf[20];
-
 int main(int argc, char** argv) {
-	SceneName = "Resource/Scene/scene.fr";
-
 	Resource.Initialize();
-	Core.Initialize(SceneName);
+	Core.Initialize("Resource/Scene/scene.fr");
 	Timer.Initialize();
 
 	while (Core.Run()) {

@@ -2,7 +2,8 @@
 
 #include "Interpreter.h"
 
-namespace fr {
-
-
+namespace FRL {
+	void Interpreter::Initialize(std::string code) {
+		Lexer::Start(code);
+	};
 };
