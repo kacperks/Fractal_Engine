@@ -71,7 +71,7 @@ $ sh lib/lib.sh
 
 # Similar projects
 
-## Fractal Engine is inspired by these projects
+## Fractal Engine was inspired by these projects
 
 ### Rootex
 <a href = "https://github.com/sdslabs/Rootex"> Github page </a>
