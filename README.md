@@ -69,6 +69,21 @@ To install this libaries on Ubuntu/Debian type
 $ sh lib/lib.sh
 ```
 
+# Similar projects
+
+## Fractal Engine was inspired by these projects
+
+### Rootex
+<a href = "https://github.com/sdslabs/Rootex"> Github page </a>
+
+Rootex is an advanced C++ 3D game engine powering an in-production game yet to be announced. The game will finally ship on Windows and use DirectX 11.
+
+### NovelRT
+
+<a href = "https://github.com/novelrt/NovelRT"> Github page </a>
+
+NovelRT is a cross-platform, flexible Visual Novel and 2D game engine
+
 # Contributors    
 
 <a href = "https://github.com/kacperks"> kacperks </a>
