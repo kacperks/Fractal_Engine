@@ -35,7 +35,12 @@ workspace "FR"
         links {
 		    "glew32s.lib",
 		    "glfw3.lib",
+            "Shell32.lib",
+            "Gdi32.lib",
+            "User32.lib",
 		    "opengl32.lib",
+            "mono-2.0-sgen.lib", -- if your compiler doesn't support mono remove this and 43 line' 
+            "MonoPosixHelper.lib",
 			"assimp-vc142-mt.lib",
 			"tinyxml2d.lib",
 	    }           
