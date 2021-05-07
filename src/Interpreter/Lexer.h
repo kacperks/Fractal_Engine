@@ -5,6 +5,6 @@
 namespace FRL {
     class Lexer {
         public:
-            static void Start(std::string code);
+            void Start(std::string code);
     };
 }

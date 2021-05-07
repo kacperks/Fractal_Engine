@@ -32,6 +32,8 @@
 #include "Events/MouseEvents.h"
 #include "Events/WindowEvents.h"
 #include "Editor/UiLayer.h"
+#include "Inputs/KeyCodes.h"
+
 // GL stuff
 
 #include "Objects/ColorBuffer.h"
