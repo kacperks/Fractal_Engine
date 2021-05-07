@@ -53,14 +53,17 @@ FR Script Comming Soon
 
 # Bulid
 
+### Dependencies
+
 To bulid you need :
 
-* GLM
-* Glew
-* GLFW
-* ASSIMP
-* TinyXML
-* Mono (Optional , if your compiler cannot use mono or if you are using linux Delete line 25 from src/Core.h File and 42,43 from premake5.lua file)
+* GLM https://github.com/g-truc/glm
+* Glew https://github.com/nigels-com/glew
+* GLFW https://github.com/glfw/glfw
+* ASSIMP https://github.com/assimp/assimp
+* TinyXML https://github.com/leethomason/tinyxml2
+* Mono https://github.com/mono/mono
+** (Optional , if your compiler cannot use mono or if you are using linux Delete line 25 from src/Core.h File and 42,43 line from premake5.lua file)
 
 and premake
 
