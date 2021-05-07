@@ -60,7 +60,7 @@ To bulid you need :
 * GLFW
 * ASSIMP
 * TinyXML
-* Mono (Optional , if your compiler cannot use mono or if you are using linux Delete line 25 from src/Core.h File)
+* Mono (Optional , if your compiler cannot use mono or if you are using linux Delete line 25 from src/Core.h File and 42,43 from premake5.lua file)
 
 and premake
 
