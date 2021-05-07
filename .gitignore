@@ -249,6 +249,20 @@ ServiceFabricBackup/
 *.ldf
 *.ndf
 
+*.exe
+.vs/
+*.sln
+*.vcxproj
+*.vcxproj.user
+*.vcxproj.filters
+*.obj
+*.pch
+*.tlog
+*.lastbulidstate
+*.log
+*.pdb
+*.idb
+
 # Business Intelligence projects
 *.rdl.data
 *.bim.layout
