@@ -21,6 +21,8 @@
 
 #define EDITOR_VERSION "30.04.2021"
 
+#define FR_BULID
+
 #ifdef FR_WINDOWS
 	#define FRACTAL_CSHARP // if your compiler cannot use mono or if you are using linux, remove this line!
 	#define FRACTAL_SCRIPT
