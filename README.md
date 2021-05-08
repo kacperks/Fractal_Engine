@@ -21,6 +21,7 @@ Features to do:
 * Launcher
 * Bulid system
 * Custom Scripting Language
+* 2D Version
 
 [![Discord](https://img.shields.io/badge/Fractal%20Server--blue.svg?style=social&logo=Discord)](https://discord.gg/3gkZWNXhK3)
 
