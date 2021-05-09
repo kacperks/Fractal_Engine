@@ -125,8 +125,10 @@ namespace fr {
 			ECS::Manager.Render();
 		}
 		else {
-			if (Events.IsKeyPressed(GLFW_KEY_ESCAPE)) { 
+			if (Events.IsKeyPressed(FR_KEY_ESCAPE)) { 
+#ifndef FR_BULID
 				StopGame(); 				
+#endif
 			}
 			glfwGetWindowSize(window, &viewSize.x, &viewSize.y);
 			GLCALL(glViewport(0, 0, viewSize.x, viewSize.y));
@@ -148,14 +150,12 @@ namespace fr {
 	}
 
 	void Engine::StartGame() {		
-		Serializer.SaveScene("Resource/Scene/scene.fr");
 		ECS::Manager.DeactivateEditorSystems();
 		ECS::Manager.ActivateRuntimeSystems();
 		isGameRunnig = true;
 	}
 
 	void Engine::StopGame() {
-		//Serializer.LoadScene("Resource/Scene/scene.fr");
 		isGameRunnig = false;
 		ECS::Manager.DeactivateRuntimeSystems();
 		ECS::Manager.ActivateEditorSystems();

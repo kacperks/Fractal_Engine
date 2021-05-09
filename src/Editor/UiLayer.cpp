@@ -520,7 +520,7 @@ namespace fr {
 
 				ImGui::Text("Play Scene");
 				ImGui::SameLine();
-				if (ImGui::ArrowButton("Play Scene", ImGuiDir_Right)) { Core.StartGame(); }
+				if (ImGui::ArrowButton("Play Scene", ImGuiDir_Right)) { Serializer.SaveScene("Resource/Scene/scene.fr"); Core.StartGame(); }
 
 				ImGui::SameLine();
 				ImGui::NextColumn();

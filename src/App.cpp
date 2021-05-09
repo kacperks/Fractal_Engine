@@ -14,6 +14,10 @@ int main(int argc, char** argv) {
 	Core.Initialize("Resource/Scene/scene.fr");
 	Timer.Initialize();
 
+#ifdef FR_BULID
+	Core.StartGame();
+#endif
+
 	while (Core.Run()) {
 		Timer.Tick();
 		Events.Poll();

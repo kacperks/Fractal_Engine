@@ -43,31 +43,23 @@ public:
 
 	void Update() {
 		for (auto entity : entities) {
-			ECS::EntityID* AllBodies[1];
-
 			auto& transform = ECS::Manager.GetComponent<Transform>(entity);
 			auto& rigidbody = ECS::Manager.GetComponent<RigidBody>(entity);
 			auto& gravity = ECS::Manager.GetComponent<Gravity>(entity);
 
-			UpdateVelocity(1, transform  , rigidbody , gravity , entity , 4);
+			UpdateVelocity(1, transform.Position , gravity);
 		}
 	}
 
-	void UpdateVelocity(float timestep, Transform t , RigidBody rb , Gravity g , ECS::EntityID id, int otherbody) {
-			glm::vec3 forceDir = (ECS::Manager.GetComponent<Transform>(otherbody).Position - ECS::Manager.GetComponent<Transform>(id).Position);
-			glm::vec3 force;
-			glm::vec3 accleration = force / g.Mass;
+	void UpdateVelocity(float timestep, glm::vec3 BodyPos1, Gravity gc) {
+			glm::vec3 force = force * gc.GravitionalConstant * gc.Mass;
+			glm::vec3 accleration = force / gc.Mass;
 
-			g.CurrentVelocity += accleration * timestep;
+			gc.CurrentVelocity += accleration * timestep;
 	}
 
-	void UpdatePosition(float timestep) {
-		for (auto entity : entities) {
-			auto& transform = ECS::Manager.GetComponent<Transform>(entity);
-			auto& gravity = ECS::Manager.GetComponent<Gravity>(entity);
-			
+	void UpdatePosition(float timestep , Transform transform , Gravity gravity) {
 			transform.Position += gravity.CurrentVelocity * timestep;
-		}
 	}
 private:
 

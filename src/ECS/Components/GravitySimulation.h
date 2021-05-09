@@ -15,6 +15,7 @@ struct Gravity : public ECS::BaseComponent {
 
 	float Mass;
 	float Radius;
+	float GravitionalConstant;
 
 	glm::vec3 InitialVelocity;
 	glm::vec3 CurrentVelocity;
