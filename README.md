@@ -53,7 +53,7 @@ csc YourScript.cs -target:library -r:Fractal.dll
 
 FR Script Comming Soon
 
-# Bulid
+# Buliding this Engine with Premake 5
 
 ### Dependencies
 
