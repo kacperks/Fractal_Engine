@@ -1,7 +1,7 @@
-workspace "FR"
+workspace "Fractal Engine"
     architecture "x86_64"
     startproject "APP"
-    configurations { "Debug", "Release" }
+    configurations { "Debug", "GameBulid" }
 
 
     project "src"
@@ -56,7 +56,7 @@ workspace "FR"
 			runtime "Debug"
 			symbols "on"
 
-		filter "configurations:Release"
-			defines "FR_RELEASE"
+		filter "configurations:GameBulid"
+			defines "FR_BULID" -- Bulided Game
 			runtime "Release"
 			optimize "on"
