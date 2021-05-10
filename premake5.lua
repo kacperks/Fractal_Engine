@@ -33,16 +33,16 @@ workspace "Fractal Engine"
         }
 
         links {
-		    "glew32s.lib",
-		    "glfw3.lib",
-            "Shell32.lib",
-            "Gdi32.lib",
-            "User32.lib",
-		    "opengl32.lib",
-            "mono-2.0-sgen.lib", -- if your compiler doesn't support mono remove this and 43 line' 
-            "MonoPosixHelper.lib",
-			"assimp-vc142-mt.lib",
-			"tinyxml2d.lib",
+		    "glew32s",
+		    "glfw3",
+            "Shell32",
+            "Gdi32.",
+            "User32",
+		    "opengl32",
+            "mono-2.0-sgen", -- if your compiler doesn't support mono remove this and 43 line' 
+            "MonoPosixHelper",
+			"assimp-vc142-mt",
+			"tinyxml2d",
 	    }           
 
         defines {
