@@ -23,6 +23,7 @@ Features to do:
 * Custom Scripting Language
 * 2D Version
 * Visual Scripting
+* Python Scripting
 
 [![Discord](https://img.shields.io/badge/Fractal%20Server--blue.svg?style=social&logo=Discord)](https://discord.gg/3gkZWNXhK3)
 
