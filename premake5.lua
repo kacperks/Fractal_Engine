@@ -4,7 +4,7 @@ workspace "Fractal Engine"
     configurations { "Debug", "GameBulid" }
 
 
-    project "src"
+    project "Engine"
         language "C++"    
 		cppdialect "C++17"
         kind "ConsoleApp"
@@ -15,21 +15,22 @@ workspace "Fractal Engine"
         objdir ("bin/obj/%{cfg.buildcfg}/obj")
         
         pchheader "pch.h"
-        pchsource "src/pch.cpp"  
+        pchsource "%{prj.name}/src/pch.cpp" 
 
         files {
-            "%{prj.name}/**.h",
-            "%{prj.name}/**.cpp",
-			"%{prj.name}/**.hpp",
+            "%{prj.name}/src/**.h",
+            "%{prj.name}/src/**.cpp",
+			"%{prj.name}/src/**.hpp",
         }
 
         includedirs {
-            "src/Vendor",            
-	        "lib/includes",
+            "%{prj.name}/src/Vendor",
+            "%{prj.name}/src",            
+	        "%{prj.name}/lib/includes",
         }          
 
         libdirs {
-            "lib/lib/",          
+            "%{prj.name}/lib/lib/",          
         }
 
         links {
