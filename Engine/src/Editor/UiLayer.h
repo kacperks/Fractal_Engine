@@ -65,7 +65,6 @@ namespace fr {
 		void Console();
 		void Entities();
 		void Resources();
-		void CodeEditor();
 		void Dockspace();
 		void SceneSelector();
 		void ToolBar();
@@ -73,6 +72,7 @@ namespace fr {
 		void AssetBrowser();
 		void About();
 		void NameDialog();
+		void FileEditor();
 
 		// ACTIONS
 
