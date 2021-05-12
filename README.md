@@ -31,27 +31,6 @@ Features to do:
   <img src="bin/Resource/Icons/ScreenShot.png" width="683" height="371">
 </p>
 
-# Docs
-
-* Documentation Coming Soon
-
-# Scripting
-
-### C#
-
-You must have Mono to build a C# script.
-
-The command to build:
-```sh
-csc YourScript.cs -target:library -r:Fractal.dll
-```
-
-<a href = "https://www.mono-project.com/docs/getting-started/mono-basics/"> More</a>
-
-### FR Script
-
-FR Script Comming Soon
-
 # Buliding this Engine with Premake 5
 
 ### Dependencies
