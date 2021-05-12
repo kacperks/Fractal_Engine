@@ -19,7 +19,7 @@ Features to do:
 * Collision system
 * PhysX support
 * Fractal Engine Launcher
-* Custom Scripting Language (FR Scripting)
+* Custom Scripting Language (FR Script)
 * 2D Version
 * Visual Scripting
 
