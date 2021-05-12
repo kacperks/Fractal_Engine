@@ -329,9 +329,7 @@ namespace fr {
 
 				}
 
-				if (ImGui::MenuItem("Open Scene", "Ctrl+O")) {
-
-				}
+				if (ImGui::MenuItem("Open Scene", "Ctrl+O")) {}
 
 				if (ImGui::MenuItem("Save", "Ctrl+S")) { fr::Serializer.SaveScene("Resource/Scene/scene.fr"); }
 
