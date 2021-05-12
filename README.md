@@ -17,13 +17,11 @@ Features:
 Features to do:
 
 * Collision system
-* Loading models using GUI
-* Launcher
-* Bulid system
-* Custom Scripting Language
+* PhysX support
+* Fractal Engine Launcher
+* Custom Scripting Language (FR Scripting)
 * 2D Version
 * Visual Scripting
-* Python Scripting
 
 [![Discord](https://img.shields.io/badge/Fractal%20Server--blue.svg?style=social&logo=Discord)](https://discord.gg/3gkZWNXhK3)
 
@@ -58,22 +56,17 @@ FR Script Comming Soon
 
 ### Dependencies
 
-To bulid you need :
-
 * GLM https://github.com/g-truc/glm
 * Glew https://github.com/nigels-com/glew
 * GLFW https://github.com/glfw/glfw
 * ASSIMP https://github.com/assimp/assimp
 * TinyXML https://github.com/leethomason/tinyxml2
 * Mono https://github.com/mono/mono
-** (Optional , if your compiler cannot use mono or if you are using linux Delete line 25 from src/Core.h File and 42,43 line from premake5.lua file)
-
-and premake
-
-To install this libaries on Ubuntu/Debian type
-```sh
-$ sh lib/lib.sh
-```
+ (Optional , if your compiler cannot use mono or if you are using linux Delete line 25 from src/Core.h File and 42,43 line from premake5.lua file)
+* ImGui https://github.com/ocornut/imgui
+* stb https://github.com/nothings/stb
+* ImGuizmo https://github.com/CedricGuillemet/ImGuizmo
+* premake https://github.com/premake/premake-core
 
 # Similar projects
 
