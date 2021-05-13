@@ -1,5 +1,5 @@
 workspace "Fractal_Engine"
-    architecture "x86_32"
+    architecture "x86"
     startproject "APP"
     configurations { "Debug", "GameBulid" }
     platforms {"Win32", "x86" , "x64"}
