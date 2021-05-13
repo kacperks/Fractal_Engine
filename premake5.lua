@@ -41,7 +41,7 @@ workspace "Fractal_Engine"
 		    "glew32s",
 		    "glfw3",
             "Shell32",
-            "Gdi32.",
+            "Gdi32",
             "User32",
 		    "opengl32",
             "mono-2.0-sgen", -- if your compiler doesn't support mono remove this and 43 line' 
