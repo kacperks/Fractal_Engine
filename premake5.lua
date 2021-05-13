@@ -1,10 +1,11 @@
-workspace "Fractal Engine"
-    architecture "x86_64"
+workspace "Fractal_Engine"
+    architecture "x86_32"
     startproject "APP"
     configurations { "Debug", "GameBulid" }
-
+    platforms {"Win32", "x86" , "x64"}
 
     project "Engine"
+        location "%{prj.name}/"
         language "C++"    
 		cppdialect "C++17"
         kind "ConsoleApp"
@@ -21,6 +22,9 @@ workspace "Fractal Engine"
             "%{prj.name}/src/**.h",
             "%{prj.name}/src/**.cpp",
 			"%{prj.name}/src/**.hpp",
+            "%{prj.name}/lib/includes/**/*.h",
+            "%{prj.name}/lib/includes/**/*.hpp",
+            "%{prj.name}/lib/includes/**/*.cpp",
         }
 
         includedirs {
