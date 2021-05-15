@@ -148,6 +148,8 @@ namespace fr {
 		icons.insert({ "log",(ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/Logo.png") });
 		icons.insert({ "lua",(ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/lua-logo.png") });
 		icons.insert({ "png",(ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/png.jpg") });
+		icons.insert({ "error",(ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/error.png") });
+		icons.insert({ "ok",(ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/ok.png") });
 	}
 
 	void UiLayer::SceneSelector() {
