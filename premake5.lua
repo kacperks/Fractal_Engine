@@ -65,11 +65,11 @@ workspace "Fractal_Engine"
 
 		filter "configurations:GameBulid"
 			defines "FR_BULID" -- Bulided Game
-			runtime "Release"
+			runtime "Debug"
 			optimize "on"
 			
 		filter "configurations:GameBulid(C#)"
 			defines {"FR_BULID","FRACTAL_CSHARP",} -- Bulided Game with C# Scripts
 			links {"mono-2.0-sgen","MonoPosixHelper",}
-			runtime "Release"
+			runtime "Debug"
 			optimize "on"
