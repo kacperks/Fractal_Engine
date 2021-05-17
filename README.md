@@ -31,16 +31,6 @@ Features to do:
   <img src="bin/Resource/Icons/ScreenShot.png" width="683" height="371">
 </p>
 
-# Examples
-## ECS
-* Example Component
-```cpp
-#include <ECS/ECS.h>
-
-struct ExampleComponent : public ECS::BaseComponent {
-      float Variable = 0.5f;
-};
-```
 # Buliding this Engine with Premake 5
 
 ### Dependencies
