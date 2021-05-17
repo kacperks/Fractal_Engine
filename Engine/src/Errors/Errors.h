@@ -1,5 +1,7 @@
 #pragma once
 
+#ifndef FR_ERRORS
+#define FR_ERRORS
 
 #define ASSERT(boolean) if (!(boolean)) __debugbreak();
 #define GLCALL(func) GLClearError(); func; ASSERT(GLLogCall(#func, __FILE__, __LINE__))
@@ -20,3 +22,5 @@ static bool GLLogCall(const char* function, const char* file, int line) {
 	}
 	return true;
 }
+
+#endif

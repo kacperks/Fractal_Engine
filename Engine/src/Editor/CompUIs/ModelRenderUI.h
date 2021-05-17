@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef FR_MODEL_RENDERER_COMPONENT_UI
+#define FR_MODEL_RENDERER_COMPONENT_UI
+
 #include "pch.h"
 #include "../UiLayer.h"
 #include "Engine/Engine.h"
@@ -22,14 +25,6 @@
 
 #include <fstream>
 
-#ifdef FRACTAL_WINDOWS
-#include <windows.h>
-#endif // FRACTAL_WINDOWS
-
-#ifdef FRACTAL_LINUX
-#include <bits/stdc++.h>
-#endif
-
 class ModelCompUI : public CompUI {
 public:
 	void Init(ECS::EntityID entity) override {
@@ -48,3 +43,5 @@ private:
 	char buf[20];
 	ModelRenderer* model;
 };
+
+#endif

@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef FR_CORE
+#define FR_CORE
+
 #define WINDOW_WIDTH 1280
 
 #define WINDOW_HEIGH 720
@@ -42,9 +45,6 @@
 
 #ifdef FRACTAL_CSHARP
 	// if project is C# project
-
 #endif
 
-namespace fr {
-
-};
+#endif

@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef FR_TRANSFORM_COMPONENT_UI
+#define FR_TRANSFORM_COMPONENT_UI
+
 #include "CompUI.h"
 #include "ECS/Components/Transform.h"
 #include "Editor/Controls/Widgets.h"
@@ -106,3 +109,5 @@ public:
 private:
 	Transform* transform;
 };
+
+#endif

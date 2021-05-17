@@ -24,13 +24,7 @@
 
 namespace fr {
 	bool ed = true;
-	bool NameD;
-	char buf[20];
-	char bufr[40];
-	char bufrotto[30];
 	bool ok;
-	std::string current_file;
-	std::string NAMET;
 	std::string console = "Fractal Debug Console";
 	const ImVec4 dark = ImVec4(0.17f, 0.17f, 0.17f, 1.0f);
 	static const char* names[] = { "Camera", "RigidBody", "MeshRenderer",

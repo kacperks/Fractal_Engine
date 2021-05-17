@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef FR_VERTEX
+#define FR_VERTEX
+
 struct Vertex {
 	Vertex() = default;
 	Vertex(float x, float y, float z): Position(glm::vec3(x, y, z)){}
@@ -14,3 +17,5 @@ struct Vertex {
 	// coords
 	glm::vec2 TexCoords = glm::vec2(0.0f);
 };
+
+#endif

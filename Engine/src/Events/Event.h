@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef FR_EVENT
+#define FR_EVENT
+
 class Event;
 using EventID = size_t;
 
@@ -24,3 +27,5 @@ struct Event {
     virtual ~Event() = default;
     virtual const EventID GetID() const = 0;
 };
+
+#endif

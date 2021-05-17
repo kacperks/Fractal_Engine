@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef FR_UI_LAYER
+#define FR_UI_LAYER
+
 #include "CompUIs/CompUI.h"
 #include "Vendor/IMGUI/imgui.h"
 #include "Vendor/GUIZMO/ImGuizmo.h"
@@ -110,3 +113,5 @@ namespace fr {
 
 	static UiLayer& UI = UiLayer::Ref();
 }
+
+#endif

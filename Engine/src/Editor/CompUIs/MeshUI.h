@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef FR_MESH_RENDERER_COMPONENT_UI
+#define FR_MESH_RENDERER_COMPONENT_UI
+
 #include "CompUI.h"
 #include "Resource/Resource.h"
 #include "ECS/Components/MeshRenderer.h"
@@ -103,3 +106,5 @@ private:
     int currItemIndex;
     const char* items[2] = { "CUBE", "SPHERE"};
 };
+
+#endif

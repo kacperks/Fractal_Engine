@@ -1,8 +1,10 @@
 #pragma once
 
+#ifndef FR_APP_EVENTS
+#define FR_APP_EVENTS
+
 #include "Event.h"
 
-// key event
 struct UiEvent : public Event {
     UiEvent() = default;
     virtual ~UiEvent() = default;
@@ -20,3 +22,5 @@ struct ViewportResizedEvent : public Event {
 protected:
     double width, height;
 };
+
+#endif

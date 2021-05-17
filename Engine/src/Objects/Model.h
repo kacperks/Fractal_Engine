@@ -1,5 +1,8 @@
 ﻿#pragma once
 
+#ifndef FR_MODEL
+#define FR_MODEL
+
 #include <ASSIMP/scene.h>
 #include <ASSIMP/Importer.hpp>
 #include <ASSIMP/pbrmaterial.h>
@@ -174,3 +177,5 @@ private:
 	std::vector<GLMesh> meshes;
 	std::map<const char*, GLuint> loadedTexMaps;
 };
+
+#endif

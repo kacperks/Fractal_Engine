@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef FR_MOUSE_EVENTS
+#define FR_MOUSE_EVENTS
+
 #include "Event.h"
 
 constexpr int MOUSE_LEFT = 0;
@@ -66,3 +69,5 @@ public:
     MouseScrollEvent(const MouseData& data) : MouseEvent(data) { }
     inline const EventID GetID() const { return EventTypeID<MouseScrollEvent>(); }
 };
+
+#endif

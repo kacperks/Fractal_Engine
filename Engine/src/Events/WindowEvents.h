@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef FR_WINDOW_EVENTS
+#define FR_WINDOW_EVENTS
+
 #include "Event.h"
 
 // key events
@@ -28,3 +31,5 @@ struct WindowResizedEvent : public Event {
 protected:
     double width, height;
 };
+
+#endif

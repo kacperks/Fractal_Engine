@@ -8,7 +8,7 @@ namespace fr {
 
 	// SCENE
 	void XMLSerializer::LoadScene(const char* filename) {
-		UiLayer::AddToConsole(" [XMLSerializer] Loaded scene.fr!");
+		fr::UI.AddToConsole(" [XMLSerializer] Loaded scene.fr!");
 		tinyxml2::XMLDocument document;
 		document.LoadFile(filename);
 		if (document.Error()) { 

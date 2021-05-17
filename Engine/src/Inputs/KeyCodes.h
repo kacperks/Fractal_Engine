@@ -2,7 +2,9 @@
 
 #include "pch.h"
 
-namespace fr {
+#ifndef FR_KEYCODES
+#define FR_KEYCODES
+
 #define FR_KEY_SPACE              32
 #define FR_KEY_APOSTROPHE         39  /* ' */
 #define FR_KEY_COMMA              44  /* , */
@@ -127,4 +129,5 @@ namespace fr {
 #define FR_KEY_MENU               348
 
 #define FR_KEY_LAST               GLFW_KEY_MENU
-}
+
+#endif

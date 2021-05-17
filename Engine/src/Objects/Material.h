@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef FR_MATERIAL
+#define FR_MATERIAL
+
 #include "Objects/Shader.h"
 
 struct Material {
@@ -33,3 +36,5 @@ struct Material {
 		shader.SetSample2D("RoughnessMap", RoughnessMap, 4);
 	}
 };
+
+#endif

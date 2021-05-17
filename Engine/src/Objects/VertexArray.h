@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef FR_VERTEX_ARRAY
+#define FR_VERTEX_ARRAY
+
 #include "Vertex.h"
 
 class VertexArray {
@@ -65,3 +68,5 @@ private:
 	GLuint VAO, VBO, EBO;
 	GLsizei numOfIndices, numOfVertices;
 };
+
+#endif

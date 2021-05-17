@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef FR_TIMER
+#define FR_TIMER
+
 namespace fr {
 
 	class T_Timer {
@@ -27,3 +30,5 @@ namespace fr {
 
 	static T_Timer& Timer = T_Timer::Ref();
 }
+
+#endif

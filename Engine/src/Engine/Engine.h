@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef FR_ENGINE
+#define FR_ENGINE
+
 #include "Objects/DepthBuffer.h"
 #include "Objects/SamplerBuffer.h"
 
@@ -71,3 +74,5 @@ namespace fr {
 
 	static Engine& Core = Engine::Ref();	
 }
+
+#endif

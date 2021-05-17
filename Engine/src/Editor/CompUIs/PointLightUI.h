@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef FR_POINT_LIGHT_COMPONENT_UI
+#define FR_POINT_LIGHT_COMPONENT_UI
+
 #include "CompUI.h"
 #include "ECS/Components/PointLight.h"
 
@@ -47,3 +50,5 @@ public:
 private:
 	PointLight* light;
 };
+
+#endif

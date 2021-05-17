@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef FR_RIGIDBODY_COMPONENT_UI
+#define FR_RIGIDBODY_COMPONENT_UI
+
 #include "pch.h"
 #include "../UiLayer.h"
 #include "Engine/Engine.h"
@@ -21,14 +24,6 @@
 #include "ECS/Components/CsScript.h"
 
 #include <fstream>
-
-#ifdef FRACTAL_WINDOWS
-#include <windows.h>
-#endif // FRACTAL_WINDOWS
-
-#ifdef FRACTAL_LINUX
-#include <bits/stdc++.h>
-#endif
 
 class RBUI : public CompUI {
 public:
@@ -62,3 +57,5 @@ private:
 	char buf[20];
 	RigidBody* rb;
 };
+
+#endif

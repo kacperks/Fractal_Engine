@@ -27,6 +27,3 @@ public:
 protected:
 	bool isVisible = false;
 };
-
-
-

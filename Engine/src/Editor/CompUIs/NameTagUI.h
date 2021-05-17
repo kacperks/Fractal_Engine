@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef FR_ENTITY_NAME_COMPONENT_UI
+#define FR_ENTITY_NAME_COMPONENT_UI
+
 #include "CompUI.h"
 #include "ECS/Components/EntityName.h"
 
@@ -42,3 +45,5 @@ private:
 	char buffer[20];
 	EntityName* eName;
 };
+
+#endif

@@ -20,6 +20,7 @@
 #include <functional>
 #include <filesystem>
 #include <unordered_map>
+
 #include "Core.h"
 
 using namespace std::placeholders;
@@ -38,6 +39,4 @@ using namespace std::placeholders;
 #include <GLM/gtc/matrix_transform.hpp>
 
 // Custom
-#include "Errors/Errors.h"
-#include "Events/EventSystem.h"
 #include "fractal.hpp"

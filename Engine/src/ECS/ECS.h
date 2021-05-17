@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef FR_ECS
+#define FR_ECS
+
 #include "ECS/Base/Types.h"
 #include "ECS/Base/BaseComponent.h"
 #include "ECS/Base/BaseSystem.h"
@@ -10,3 +13,5 @@
 
 #include "Components.h"
 #include "Systems.h"
+
+#endif
