@@ -1,7 +1,7 @@
 workspace "Fractal_Engine"
     architecture "x86"
     startproject "APP"
-    configurations { "Debug", "GameBulid" }
+    configurations { "Editor", "Editor(C#)" ,"GameBulid" , "GameBulid(C#)"}
     platforms {"Win32", "x86" , "x64"}
 
     project "Engine"
@@ -44,8 +44,6 @@ workspace "Fractal_Engine"
             "Gdi32",
             "User32",
 		    "opengl32",
-            "mono-2.0-sgen", -- if your compiler doesn't support mono remove this and 43 line' 
-            "MonoPosixHelper",
 			"assimp-vc142-mt",
 			"tinyxml2d",
 	    }           
@@ -56,12 +54,22 @@ workspace "Fractal_Engine"
        	filter "system:windows"
 		systemversion "latest"
 			
-		filter "configurations:Debug"
-			defines "FR_DEBUG"
+		filter "configurations:Editor"
+			runtime "Debug" -- Editor
+			symbols "on"
+			
+		filter "configurations:Editor(C#)"
+			defines "FRACTAL_CSHARP" -- Editor with C#
 			runtime "Debug"
 			symbols "on"
 
 		filter "configurations:GameBulid"
 			defines "FR_BULID" -- Bulided Game
+			runtime "Release"
+			optimize "on"
+			
+		filter "configurations:GameBulid(C#)"
+			defines {"FR_BULID","FRACTAL_CSHARP",} -- Bulided Game with C# Scripts
+			links {"mono-2.0-sgen","MonoPosixHelper",}
 			runtime "Release"
 			optimize "on"

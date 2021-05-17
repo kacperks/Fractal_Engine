@@ -40,8 +40,7 @@ Features to do:
 * GLFW https://github.com/glfw/glfw
 * ASSIMP https://github.com/assimp/assimp
 * TinyXML https://github.com/leethomason/tinyxml2
-* Mono https://github.com/mono/mono
- (Optional , if your compiler cannot use mono or if you are using linux Delete line 25 from src/Core.h File and 42,43 line from premake5.lua file)
+* Mono https://github.com/mono/mono (Optional)
 * ImGui https://github.com/ocornut/imgui
 * stb https://github.com/nothings/stb
 * ImGuizmo https://github.com/CedricGuillemet/ImGuizmo
