@@ -1,6 +1,6 @@
 workspace "Fractal_Engine"
     architecture "x86"
-    startproject "APP"
+    startproject "Engine"
     configurations { "Editor", "Editor(C#)" ,"GameBulid" , "GameBulid(C#)"}
     platforms {"Win32", "x86" , "x64"}
 
