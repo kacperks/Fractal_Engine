@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef FR_DISPATCHER
-#define FR_DISPATCHER
-
 #include "Event.h"
 
 
@@ -44,5 +41,3 @@ private:
 };
 
 static EventDispatcher& Dispatcher = EventDispatcher::Ref();
-
-#endif

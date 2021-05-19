@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef FR_SAMPLER_BUFFER
-#define FR_SAMPLER_BUFFER
-
 class SamplerBuffer {
 
 public:
@@ -80,7 +77,6 @@ private:
 	GLuint bufferID, renderID, textureID;
 };
 
-#endif
 //GLCALL(glGenTextures(1, &textureID));
 		//GLCALL(glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, textureID));
 		//GLCALL(glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, 4, GL_RGB, width, height, GL_TRUE));

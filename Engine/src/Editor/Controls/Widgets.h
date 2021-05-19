@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef FR_WIDGET
-#define FR_WIDGET
-
 #include "Vendor/IMGUI/imgui.h"
 
 namespace Widget {
@@ -108,4 +105,3 @@ namespace Widget {
 		}
 	};
 }
-#endif

@@ -56,7 +56,7 @@
 #define FR_KEY_WORLD_1            161 /* non-US #1 */
 #define FR_KEY_WORLD_2            162 /* non-US #2 */
 
-	/* Function keys */
+/* Function keys */
 #define FR_KEY_ESCAPE             256
 #define FR_KEY_ENTER              257
 #define FR_KEY_TAB                258

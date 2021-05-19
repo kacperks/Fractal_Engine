@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef FR_MESH
-#define FR_MESH
-
 #include "VertexArray.h"
 #include "Material.h"
 
@@ -51,5 +48,3 @@ private:
 	VertexArray vao;
 	Material material;
 };
-
-#endif

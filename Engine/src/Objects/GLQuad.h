@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef FR_GL_QUAD
-#define FR_GL_QUAD
-
 #include "VertexArray.h"
 
 class GLQuad {
@@ -27,4 +24,3 @@ public:
 
 	VertexArray VAO;
 };
-#endif

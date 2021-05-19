@@ -6,7 +6,6 @@
 #include "Vendor/IMGUI/imgui_internal.h"
 #include "Vendor/IMGUI/imgui_impl_glfw.h"
 #include "Vendor/IMGUI/imgui_impl_opengl3.h"
-#include "Vendor/ImGuiColorTextEdit/TextEditor.h"
 
 #include "ECS/Base/Entity.h"
 #include "Serializer/XMLSerializer.h"
@@ -24,7 +23,12 @@
 
 namespace fr {
 	bool ed = true;
+	bool NameD;
+	char buf[20];
+	char bufr[40];
+	char bufrotto[30];
 	bool ok;
+	std::string NAMET;
 	std::string console = "Fractal Debug Console";
 	const ImVec4 dark = ImVec4(0.17f, 0.17f, 0.17f, 1.0f);
 	static const char* names[] = { "Camera", "RigidBody", "MeshRenderer",
@@ -99,21 +103,15 @@ namespace fr {
 		if (ed == true) {
 			SceneSelector();
 		}
-		if (ok == true) {
-			ImGui::ShowStyleEditor();
+		if (NameD == true) {
+			NameDialog();
 		}
 
 		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 		GLFWwindow* backup_current_context = glfwGetCurrentContext();
-#if defined FR_WINDOWS
 		ImGui::UpdatePlatformWindows();
 		ImGui::RenderPlatformWindowsDefault();
-#elif defined FR_LINUX
-		
-#elif defined FR_APPLE
-
-#endif
 		glfwMakeContextCurrent(backup_current_context);
 	}
 
@@ -142,8 +140,6 @@ namespace fr {
 		icons.insert({ "log",(ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/Logo.png") });
 		icons.insert({ "lua",(ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/lua-logo.png") });
 		icons.insert({ "png",(ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/png.jpg") });
-		icons.insert({ "error",(ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/error.png") });
-		icons.insert({ "ok",(ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/ok.png") });
 	}
 
 	void UiLayer::SceneSelector() {
@@ -161,7 +157,7 @@ namespace fr {
 
 		/// 0 = FLAT APPEARENCE
 		/// 1 = MORE "3D" LOOK
-		int is3D = 1;
+		int is3D = 0;
 		colors[ImGuiCol_Text] = ImVec4(1.00f, 1.00f, 1.00f, 1.00f);
 		colors[ImGuiCol_TextDisabled] = ImVec4(0.40f, 0.40f, 0.40f, 1.00f);
 		colors[ImGuiCol_ChildBg] = ImVec4(0.25f, 0.25f, 0.25f, 1.00f);
@@ -325,7 +321,9 @@ namespace fr {
 
 				}
 
-				if (ImGui::MenuItem("Open Scene", "Ctrl+O")) {}
+				if (ImGui::MenuItem("Open Scene", "Ctrl+O")) {
+
+				}
 
 				if (ImGui::MenuItem("Save", "Ctrl+S")) { fr::Serializer.SaveScene("Resource/Scene/scene.fr"); }
 
@@ -342,7 +340,7 @@ namespace fr {
 				ImGui::EndMenu();
 			}
 			if (ImGui::BeginMenu("Settings")) {
-				if (ImGui::MenuItem("Style Editor")) { ok = true; }
+				if (ImGui::MenuItem("Style Editor")) {  }
 				ImGui::EndMenu();
 			}
 			if (ImGui::BeginMenu("Window")) {
@@ -378,6 +376,17 @@ namespace fr {
 
 			ImGui::EndMenuBar();
 		}
+	}
+
+	void UiLayer::NameDialog() {
+		ImGui::Begin("Type Name !", &NameD);
+
+
+		ImGui::SameLine();
+
+		if (ImGui::Button("OK")) { ok = true; NAMET = std::string(bufrotto); NameD = false; }
+
+		ImGui::End();
 	}
 
 	void UiLayer::Viewport() {		
@@ -467,12 +476,6 @@ namespace fr {
 		ImGui::End();
 	}
 
-	void UiLayer::FileEditor() {
-		ImGui::Begin("File Editor");
-		 
-		ImGui::End();
-	}
-
 	void UiLayer::Resources() {
 		ImGui::Begin("File System", nullptr);
 		{
@@ -517,7 +520,7 @@ namespace fr {
 
 				ImGui::Text("Play Scene");
 				ImGui::SameLine();
-				if (ImGui::ArrowButton("Play Scene", ImGuiDir_Right)) { Serializer.SaveScene("Resource/Scene/scene.fr"); Core.StartGame(); }
+				if (ImGui::ArrowButton("Play Scene", ImGuiDir_Right)) { Core.StartGame(); }
 
 				ImGui::SameLine();
 				ImGui::NextColumn();

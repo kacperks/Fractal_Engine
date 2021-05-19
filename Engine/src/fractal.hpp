@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef FR_HEADERS
-#define FR_HEADERS
-
 #include "Resource/Resource.h"
 
 #include "ECS/ECS.h"
@@ -49,5 +46,3 @@
 #include "Objects/Shader.h"
 #include "Objects/Vertex.h"
 #include "Objects/VertexArray.h"
-
-#endif

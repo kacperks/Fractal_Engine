@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef FR_EVENT_SYSTEM
-#define FR_EVENT_SYSTEM
-
 #include "AppEvents.h"
 #include "Events/KeyEvents.h"
 #include "Events/MouseEvents.h"
@@ -37,5 +34,3 @@ private:
 };
 
 static EventSystem& Events = EventSystem::Ref();
-
-#endif

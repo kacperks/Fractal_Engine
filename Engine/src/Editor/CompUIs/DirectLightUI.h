@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef FR_DIRECTLIGHT_COMPONENT_UI
-#define FR_DIRECTLIGHT_COMPONENT_UI
-
 #include "CompUI.h"
 #include "ECS/Components/DirectionalLight.h"
 #include "ECS/Components/CsScript.h"
@@ -64,5 +61,3 @@ private:
 	char buffer[20];
 	DirectionalLight* light;
 };
-
-#endif

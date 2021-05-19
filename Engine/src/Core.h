@@ -20,12 +20,11 @@
 #error Not Supported Platform!
 #endif
 
-#define VERSION "BETA 1.13"
+#define VERSION "BETA 1.14"
 
-#define EDITOR_VERSION "30.04.2021"
+#define EDITOR_VERSION "19.05.2021"
 
 #ifdef FR_WINDOWS
-	#define FRACTAL_SCRIPT
 	// Windows platform related stuff
 
 	#include <windows.h>

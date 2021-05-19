@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef FR_KEY_EVENTS
-#define FR_KEY_EVENTS
-
 #include "Event.h"
 
 using KeyCode = int;
@@ -28,5 +25,3 @@ struct KeyReleasedEvent : public KeyEvent {
     ~KeyReleasedEvent() = default;
     inline const EventID GetID() const { return EventTypeID<KeyReleasedEvent>(); }
 };
-
-#endif

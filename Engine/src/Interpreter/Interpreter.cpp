@@ -5,6 +5,6 @@
 
 namespace FRL {
 	void Interpreter::Initialize(std::string code) {
-		
+
 	};
 };

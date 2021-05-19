@@ -1,7 +1,6 @@
 #pragma once
 
-#ifndef FR_COLOR_BUFFER
-#define FR_COLOR_BUFFER
+#pragma once
 
 class ColorBuffer {
 
@@ -60,5 +59,3 @@ private:
 	GLuint bufferID;
 	GLuint textureID;
 };
-
-#endif

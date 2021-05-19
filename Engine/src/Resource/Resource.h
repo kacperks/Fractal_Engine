@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef FR_RESOURCE
-#define FR_RESOURCE
-
 #include "Objects/Model.h"
 #include "Objects/GLMesh.h"
 
@@ -75,4 +72,3 @@ namespace fr {
 	static RsrcManager& Resource = RsrcManager::Ref();
 }
 
-#endif

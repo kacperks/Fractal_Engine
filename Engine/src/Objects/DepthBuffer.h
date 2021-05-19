@@ -1,7 +1,6 @@
 #pragma once
 
-#ifndef FR_DEPTH_BUFFER
-#define FR_DEPTH_BUFFER
+#pragma once
 
 class DepthBuffer {
 
@@ -65,5 +64,3 @@ private:
 	GLuint bufferID;
 	GLuint depthMapID;
 };
-
-#endif

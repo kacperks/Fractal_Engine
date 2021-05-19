@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef FR_SERIALIZER
-#define FR_SERIALIZER
-
 #include <TinyXML/tinyxml2.h>
 #include "ECS/Components.h"
 
@@ -79,5 +76,3 @@ namespace fr {
 
 	static XMLSerializer& Serializer = XMLSerializer::Ref();
 }
-
-#endif

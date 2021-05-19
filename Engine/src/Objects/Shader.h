@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef FR_SHADER
-#define FR_SHADER
-
 class Shader {
 
 public:
@@ -73,4 +70,3 @@ private:
 	GLuint program;
 };
 
-#endif

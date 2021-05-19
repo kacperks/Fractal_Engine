@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef FR_UI_LAYER
-#define FR_UI_LAYER
-
 #include "CompUIs/CompUI.h"
 #include "Vendor/IMGUI/imgui.h"
 #include "Vendor/GUIZMO/ImGuizmo.h"
@@ -68,6 +65,7 @@ namespace fr {
 		void Console();
 		void Entities();
 		void Resources();
+		void CodeEditor();
 		void Dockspace();
 		void SceneSelector();
 		void ToolBar();
@@ -75,7 +73,6 @@ namespace fr {
 		void AssetBrowser();
 		void About();
 		void NameDialog();
-		void FileEditor();
 
 		// ACTIONS
 
@@ -113,5 +110,3 @@ namespace fr {
 
 	static UiLayer& UI = UiLayer::Ref();
 }
-
-#endif

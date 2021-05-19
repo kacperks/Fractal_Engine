@@ -1,8 +1,6 @@
 #pragma once
-#ifdef FRACTAL_CSHARP
 
-#ifndef FR_CSHARP_COMPONENT_UI
-#define FR_CSHARP_COMPONENT_UI
+#ifdef FRACTAL_CSHARP
 
 #include "pch.h"
 #include "../UiLayer.h"
@@ -25,6 +23,14 @@
 #include "ECS/Components/CsScript.h"
 
 #include <fstream>
+
+#ifdef FRACTAL_WINDOWS
+#include <windows.h>
+#endif // FRACTAL_WINDOWS
+
+#ifdef FRACTAL_LINUX
+#include <bits/stdc++.h>
+#endif
 
 class CsScriptCompUI : public CompUI {
 public:
@@ -75,6 +81,5 @@ public:
 		char buf2[20];
 };
 
-#endif
 
 #endif
