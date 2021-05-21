@@ -70,7 +70,6 @@ namespace fr {
 		void SceneSelector();
 		void ToolBar();
 		void SceneTools();
-		void AssetBrowser();
 		void About();
 		void NameDialog();
 

@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef FR_CORE
-#define FR_CORE
+#ifndef FR_SETUP
+#define FR_SETUP
 
 #define WINDOW_WIDTH 1280
 

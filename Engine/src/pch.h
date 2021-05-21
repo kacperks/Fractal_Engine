@@ -20,7 +20,7 @@
 #include <functional>
 #include <filesystem>
 #include <unordered_map>
-#include "Core.h"
+#include "Setup.h"
 
 using namespace std::placeholders;
 
@@ -40,6 +40,6 @@ using namespace std::placeholders;
 // Custom
 #include "Errors/Errors.h"
 #include "Events/EventSystem.h"
-#include "fractal.hpp"
+#include "Headers.hpp"
 
 #define VAR_NAME(var) (#var)

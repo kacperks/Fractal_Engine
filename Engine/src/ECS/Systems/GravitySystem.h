@@ -47,19 +47,19 @@ public:
 			auto& rigidbody = ECS::Manager.GetComponent<RigidBody>(entity);
 			auto& gravity = ECS::Manager.GetComponent<Gravity>(entity);
 
-			UpdateVelocity(1, transform.Position , gravity);
+			UpdateVelocity(1, transform.Position, gravity);
 		}
 	}
 
 	void UpdateVelocity(float timestep, glm::vec3 BodyPos1, Gravity gc) {
-			glm::vec3 force = force * gc.GravitionalConstant * gc.Mass;
-			glm::vec3 accleration = force / gc.Mass;
+		glm::vec3 force = force * gc.GravitionalConstant * gc.Mass;
+		glm::vec3 accleration = force / gc.Mass;
 
-			gc.CurrentVelocity += accleration * timestep;
+		gc.CurrentVelocity += accleration * timestep;
 	}
 
-	void UpdatePosition(float timestep , Transform transform , Gravity gravity) {
-			transform.Position += gravity.CurrentVelocity * timestep;
+	void UpdatePosition(float timestep, Transform transform, Gravity gravity) {
+		transform.Position += gravity.CurrentVelocity * timestep;
 	}
 private:
 
