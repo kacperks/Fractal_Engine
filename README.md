@@ -21,9 +21,9 @@ Features to do:
 * Fractal Engine Launcher
 * Custom Scripting Language (FR Script)
 * 2D Version
-* Visual Scripting
+* Python Scripting
 
-[![Discord](https://img.shields.io/badge/Fractal%20Server--blue.svg?style=social&logo=Discord)](https://discord.gg/3gkZWNXhK3)
+[![Discord](https://img.shields.io/badge/Fractal%20Support--blue.svg?style=social&logo=Discord)](https://discord.gg/3gkZWNXhK3)
 
 # Screen Shot
 
