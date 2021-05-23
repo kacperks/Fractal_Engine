@@ -3,8 +3,6 @@
 #ifndef FR_SETUP
 #define FR_SETUP
 
-#define FR_2D
-
 #define WINDOW_WIDTH 1280
 
 #define WINDOW_HEIGH 720
@@ -27,24 +25,17 @@
 #define EDITOR_VERSION "19.05.2021"
 
 #ifdef FR_WINDOWS
-	// Windows platform related stuff
-
+	// Windows platform stuff
 	#include <windows.h>
 #endif
 
 #ifdef FR_LINUX
-	// linux platform related stuff
-
+	// linux platform stuff
 	#include <bits/stdc++.h>
 #endif
 
 #ifdef FR_APPLE
-	// mac platform related stuff
-
-#endif
-
-#ifdef FRACTAL_CSHARP
-	// if project is C# project
+	// mac platform stuff
 #endif
 
 #endif

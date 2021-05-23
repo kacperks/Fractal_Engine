@@ -94,6 +94,7 @@ public:
 				ImGui::SameLine();
 				ImGui::SetNextItemWidth(DRAG_WIDTH);
 				ImGui::DragFloat("##scaz", &transform->Scale.z, 0.01f, 0.00001f, 0, "%.1f");
+
 				ImGui::PopStyleColor(3);
 
 				ImGui::PopStyleVar();

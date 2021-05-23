@@ -49,8 +49,10 @@ public:
 		auto e = Dispatcher.Cast<MouseEvent>(event);
 		if (IsMouseOverViewport(e) && !ImGuizmo::IsUsing()) {
 			if (!Events.IsKeyPressed(GLFW_KEY_LEFT_CONTROL) && Events.IsMouseDown(MOUSE_RIGHT)) {
+#ifndef FR_2D
 				camera.Rotation.x -= e.DeltaY() * Timer.DeltaTime();
 				camera.Rotation.y -= e.DeltaX() * Timer.DeltaTime();
+#endif
 				SetShadersUniforms();
 			}
 
