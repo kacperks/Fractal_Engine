@@ -2,7 +2,7 @@
 <p align="left">
   <img src="bin/Resource/Icons/Logo.png" width="350" height="350">
 </p>
-Fractal Engine its 3D Game Engine
+Fractal Engine its 3D and 2D Game Engine
 
 Not Finished yet
 
