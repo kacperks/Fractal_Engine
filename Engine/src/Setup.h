@@ -3,6 +3,8 @@
 #ifndef FR_SETUP
 #define FR_SETUP
 
+#define FR_2D
+
 #define WINDOW_WIDTH 1280
 
 #define WINDOW_HEIGH 720

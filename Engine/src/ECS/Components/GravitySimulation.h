@@ -3,12 +3,6 @@
 #include "pch.h"
 #include "ECS/Base/BaseComponent.h"
 
-struct Vector3 {
-	float X;
-	float Y;
-	float Z;
-};
-
 struct Gravity : public ECS::BaseComponent {
 	Gravity() = default;
 	~Gravity() = default;

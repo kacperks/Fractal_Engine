@@ -1,19 +1,10 @@
 #pragma once
-
-#include "Timer/Timer.h"
-#include "Engine/Engine.h"
-#include "ECS/Base/BaseSystem.h"
-#include "ECS/Base/EntityManager.h"
-
-#include "ECS/Components/Transform.h"
-#include "ECS/Components/RigidBody.h"
-#include "ECS/Components/GravitySimulation.h"
-#include "ECS/ECS.h"
-
 #include "pch.h"
-#include "Editor/UiLayer.h"
 #include "Engine/Engine.h"
 #include "Events/EventSystem.h"
+
+#include "ECS/Components.h"
+#include "ECS/Components/GravitySimulation.h"
 
 #include "ECS/Base/Entity.h"
 #include "Serializer/XMLSerializer.h"
