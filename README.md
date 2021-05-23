@@ -17,10 +17,8 @@ Features:
 Features to do:
 
 * Collision system
-* PhysX support
-* Fractal Engine Launcher
+* Physics Engine
 * Custom Scripting Language (FR Script)
-* 2D Version
 * Python Scripting
 
 [![Discord](https://img.shields.io/badge/Fractal%20Support--blue.svg?style=social&logo=Discord)](https://discord.gg/3gkZWNXhK3)
