@@ -19,7 +19,7 @@ Features to do:
 * Collision system
 * Physics Engine
 * Custom Scripting Language (FR Script)
-* Python Scripting
+* Python or Lua Scripting
 
 [![Discord](https://img.shields.io/badge/Fractal%20Support--blue.svg?style=social&logo=Discord)](https://discord.gg/3gkZWNXhK3)
 
