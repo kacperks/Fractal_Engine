@@ -14,6 +14,10 @@ public:
         shader = Shader(Resource.Program("GRID"));
 	}
 
+    void Start() {
+        GenerateGrid(10);
+    }
+
 	void Render() override {
         shader.Bind();
         shader.SetV4f("params", glm::vec4(10.0));

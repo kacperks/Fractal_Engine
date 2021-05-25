@@ -118,9 +118,6 @@ namespace fr {
 
 		Dispatcher.AddListener<WindowCloseEvent>(std::bind(&Engine::OnQuit, this, _1));
 		Dispatcher.AddListener<ViewportResizedEvent>(std::bind(&Engine::OnViewportResized, this, _1));
-#ifdef FR_BULID
-		StartGame();
-#endif
 	}
 
 	void Engine::Update() {
