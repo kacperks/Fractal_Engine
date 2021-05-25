@@ -24,6 +24,10 @@
 
 #define EDITOR_VERSION "19.05.2021"
 
+#ifdef FR_BULID
+#define WINDOW_NAME "Game"
+#endif
+
 #ifdef FR_WINDOWS
 	// Windows platform stuff
 	#include <windows.h>

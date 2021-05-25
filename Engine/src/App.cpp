@@ -1,5 +1,3 @@
-#define FR_START
-
 #include "pch.h"
 #include "Timer/Timer.h"
 #include "Engine/Engine.h"

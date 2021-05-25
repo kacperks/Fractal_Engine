@@ -29,9 +29,13 @@ namespace fr {
 		glfwWindowHint(GLFW_BLUE_BITS, vMode->blueBits);
 		glfwWindowHint(GLFW_GREEN_BITS, vMode->greenBits);
 		glfwWindowHint(GLFW_REFRESH_RATE, vMode->refreshRate);
-
+#ifndef FR_BULID
 		std::string WinName = "Fractal Engine " VERSION;
+#endif
 
+#ifdef FR_BULID
+		std::string WinName = WINDOW_NAME;
+#endif
 		window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGH, WinName.c_str(), nullptr, nullptr);
 		assert(window && "ERROR::GFLW::FAILED TO CREATE WINDOW!");
 		glfwMakeContextCurrent(window);
