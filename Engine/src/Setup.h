@@ -29,17 +29,18 @@
 #endif
 
 #ifdef FR_WINDOWS
-	// Windows platform stuff
-	#include <windows.h>
+// Windows platform stuff
+#include <windows.h>
 #endif
 
 #ifdef FR_LINUX
-	// linux platform stuff
-	#include <bits/stdc++.h>
+// linux platform stuff
+#include <bits/stdc++.h>
 #endif
 
 #ifdef FR_APPLE
-	// mac platform stuff
+// mac platform stuff
+#error This Platform is not supported yet!
 #endif
 
 #endif

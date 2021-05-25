@@ -21,6 +21,8 @@
 #include "CompUIs/RigidbodyUI.h"
 #include "CompUIs/CameraUI.h"
 
+// Warring this file is pretty messy!
+
 namespace fr {
 	bool ed = true;
 	std::string console = " [UI] Fractal Debug Console";
@@ -29,8 +31,8 @@ namespace fr {
 		"ModelRenderer", "SpriteRenderer", "Directional Light", "Point Light", "Spot Light", "C# Script" };
 	static const char* AssetNames[] = { "C# script","C++ Script", "Folder" , "Scene" , "GLSL Shader" , "Material", "Mesh"};
 	UiLayer::UiLayer() {
-		viewRect.W = SCREEN_WIDTH;
-		viewRect.H = SCREEN_HEIGHT;
+		viewRect.W = WINDOW_WIDTH;
+		viewRect.H = WINDOW_HEIGH;
 	}
 
 	void UiLayer::Initialiaze() {
