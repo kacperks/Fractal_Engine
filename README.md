@@ -1,4 +1,3 @@
-# Fractal Game Engine!
 <p align="center">
   <img src="bin/Resource/Icons/Logo.png" width="350" height="350">
 </p>
