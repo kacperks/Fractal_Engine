@@ -60,6 +60,7 @@ workspace "Fractal_Engine"
 			
 		filter "configurations:Editor(C#)"
 			defines "FRACTAL_CSHARP" -- Editor with C#
+			links {"mono-2.0-sgen","MonoPosixHelper",}
 			runtime "Debug"
 			symbols "on"
 
