@@ -4,7 +4,12 @@
 </p>
 Fractal Engine its 3D and 2D Game Engine
 
-Not Finished yet
+<p align="center">
+<img src="https://img.shields.io/github/last-commit/kacperks/Fractal_Engine?label=Last%20Commit"/>
+<img src="https://img.shields.io/github/license/kacperks/Fractal_Engine?label=License" />
+<img src="https://img.shields.io/github/downloads/kacperks/Fractal_Engine/total?label=Downloads" />
+<img src="https://img.shields.io/github/languages/code-size/kacperks/Fractal_Engine?label=Code%20Size" />
+<img src="https://img.shields.io/github/stars/kacperks/Fractal_Engine?label=Stars&logo=github" />
 
 Features:
 * ImGui Editor
@@ -20,13 +25,6 @@ Features to do:
 * Physics Engine
 * Custom Scripting Language (FR Script)
 * Python or Lua Scripting
-
-<p align="center">
-<img src="https://img.shields.io/github/last-commit/kacperks/Fractal_Engine?label=Last%20Commit"/>
-<img src="https://img.shields.io/github/license/kacperks/Fractal_Engine?label=License" />
-<img src="https://img.shields.io/github/downloads/kacperks/Fractal_Engine/total?label=Downloads" />
-<img src="https://img.shields.io/github/languages/code-size/kacperks/Fractal_Engine?label=Code%20Size" />
-<img src="https://img.shields.io/github/stars/kacperks/Fractal_Engine?label=Stars&logo=github" />
   
 # Screen Shot
 
