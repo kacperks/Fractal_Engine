@@ -20,7 +20,7 @@ Features to do:
 * Physics Engine
 * Custom Scripting Language (FR Script)
 * Python or Lua Scripting
-* 
+
 <p align="center">
 <img src="https://img.shields.io/github/last-commit/kacperks/Fractal_Engine?label=Last%20Commit"/>
 <img src="https://img.shields.io/github/license/kacperks/Fractal_Engine?label=License" />
