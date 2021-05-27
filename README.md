@@ -27,8 +27,7 @@ Features to do:
 <img src="https://img.shields.io/github/downloads/kacperks/Fractal_Engine/total?label=Downloads" />
 <img src="https://img.shields.io/github/languages/code-size/kacperks/Fractal_Engine?label=Code%20Size" />
 <img src="https://img.shields.io/github/stars/kacperks/Fractal_Engine?label=Stars&logo=github" />
-[![Discord](https://img.shields.io/badge/Fractal%20Support--blue.svg?style=social&logo=Discord)](https://discord.gg/3gkZWNXhK3)
-
+  
 # Screen Shot
 
 <p align="left">
