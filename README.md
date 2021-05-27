@@ -1,8 +1,11 @@
 # Fractal Game Engine!
-<p align="left">
+<p align="center">
   <img src="bin/Resource/Icons/Logo.png" width="350" height="350">
 </p>
+
+<p align="center">
 Fractal Engine its 3D and 2D Game Engine
+</p>
 
 <p align="center">
 <img src="https://img.shields.io/github/last-commit/kacperks/Fractal_Engine?label=Last%20Commit"/>
