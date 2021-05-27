@@ -16,10 +16,11 @@ Fractal Engine its 3D and 2D Game Engine
 Features:
 * ImGui Editor
 * Loading 3D models with ASSIMP
+* Loading 2D textures with stbimage
 * Fully Featured ECS(Entity-Component-System)
-* Scene System
+* Scene System (XML)
 * Prototype of C# Scripting
-* Tools like (Move,Rotate,Scale)
+* Gizmos
 
 Features to do:
 
