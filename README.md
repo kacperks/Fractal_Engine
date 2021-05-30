@@ -48,7 +48,7 @@ Features to do:
 * ImGui https://github.com/ocornut/imgui
 * stb https://github.com/nothings/stb
 * ImGuizmo https://github.com/CedricGuillemet/ImGuizmo
-* premake https://github.com/premake/premake-core or Scons https://github.com/SCons/scons
+* Scons https://github.com/SCons/scons
 
 # Similar projects
 

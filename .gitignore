@@ -13,5 +13,4 @@ bin/obj/*.obj
 *.log
 *.pdb
 *.idb
-
 .sconsign.dblite
