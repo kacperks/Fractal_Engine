@@ -32,7 +32,7 @@ Features to do:
 # Screen Shot
 
 <p align="left">
-  <img src="bin/Resource/Icons/ScreenShot.png" width="683" height="371">
+  <img src="ScreenShot.png" width="683" height="371">
 </p>
 
 # Buliding this Engine with Premake 5
