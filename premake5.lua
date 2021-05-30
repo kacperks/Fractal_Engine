@@ -34,7 +34,7 @@ workspace "Fractal_Engine"
         }          
 
         libdirs {
-            "%{prj.name}/lib/lib/",          
+            "%{prj.name}/lib/lib/",
         }
 
         links {

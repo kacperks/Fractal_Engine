@@ -1,4 +1,4 @@
-#pragma oncequaVAO = 
+#pragma once
 
 #include "Objects/GLQuad.h"
 #include "Resource/Resource.h"
