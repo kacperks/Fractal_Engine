@@ -40,7 +40,9 @@ namespace fr {
 		assert(window && "ERROR::GFLW::FAILED TO CREATE WINDOW!");
 		glfwMakeContextCurrent(window);
 
-		assert(gladLoadGLLoader((GLADloadproc)glfwGetProcAddress));
+		if (!gl3wInit()) {
+			return;
+		}
 
 		GLCALL(glEnable(GL_STENCIL_TEST));
 		GLCALL(glEnable(GL_DEPTH_TEST));

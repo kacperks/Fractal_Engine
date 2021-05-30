@@ -25,7 +25,7 @@
 using namespace std::placeholders;
 
 // OPENGL
-#include <glad/glad.h>
+#include <GL/gl3w.h>
 
 // GLFW
 #include <GLFW/glfw3.h>
