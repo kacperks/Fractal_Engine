@@ -35,12 +35,12 @@ Features to do:
   <img src="ScreenShot.png" width="683" height="371">
 </p>
 
-# Buliding this Engine with Premake 5
+# Buliding this Engine
 
 ### Dependencies
 
 * GLM https://github.com/g-truc/glm
-* Glew https://github.com/nigels-com/glew
+* GLAD https://github.com/Dav1dde/glad
 * GLFW https://github.com/glfw/glfw
 * ASSIMP https://github.com/assimp/assimp
 * TinyXML https://github.com/leethomason/tinyxml2
@@ -48,7 +48,7 @@ Features to do:
 * ImGui https://github.com/ocornut/imgui
 * stb https://github.com/nothings/stb
 * ImGuizmo https://github.com/CedricGuillemet/ImGuizmo
-* premake https://github.com/premake/premake-core
+* premake https://github.com/premake/premake-core or Scons https://github.com/SCons/scons
 
 # Similar projects
 
