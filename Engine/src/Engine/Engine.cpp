@@ -40,8 +40,7 @@ namespace fr {
 		assert(window && "ERROR::GFLW::FAILED TO CREATE WINDOW!");
 		glfwMakeContextCurrent(window);
 
-		assert(glewInit() == GLEW_OK && "ERROR::GLEW INIT FAILED!");
-		glewExperimental = GL_TRUE;			
+		assert(gladLoadGLLoader((GLADloadproc)glfwGetProcAddress));
 
 		GLCALL(glEnable(GL_STENCIL_TEST));
 		GLCALL(glEnable(GL_DEPTH_TEST));

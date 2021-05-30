@@ -7,7 +7,7 @@ env = Environment(CXXCOMSTR="Compiling => $SOURCES", LINKCOMSTR="Linking Program
 
 
 libraries = [
-	"glew32",
+	"glew32s",
     "glfw3",
     "shell32",
     "gdi32",
