@@ -40,7 +40,7 @@ Features to do:
 ### Dependencies
 
 * GLM https://github.com/g-truc/glm
-* GLAD https://github.com/Dav1dde/glad
+* GL3W https://github.com/skaslev/gl3w
 * GLFW https://github.com/glfw/glfw
 * ASSIMP https://github.com/assimp/assimp
 * TinyXML https://github.com/leethomason/tinyxml2
