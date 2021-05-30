@@ -13,3 +13,5 @@ Engine/.vs/
 *.log
 *.pdb
 *.idb
+
+.sconsign.dblite
