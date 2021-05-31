@@ -35,7 +35,7 @@ Features to do:
   <img src="ScreenShot.png" width="683" height="371">
 </p>
 
-# Buliding this Engine
+# building this Engine
 
 ### Dependencies
 
