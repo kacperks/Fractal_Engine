@@ -25,11 +25,11 @@ namespace fr {
 	private:
 		MTSerializer() = default;
 
-		void LoadModel(XMLPrinter& printer, std::string name, std::string path);
-		void SaveModel(XMLElement* xModel, std::string name, std::string path);
+		void LoadModel(XMLElement* xModel);
+		void SaveModel(XMLPrinter &printer, std::string name, std::string path);
 
-		void LoadTxt(XMLPrinter& printer, std::string name, std::string path);
-		void SaveTxT(XMLElement* xTXT, std::string name, std::string path);
+		void LoadTxt(XMLElement* xTXT);
+		void SaveTxT(XMLPrinter &printer, std::string name, std::string path);
 	};
 
 	static MTSerializer& ModelsAndTxt = MTSerializer::Ref();

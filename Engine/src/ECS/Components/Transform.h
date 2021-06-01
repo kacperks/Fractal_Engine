@@ -36,6 +36,3 @@ public:
 		shader.SetMatrix4f("Model", glm::value_ptr(Model()));
 	}
 };
-
-
-

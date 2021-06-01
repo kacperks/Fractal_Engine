@@ -3,6 +3,7 @@
 #include "CompUIs/CompUI.h"
 #include "Vendor/IMGUI/imgui.h"
 #include "Vendor/GUIZMO/ImGuizmo.h"
+#include "Colors.h"
 
 struct Transform;
 
