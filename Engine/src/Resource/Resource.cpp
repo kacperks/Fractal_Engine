@@ -71,7 +71,7 @@ namespace fr {
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 
-		GLCALL(glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, buffer));
+		GLCALL(glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, buffer));
 		GLCALL(glGenerateMipmap(GL_TEXTURE_2D));
 		glBindTexture(GL_TEXTURE_2D, 0);
 		stbi_image_free(buffer);
@@ -81,6 +81,8 @@ namespace fr {
 	void RsrcManager::AddTex2D(std::string name, const GLuint texID) {
 		assert(texture2ds.find(name) == texture2ds.end() && "Trying to add same texture twice!");
 		texture2ds.insert({ name, texID });
+
+		RsrcManager::ActiveTxTs++;
 	}
 
 	// cubemap

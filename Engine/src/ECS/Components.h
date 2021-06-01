@@ -8,6 +8,7 @@
 #include "Components/SpotLight.h"
 #include "Components/PointLight.h"
 #include "Components/DirectionalLight.h"
+
 #ifdef FRACTAL_CSHARP
 #include "Components/CsScript.h"
 #endif

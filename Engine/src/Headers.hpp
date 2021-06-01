@@ -20,6 +20,7 @@
 // XML stuff
 
 #include "Serializer/XMLSerializer.h"
+#include "Serializer/ModelsAndTextures.h"
 
 // Events stuff
 

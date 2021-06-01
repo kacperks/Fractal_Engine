@@ -2,6 +2,8 @@
 
 #include "BaseComponent.h"
 
+#include "pch.h"
+
 namespace ECS {
 
     using Constructor = std::function<FactoryType()>;

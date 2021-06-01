@@ -1,5 +1,6 @@
 #pragma once
 
+#include "pch.h"
 #include "Objects/Model.h"
 #include "Objects/GLMesh.h"
 
@@ -21,6 +22,9 @@ namespace fr {
 		}
 
 		void Initialize();
+
+		int ActiveModels;
+		int ActiveTxTs;
 
 		// texture
 		const GLuint LoadTex2D(std::string filename);
