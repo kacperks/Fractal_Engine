@@ -88,10 +88,8 @@ NovelRT is a cross-platform, flexible Visual Novel and 2D game engine
 
 # Contributors    
 
-<a href = "https://github.com/kacperks"> kacperks </a>
-<br>
-<a href = "https://github.com/lubek-dc"> lubek-dc </a>
-<br>
-<a href = "https://github.com/BoomerDev"> BoomerDev </a>
+* <a href = "https://github.com/kacperks"> kacperks </a>
+* <a href = "https://github.com/lubek-dc"> lubek-dc </a>
+* <a href = "https://github.com/BoomerDev"> BoomerDev </a>
 
 The people listed above have landed more than 2 commits in the project
