@@ -35,7 +35,7 @@ Features to do:
   <img src="ScreenShot.png" width="683" height="371">
 </p>
 
-# building this Engine
+# Building
 
 ### Dependencies
 
@@ -57,7 +57,7 @@ Features to do:
 sudo apt install -y libglm-dev libglew-dev libglfw3-dev libassimp-dev assimp-utils libxmu-dev libxi-dev libtinyxml-dev
 ```
 
-## How to bulid?
+## Building
 
 First you need to install scons:
 
