@@ -50,6 +50,27 @@ Features to do:
 * ImGuizmo https://github.com/CedricGuillemet/ImGuizmo
 * Scons https://github.com/SCons/scons
 
+#### Linux
+
+* Debian/Ubuntu
+```sh
+sudo apt install -y libglm-dev libglew-dev libglfw3-dev libassimp-dev assimp-utils libxmu-dev libxi-dev libtinyxml-dev
+```
+
+## How to bulid?
+
+First you need to install scons:
+
+```sh
+pip install scons
+```
+
+Then just type:
+
+```sh
+scons
+```
+
 # Similar projects
 
 ## Fractal Engine was inspired by these projects
