@@ -54,7 +54,7 @@ Features to do:
 
 * Debian/Ubuntu
 ```sh
-sudo apt install -y libglm-dev libglew-dev libglfw3-dev libassimp-dev assimp-utils libxmu-dev libxi-dev libtinyxml-dev
+sudo apt install -y libglm-dev libgl3w-dev libglfw3-dev libassimp-dev assimp-utils libxmu-dev libxi-dev libtinyxml-dev
 ```
 
 ## Building
