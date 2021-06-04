@@ -7,7 +7,7 @@ env = Environment(CXXCOMSTR="Compiling => $SOURCES", LINKCOMSTR="Linking Program
 
 
 libraries = [
-    "glew32s",
+	"glew32",
     "glfw3",
     "shell32",
     "gdi32",
@@ -18,13 +18,11 @@ libraries = [
     "tinyxml2d"
 ]
 
-sources = glob.glob("**/*.cpp", recursive=True)
-sources.extend(glob.glob("**/*.c", recursive=True))
-
+sources = glob.glob("Engine/src/**/*.cpp", recursive=True)
+sources.extend(glob.glob("Engine/lib/includes/**/*.cpp", recursive=True))
 
 for source in sources:
     n_object = os.path.basename(source).replace(".cpp", ".obj")
-    n_object.replace(".c", ".obj")
     env.Object("bin/obj/%s" % n_object, source)
 
 env.Program("bin/Fractal_Engine", Glob("bin/obj/*.obj"), LIBPATH="Engine/lib/lib", LIBS=libraries)
