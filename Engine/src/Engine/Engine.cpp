@@ -55,7 +55,7 @@ namespace fr {
 		viewSize = glm::ivec2(WINDOW_WIDTH, WINDOW_HEIGH);
 	}
 
-	void Engine::Initialize(const char* scene) {
+	void Engine::Initialize() {
 
 		// register component list
 		ECS::Manager.RegisterCompList<Camera>();
@@ -109,7 +109,6 @@ namespace fr {
 		ECS::Manager.ActivateEditorSystems();
 		ECS::Manager.Start();
 		fr::UI.Initialiaze();
-		Serializer.LoadScene(scene);
 
 		glfwSetKeyCallback(window, GlfwImpl::KeyboardCallback);
 		glfwSetScrollCallback(window, GlfwImpl::MouseScrollCallback);

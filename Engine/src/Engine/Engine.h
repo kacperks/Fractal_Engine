@@ -50,7 +50,7 @@ namespace fr {
 		void Render();
 		void StopGame();
 		void StartGame();
-		void Initialize(const char* scene);
+		void Initialize();
 
 		inline glm::vec2 ViewSize() const { return viewSize; }
 		inline DepthBuffer* ShadowBuffer() const { return shadowBuffer; }

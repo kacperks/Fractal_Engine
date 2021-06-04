@@ -11,7 +11,6 @@ namespace fr {
         GLGrid(const GLGrid&) = default;
 
         GLGrid(unsigned int size) {
-			/*
             std::vector<glm::vec3> vertices;
             std::vector<glm::vec4> indices;
 
@@ -58,7 +57,6 @@ namespace fr {
 
             vertices.clear();
             indices.clear();
-			*/
         }
 
         void Render() {

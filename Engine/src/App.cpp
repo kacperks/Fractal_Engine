@@ -9,8 +9,9 @@ using namespace fr;
 
 int main(int argc, char** argv) {
 	Resource.Initialize();
-	Core.Initialize("Resource/Scene/scene.fr");
+	Core.Initialize();
 	Timer.Initialize();
+	Serializer.LoadScene("Resource/Scene/scene.fr");
 
 	while (Core.Run()) {
 		Timer.Tick();
