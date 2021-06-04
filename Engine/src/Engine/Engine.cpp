@@ -1,4 +1,3 @@
-
 #include "pch.h"
 #include "Engine.h"
 #include "Editor/UiLayer.h"
@@ -41,9 +40,8 @@ namespace fr {
 		assert(window && "ERROR::GFLW::FAILED TO CREATE WINDOW!");
 		glfwMakeContextCurrent(window);
 
-		if (!gl3wInit()) {
-			return;
-		}
+		assert(glewInit() == GLEW_OK && "ERROR::GLEW INIT FAILED!");
+		glewExperimental = GL_TRUE;			
 
 		GLCALL(glEnable(GL_STENCIL_TEST));
 		GLCALL(glEnable(GL_DEPTH_TEST));
@@ -147,7 +145,7 @@ namespace fr {
 		if (!isGameRunnig) {
 			fr::UI.Display();
 		}
-		else {			
+		else {		
 			ECS::Manager.Render();
 		}
 

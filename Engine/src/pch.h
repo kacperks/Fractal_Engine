@@ -25,7 +25,7 @@
 using namespace std::placeholders;
 
 // OPENGL
-#include <GL/gl3w.h>
+#include <GL/glew.h>
 
 // GLFW
 #include <GLFW/glfw3.h>
@@ -41,5 +41,3 @@ using namespace std::placeholders;
 #include "Errors/Errors.h"
 #include "Events/EventSystem.h"
 #include "Headers.hpp"
-
-#define FR_QWE

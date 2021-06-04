@@ -67,12 +67,12 @@ namespace fr {
 		bool isGameRunnig;
 		GLFWwindow* window;
 
-		glm::ivec2 viewSize;	
+		glm::ivec2 viewSize;
 		DepthBuffer* shadowBuffer;
 		SamplerBuffer* outputBuffer;
 	};
 
-	static Engine& Core = Engine::Ref();	
+	static Engine& Core = Engine::Ref();
 }
 
 #endif
