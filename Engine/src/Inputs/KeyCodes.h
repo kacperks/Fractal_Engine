@@ -128,6 +128,6 @@
 #define FR_KEY_RIGHT_SUPER        347
 #define FR_KEY_MENU               348
 
-#define FR_KEY_LAST               GLFW_KEY_MENU
+#define FR_KEY_LAST               FR_KEY_MENU
 
 #endif
