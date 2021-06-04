@@ -35,7 +35,7 @@ Features to do:
   <img src="ScreenShot.png" width="683" height="371">
 </p>
 
-# building this Engine
+# Building
 
 ### Dependencies
 
@@ -49,6 +49,27 @@ Features to do:
 * stb https://github.com/nothings/stb
 * ImGuizmo https://github.com/CedricGuillemet/ImGuizmo
 * Scons https://github.com/SCons/scons
+
+#### Linux
+
+* Debian/Ubuntu
+```sh
+sudo apt install -y libglm-dev libgl3w-dev libglfw3-dev libassimp-dev assimp-utils libxmu-dev libxi-dev libtinyxml-dev
+```
+
+## Building
+
+First you need to install scons:
+
+```sh
+pip install scons
+```
+
+Then just type:
+
+```sh
+scons
+```
 
 # Similar projects
 
@@ -67,10 +88,8 @@ NovelRT is a cross-platform, flexible Visual Novel and 2D game engine
 
 # Contributors    
 
-<a href = "https://github.com/kacperks"> kacperks </a>
-<br>
-<a href = "https://github.com/lubek-dc"> lubek-dc </a>
-<br>
-<a href = "https://github.com/BoomerDev"> BoomerDev </a>
+* <a href = "https://github.com/kacperks"> kacperks </a>
+* <a href = "https://github.com/lubek-dc"> lubek-dc </a>
+* <a href = "https://github.com/BoomerDev"> BoomerDev </a>
 
 The people listed above have landed more than 2 commits in the project
