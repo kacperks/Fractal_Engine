@@ -45,7 +45,11 @@ namespace fr {
 			outputBuffer->SetSize(size.x, size.y);
 			glViewport(0, 0, size.x, size.y);
 		}
-
+		
+		void LockCursor(){
+			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED)	
+		}
+		
 		void Update();
 		void Render();
 		void StopGame();
