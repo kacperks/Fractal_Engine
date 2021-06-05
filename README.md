@@ -28,6 +28,7 @@ Features to do:
 * Physics Engine
 * Custom Scripting Language (FR Script)
 * Python or Lua Scripting
+* Better Linux and Mac Support
 
   
 Discord Server! : https://discord.gg/aXHjdQfCMK
