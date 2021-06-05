@@ -47,7 +47,7 @@ namespace fr {
 		}
 		
 		void LockCursor(){
-			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED)	
+			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 		}
 		
 		void Update();
