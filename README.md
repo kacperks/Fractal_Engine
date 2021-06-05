@@ -28,7 +28,9 @@ Features to do:
 * Physics Engine
 * Custom Scripting Language (FR Script)
 * Python or Lua Scripting
+
   
+Discord Server! : https://discord.gg/aXHjdQfCMK
 # Screen Shot
 
 <p align="left">
