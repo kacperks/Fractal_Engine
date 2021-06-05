@@ -32,10 +32,10 @@ using namespace std::placeholders;
 
 // GLM
 #define GLM_ENABLE_EXPERIMENTAL
-#include <GLM/glm.hpp>
-#include <GLM/gtc/type_ptr.hpp>
-#include <GLM/gtx/quaternion.hpp>
-#include <GLM/gtc/matrix_transform.hpp>
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <glm/gtx/quaternion.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 // Custom
 #include "Errors/Errors.h"
