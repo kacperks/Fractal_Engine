@@ -37,7 +37,7 @@ namespace fr {
 			outputBuffer->SetSize(viewSize.x, viewSize.y);
 			glViewport(0, 0, viewSize.x, viewSize.y);
 
-			std::cout << "viewport resised! " << viewSize.x << "\n";
+			std::cout << "viewport resized! " << viewSize.x << "\n";
 		}
 
 		void SetViewport(glm::vec2 size) {
