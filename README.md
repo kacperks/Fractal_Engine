@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="bin/Resource/Icons/Logo.png" width="350" height="350">
+  <img src="App/Resource/Icons/Logo.png" width="350" height="350">
 </p>
 
 <p align="center">
