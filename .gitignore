@@ -6,7 +6,7 @@ Engine/.vs/
 *.vcxproj
 *.vcxproj.user
 *.vcxproj.filters
-bin/obj/*.obj
+App/obj/*.obj
 *.pch
 *.tlog
 *.lastbulidstate

@@ -23,6 +23,6 @@ sources.extend(glob.glob("Engine/lib/includes/**/*.cpp", recursive=True))
 
 for source in sources:
     n_object = os.path.basename(source).replace(".cpp", ".obj")
-    env.Object("bin/obj/%s" % n_object, source)
+    env.Object("App/obj/%s" % n_object, source)
 
-env.Program("bin/Fractal_Engine", Glob("bin/obj/*.obj"), LIBPATH="Engine/lib/lib", LIBS=libraries)
+env.Program("App/Fractal_Engine", Glob("App/obj/*.obj"), LIBPATH="Engine/lib/lib", LIBS=libraries)
