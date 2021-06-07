@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="bin/Resource/Icons/Logo.png" width="350" height="350">
+  <img src="App/Resource/Icons/Logo.png" width="350" height="350">
 </p>
 
 <p align="center">
@@ -53,14 +53,6 @@ Discord Server! : https://discord.gg/aXHjdQfCMK
 * ImGuizmo https://github.com/CedricGuillemet/ImGuizmo
 * Scons https://github.com/SCons/scons
 
-## Setup
-
-First you need to Clone Repo
-
-```sh
-git clone https://github.com/kacperks/Fractal_Engine.git
-```
-
 #### Installing these libraries on Linux
 
 * Debian/Ubuntu
@@ -72,16 +64,18 @@ sudo apt install -y libglm-dev libglew-dev libglfw3-dev libassimp-dev assimp-uti
 sudo dnf install glew-devel glm-devel assimp-devel glfw-devel tinyxml2-devel
 ```
 
-## Building
 
-First you need to install scons:
-
+## Setup
+* First you need to Clone Repo
+```sh
+git clone https://github.com/kacperks/Fractal_Engine.git
+```
+* Then you need to install scons:
 ```sh
 pip install scons
 ```
 
-Then just type:
-
+* Go to the directory of the Fractal engine and type:
 ```sh
 scons
 ```
