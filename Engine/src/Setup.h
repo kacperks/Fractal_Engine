@@ -43,4 +43,6 @@
 #error This Platform is not supported yet!
 #endif
 
+#define BIND_FUNC(fn)   std::bind(&fn, this, _1)
+
 #endif
