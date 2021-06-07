@@ -3,44 +3,47 @@
 #ifndef FR_SETUP
 #define FR_SETUP
 
-#define WINDOW_WIDTH 1280
-
-#define WINDOW_HEIGH 720
-
-
 // platform stuff
 
 #if defined(_WIN32)
 #define FR_WINDOWS
+#define FR_OS "Windows"
 #elif defined(__linux__)
 #define FR_LINUX
+#define FR_OS "Linux"
 #elif defined(__APPLE__)
 #define FR_APPLE
+#define FR_OS "OSX"
 #else
 #error Not Supported Platform!
 #endif
 
-#define VERSION "BETA 1.14"
+#ifdef FR_WINDOWS
+#include <windows.h>
+#endif
 
-#define EDITOR_VERSION "19.05.2021"
+#ifdef FR_LINUX
+#include <bits/stdc++.h>
+#endif
+
+// Basic Stuff
 
 #ifdef FR_BULID
 #define WINDOW_NAME "Game"
 #endif
 
-#ifdef FR_WINDOWS
-// Windows platform stuff
-#include <windows.h>
-#endif
+#define VERSION "BETA 1.14"
+#define EDITOR_VERSION "19.05.2021"
 
-#ifdef FR_LINUX
-// linux platform stuff
-#include <bits/stdc++.h>
-#endif
+#define WINDOW_WIDTH 1280
+#define WINDOW_HEIGH 720
 
-#ifdef FR_APPLE
-// mac platform stuff
-#error This Platform is not supported yet!
-#endif
+#define BIND_FUNC(fn) std::bind(&fn, this, _1)
+
+namespace fr {
+    using uint = uint32_t;
+    using uchar = unsigned char;
+    typedef void(*func)();
+}
 
 #endif

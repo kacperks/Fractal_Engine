@@ -2,10 +2,9 @@
 <Scene>
     <Entity>
         <EntityName value="Main Camera"/>
-        <Transform x="8.64447021484375" y="4.8084778785705566" z="28.525264739990234" rx="0" ry="97.542724609375" rz="0" sx="1.4999998807907104" sy="1.4999994039535522" sz="1.4999992847442627"/>
+        <Transform x="8.64447021484375" y="4.8084778785705566" z="28.525264739990234" rx="0" ry="166.72090148925781" rz="0" sx="1.4999998807907104" sy="1.4999994039535522" sz="1.4999992847442627"/>
         <Camera/>
         <SpriteRenderer name="camera"/>
-        <CsScript AssemblyPath="Resource/Scripts/Movement.dll" ClassName="TestScript"/>
     </Entity>
     <Entity>
         <EntityName value="SkyBox"/>
@@ -13,55 +12,10 @@
         <DirectionalLight colorR="1" colorG="1" colorB="0.99998998641967773" dirX="-0.10000000149011612" dirY="-0.10000000149011612" dirZ="0.10000000149011612" intensity="1"/>
     </Entity>
     <Entity>
-        <EntityName value="Grouind"/>
-        <Transform x="4.9453220367431641" y="-0.48932218551635742" z="12.939187049865723" rx="0" ry="-0" rz="0" sx="14.888498306274414" sy="1" sz="14.73213005065918"/>
+        <EntityName value="Cube"/>
+        <Transform x="-6.3563194274902344" y="4.2868328094482422" z="6.8768491744995117" rx="0" ry="0" rz="0" sx="3.8911371231079102" sy="3.2376275062561035" sz="3.4837725162506104"/>
         <MeshRenderer name="CUBE">
-            <Material ao="1" metallic="0.0099999997764825821" roughness="1" albedoR="0.15200001001358032" albedoG="0.15199849009513855" albedoB="0.15199849009513855"/>
+            <Material ao="1" metallic="0.0099999997764825821" roughness="1" albedoR="0.40196084976196289" albedoG="1" albedoB="0"/>
         </MeshRenderer>
-    </Entity>
-    <Entity>
-        <EntityName value="Tree"/>
-        <Transform x="5.3000001907348633" y="3.0175979137420654" z="10.513326644897461" rx="0" ry="5501.00830078125" rz="5501.00830078125" sx="1" sy="1" sz="1"/>
-        <ModelRenderer name="Tree"/>
-        <CsScript AssemblyPath="Resource/Scripts/ShowCase.dll" ClassName="TestScript"/>
-    </Entity>
-    <Entity>
-        <EntityName value="Entity5"/>
-        <Transform x="8.1564292907714844" y="1.7000000476837158" z="16.245767593383789" rx="0" ry="1517.7174072265625" rz="1517.7174072265625" sx="1" sy="1" sz="1"/>
-        <MeshRenderer name="CUBE">
-            <Material ao="0.86000001430511475" metallic="0.10000000149011612" roughness="0.89999997615814209" albedoR="0.023075569421052933" albedoG="0.7866666316986084" albedoB="0.32851186394691467"/>
-        </MeshRenderer>
-        <PointLight colorR="0" colorG="1" colorB="0.91199994087219238" intensity="404"/>
-        <CsScript AssemblyPath="Resource/Scripts/ShowCase.dll" ClassName="TestScript"/>
-    </Entity>
-    <Entity>
-        <EntityName value="Entity6"/>
-        <Transform x="0.30000001192092896" y="1.9260419607162476" z="16.956157684326172" rx="0" ry="1517.7174072265625" rz="1517.7174072265625" sx="1" sy="1" sz="1"/>
-        <MeshRenderer name="CUBE">
-            <Material ao="1" metallic="0.10000000149011612" roughness="0.89999997615814209" albedoR="1" albedoG="0" albedoB="0"/>
-        </MeshRenderer>
-        <PointLight colorR="1" colorG="0" colorB="0" intensity="310"/>
-        <CsScript AssemblyPath="Resource/Scripts/ShowCase.dll" ClassName="TestScript"/>
-    </Entity>
-    <Entity>
-        <EntityName value="Entity7"/>
-        <Transform x="0" y="0" z="0" rx="0" ry="0" rz="0" sx="1" sy="1" sz="1"/>
-    </Entity>
-    <Entity>
-        <EntityName value="Entity8"/>
-        <Transform x="0" y="0" z="0" rx="0" ry="0" rz="0" sx="1" sy="1" sz="1"/>
-    </Entity>
-    <Entity>
-        <EntityName value="Entity9"/>
-        <Transform x="0" y="2.010507345199585" z="0" rx="0" ry="-0" rz="0" sx="1" sy="1" sz="1"/>
-    </Entity>
-    <Entity>
-        <EntityName value="Ball with Physics"/>
-        <Transform x="7.8451962471008301" y="49.422176361083984" z="10.33246898651123" rx="0" ry="-0" rz="0" sx="1" sy="1" sz="1"/>
-        <MeshRenderer name="SPHERE">
-            <Material ao="1" metallic="0.10000000149011612" roughness="0.89999997615814209" albedoR="0.60000002384185791" albedoG="0.60000002384185791" albedoB="0.60000002384185791"/>
-        </MeshRenderer>
-        <PointLight colorR="0" colorG="0.9466666579246521" colorB="0.62101322412490845" intensity="540"/>
-        <RigidBody mass="1" gscale="1" Fx="0" Fy="0" Fz="0" Dx="0" Dy="0" Dz="0"/>
     </Entity>
 </Scene>

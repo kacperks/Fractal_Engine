@@ -707,6 +707,11 @@ namespace fr {
 		if (ECS::Manager.HasComponent<DirectionalLight>(entity)) {
 			icon = icons.at("light");
 		}
+#ifdef FRACTAL_CSHARP
+		if (ECS::Manager.HasComponent<CsScript>(entity)) {
+			icon = icons.at("cs");
+		}
+#endif
 		if (ECS::Manager.HasComponent<PointLight>(entity)) {
 			icon = icons.at("light");
 		}

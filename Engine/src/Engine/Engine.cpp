@@ -57,9 +57,6 @@ namespace fr {
 
 		// register component list
 		ECS::Manager.RegisterCompList<Camera>();
-#ifdef FRACTAL_CSHARP
-		ECS::Manager.RegisterCompList<CsScript>();
-#endif
 		ECS::Manager.RegisterCompList<Transform>();
 		ECS::Manager.RegisterCompList<RigidBody>();
 		ECS::Manager.RegisterCompList<SpotLight>();
@@ -69,12 +66,11 @@ namespace fr {
 		ECS::Manager.RegisterCompList<ModelRenderer>();
 		ECS::Manager.RegisterCompList<SpriteRenderer>();
 		ECS::Manager.RegisterCompList<DirectionalLight>();
+#ifdef FRACTAL_CSHARP
+		ECS::Manager.RegisterCompList<CsScript>();
+#endif
 
 		// register component factory
-		ECS::Registrar<Camera>("Camera");
-#ifdef FRACTAL_CSHARP
-		ECS::Registrar<CsScript>("C# Script");
-#endif
 		ECS::Registrar<RigidBody>("RigidBody");
 		ECS::Registrar<SpotLight>("Spot Light");
 		ECS::Registrar<PointLight>("Point Light");
@@ -82,6 +78,10 @@ namespace fr {
 		ECS::Registrar<ModelRenderer>("ModelRenderer");
 		ECS::Registrar<SpriteRenderer>("SpriteRenderer");
 		ECS::Registrar<DirectionalLight>("Directional Light");
+		ECS::Registrar<Camera>("Camera");
+#ifdef FRACTAL_CSHARP
+		ECS::Registrar<CsScript>("C# Script");
+#endif
 
 		// register systems
 		ECS::Manager.AddSystem<SpotLightSystem>();
@@ -93,9 +93,11 @@ namespace fr {
 		ECS::Manager.AddSystem<ModelRendererSystem>();
 		ECS::Manager.AddSystem<SpriteRendererSystem>();	
 
+#ifndef FR_BULID
 		// editor system will be removed at runtime
 		ECS::Manager.AddEditorSystem<EditorCameraSystem>();
 		ECS::Manager.AddEditorSystem<GridRendererSystem>();
+#endif
 
 		// runtime systems will be added at runtime
 		ECS::Manager.AddRuntimeSystem<CameraSystem>();

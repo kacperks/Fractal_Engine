@@ -7,10 +7,6 @@
 #include "Objects/SamplerBuffer.h"
 
 namespace fr {
-
-	const int SCREEN_WIDTH(1280);
-	const int SCREEN_HEIGHT(720);
-
 	const int SHADOW_WIDTH = 1024;
 	const int SHADOW_HEIGHT = 1024;
 
@@ -37,7 +33,7 @@ namespace fr {
 			outputBuffer->SetSize(viewSize.x, viewSize.y);
 			glViewport(0, 0, viewSize.x, viewSize.y);
 
-			std::cout << "viewport resized! " << viewSize.x << "\n";
+			std::cout << "viewport resised! " << viewSize.x << "\n";
 		}
 
 		void SetViewport(glm::vec2 size) {
