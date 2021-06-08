@@ -41,7 +41,7 @@
 #ifdef __cplusplus
 using String = std::string;
 #else
-typedef String = char*;
+typedef char* String;
 #endif
 
 #define BIND_FUNC(fn) std::bind(&fn, this, _1)
