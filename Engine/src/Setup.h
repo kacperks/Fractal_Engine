@@ -38,6 +38,12 @@
 #define WINDOW_WIDTH 1280
 #define WINDOW_HEIGH 720
 
+#ifdef __cplusplus
+using String = std::string;
+#else
+typedef String = char*;
+#endif
+
 #define BIND_FUNC(fn) std::bind(&fn, this, _1)
 #define STRING(x) #x 
 
