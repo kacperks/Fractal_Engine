@@ -39,6 +39,7 @@
 #define WINDOW_HEIGH 720
 
 #define BIND_FUNC(fn) std::bind(&fn, this, _1)
+#define STRING(x) #x 
 
 namespace fr {
     using uint = uint32_t;
