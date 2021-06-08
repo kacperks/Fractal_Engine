@@ -19,7 +19,6 @@ Features:
 * Loading 2D textures with stbimage
 * Fully Featured ECS(Entity-Component-System)
 * Scene System (XML)
-* Prototype of C# Scripting
 * Gizmos
 
 Features to do:
@@ -47,7 +46,6 @@ Discord Server! : https://discord.gg/aXHjdQfCMK
 * GLFW https://github.com/glfw/glfw
 * ASSIMP https://github.com/assimp/assimp
 * TinyXML https://github.com/leethomason/tinyxml2
-* Mono https://github.com/mono/mono (Optional)
 * ImGui https://github.com/ocornut/imgui
 * stb https://github.com/nothings/stb
 * ImGuizmo https://github.com/CedricGuillemet/ImGuizmo
