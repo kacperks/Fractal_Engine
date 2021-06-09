@@ -9,13 +9,7 @@
 namespace fr {
 	const int SHADOW_WIDTH = 1024;
 	const int SHADOW_HEIGHT = 1024;
-	
-	struct CommandLineArgs
-	{
-		int argc;
-		char** args;
-	};
-	
+
 	class Engine {
 
 	public:
@@ -57,6 +51,7 @@ namespace fr {
 		void StopGame();
 		void StartGame();
 		void Initialize();
+		void SetCommandLineArgs(CommandLineArgs args) { commandLineArguments = args; }
 
 		inline glm::vec2 ViewSize() const { return viewSize; }
 		inline DepthBuffer* ShadowBuffer() const { return shadowBuffer; }
@@ -64,8 +59,7 @@ namespace fr {
 
 		inline GLFWwindow& Window() { return *window; }
 		inline const bool Run() const { return isRuning; }
-		
-		void SetCommandLineArgs(CommandLineArgs args) { commandLineArguments = args; }
+
 	private:
 		Engine();
 
