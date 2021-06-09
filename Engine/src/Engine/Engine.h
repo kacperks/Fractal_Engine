@@ -9,7 +9,13 @@
 namespace fr {
 	const int SHADOW_WIDTH = 1024;
 	const int SHADOW_HEIGHT = 1024;
-
+	
+	struct CommandLineArgs
+	{
+		int argc;
+		char** args;
+	};
+	
 	class Engine {
 
 	public:
@@ -58,13 +64,15 @@ namespace fr {
 
 		inline GLFWwindow& Window() { return *window; }
 		inline const bool Run() const { return isRuning; }
-
+		
+		void SetCommandLineArgs(CommandLineArgs args) { commandLineArguments = args; }
 	private:
 		Engine();
 
 	private:
 		bool isRuning;
 		bool isGameRunnig;
+		CommandLineArgs commandLineArguments;
 		GLFWwindow* window;
 
 		glm::ivec2 viewSize;
