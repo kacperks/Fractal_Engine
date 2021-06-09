@@ -8,7 +8,7 @@
 using namespace fr;
 
 int main(int argc, char** argv) {
-	Core.SetCommandLineArgs({ argc, args });
+	Core.SetCommandLineArgs({ argc, argv });
 	Resource.Initialize();
 	Core.Initialize();
 	Timer.Initialize();
