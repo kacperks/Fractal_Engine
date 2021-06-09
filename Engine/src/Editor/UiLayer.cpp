@@ -411,9 +411,11 @@ namespace fr {
 			ImGui::PushStyleColor(ImGuiCol_FrameBg, dark);
 			ImGui::BeginChildFrame(ImGui::GetID("rframe"), ImVec2(0, 0));
 			{
+				/*
 				if (Widget::ToolButton::Show(icons.at("plus"), 20.0f)) {
 					ImGui::OpenPopup("compPopup2");
 				}
+				*/
 
 				ImGui::SameLine();
 				if (ImGui::BeginPopup("compPopup2")) {
@@ -430,7 +432,7 @@ namespace fr {
 				}
 				
 				if (ImGui::Button("Open in VsCode")) {
-					system("code Resource/.");
+					system("code .");
 				}
 				OnImGui("Resource");
 			}

@@ -15,7 +15,7 @@ namespace fr {
 		glfwTerminate();
 	}
 
-	Engine::Engine(): isRuning(true), isGameRunnig(false), viewSize(0), window(nullptr), outputBuffer(nullptr) {
+	Engine::Engine(): isRunning(true), isGameRunnig(false), viewSize(0), window(nullptr), outputBuffer(nullptr) {
 		glfwInit();
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);

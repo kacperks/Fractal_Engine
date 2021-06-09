@@ -20,11 +20,10 @@ int main(int argc, char** argv) {
 		Core.Update();
 		Core.Render();
 
-
 #ifdef FR_BULID
 		Core.StartGame();
 #endif
 	}
 
-	return EXIT_SUCCESS;
+	return FR_TRUE;
 }

@@ -22,7 +22,7 @@ namespace fr {
 		}
 
 		void OnQuit(const Event& e) {
-			isRuning = false;
+			isRunning = false;
 			glfwSetWindowShouldClose(window, GLFW_TRUE);
 		}
 
@@ -58,13 +58,14 @@ namespace fr {
 		inline SamplerBuffer* GetSceneBufferID() const { return outputBuffer; }
 
 		inline GLFWwindow& Window() { return *window; }
-		inline const bool Run() const { return isRuning; }
+		inline const bool Run() const { return isRunning; }
+		inline const bool GameRun() const { return isGameRunnig; }
 
 	private:
 		Engine();
 
 	private:
-		bool isRuning;
+		bool isRunning;
 		bool isGameRunnig;
 		CommandLineArgs commandLineArguments;
 		GLFWwindow* window;

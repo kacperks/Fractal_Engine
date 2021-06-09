@@ -41,6 +41,9 @@
 #define BIND_FUNC(fn) std::bind(&fn, this, _1)
 #define STRING(x) #x 
 
+#define FR_TRUE 0
+#define FR_FALSE -1
+
 namespace fr {
     using uint = uint32_t;
     using uchar = unsigned char;
