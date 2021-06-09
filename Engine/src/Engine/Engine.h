@@ -57,7 +57,7 @@ namespace fr {
 		inline DepthBuffer* ShadowBuffer() const { return shadowBuffer; }
 		inline SamplerBuffer* GetSceneBufferID() const { return outputBuffer; }
 
-		inline GLFWwindow* Window() { return window; }
+		GLFWwindow* Window() { return window; }
 		inline const bool Run() const { return isRuning; }
 
 	private:
