@@ -28,6 +28,7 @@ Features to do:
 * Custom Scripting Language (FR Script)
 * Python or Lua Scripting
 * Better Linux and Mac Support
+* Code Cleanup
 
   
 Discord Server! : https://discord.gg/aXHjdQfCMK
