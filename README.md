@@ -79,10 +79,13 @@ pip install scons
 scons
 ```
 
-# Contributors    
+# Developers
 
 * <a href = "https://github.com/kacperks"> kacperks </a>
 * <a href = "https://github.com/lubek-dc"> lubek-dc </a>
 * <a href = "https://github.com/BoomerDev"> BoomerDev </a>
 
-The people listed above have landed more than 2 commits in the project
+# Contributors    
+
+* <a href = "https://github.com/Yavuz1234567890"> Yavuz1234567890 </a>
+* <a href = "https://github.com/honeystudios"> honeystudios </a>
