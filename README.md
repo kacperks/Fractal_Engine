@@ -19,6 +19,7 @@ Features:
 * Loading 2D textures with stbimage
 * Fully Featured ECS(Entity-Component-System)
 * Scene System (XML)
+* Light System
 * Gizmos
 
 Features to do:
