@@ -2,6 +2,7 @@
 
 #include "Math.h"
 #include "Vector3.h"
+#include <cmath>
 
 namespace fr {
     struct Mat4 {
@@ -13,7 +14,7 @@ namespace fr {
         }
 
         static Mat4& Translate(const Vec3& pos) {
-            Mat4 mat = Mat4(1.0);
+            Mat4 mat = Mat4(1.0f);
             mat.e12 = pos.x;
             mat.e13 = pos.y;
             mat.e14 = pos.z;
@@ -29,7 +30,31 @@ namespace fr {
             mat.InitArray();
             return mat;
         }
-
+        
+        static Mat4& Rotate(float angle, const Vec3& axis) {
+            float angleR = angle * Math::PI() / 180;
+            float Cos = std::cos(angleR);
+            float Sin = std::sin(angleR);
+            float omc = 1.0f - Cos;
+            
+            float ax = axis.x;
+            float ay = axis.y;
+            float az = axis.z;
+            
+            Mat4 mat = Mat4(1.0f);  
+            mat.e0 = ax * ax * omc + Cos;
+            mat.e4 = ay * ax * omc + az * Sin;
+            mat.e8 = ax * az * omc - ay * Sin;
+            mat.e1 = ax * ay * omc - az * Sin;
+	    mat.e5 = ay * ay * omc + Cos;
+	    mat.e9 = ay * az * omc + ax * Sin;
+	    mat.e2 = ax * az * omc + ay * Sin;
+	    mat.e8 = ay * az * omc - ax * Sin;
+	    mat.e10 = az * az * omc + Cos;
+            mat.InitArray();
+            return mat;
+        }
+        
         float e0, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14, e15;
         float matrix[16];
 
