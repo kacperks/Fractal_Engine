@@ -8,11 +8,12 @@ namespace fr {
         Mat4(float diagonal) :
             e0(diagonal), e1(0.0f), e2(0.0f), e3(0.0f), e4(0.0f), e5(diagonal),
             e6(0.0f), e7(0.0f), e8(0.0f), e9(0.0f), e10(diagonal),
-            e11(0.0f), e12(0.0f), e13(0.0f), e14(0.0f), e15(diagonal) {
+            e11(0.0f), e12(0.0f), e13(0.0f), e14(0.0f), e15(diagonal), created(true) {
             InitArray();
         }
         
         static void Translate(const Mat4& other, const Vec3& pos) {
+            if(!other.created)return;
             other.e12 = pos.x;
             other.e13 = pos.y;
             other.e14 = pos.z;
@@ -20,6 +21,7 @@ namespace fr {
         }
         
         static void Scale(const Mat4& other, const Vec3& scale) {
+            if(!other.created)return;
             other.e0 = scale.x;
             other.e5 = scale.y;
             other.e10 = scale.z;
@@ -28,6 +30,7 @@ namespace fr {
         
         float e0, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14, e15;
         float matrix[16];
+        bool created = false;
         
         void InitArray(){
             matrix[0] = e0;
