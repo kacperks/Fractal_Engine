@@ -41,14 +41,28 @@
 #define BIND_FUNC(fn) std::bind(&fn, this, _1)
 #define STRING(x) #x 
 
+#ifdef FR_WINDOWS
+#define FR_NULL NULL
+#else
+#define FR_NULL 0
+#endif
+
 #define FR_TRUE 0
 #define FR_FALSE -1
 
+#define BIT(x) 1<<x
+
 namespace fr {
-    using uint = uint32_t;
-    using uchar = unsigned char;
+    using FRuint = uint32_t;
+    using FRuchar = unsigned char;
     typedef void(*func)();
-	using String = std::string;
+    using FRstring = std::string;
+    using FRboolean = int;
+    using FRchar = char;
+    using FRint = int;
+    using FRfloat = float;
+    using FRlong = long;
+    using FRvoid = void;
 }
 
 namespace fr {
