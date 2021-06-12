@@ -32,7 +32,7 @@ namespace fr {
         }
         
         static Mat4& Rotate(float angle, const Vec3& axis) {
-            float angleR = angle * 3.14159265358979323846 / 180;
+            float angleR = angle * Math::PI() / 180;
             float Cos = std::cos(angleR);
             float Sin = std::sin(angleR);
             float omc = 1.0f - cos;
