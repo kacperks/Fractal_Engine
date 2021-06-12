@@ -2,6 +2,7 @@
 
 #include "Math.h"
 #include "Vector3.h"
+#include <cmath>
 
 namespace fr {
     struct Mat4 {
@@ -31,9 +32,9 @@ namespace fr {
         }
         
         static Mat4& Rotate(float angle, const Vec3& axis) {
-            float angleR = Math::Radians(angle);
-            float cos = Math::Cos(angleR);
-            float sin = Math::Sine(angleR);
+            float angleR = angle * 3.14159265358979323846 / 180;
+            float Cos = std::cos(angleR);
+            float Sin = std::sin(angleR);
             float omc = 1.0f - cos;
             
             float ax = axis.x;
@@ -41,15 +42,15 @@ namespace fr {
             float az = axis.z;
             
             Mat4 mat = Mat4(1.0f);  
-            mat.e0 = ax * ax * omc + cos;
-            mat.e4 = ay * ax * omc + az * sin;
-            mat.e8 = ax * az * omc - ay * sin;
-            mat.e1 = ax * ay * omc - az * sin;
-	    mat.e5 = ay * ay * omc + cos;
-	    mat.e9 = ay * az * omc + ax * sin;
-	    mat.e2 = ax * az * omc + ay * sin;
-	    mat.e8 = ay * az * omc - ax * sin;
-	    mat.e10 = az * az * omc + cos;
+            mat.e0 = ax * ax * omc + Cos;
+            mat.e4 = ay * ax * omc + az * Sin;
+            mat.e8 = ax * az * omc - ay * Sin;
+            mat.e1 = ax * ay * omc - az * Sin;
+	    mat.e5 = ay * ay * omc + Cos;
+	    mat.e9 = ay * az * omc + ax * Sin;
+	    mat.e2 = ax * az * omc + ay * Sin;
+	    mat.e8 = ay * az * omc - ax * Sin;
+	    mat.e10 = az * az * omc + Cos;
             mat.InitArray();
             return mat;
         }
