@@ -99,7 +99,7 @@ namespace fr {
 	    }
 	    
 	    string& Get(uint32_t size){
-		string str = Get(size);
+		string str = ((char*)Get(size));
 		return str;
 	    }
 	    
