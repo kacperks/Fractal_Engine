@@ -63,23 +63,25 @@ namespace fr {
     using FRlong = long;
     using FRvoid = void;
 	
-    class FRstring
+    class string
     {
         private:
-            FRstring() = default;
-            ~FRstring() = default;
+            string() = default;
+            ~string() = default;
         	
             char* charptr;
         public:
-            FRstring(char* str) { charptr = ptr; }
-            FRstring& operator=(const char* str) {
+            string(char* str) { charptr = ptr; }
+            string& operator=(const char* str) {
         	charptr = str;
         	return *this; 
             }
         	
-    	    FRuint GetSize() { return (sizeof(charptr) * sizeof(char)); }
+    	    uint32_t GetSize() { return (sizeof(charptr) * sizeof(char)); }
             char* GetCharPtr() { return charptr; }
     };
+    
+    using FRstring = string;
 }
 
 namespace fr {
