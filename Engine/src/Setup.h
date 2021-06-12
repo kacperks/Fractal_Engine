@@ -72,16 +72,35 @@ namespace fr {
         public:
             string(const char* str) { charptr = ptr; }
 	    string() = default;
+	    
             string& operator=(const char* str) {
         	charptr = str;
         	return *this; 
             }
         
+	    string& operator=(const string& other){
+		charptr = other.GetCharPtr();
+		return *this;
+	    }
+	    
+	    const char* operator+(const char* str){
+		return charptr + str;
+	    }
+	    
+	    const char* operator+(const string& other){
+		return charptr + other.GetCharPtr();    
+	    }
+	    
 	    char* Get(uint32_t size){
 		for(int i = 0; i < size; i++){
 		     return charptr[i];
 		}
 		return nullptr;
+	    }
+	    
+	    string& Get(uint32_t size){
+		string str = Get(size);
+		return str;
 	    }
 	    
     	    uint32_t GetSize() { return (sizeof(charptr) * sizeof(char)); }
