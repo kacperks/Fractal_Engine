@@ -6,7 +6,8 @@
 
 #include "pch.h"
 
-#define TERMS 7
+#include "Matrix4.h"
+#include "Vector3.h"
 
 namespace fr {
 	using Matrix3 = glm::mat3;

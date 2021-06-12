@@ -41,9 +41,10 @@
 #define BIND_FUNC(fn) std::bind(&fn, this, _1)
 #define STRING(x) #x 
 #define FR_NULL 0
-
 #define FR_TRUE 0
 #define FR_FALSE -1
+
+#define TERMS 7
 
 #define BIT(x) 1<<x
 
