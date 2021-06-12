@@ -22,7 +22,9 @@ namespace fr {
 	using Vector2i = glm::ivec2;
 	using Matrix4 = glm::mat4;
 	using Quaternion = glm::quat;
+}
 
+namespace fr {
 	class Math {
 		public:
 			static float Cos(int deg);

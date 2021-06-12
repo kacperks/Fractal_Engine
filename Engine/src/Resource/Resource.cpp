@@ -26,11 +26,7 @@ namespace fr {
 		LoadMeshes();
 
 		// models
-		//LoadModel("PACK", "Resource/Models/sphere.obj");
-		//LoadModel("PACK", "Resource/Models/nature/NatureFreePack1.obj");
-		LoadModel("Tree", "Resource/Models/nature/Tree1.obj");
 		LoadModel("Rock", "Resource/Models/nature/Rock1.obj");
-		LoadModel("PACK", "Resource/Models/Voxel/house.obj");
 
 		// shaders
 		CreateProgram("SPRITE", "SpriteV.shader", "SpriteF.shader");

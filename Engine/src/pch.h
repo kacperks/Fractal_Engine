@@ -41,3 +41,4 @@ using namespace std::placeholders;
 #include "Errors/Errors.h"
 #include "Events/EventSystem.h"
 #include "Headers.hpp"
+#include "Math/Math.h"
