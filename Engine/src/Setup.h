@@ -40,12 +40,7 @@
 
 #define BIND_FUNC(fn) std::bind(&fn, this, _1)
 #define STRING(x) #x 
-
-#ifdef FR_WINDOWS
-#define FR_NULL NULL
-#else
 #define FR_NULL 0
-#endif
 
 #define FR_TRUE 0
 #define FR_FALSE -1
@@ -53,65 +48,19 @@
 #define BIT(x) 1<<x
 
 namespace fr {
-    using FRuint = uint32_t;
-    using FRuchar = unsigned char;
-    typedef void(*func)();
-    using FRboolean = int;
-    using FRchar = char;
-    using FRint = int;
-    using FRfloat = float;
-    using FRlong = long;
-    using FRvoid = void;
-	
-    class string
-    {
-        private:
-            ~string() = default;
-        	
-            char* charptr;
-        public:
-            string(const char* str) { charptr = ptr; }
-	    string() = default;
-	    
-            string& operator=(const char* str) {
-        	charptr = str;
-        	return *this; 
-            }
-        
-	    string& operator=(const string& other){
-		charptr = other.GetCharPtr();
-		return *this;
-	    }
-	    
-	    const char* operator+(const char* str){
-		return charptr + str;
-	    }
-	    
-	    const char* operator+(const string& other){
-		return charptr + other.GetCharPtr();    
-	    }
-	    
-	    char* Get(uint32_t size){
-		for(int i = 0; i < size; i++){
-		     return charptr[i];
-		}
-		return nullptr;
-	    }
-	    
-	    string& Get(uint32_t size){
-		string str = ((char*)Get(size));
-		return str;
-	    }
-	    
-    	    uint32_t GetSize() { return (sizeof(charptr) * sizeof(char)); }
-            char* GetCharPtr() { return charptr; }
-    };
-    
-    using FRstring = string;
+	using FRuint = uint32_t;
+	using FRuchar = unsigned char;
+	typedef void(*func)();
+	using FRboolean = int;
+	using FRchar = char;
+	using FRint = int;
+	using FRfloat = float;
+	using FRlong = long;
+	using FRvoid = void;
 }
 
 namespace fr {
-	struct CommandLineArgs {int argc; char** args;};
+	struct CommandLineArgs { int argc; char** args; };
 }
 
 #endif
