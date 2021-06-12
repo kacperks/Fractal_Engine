@@ -1,7 +1,12 @@
 
 #pragma once
 
+#ifndef FR_MATH_H
+#define FR_MATH_H
+
 #include "pch.h"
+
+#define TERMS 7
 
 namespace fr {
 	using Matrix3 = glm::mat3;
@@ -16,4 +21,19 @@ namespace fr {
 	using Vector2i = glm::ivec2;
 	using Matrix4 = glm::mat4;
 	using Quaternion = glm::quat;
+
+	class Math {
+		public:
+			static float Cos(int deg);
+			static float Sine(int deg);
+			static float Lerp(float start, float stop, float step);
+			static float PI();
+
+			static float Radians(float degrees);
+
+			static float power(float base, int exp);
+			static int fact(int n);
+	};
 }
+
+#endif
