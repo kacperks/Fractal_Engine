@@ -66,12 +66,12 @@ namespace fr {
     class string
     {
         private:
-            string() = default;
             ~string() = default;
         	
             char* charptr;
         public:
             string(char* str) { charptr = ptr; }
+	    string() = default;
             string& operator=(const char* str) {
         	charptr = str;
         	return *this; 
