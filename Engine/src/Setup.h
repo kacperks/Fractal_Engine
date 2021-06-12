@@ -56,13 +56,30 @@ namespace fr {
     using FRuint = uint32_t;
     using FRuchar = unsigned char;
     typedef void(*func)();
-    using FRstring = std::string;
     using FRboolean = int;
     using FRchar = char;
     using FRint = int;
     using FRfloat = float;
     using FRlong = long;
     using FRvoid = void;
+	
+    class FRstring
+    {
+        private:
+            FRstring() = default;
+            ~FRstring() = default;
+        	
+            char* charptr;
+        public:
+            FRstring(char* str) { charptr = ptr; }
+            FRstring& operator=(const char* str) {
+        	charptr = str;
+        	return *this; 
+            }
+        	
+    	    FRuint GetSize() { return (sizeof(charptr) * sizeof(char)); }
+            char* GetCharPtr() { return charptr; }
+    };
 }
 
 namespace fr {
