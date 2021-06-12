@@ -45,11 +45,11 @@ namespace fr {
             mat.e4 = ay * ax * omc + az * sin;
             mat.e8 = ax * az * omc - ay * sin;
             mat.e1 = ax * ay * omc - az * sin;
-		    mat.e5 = ay * ay * omc + cos;
-		    mat.e9 = ay * az * omc + ax * sin;
-		    mat.e2 = ax * az * omc + ay * sin;
-		    mat.e8 = ay * az * omc - ax * sin;
-		    mat.e10 = az * az * omc + cos;
+	    mat.e5 = ay * ay * omc + cos;
+	    mat.e9 = ay * az * omc + ax * sin;
+	    mat.e2 = ax * az * omc + ay * sin;
+	    mat.e8 = ay * az * omc - ax * sin;
+	    mat.e10 = az * az * omc + cos;
             mat.InitArray();
             return mat;
         }
