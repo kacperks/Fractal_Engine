@@ -1,7 +1,5 @@
 #pragma once
 
-#include "../Math/Matrix4.h"
-
 class Shader {
 
 public:
