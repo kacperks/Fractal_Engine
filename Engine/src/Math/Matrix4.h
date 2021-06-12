@@ -9,31 +9,27 @@ namespace fr {
             e0(diagonal), e1(0.0f), e2(0.0f), e3(0.0f), e4(0.0f), e5(diagonal),
             e6(0.0f), e7(0.0f), e8(0.0f), e9(0.0f), e10(diagonal),
             e11(0.0f), e12(0.0f), e13(0.0f), e14(0.0f), e15(diagonal) {
-            InitMat();
+            InitArray();
         }
         
-        static Mat4& Translate(const Vec3& pos) {
-            Mat4& mat = Mat4(1.0f);
-            mat.e12 = pos.x;
-            mat.e13 = pos.y;
-            mat.e14 = pos.z;
-            mat.InitMat();
-            return mat;
+        static void Translate(const Mat4& other, const Vec3& pos) {
+            other.e12 = pos.x;
+            other.e13 = pos.y;
+            other.e14 = pos.z;
+            other.InitArray();
         }
         
-        static Mat4& Scale(const Vec3& scale) {
-            Mat4& mat = Mat4(1.0f);
-            mat.e0 = scale.x;
-            mat.e5 = scale.y;
-            mat.e10 = scale.z;
-            mat.InitMat();
-            return mat;
+        static void Scale(const Mat4& other, const Vec3& scale) {
+            other.e0 = scale.x;
+            other.e5 = scale.y;
+            other.e10 = scale.z;
+            other.InitArray();
         }
         
         float e0, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14, e15;
         float matrix[16];
         
-        void InitMat(){
+        void InitArray(){
             matrix[0] = e0;
             matrix[1] = e1;
             matrix[2] = e2;
