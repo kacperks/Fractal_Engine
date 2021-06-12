@@ -13,7 +13,23 @@ namespace fr {
             y = Y;
             z = Z;
         }
-      
+        
+        Vec3& operator+(const Vec3& other){
+            return Vec3(x + other.x, y + other.y, z + other.z);   
+        }
+        
+        Vec3& operator-(const Vec3& other){
+            return Vec3(x - other.x, y - other.y, z - other.z);   
+        }
+        
+        Vec3& operator/(const Vec3& other){
+            return Vec3(x / other.x, y / other.y, z / other.z);   
+        }
+        
+        Vec3& operator*(const Vec3& other){
+            return Vec3(x * other.x, y * other.y, z * other.z);   
+        }
+        
         float x, y, z;
     };
 }
