@@ -35,7 +35,7 @@ namespace fr {
             float angleR = angle * Math::PI() / 180;
             float Cos = std::cos(angleR);
             float Sin = std::sin(angleR);
-            float omc = 1.0f - cos;
+            float omc = 1.0f - Cos;
             
             float ax = axis.x;
             float ay = axis.y;
