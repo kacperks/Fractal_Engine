@@ -13,7 +13,7 @@ namespace fr {
         }
 
         static Mat4& Translate(const Vec3& pos) {
-            Mat4 mat = Mat4(1.0);
+            Mat4 mat = Mat4(1.0f);
             mat.e12 = pos.x;
             mat.e13 = pos.y;
             mat.e14 = pos.z;
@@ -29,7 +29,31 @@ namespace fr {
             mat.InitArray();
             return mat;
         }
-
+        
+        static Mat4& Rotate(float angle, const Vec3& axis) {
+            float angleR = Math::Radians(angle);
+            float cos = Math::Cos(angleR);
+            float sin = Math::Sine(angleR);
+            float omc = 1.0f - cos;
+            
+            float ax = axis.x;
+            float ay = axis.y;
+            float az = axis.z;
+            
+            Mat4 mat = Mat4(1.0f);  
+            mat.e0 = ax * ax * omc + cos;
+            mat.e4 = ay * ax * omc + az * sin;
+            mat.e8 = ax * az * omc - ay * sin;
+            mat.e1 = ax * ay * omc - az * sin;
+		    mat.e5 = ay * ay * omc + cos;
+		    mat.e9 = ay * az * omc + ax * sin;
+		    mat.e2 = ax * az * omc + ay * sin;
+		    mat.e8 = ay * az * omc - ax * sin;
+		    mat.e10 = az * az * omc + cos;
+            mat.InitArray();
+            return mat;
+        }
+        
         float e0, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14, e15;
         float matrix[16];
 
