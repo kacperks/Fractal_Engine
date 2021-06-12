@@ -6,6 +6,9 @@
 #include "Objects/DepthBuffer.h"
 #include "Objects/SamplerBuffer.h"
 
+#include "ECS/ECS.h"
+#include "pch.h"
+
 namespace fr {
 	const int SHADOW_WIDTH = 1024;
 	const int SHADOW_HEIGHT = 1024;
