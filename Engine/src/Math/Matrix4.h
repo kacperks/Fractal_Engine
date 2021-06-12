@@ -10,12 +10,27 @@ namespace fr {
             e11(0.0f), e12(0.0f), e13(0.0f), e14(0.0f), e15(diagonal) {
             InitPtr();
         }
-
+        
         float e0, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14, e15;
         float matrix[16];
         
         void InitPtr(){
-            matrix = { e0, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14, e15 };
+            matrix[0] = e0;
+            matrix[1] = e1;
+            matrix[2] = e2;
+            matrix[3] = e3;
+            matrix[4] = e4;
+            matrix[5] = e5;
+            matrix[6] = e6;
+            matrix[7] = e7;
+            matrix[8] = e8;
+            matrix[9] = e9;
+            matrix[10] = e10;
+            matrix[11] = e11;
+            matrix[12] = e12;
+            matrix[13] = e13;
+            matrix[14] = e14;
+            matrix[15] = e15;
         }
     };
 }
