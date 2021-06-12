@@ -76,7 +76,14 @@ namespace fr {
         	charptr = str;
         	return *this; 
             }
-        	
+        
+	    char* Get(uint32_t size){
+		for(int i = 0; i < size; i++){
+		     return charptr[i];
+		}
+		return nullptr;
+	    }
+	    
     	    uint32_t GetSize() { return (sizeof(charptr) * sizeof(char)); }
             char* GetCharPtr() { return charptr; }
     };
