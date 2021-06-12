@@ -70,7 +70,7 @@ namespace fr {
         	
             char* charptr;
         public:
-            string(char* str) { charptr = ptr; }
+            string(const char* str) { charptr = ptr; }
 	    string() = default;
             string& operator=(const char* str) {
         	charptr = str;
