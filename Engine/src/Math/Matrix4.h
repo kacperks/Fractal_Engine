@@ -12,20 +12,24 @@ namespace fr {
             InitArray();
         }
         
-        static void Translate(const Mat4& other, const Vec3& pos) {
-            if(!other.created)return;
-            other.e12 = pos.x;
-            other.e13 = pos.y;
-            other.e14 = pos.z;
-            other.InitArray();
+        static Mat4& Translate(const Vec3& pos) {
+            Mat4& mat = Mat4(1.0f);
+            if(!mat.created)return;
+            mat.e12 = pos.x;
+            mat.e13 = pos.y;
+            mat.e14 = pos.z;
+            mat.InitArray();
+            return mat;
         }
         
-        static void Scale(const Mat4& other, const Vec3& scale) {
-            if(!other.created)return;
-            other.e0 = scale.x;
-            other.e5 = scale.y;
-            other.e10 = scale.z;
-            other.InitArray();
+        static Mat4& Scale(const Vec3& scale) {
+            Mat4& mat = Mat4(1.0f);
+            if(!mat.created)return;
+            mat.e0 = scale.x;
+            mat.e5 = scale.y;
+            mat.e10 = scale.z;
+            mat.InitArray();
+            return mat;
         }
         
         float e0, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14, e15;
