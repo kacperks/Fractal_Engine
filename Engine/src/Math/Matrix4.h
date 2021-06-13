@@ -15,7 +15,7 @@
 
 namespace fr {
 
-    struct Mat4 {
+    struct Mat4 : public MathObject {
         Mat4(float diagonal) :
             e0(diagonal), e1(0.0f), e2(0.0f), e3(0.0f), e4(0.0f), e5(diagonal),
             e6(0.0f), e7(0.0f), e8(0.0f), e9(0.0f), e10(diagonal),
@@ -117,7 +117,14 @@ namespace fr {
             matrix[14] = e14;
             matrix[15] = e15;
         }
-	    
+	   
+	std::string ToStr() override {
+	    return std::to_string(e0) + ", " + std::to_string(e1) + ", " + std::to_string(e2) + ", " + std::to_string(e3) + "\n"
+		   std::to_string(e4) + ", " + std::to_string(e5) + ", " + std::to_string(e6) + ", " + std::to_string(e7) + "\n"
+		   std::to_string(e8) + ", " + std::to_string(e9) + ", " + std::to_string(e10) + ", " + std::to_string(e11) + "\n"
+		   std::to_string(e12) + ", " + std::to_string(e13) + ", " + std::to_string(e14) + ", " + std::to_string(e15);
+	}
+	 
 	Mat4 operator=(Vec4 vecs[4]) {
 	    e0 = vecs[0].x; e1 = vecs[0].y; e2 = vecs[0].z; e3 = vecs[0].w;
 	    e4 = vecs[1].x; e5 = vecs[1].y; e6 = vecs[1].z; e7 = vecs[1].w;
