@@ -69,11 +69,11 @@ namespace fr {
         static Mat4& Ortho(float left, float right, float bottom, float top, float near, float far) {
             Mat4 mat = Mat4(1.0f);
             mat.e0 = 2.0f / (right - left);
-		    mat.e5 = 2.0f / (top - bottom);
-		    mat.e10 = 2.0f / (near - far);
-		    mat.e3 = (left + right) / (left - right);
-		    mat.e7 = (bottom + top) / (bottom - top);
-		    mat.e11 = (far + near) / (far - near);   
+	    mat.e5 = 2.0f / (top - bottom);
+	    mat.e10 = 2.0f / (near - far);
+	    mat.e3 = (left + right) / (left - right);
+	    mat.e7 = (bottom + top) / (bottom - top);
+	    mat.e11 = (far + near) / (far - near);   
             mat.InitArray();
             return mat;
         }
@@ -82,15 +82,15 @@ namespace fr {
             float r = 0.5f * fov * 3.14159265359 / 180.0f;
             float q = 1.0f / std::tan(r);
             float a = q / aspectRatio;
-		    float b = (near + far) / (near - far);
-		    float c = (2.0f * near * far) / (near - far);
+	    float b = (near + far) / (near - far);
+	    float c = (2.0f * near * far) / (near - far);
             
             Mat4 mat = Mat4(1.0f);
             mat.e0 = a;
-		    mat.e5 = q;
-		    mate10 = b;
-		    mat.e14 = -1.0f;
-		    mat.e11 = c;
+	    mat.e5 = q;
+	    mate10 = b;
+	    mat.e14 = -1.0f;
+	    mat.e11 = c;
             mat.InitArray();
             return mat;
         }
