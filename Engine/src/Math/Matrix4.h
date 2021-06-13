@@ -42,7 +42,7 @@ namespace fr {
 
         static Mat4& Rotate(float angle, Vec3& axis) {
             
-            float angleR = angle * 3.14159265359 / 180.0;
+            float angleR = angle * 3.14159265359 / 180.0f;
             float cos = std::cos(angleR);
             float Sin = std::sin(angleR);
             float omc = 1.0f - cos;
@@ -65,7 +65,36 @@ namespace fr {
             return mat;
             
         }
-
+        
+        static Mat4& Ortho(float left, float right, float bottom, float top, float near, float far) {
+            Mat4 mat = Mat4(1.0f);
+            mat.e0 = 2.0f / (right - left);
+		    mat.e5 = 2.0f / (top - bottom);
+		    mat.e10 = 2.0f / (near - far);
+		    mat.e3 = (left + right) / (left - right);
+		    mat.e7 = (bottom + top) / (bottom - top);
+		    mat.e11 = (far + near) / (far - near);   
+            mat.InitArray();
+            return mat;
+        }
+        
+        static Mat4& Perspective(float fov, float aspectRatio, float near, float far) {
+            float r = 0.5f * fov * 3.14159265359 / 180.0f;
+            float q = 1.0f / std::tan(r);
+            float a = q / aspectRatio;
+		    float b = (near + far) / (near - far);
+		    float c = (2.0f * near * far) / (near - far);
+            
+            Mat4 mat = Mat4(1.0f);
+            mat.e0 = a;
+		    mat.e5 = q;
+		    mate10 = b;
+		    mat.e14 = -1.0f;
+		    mat.e11 = c;
+            mat.InitArray();
+            return mat;
+        }
+        
         float e0, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14, e15;
         float matrix[16];
 
