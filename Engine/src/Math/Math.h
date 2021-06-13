@@ -26,11 +26,11 @@ namespace fr {
 
 namespace fr {
 	struct MathObject {
-		friend std::ostream(std::ostream stream, MathObject obj);
+		friend std::ostream operator<<(std::ostream stream, MathObject obj);
 		virtual std::string ToStr() = 0;	
 	}
 	
-	std::ostream(std::ostream stream, MathObject obj) {
+	std::ostream operator<<(std::ostream stream, MathObject obj) {
 		stream << obj.ToStr();
 		return stream;
 	}
