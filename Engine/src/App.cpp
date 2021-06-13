@@ -8,7 +8,6 @@
 using namespace fr;
 
 int main(int argc, char** argv) {
-	std::cout << "SIN(PI Rad) = " << Math::Sine(Math::Radians(Math::PI())) << std::endl;
 	Core.SetCommandLineArgs({ argc, argv });
 	Resource.Initialize();
 	Core.Initialize();
