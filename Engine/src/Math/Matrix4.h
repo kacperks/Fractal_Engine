@@ -4,7 +4,7 @@
 #define FR_MATRIX_4
 
 #include "Math.h"
-#include "Vector3.h"
+#include "Vector4.h"
 
 namespace fr {
 
@@ -110,6 +110,13 @@ namespace fr {
             matrix[14] = e14;
             matrix[15] = e15;
         }
+	    
+	Mat4 operator=(Vec4 vecs[4]) {
+	    e0 = vecs[0].x; e1 = vecs[0].y; e2 = vecs[0].z; e3 = vecs[0].w;
+	    e4 = vecs[1].x; e5 = vecs[1].y; e6 = vecs[1].z; e7 = vecs[1].w;
+	    e8 = vecs[2].x; e9 = vecs[2].y; e10 = vecs[2].z; e11 = vecs[2].w;
+	    e12 = vecs[3].x; e13 = vecs[3].y; e14 = vecs[3].z; e15 = vecs[3].w;
+	}
     };
 }
 
