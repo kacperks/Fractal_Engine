@@ -1,19 +1,19 @@
 #pragma once
 
-#include "Resource/Resource.h"
+#include "Core/Resource/Resource.h"
 
-#include "ECS/ECS.h"
+#include "Core/ECS/ECS.h"
 
-#include "Engine/Engine.h"
+#include "Core/Engine.h"
 
-#include "Timer/Timer.h"
+#include "Core/Timer/Timer.h"
 
 // ECS stuff
-#include "ECS/Base/BaseComponent.h"
-#include "ECS/Base/BaseSystem.h"
-#include "ECS/Base/EntityManager.h"
-#include "ECS/Components/CsScript.h"
-#include "ECS/Components/EntityName.h"
+#include "Core/ECS/Base/BaseComponent.h"
+#include "Core/ECS/Base/BaseSystem.h"
+#include "Core/ECS/Base/EntityManager.h"
+#include "Core/ECS/Components/CsScript.h"
+#include "Core/ECS/Components/EntityName.h"
 
 #include "Editor/UiLayer.h"
 
@@ -33,19 +33,19 @@
 #include "Events/MouseEvents.h"
 #include "Events/WindowEvents.h"
 #include "Editor/UiLayer.h"
-#include "Inputs/KeyCodes.h"
+#include "Core/Inputs/KeyCodes.h"
 
 // GL stuff
 
-#include "Objects/ColorBuffer.h"
-#include "Objects/DepthBuffer.h"
-#include "Objects/GLMesh.h"
-#include "Objects/GLQuad.h"
-#include "Objects/Material.h"
-#include "Objects/Model.h"
-#include "Objects/SamplerBuffer.h"
-#include "Objects/Shader.h"
-#include "Objects/Vertex.h"
-#include "Objects/VertexArray.h"
-#include "Objects/Grid.h"
+#include "Renderer/ColorBuffer.h"
+#include "Renderer/DepthBuffer.h"
+#include "Renderer/GLMesh.h"
+#include "Renderer/GLQuad.h"
+#include "Renderer/Material.h"
+#include "Renderer/Model.h"
+#include "Renderer/SamplerBuffer.h"
+#include "Renderer/Shader.h"
+#include "Renderer/Vertex.h"
+#include "Renderer/VertexArray.h"
+#include "Renderer/Grid.h"
 #include "Math/Math.h"

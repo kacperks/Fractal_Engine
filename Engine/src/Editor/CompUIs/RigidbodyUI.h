@@ -2,14 +2,14 @@
 
 #include "pch.h"
 #include "../UiLayer.h"
-#include "Engine/Engine.h"
+#include "Core/Engine.h"
 #include "Events/EventSystem.h"
 
 #include "Vendor/IMGUI/imgui_internal.h"
 #include "Vendor/IMGUI/imgui_impl_glfw.h"
 #include "Vendor/IMGUI/imgui_impl_opengl3.h"
 
-#include "ECS/Base/Entity.h"
+#include "Core/ECS/Base/Entity.h"
 #include "Serializer/XMLSerializer.h"
 
 #include "DirectLightUI.h"
@@ -18,17 +18,7 @@
 #include "NameTagUI.h"
 #include "MeshUI.h"
 
-#include "ECS/Components/CsScript.h"
-
 #include <fstream>
-
-#ifdef FRACTAL_WINDOWS
-#include <windows.h>
-#endif // FRACTAL_WINDOWS
-
-#ifdef FRACTAL_LINUX
-#include <bits/stdc++.h>
-#endif
 
 class RBUI : public CompUI {
 public:

@@ -3,12 +3,6 @@
 #ifndef FR_MATRIX_4
 #define FR_MATRIX_4
 
-#include "pch.h"
-#include "Timer/Timer.h"
-#include "Engine/Engine.h"
-#include "Resource/Resource.h"
-#include "Events/EventSystem.h"
-#include "Editor/UiLayer.h"
 #include "Math.h"
 #include "Vector3.h"
 
@@ -42,9 +36,9 @@ namespace fr {
 
         static Mat4& Rotate(float angle, Vec3& axis) {
             
-            float angleR = angle * 3.14159265359 / 180.0;
-            float cos = std::cos(angleR);
-            float Sin = std::sin(angleR);
+            float angleR = angle * Math::PI() / 180.0;
+            float cos = Math::Cos(angleR);
+            float Sin = Math::Sine(angleR);
             float omc = 1.0f - cos;
 
             float ax = axis.x;

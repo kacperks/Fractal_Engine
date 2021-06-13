@@ -1,13 +1,14 @@
 #include "pch.h"
-#include "Timer/Timer.h"
-#include "Engine/Engine.h"
-#include "Resource/Resource.h"
+#include "Core/Timer/Timer.h"
+#include "Core/Engine.h"
+#include "Core/Resource/Resource.h"
 #include "Events/EventSystem.h"
 #include "Editor/UiLayer.h"
 
 using namespace fr;
 
 int main(int argc, char** argv) {
+	std::cout << "SIN(PI Rad) = " << Math::Sine(Math::Radians(Math::PI())) << std::endl;
 	Core.SetCommandLineArgs({ argc, argv });
 	Resource.Initialize();
 	Core.Initialize();

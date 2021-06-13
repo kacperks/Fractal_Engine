@@ -1,8 +1,8 @@
 #pragma once
 
 #include "CompUI.h"
-#include "ECS/Components/DirectionalLight.h"
-#include "ECS/Components/CsScript.h"
+#include "Core/ECS/Components/DirectionalLight.h"
+#include "Core/ECS/Components/CsScript.h"
 
 class DirectLightUI : public CompUI {
 public:

@@ -24,21 +24,18 @@
 
 using namespace std::placeholders;
 
-// OPENGL
+// GL stuff
 #include <GL/glew.h>
 
-// GLFW
 #include <GLFW/glfw3.h>
 
-// GLM
 #define GLM_ENABLE_EXPERIMENTAL
 #include <glm/glm.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtx/quaternion.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-// Custom
-#include "Errors/Errors.h"
+#include "Math/Math.h"
+#include "Core/Errors/Errors.h"
 #include "Events/EventSystem.h"
 #include "Headers.hpp"
-#include "Math/Math.h"
