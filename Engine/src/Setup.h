@@ -40,6 +40,8 @@
 
 #define BIND_FUNC(fn) std::bind(&fn, this, _1)
 #define STRING(x) #x 
+#define LINE __LINE__
+#define FILE __FILE__
 #define FR_NULL 0
 #define FR_TRUE 0
 #define FR_FALSE -1
