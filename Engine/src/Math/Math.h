@@ -32,6 +32,7 @@ namespace fr {
 			static float PI();
 
 			static float Radians(float degrees);
+			static float Degrees(float radians);
 
 			static float power(float base, int exp);
 			static int fact(int n);

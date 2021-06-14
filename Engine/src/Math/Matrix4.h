@@ -4,6 +4,7 @@
 #define FR_MATRIX_4
 
 #include "Math.h"
+#include "Vector3.h"
 #include "Vector4.h"
 
 namespace fr {
@@ -59,39 +60,39 @@ namespace fr {
             return mat;
             
         }
-        
-        static Mat4& Ortho(float left, float right, float bottom, float top, float near, float far) {
+
+        static Mat4& Ortho(float left, float right, float bottom, float top, float near1, float far1) {
             Mat4 mat = Mat4(1.0f);
             mat.e0 = 2.0f / (right - left);
-	        mat.e5 = 2.0f / (top - bottom);
-	        mat.e10 = 2.0f / (near - far);
-	        mat.e3 = (left + right) / (left - right);
-	        mat.e7 = (bottom + top) / (bottom - top);
-	            mat.e11 = (far + near) / (far - near);   
+            mat.e5 = 2.0f / (top - bottom);
+            mat.e10 = 2.0f / (near1 - far1);
+            mat.e3 = (left + right) / (left - right);
+            mat.e7 = (bottom + top) / (bottom - top);
+            mat.e11 = (far1 + near1) / (far1 - near1);
             mat.InitArray();
             return mat;
         }
-        
-        static Mat4& Perspective(float fov, float aspectRatio, float near, float far) {
+
+        static Mat4& Perspective(float fov, float aspectRatio, float near1, float far1) {
             float r = 0.5f * fov * 3.14159265359 / 180.0f;
             float q = 1.0f / std::tan(r);
             float a = q / aspectRatio;
-	        float b = (near + far) / (near - far);
-	        float c = (2.0f * near * far) / (near - far);
-            
+            float b = (near1 + far1) / (near1 - far1);
+            float c = (2.0f * near1 * far1 / (near1 - far1));
+
             Mat4 mat = Mat4(1.0f);
             mat.e0 = a;
-	        mat.e5 = q;
-	        mate10 = b;
-	        mat.e14 = -1.0f;
-	        mat.e11 = c;
+            mat.e5 = q;
+            mat.e10 = b;
+            mat.e14 = -1.0f;
+            mat.e11 = c;
             mat.InitArray();
             return mat;
         }
-        
+
+
         float e0, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14, e15;
         float matrix[16];
-
         void InitArray() {
             matrix[0] = e0;
             matrix[1] = e1;
@@ -110,13 +111,14 @@ namespace fr {
             matrix[14] = e14;
             matrix[15] = e15;
         }
-	    
-	Mat4 operator=(Vec4 vecs[4]) {
-	    e0 = vecs[0].x; e1 = vecs[0].y; e2 = vecs[0].z; e3 = vecs[0].w;
-	    e4 = vecs[1].x; e5 = vecs[1].y; e6 = vecs[1].z; e7 = vecs[1].w;
-	    e8 = vecs[2].x; e9 = vecs[2].y; e10 = vecs[2].z; e11 = vecs[2].w;
-	    e12 = vecs[3].x; e13 = vecs[3].y; e14 = vecs[3].z; e15 = vecs[3].w;
-	}
+
+        Mat4 operator=(Vec4 vecs[4]) {
+            e0 = vecs[0].x; e1 = vecs[0].y; e2 = vecs[0].z; e3 = vecs[0].w;
+            e4 = vecs[1].x; e5 = vecs[1].y; e6 = vecs[1].z; e7 = vecs[1].w;
+            e8 = vecs[2].x; e9 = vecs[2].y; e10 = vecs[2].z; e11 = vecs[2].w;
+            e12 = vecs[3].x; e13 = vecs[3].y; e14 = vecs[3].z; e15 = vecs[3].w;
+        }
+
     };
 }
 

@@ -1,9 +1,11 @@
 #include "pch.h"
 
 #include "Math.h"
+#include "Vector4.h"
 
 namespace fr {
-	float Math::Radians(float degrees) { return degrees * static_cast<float>(0.01745329251994329576923690768489); }
+	float Math::Radians(float degrees) { return degrees * PI() / 180; }
+	float Math::Degrees(float radians) { return radians * PI() / 180; }
 
 	float Math::Lerp(float start, float stop, float step) { float v = start; while (v != stop) { v = (stop * step) + (start * 1.0 - step); } return v;}
 
