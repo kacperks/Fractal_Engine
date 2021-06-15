@@ -1,6 +1,8 @@
 #pragma once
 
-// BASIC
+#ifndef FR_PCH_H
+#define FR_PCH_H
+
 #include <set>
 #include <map>
 #include <array>
@@ -20,13 +22,49 @@
 #include <functional>
 #include <filesystem>
 #include <unordered_map>
-#include "Setup.h"
-
 using namespace std::placeholders;
 
-// GL stuff
-#include <GL/glew.h>
+#if defined(_WIN32)
+#define FR_WINDOWS
+#define FR_OS "Windows"
+#elif defined(__linux__)
+#define FR_LINUX
+#define FR_OS "Linux"
+#elif defined(__APPLE__)
+#define FR_APPLE
+#define FR_OS "OSX"
+#else
+#error Not Supported Platform!
+#endif
 
+#define VERSION "BETA 1.14"
+#define EDITOR_VERSION "19.05.2021"
+
+#if defined(FR_BULID)
+#define WINDOW_NAME "Game"
+#endif
+
+#define WINDOW_WIDTH 1280
+#define WINDOW_HEIGH 720
+
+#define BIND_FUNC(fn) std::bind(&fn, this, _1)
+#define STRING(x) #x 
+
+#define FR_NULL 0
+#define FR_TRUE true
+#define FR_FALSE false
+#define TERMS 7
+
+#define BIT(x) 1<<x
+
+#if defined(FR_WINDOWS)
+#include <windows.h>
+
+#elif defined(FR_LINUX)
+#include <bits/stdc++.h>
+#endif
+
+#include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
 #define GLM_ENABLE_EXPERIMENTAL
@@ -35,7 +73,61 @@ using namespace std::placeholders;
 #include <glm/gtx/quaternion.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
+namespace fr {
+	using FRuint = uint32_t;
+	using FRuchar = unsigned char;
+	typedef void(*func)();
+	using FRboolean = int;
+	using FRchar = char;
+	using FRint = int;
+	using FRfloat = float;
+	using FRlong = long;
+	using FRvoid = void;
+
+	struct CommandLineArgs { int argc; char** args; };
+}
+
+// other includes :
+
 #include "Math/Math.h"
 #include "Core/Errors/Errors.h"
 #include "Events/EventSystem.h"
-#include "Headers.hpp"
+
+#include "Core/Resource/Resource.h"
+#include "Core/ECS/ECS.h"
+#include "Core/Engine.h"
+#include "Core/Timer/Timer.h"
+
+#include "Core/ECS/Base/BaseComponent.h"
+#include "Core/ECS/Base/BaseSystem.h"
+#include "Core/ECS/Base/EntityManager.h"
+#include "Core/ECS/Components/CsScript.h"
+#include "Core/ECS/Components/EntityName.h"
+#include "Editor/UiLayer.h"
+
+#include "Serializer/XMLSerializer.h"
+#include "Serializer/ModelsAndTextures.h"
+
+#include "Events/AppEvents.h"
+#include "Events/Dispatcher.h"
+#include "Events/Event.h"
+#include "Events/GLFWImp.h"
+#include "Events/KeyEvents.h"
+#include "Events/MouseEvents.h"
+#include "Events/WindowEvents.h"
+#include "Editor/UiLayer.h"
+#include "Core/Inputs/KeyCodes.h"
+
+#include "Renderer/ColorBuffer.h"
+#include "Renderer/DepthBuffer.h"
+#include "Renderer/GLMesh.h"
+#include "Renderer/GLQuad.h"
+#include "Renderer/Material.h"
+#include "Renderer/Model.h"
+#include "Renderer/SamplerBuffer.h"
+#include "Renderer/Shader.h"
+#include "Renderer/Vertex.h"
+#include "Renderer/VertexArray.h"
+#include "Renderer/Grid.h"
+
+#endif

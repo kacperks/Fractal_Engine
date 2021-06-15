@@ -11,7 +11,7 @@ namespace fr {
 
 	float Math::PI() { return 3.14159265359; }
 
-	float Math::Sine(int deg) {
+	float Math::Sin(int deg) {
 		deg %= 360;
 		float rad = deg * PI() / 180;
 		float sin = 0;

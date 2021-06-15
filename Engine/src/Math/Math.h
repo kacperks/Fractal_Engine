@@ -27,7 +27,7 @@ namespace fr {
 	class Math {
 		public:
 			static float Cos(int deg);
-			static float Sine(int deg);
+			static float Sin(int deg);
 			static float Lerp(float start, float stop, float step);
 			static float PI();
 

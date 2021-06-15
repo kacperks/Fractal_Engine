@@ -6,7 +6,6 @@
 #include "Core/ECS/Base/EntityManager.h"
 #include "Core/ECS/Components/Camera.h"
 #include "Core/ECS/Components/Transform.h"
-#include "Headers.hpp"
 
 class CameraSystem : public ECS::BaseSystem {
 
