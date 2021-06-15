@@ -2,6 +2,8 @@
 
 #include "pch.h"
 
+using namespace fr;
+
 class DepthBuffer {
 
 public:

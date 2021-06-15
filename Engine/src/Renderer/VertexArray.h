@@ -2,6 +2,8 @@
 
 #include "Vertex.h"
 
+using namespace fr;
+
 class VertexArray {
 public:
 	~VertexArray() = default;

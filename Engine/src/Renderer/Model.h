@@ -8,6 +8,8 @@
 #include "GLMesh.h"
 #include "Vendor/STB/stb_image.h"
 
+using namespace fr;
+
 class Model3D {
 
 public:

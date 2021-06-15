@@ -1,5 +1,7 @@
 #pragma once
 
+using namespace fr;
+
 class Shader {
 
 public:

@@ -3,6 +3,8 @@
 #include "VertexArray.h"
 #include "Material.h"
 
+using namespace fr;
+
 class GLMesh {
 
 public:

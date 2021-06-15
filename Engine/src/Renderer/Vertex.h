@@ -1,5 +1,7 @@
 #pragma once
 
+using namespace fr;
+
 struct Vertex {
 	Vertex() = default;
 	Vertex(float x, float y, float z): Position(glm::vec3(x, y, z)){}

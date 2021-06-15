@@ -2,6 +2,8 @@
 
 #include "Renderer/Shader.h"
 
+using namespace fr;
+
 struct Material {
 	Material() = default;
 	~Material() = default;

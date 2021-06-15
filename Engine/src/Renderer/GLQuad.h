@@ -2,6 +2,8 @@
 
 #include "VertexArray.h"
 
+using namespace fr;
+
 class GLQuad {
 public:
 	~GLQuad() = default;

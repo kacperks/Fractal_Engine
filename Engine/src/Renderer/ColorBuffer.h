@@ -2,6 +2,8 @@
 
 #pragma once
 
+using namespace fr;
+
 class ColorBuffer {
 
 public:

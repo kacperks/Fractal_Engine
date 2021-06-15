@@ -3,6 +3,8 @@
 #include "Vertex.h"
 #include "pch.h"
 
+using namespace fr;
+
 namespace fr {
     class GLGrid {
     public:
