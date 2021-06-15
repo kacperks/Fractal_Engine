@@ -15,6 +15,7 @@ namespace fr {
 	using Vector2u = glm::uvec2;
 	using Vector3u = glm::uvec3;
 	using Vector4u = glm::uvec4;
+	using Vector2 = glm::vec2;
 	using Vector2f = glm::fvec2;
 	using Vector3f = glm::fvec3;
 	using Vector4f = glm::fvec4;
