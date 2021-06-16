@@ -39,10 +39,8 @@ using namespace std::placeholders;
 
 #define VERSION "BETA 1.14"
 #define EDITOR_VERSION "19.05.2021"
-
-#if defined(FR_BULID)
 #define WINDOW_NAME "Game"
-#endif
+
 
 #define WINDOW_WIDTH 1280
 #define WINDOW_HEIGH 720

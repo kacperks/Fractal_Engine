@@ -16,23 +16,17 @@ namespace fr {
 		glfwTerminate();
 	}
 
-	Engine::Engine(): isRunning(true), isGameRunnig(false), viewSize(0), window(nullptr), outputBuffer(nullptr) {
-#ifndef FR_BULID
-		std::string WinName = "Fractal Engine " VERSION;
-#endif
-
-#ifdef FR_BULID
-		std::string WinName = WINDOW_NAME;
-#endif
+	Engine::Engine() : isRunning(true), isGameRunnig(false), viewSize(0), window(nullptr), outputBuffer(nullptr) {
+		#if defined(FR_BULID)
+			std::string WinName = WINDOW_NAME;
+		#else
+			std::string WinName = "Fractal Engine " VERSION;
+		#endif
+		
 		FRWindow* FRWin = new FRWindow(WinName.c_str());
 
-		FRWin->Size = new Vector2i(WINDOW_WIDTH, WINDOW_HEIGH);
-
-		shadowBuffer = new DepthBuffer(SHADOW_WIDTH, SHADOW_HEIGHT);
-		outputBuffer = new SamplerBuffer(WINDOW_WIDTH, WINDOW_HEIGH);
-
-		FRWin->shadowBuffer = shadowBuffer;
-		FRWin->outputBuffer = outputBuffer;
+		shadowBuffer = FRWin->shadowBuffer;
+		outputBuffer = FRWin->outputBuffer;
 		window = FRWin->window;
 	}
 
@@ -63,11 +57,11 @@ namespace fr {
 		ECS::Manager.AddSystem<SpotLightSystem>();
 		ECS::Manager.AddSystem<PointLightSystem>();
 		ECS::Manager.AddSystem<DirectionalLightSystem>();
-		ECS::Manager.AddSystem<SkyBoxRendererSystem>();		
+		ECS::Manager.AddSystem<SkyBoxRendererSystem>();
 
-		ECS::Manager.AddSystem<MeshRendererSystem>();		
+		ECS::Manager.AddSystem<MeshRendererSystem>();
 		ECS::Manager.AddSystem<ModelRendererSystem>();
-		ECS::Manager.AddSystem<SpriteRendererSystem>();	
+		ECS::Manager.AddSystem<SpriteRendererSystem>();
 
 		// editor system will be removed at runtime
 		ECS::Manager.AddEditorSystem<EditorCameraSystem>();
@@ -76,8 +70,8 @@ namespace fr {
 		// runtime systems will be added at runtime
 		ECS::Manager.AddRuntimeSystem<CameraSystem>();
 		ECS::Manager.AddRuntimeSystem<PhysicsSystem>();
-		#ifdef FRACTAL_CSHARP
-		#endif
+#ifdef FRACTAL_CSHARP
+#endif
 
 		ECS::Manager.ActivateEditorSystems();
 		ECS::Manager.Start();
@@ -105,31 +99,31 @@ namespace fr {
 			ECS::Manager.Render();
 		}
 		else {
-			if (Events.IsKeyPressed(FR_KEY_ESCAPE)) { 
-				#ifndef FR_BULID
-					StopGame(); 				
-				#endif
+			if (Events.IsKeyPressed(FR_KEY_ESCAPE)) {
+#ifndef FR_BULID
+				StopGame();
+#endif
 			}
 			glfwGetWindowSize(window, &viewSize.x, &viewSize.y);
 			GLCALL(glViewport(0, 0, viewSize.x, viewSize.y));
 		}
 	}
 
-	void Engine::Render() {	
+	void Engine::Render() {
 		GLCALL(glBindFramebuffer(GL_FRAMEBUFFER, 0));
 		GLCALL(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT));
 
 		if (!isGameRunnig) {
 			fr::UI.Display();
 		}
-		else {		
+		else {
 			ECS::Manager.Render();
 		}
 
 		glfwSwapBuffers(window);
 	}
 
-	void Engine::StartGame() {		
+	void Engine::StartGame() {
 		ECS::Manager.DeactivateEditorSystems();
 		ECS::Manager.ActivateRuntimeSystems();
 		isGameRunnig = true;

@@ -71,9 +71,10 @@ namespace fr {
 		bool isRunning;
 		bool isGameRunnig;
 		CommandLineArgs commandLineArguments;
-		GLFWwindow* window;
 
-		glm::ivec2 viewSize;
+		// I will use FRWindow instead of theese variables:
+		GLFWwindow* window;
+		Vector2i viewSize;
 		DepthBuffer* shadowBuffer;
 		SamplerBuffer* outputBuffer;
 	};
