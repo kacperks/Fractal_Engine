@@ -3,7 +3,7 @@
 #include "Window.h"
 
 namespace fr {
-	FRWindow::FRWindow(FRchar* title) {
+	FRWindow::FRWindow(const FRchar* title) {
 		glfwInit();
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);

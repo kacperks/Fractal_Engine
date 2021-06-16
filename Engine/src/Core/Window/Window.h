@@ -10,6 +10,6 @@ namespace fr {
 		DepthBuffer* shadowBuffer;
 		SamplerBuffer* outputBuffer;
 
-		FRWindow(FRchar* title);
+		FRWindow(const FRchar* title);
 	};
 }

@@ -8,6 +8,7 @@
 #include "Core/ECS/Systems.h"
 #include "Core/ECS/Components.h"
 #include "Serializer/XMLSerializer.h"
+#include "Window/Window.h"
 
 namespace fr {
 
@@ -16,19 +17,6 @@ namespace fr {
 	}
 
 	Engine::Engine(): isRunning(true), isGameRunnig(false), viewSize(0), window(nullptr), outputBuffer(nullptr) {
-		glfwInit();
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
-		glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-
-		auto vMode = glfwGetVideoMode(glfwGetPrimaryMonitor());
-
-		glfwWindowHint(GLFW_SAMPLES, 4);
-		glfwWindowHint(GLFW_MAXIMIZED, GL_TRUE);		
-		glfwWindowHint(GLFW_RED_BITS, vMode->redBits);
-		glfwWindowHint(GLFW_BLUE_BITS, vMode->blueBits);
-		glfwWindowHint(GLFW_GREEN_BITS, vMode->greenBits);
-		glfwWindowHint(GLFW_REFRESH_RATE, vMode->refreshRate);
 #ifndef FR_BULID
 		std::string WinName = "Fractal Engine " VERSION;
 #endif
@@ -36,25 +24,19 @@ namespace fr {
 #ifdef FR_BULID
 		std::string WinName = WINDOW_NAME;
 #endif
-		window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGH, WinName.c_str(), nullptr, nullptr);
-		assert(window && "ERROR::GFLW::FAILED TO CREATE WINDOW!");
-		glfwMakeContextCurrent(window);
+		FRWindow* FRWin = new FRWindow(WinName.c_str());
 
-		assert(glewInit() == GLEW_OK && "ERROR::GLEW INIT FAILED!");
-		glewExperimental = GL_TRUE;			
-
-		GLCALL(glEnable(GL_STENCIL_TEST));
-		GLCALL(glEnable(GL_DEPTH_TEST));
-		GLCALL(glEnable(GL_MULTISAMPLE))		
+		FRWin->Size = new Vector2i(WINDOW_WIDTH, WINDOW_HEIGH);
 
 		shadowBuffer = new DepthBuffer(SHADOW_WIDTH, SHADOW_HEIGHT);
 		outputBuffer = new SamplerBuffer(WINDOW_WIDTH, WINDOW_HEIGH);
-		GLCALL(glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGH));
-		viewSize = glm::ivec2(WINDOW_WIDTH, WINDOW_HEIGH);
+
+		FRWin->shadowBuffer = shadowBuffer;
+		FRWin->outputBuffer = outputBuffer;
+		window = FRWin->window;
 	}
 
-	void Engine::Initialize() {
-
+	FRuint Engine::Initialize() {
 		// register component list
 		ECS::Manager.RegisterCompList<Camera>();
 		ECS::Manager.RegisterCompList<Transform>();
@@ -66,9 +48,6 @@ namespace fr {
 		ECS::Manager.RegisterCompList<ModelRenderer>();
 		ECS::Manager.RegisterCompList<SpriteRenderer>();
 		ECS::Manager.RegisterCompList<DirectionalLight>();
-#ifdef FRACTAL_CSHARP
-		ECS::Manager.RegisterCompList<CsScript>();
-#endif
 
 		// register component factory
 		ECS::Registrar<RigidBody>("RigidBody");
@@ -79,9 +58,6 @@ namespace fr {
 		ECS::Registrar<SpriteRenderer>("SpriteRenderer");
 		ECS::Registrar<DirectionalLight>("Directional Light");
 		ECS::Registrar<Camera>("Camera");
-#ifdef FRACTAL_CSHARP
-		ECS::Registrar<CsScript>("C# Script");
-#endif
 
 		// register systems
 		ECS::Manager.AddSystem<SpotLightSystem>();
@@ -93,17 +69,14 @@ namespace fr {
 		ECS::Manager.AddSystem<ModelRendererSystem>();
 		ECS::Manager.AddSystem<SpriteRendererSystem>();	
 
-#ifndef FR_BULID
 		// editor system will be removed at runtime
 		ECS::Manager.AddEditorSystem<EditorCameraSystem>();
 		ECS::Manager.AddEditorSystem<GridRendererSystem>();
-#endif
 
 		// runtime systems will be added at runtime
 		ECS::Manager.AddRuntimeSystem<CameraSystem>();
 		ECS::Manager.AddRuntimeSystem<PhysicsSystem>();
 		#ifdef FRACTAL_CSHARP
-		ECS::Manager.AddRuntimeSystem<CSharpScriptSystem>();
 		#endif
 
 		ECS::Manager.ActivateEditorSystems();
@@ -119,6 +92,8 @@ namespace fr {
 
 		Dispatcher.AddListener<WindowCloseEvent>(std::bind(&Engine::OnQuit, this, _1));
 		Dispatcher.AddListener<ViewportResizedEvent>(std::bind(&Engine::OnViewportResized, this, _1));
+
+		return FR_NULL;
 	}
 
 	void Engine::Update() {
@@ -131,9 +106,9 @@ namespace fr {
 		}
 		else {
 			if (Events.IsKeyPressed(FR_KEY_ESCAPE)) { 
-#ifndef FR_BULID
-				StopGame(); 				
-#endif
+				#ifndef FR_BULID
+					StopGame(); 				
+				#endif
 			}
 			glfwGetWindowSize(window, &viewSize.x, &viewSize.y);
 			GLCALL(glViewport(0, 0, viewSize.x, viewSize.y));

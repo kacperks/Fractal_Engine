@@ -53,7 +53,7 @@ namespace fr {
 		void Render();
 		void StopGame();
 		void StartGame();
-		void Initialize();
+		FRuint Initialize();
 		void SetCommandLineArgs(CommandLineArgs args) { commandLineArguments = args; }
 
 		inline glm::vec2 ViewSize() const { return viewSize; }

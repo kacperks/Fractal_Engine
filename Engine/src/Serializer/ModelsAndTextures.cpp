@@ -9,8 +9,6 @@ namespace fr {
 	
 	using namespace tinyxml2;
 
-	void MTSerializer::SaveModelsAndTextures(const char* file) {}
-
 	void MTSerializer::SaveModel(XMLPrinter& printer, std::string name, std::string path){
 		printer.OpenElement("Model");
 		printer.PushAttribute("Name", name.c_str());

@@ -19,8 +19,11 @@ namespace fr {
 
 		}
 
-		void LoadModelsAndTextures(const char* file);
-		void SaveModelsAndTextures(const char* file);
+		void LoadModels(const char* file);
+		void LoadTxts(const char* file);
+
+		void SaveModels(const char* file);
+		void SaveTxts(const char* file);
 
 	private:
 		MTSerializer() = default;

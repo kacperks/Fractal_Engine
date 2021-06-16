@@ -25,9 +25,6 @@ namespace fr {
 		// meshes
 		LoadMeshes();
 
-		// models
-		LoadModel("Rock", "Resource/Models/nature/Rock1.obj");
-
 		// shaders
 		CreateProgram("SPRITE", "SpriteV.shader", "SpriteF.shader");
 		CreateProgram("SHADOW", "ShadowV.shader", "ShadowF.shader");
@@ -36,8 +33,6 @@ namespace fr {
 		CreateProgram("GRID", "GridV.shader", "GridF.shader");
 
 		// textures
-		//AddTex2D("box1", LoadTex2D("Resource/Textures/box1.png"));
-		//AddTex2D("box2", LoadTex2D("Resource/Textures/box2.png"));
 		AddTex2D("light", LoadTex2D("Resource/Textures/light.png"));
 		AddTex2D("camera", LoadTex2D("Resource/Textures/camera.png"));
 
