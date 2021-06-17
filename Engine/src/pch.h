@@ -45,8 +45,14 @@ using namespace std::placeholders;
 #define WINDOW_WIDTH 1280
 #define WINDOW_HEIGH 720
 
+//c std lib
+#include <stdlib.h>
+
 #define BIND_FUNC(fn) std::bind(&fn, this, _1)
 #define STRING(x) #x 
+#define COMMAND(cmd) system(cmd);
+#define LINE __LINE__
+#define FILE __FILE__
 
 #define FR_NULL 0
 #define FR_TRUE true
@@ -60,6 +66,9 @@ using namespace std::placeholders;
 
 #elif defined(FR_LINUX)
 #include <bits/stdc++.h>
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+#include <X11/Xos.h>
 #endif
 
 #include <GL/glew.h>
@@ -81,6 +90,7 @@ namespace fr {
 	using FRfloat = float;
 	using FRlong = long;
 	using FRvoid = void;
+	using FRptr = void*;
 
 	struct CommandLineArgs { int argc; char** args; };
 }
