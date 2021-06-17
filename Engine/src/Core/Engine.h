@@ -80,6 +80,33 @@ namespace fr {
 	};
 
 	static Engine& Core = Engine::Ref();
+	
+	void PrintEngineInfo() {
+		time_t curr;
+		time(&curr);
+		std::string year = std::to_string(std::localtime(&curr)->tm_year + 1900);
+		
+		std::cout << 		"------ Fractal Engine ------" 			 			<< std::endl;
+		std::cout <<		"------ Year: " << year << "------"					<< std::endl;
+		std::cout << 		"---------------------------------------------" 			<< std::endl;
+		std::cout << 		"------ Contributors, Developers(GitHub Account Names) ------" 		<< std::endl;
+		std::cout << 		"------ Developer: KacperKostka08(Fractal Engine Owner) ------" 	<< std::endl;
+		std::cout << 		"------ Developer: lubek-dc ------" 					<< std::endl;
+		std::cout << 		"------ Developer: BoomerDev ------" 					<< std::endl;
+		std::cout << 		"------ Contributor: Yavuz1234567890 ------" 				<< std::endl;
+		std::cout << 		"------ Contributor: honeystudios ------" 				<< std::endl;
+		std::cout << 		"---------------------------------------------" 			<< std::endl;
+		std::cout << 		"------ Features ------" 						<< std::endl;
+		std::cout << 		"------ ImGui Editor ------" 						<< std::endl;
+		std::cout << 		"------ OpenGL Support ------" 						<< std::endl;
+		std::cout << 		"------ Loading 3D models with ASSIMP ------" 				<< std::endl;
+		std::cout << 		"------ Loading 2D textures with stbimage ------" 			<< std::endl;
+		std::cout << 		"------ Fully Featured ECS(Entity-Component-System) ------" 		<< std::endl;
+		std::cout << 		"------ Scene System (XML) ------" 					<< std::endl;
+		std::cout << 		"------ Light System ------" 						<< std::endl;
+		std::cout << 		"------ Gizmos ------" 							<< std::endl;
+		std::cout << 		"---------------------------------------------" 			<< std::endl;
+	}
 }
 
 #endif
