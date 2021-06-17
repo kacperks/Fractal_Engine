@@ -8,6 +8,7 @@
 using namespace fr;
 
 int main(int argc, char** argv) {
+	PrintEngineInfo();
 	Core.SetCommandLineArgs({ argc, argv });
 	Resource.Initialize();
 	Core.Initialize();
