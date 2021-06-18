@@ -3,11 +3,10 @@
 </p>
 
 <p align="center">
-Fractal Engine is a 3D and 2D game engine
+Fractal Engine is a Cool 3D game engine
 </p>
 
 <p align="center">
-<img src="https://img.shields.io/github/last-commit/kacperks/Fractal_Engine?label=Last%20Commit"/>
 <img src="https://img.shields.io/github/license/kacperks/Fractal_Engine?label=License" />
 <img src="https://img.shields.io/github/downloads/kacperks/Fractal_Engine/total?label=Downloads" />
 <img src="https://img.shields.io/github/languages/code-size/kacperks/Fractal_Engine?label=Code%20Size" />
