@@ -44,8 +44,6 @@ namespace fr {
 
             printf("%s: ", logLevelName);
             printf("%s", buffer);
-            
-            free(buffer);
         }
 
         static void SetupColor(const log::Color& color) {
