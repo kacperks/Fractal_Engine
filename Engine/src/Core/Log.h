@@ -42,8 +42,8 @@ namespace fr {
             case log::Level::WARNING: SetupColor(log::Color::YELLOW); logLevelName = "WARNING"; break;
             }
 
-            printf("%s", logLevelName);
-            printf(": %s", buffer);
+            printf("%s: ", logLevelName);
+            printf("%s", buffer);
             
             free(buffer);
         }
