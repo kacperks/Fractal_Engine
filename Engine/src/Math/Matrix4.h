@@ -20,11 +20,13 @@ namespace fr {
             e6(0.0f), e7(0.0f), e8(0.0f), e9(0.0f), e10(diagonal),
             e11(0.0f), e12(0.0f), e13(0.0f), e14(0.0f), e15(diagonal) {
             if(matrixdestroy)return;
+            matrixdestroy = false;
             if(!matrix)matrix = calloc(SIZE * SIZE, sizeof(float));
             InitArray();
         }
 
         static Mat4& Translate(const Vec3& pos) {
+            if(matrixdestroy)return NULL;
             Mat4 mat = Mat4(1.0f);
             mat.e12 = pos.x;
             mat.e13 = pos.y;
@@ -34,6 +36,7 @@ namespace fr {
         }
 
         static Mat4& Scale(Vec3& scale) {
+            if(matrixdestroy)return NULL;
             Mat4 mat = Mat4(1.0f);
             mat.e0 = scale.x;
             mat.e5 = scale.y;
@@ -43,7 +46,7 @@ namespace fr {
         }
 
         static Mat4& Rotate(float angle, Vec3& axis) {
-            
+            if(matrixdestroy)return NULL;
             float angleR = angle * Math::PI() / 180.0;
             float cos = Math::Cos(angleR);
             float Sin = Math::Sine(angleR);
@@ -69,6 +72,7 @@ namespace fr {
         }
 
         static Mat4& Ortho(float left, float right, float bottom, float top, float near1, float far1) {
+            if(matrixdestroy)return NULL;
             Mat4 mat = Mat4(1.0f);
             mat.e0 = 2.0f / (right - left);
             mat.e5 = 2.0f / (top - bottom);
@@ -81,6 +85,7 @@ namespace fr {
         }
 
         static Mat4& Perspective(float fov, float aspectRatio, float near1, float far1) {
+            if(matrixdestroy)return NULL;
             float r = 0.5f * fov * 3.14159265359 / 180.0f;
             float q = 1.0f / std::tan(r);
             float a = q / aspectRatio;
@@ -98,6 +103,8 @@ namespace fr {
         }
         
         void Destroy() {
+            if(matrixdestroy)return;
+            matrixdestroy = true;
             free(matrix);   
         }
 
