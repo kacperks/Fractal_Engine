@@ -22,7 +22,6 @@
 #include <functional>
 #include <filesystem>
 #include <unordered_map>
-using namespace std::placeholders;
 
 #if defined(_WIN32)
 #define FR_WINDOWS
@@ -38,9 +37,8 @@ using namespace std::placeholders;
 #endif
 
 #define VERSION "BETA 1.14"
-#define EDITOR_VERSION "19.05.2021"
+#define EDITOR_VERSION "17.06.2021"
 #define WINDOW_NAME "Game"
-
 
 #define WINDOW_WIDTH 1280
 #define WINDOW_HEIGH 720
@@ -56,11 +54,13 @@ using namespace std::placeholders;
 #define BIT(x) 1<<x
 
 #if defined(FR_WINDOWS)
-#include <windows.h>
-
+	#include <windows.h>
+	#pragma comment(lib, "Engine/Source/Vendor/Lua535/liblua53.a")
 #elif defined(FR_LINUX)
-#include <bits/stdc++.h>
+	#include <bits/stdc++.h>
 #endif
+
+#include "Vendor/Lua535/include/lua.hpp"
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -70,6 +70,8 @@ using namespace std::placeholders;
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtx/quaternion.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+
+using namespace std::placeholders;
 
 namespace fr {
 	using FRuint = uint32_t;

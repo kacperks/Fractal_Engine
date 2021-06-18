@@ -20,10 +20,10 @@ int main(int argc, char** argv) {
 		Core.Update();
 		Core.Render();
 
-#ifdef FR_BULID
-		Core.StartGame();
-#endif
+		#if defined(FR_BULID)
+			Core.StartGame();
+		#endif
 	}
 
-	return FR_TRUE;
+	return FR_NULL;
 }

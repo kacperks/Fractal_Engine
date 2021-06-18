@@ -35,7 +35,7 @@ namespace fr {
 		viewRect.H = WINDOW_HEIGH;
 	}
 
-	void UiLayer::Initialiaze() {
+	FRuint UiLayer::Initialiaze() {
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
 		ImGuiIO& IO = ImGui::GetIO(); (void)IO;
@@ -57,6 +57,8 @@ namespace fr {
 		// load icons
 		LoadIcons();
 
+		AddToConsole(" [Editor] Starting Fractal Editor...");
+
 		// scene frame texture
 		sceneFrameTexture = (ImTextureID)Core.GetSceneBufferID()->GetID();
 		lastSelectedEntity = selectedEntity = ECS::INVALID_ENTITY;
@@ -66,17 +68,19 @@ namespace fr {
 		compUIs.push_back(std::move(std::make_shared<DirectLightUI>()));
 		compUIs.push_back(std::move(std::make_shared<PointLightUI>()));
 		compUIs.push_back(std::move(std::make_shared<MeshUI>()));
-#ifdef FRACTAL_CSHARP
-		compUIs.push_back(std::move(std::make_shared<CsScriptCompUI>()));
-#endif
 		compUIs.push_back(std::move(std::make_shared<ModelCompUI>()));
 		compUIs.push_back(std::move(std::make_shared<RBUI>()));
 		compUIs.push_back(std::move(std::make_shared<CamUI>()));
-		AddToConsole(" [Editor] Starting Fractal Editor...");
+
+#ifdef FRACTAL_CSHARP
+		compUIs.push_back(std::move(std::make_shared<CsScriptCompUI>()));
+#endif
+
 		AddToConsole(" [Editor] Fractal Editor " EDITOR_VERSION);
+		return FR_NULL;
 	}
 
-	void UiLayer::Display() {
+	FRuint UiLayer::Display() {
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
@@ -87,13 +91,8 @@ namespace fr {
 		Components();
 		Entities();
 		Resources();
-
 		ToolBar();
 		Console();
-
-		if (ed) {
-			SceneSelector();
-		}
 
 		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
@@ -101,6 +100,8 @@ namespace fr {
 		ImGui::UpdatePlatformWindows();
 		ImGui::RenderPlatformWindowsDefault();
 		glfwMakeContextCurrent(backup_current_context);
+
+		return FR_NULL;
 	}
 
 	void UiLayer::LoadIcons() {
@@ -129,16 +130,6 @@ namespace fr {
 		icons.insert({ "error",(ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/error.png") });
 		icons.insert({ "ok",(ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/ok.png") });
 	}
-
-	void UiLayer::SceneSelector() {
-		ImGui::Begin("Welcome To the Fractal Engine!", &ed);
-		ImGui::Text("Whats new?");
-		ImGui::Text("- optimized so many things");
-		ImGui::Text("- Better UI");
-		ImGui::Text("- More Component UI's !");
-		ImGui::End();
-	}
-
 	void UiLayer::SetGuiStyle() {
 		ImGuiStyle& style = ImGui::GetStyle();
 		ImVec4* colors = style.Colors;
@@ -703,17 +694,12 @@ namespace fr {
 		}
 	}
 
-	void UiLayer::AddExistingEntity(const size_t entity) {
+	FRuint UiLayer::AddExistingEntity(const size_t entity) {
 		std::string name = ECS::Manager.GetComponent<EntityName>(entity).Value;
 		ImTextureID icon = icons.at("obj");
 		if (ECS::Manager.HasComponent<DirectionalLight>(entity)) {
 			icon = icons.at("light");
 		}
-#ifdef FRACTAL_CSHARP
-		if (ECS::Manager.HasComponent<CsScript>(entity)) {
-			icon = icons.at("cs");
-		}
-#endif
 		if (ECS::Manager.HasComponent<PointLight>(entity)) {
 			icon = icons.at("light");
 		}
@@ -721,6 +707,8 @@ namespace fr {
 			icon = icons.at("camera");
 		}
 		entities.push_back(std::make_tuple(entity, name, icon));
+
+		return FR_NULL;
 	}
 
 	void UiLayer::TransformGizmo() {		

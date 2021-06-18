@@ -70,11 +70,20 @@ namespace fr {
 		// runtime systems will be added at runtime
 		ECS::Manager.AddRuntimeSystem<CameraSystem>();
 		ECS::Manager.AddRuntimeSystem<PhysicsSystem>();
-#ifdef FRACTAL_CSHARP
-#endif
+
+		#ifdef FRACTAL_CSHARP
+			ECS::Manager.RegisterCompList<CsScript>();
+			ECS::Registrar<CsScript>("C# Script");
+			ECS::Manager.AddRuntimeSystem<CsharpScriptSystem>();
+		#endif
 
 		ECS::Manager.ActivateEditorSystems();
 		ECS::Manager.Start();
+
+		#if defined(FR_BULID)
+			// Initialize Game Core	
+		#endif
+
 		fr::UI.Initialiaze();
 
 		glfwSetKeyCallback(window, GlfwImpl::KeyboardCallback);
@@ -100,9 +109,9 @@ namespace fr {
 		}
 		else {
 			if (Events.IsKeyPressed(FR_KEY_ESCAPE)) {
-#ifndef FR_BULID
-				StopGame();
-#endif
+				#ifndef FR_BULID
+					StopGame();
+				#endif
 			}
 			glfwGetWindowSize(window, &viewSize.x, &viewSize.y);
 			GLCALL(glViewport(0, 0, viewSize.x, viewSize.y));

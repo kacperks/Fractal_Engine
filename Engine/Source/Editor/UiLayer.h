@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef FR_UILAYER_H
+#define FR_UILAYER_H
+
 #include "CompUIs/CompUI.h"
 #include "Vendor/IMGUI/imgui.h"
 #include "Vendor/GUIZMO/ImGuizmo.h"
@@ -37,17 +40,16 @@ namespace fr {
 
 		static const char* FileNameS;
 
-		void Display();
-		void Initialiaze();
-		static void AddToConsole(std::string Log);
-		void LightTheme();
-		void DarkTheme();
-		void RemoveAllEnt();
-		void AddExistingEntity(const size_t entity);
+		FRuint Display();
+		FRuint Initialiaze();
+		FRuint AddExistingEntity(const size_t entity);
+
 		void SetGizmoViewProjection(glm::mat4 view, glm::mat4 proj) {
 			gizmo.View = view;
 			gizmo.Proj = proj;
 		}
+
+		static void AddToConsole(std::string Log);
 
 		inline const ViewPortRect ViewportRect() const { return viewRect; }
 		inline const bool IsUsingGizmo() const { return ImGuizmo::IsUsing(); }
@@ -66,13 +68,9 @@ namespace fr {
 		void Console();
 		void Entities();
 		void Resources();
-		void CodeEditor();
 		void Dockspace();
-		void SceneSelector();
 		void ToolBar();
-		void SceneTools();
 		void About();
-		void NameDialog();
 
 		// ACTIONS
 
@@ -86,7 +84,6 @@ namespace fr {
 		void RemoveComponent(const char* typeName);
 
 		void AddAsset(const char* Name);
-		void AddReady(const char* Name);
 
 		void InitCompUI();
 		void TransformGizmo();
@@ -110,3 +107,5 @@ namespace fr {
 
 	static UiLayer& UI = UiLayer::Ref();
 }
+
+#endif

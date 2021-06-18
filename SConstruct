@@ -3,7 +3,7 @@ import platform
 import glob
 
 env = Environment(CXXCOMSTR="Compiling => $SOURCES", LINKCOMSTR="Linking Program => $TARGET",
-                CPPPATH=["Engine/src", "Engine/src/Vendor", "Engine/lib/includes"], CXXFLAGS="/std:c++17 /EHsc", TARGET_ARCH="x86")
+                CPPPATH=["Engine/Source", "Engine/Source/Vendor", "Engine/lib/includes"], CXXFLAGS="/std:c++17 /EHsc", TARGET_ARCH="x86")
 
 
 libraries = [
@@ -18,7 +18,7 @@ libraries = [
     "tinyxml2d"
 ]
 
-sources = glob.glob("Engine/src/**/*.cpp", recursive=True)
+sources = glob.glob("Engine/Source/**/*.cpp", recursive=True)
 sources.extend(glob.glob("Engine/lib/includes/**/*.cpp", recursive=True))
 
 for source in sources:
