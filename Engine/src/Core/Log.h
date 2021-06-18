@@ -22,14 +22,15 @@ namespace fr {
 
         };
     }
-
+    
+    const char* logLevelName = nullptr;
+    
     class Log {
     public:
         Log() = default;
         virtual ~Log() = default;
 
         static void LogMessage(bool line, const log::Level& level, const char* message) {
-            const char* logLevelName = nullptr;
             char buffer[1024];
             int pos = strlen(message);
             for(int i = 0; i < pos; i++)buffer[i] = message[i];
@@ -43,6 +44,8 @@ namespace fr {
 
             printf("%s", logLevelName);
             printf(": %s", buffer);
+            
+            free(buffer);
         }
 
         static void SetupColor(const log::Color& color) {
