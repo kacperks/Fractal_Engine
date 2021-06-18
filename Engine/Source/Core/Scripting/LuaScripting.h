@@ -5,15 +5,10 @@
 // not finished yet!
 
 namespace fr {
-	bool CheckLua(lua_State* L, int r){
-		if (r != LUA_OK){
-			std::string errormsg = lua_tostring(L, -1);
-			UI.AddToConsole("[LUA Syntax error!] " + errormsg);
-			return false;
-		}
-		return true;
-	}
+	extern FRboolean CheckLua(lua_State* L, int r);
+}
 
+namespace fr{
 	class LuaScripting {
 		public:
 			FRuint Init();
