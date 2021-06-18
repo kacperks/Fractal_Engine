@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-Fractal Engine is a 3D and 2D game engine
+Fractal Engine is a Cool 3D game engine
 </p>
 
 <p align="center">
