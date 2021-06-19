@@ -75,7 +75,7 @@ using namespace std::placeholders;
 
 namespace fr {
 
-	using FRuint = uint32_t;
+	using FRuint = unsigned int;
 	using FRuchar = unsigned char;
 	using FRboolean = bool;
 	using FRchar = char;
@@ -83,8 +83,10 @@ namespace fr {
 	using FRfloat = float;
 	using FRlong = long;
 	using FRvoid = void;
-	typedef void(*func)();
-
+	using FRsize = long unsigned int;
+	using func = std::function<void()>;
+	using FRfunc = func;
+		
 	struct CommandLineArgs { int argc; char** args; };
 }
 
