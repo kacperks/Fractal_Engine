@@ -33,7 +33,7 @@ namespace fr {
 
         static void LogMessage(bool line, const log::Level& level, const char* message) {
             char buffer[1024];
-            if(memcmp(buffer, message) == 0)return;
+            if(memcmp(buffer, message, sizeof(buffer) * sizeof(char)) == 0)return;
             int pos = strlen(message);
             for(int i = 0; i < pos; i++)buffer[i] = message[i];
             if(line)buffer[pos++] = '\n';
