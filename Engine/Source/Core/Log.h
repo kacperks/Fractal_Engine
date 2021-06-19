@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <malloc.h>
+#include <stdlib.h>
 #include <string.h>
 
 #define LOG_MAX_LEVEL 3
@@ -32,6 +33,7 @@ namespace fr {
 
         static void LogMessage(bool line, const log::Level& level, const char* message) {
             char buffer[1024];
+            if(memcmp(buffer, message) == 0)return;
             int pos = strlen(message);
             for(int i = 0; i < pos; i++)buffer[i] = message[i];
             if(line)buffer[pos++] = '\n';
