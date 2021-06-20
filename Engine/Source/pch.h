@@ -44,14 +44,16 @@
 #define WINDOW_HEIGH 720
 
 #define BIND_FUNC(fn) std::bind(&fn, this, _1)
+#define DEBUG_FUNC(fn) fn
 #define STRING(x) #x 
+#define TO_STRING(str) std::to_string(str)
 
 #define FR_NULL 0
 #define FR_TRUE true
 #define FR_FALSE false
 #define TERMS 7
 
-#define BIT(x) 1<<x
+#define BIT(x) 1 << x
 
 #if defined(FR_WINDOWS)
 	#include <windows.h>
@@ -79,6 +81,7 @@ namespace fr {
 	using FRuchar = unsigned char;
 	using FRboolean = bool;
 	using FRchar = char;
+	using FRstr = char*;
 	using FRint = int;
 	using FRfloat = float;
 	using FRlong = long;
