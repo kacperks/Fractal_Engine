@@ -11,13 +11,14 @@ namespace fr {
 namespace fr{
 	class LuaScripting {
 		public:
-			FRuint Init();
-			
-			FRuint InitScript(std::string filename);
-		private:
-			lua_State* L = luaL_newstate();
+			FRuint Init(std::string filename);
 
+			lua_State* GetLuaState() const { return L; }
+		private:
 			func LuaStart();
 			func LuaUpdate();
+
+			lua_State* L;
+			std::string CurrentScript;
 	};
 }

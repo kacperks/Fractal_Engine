@@ -3,6 +3,7 @@
 #include "Core/Engine.h"
 #include "Core/Resource/Resource.h"
 #include "Events/EventSystem.h"
+#include "Core/Scripting/LuaScripting.h"
 #include "Editor/UiLayer.h"
 
 using namespace fr;

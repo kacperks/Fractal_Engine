@@ -74,7 +74,6 @@
 using namespace std::placeholders;
 
 namespace fr {
-
 	using FRuint = uint32_t;
 	using FRuchar = unsigned char;
 	using FRboolean = bool;
