@@ -117,7 +117,7 @@ namespace fr {
 #include "Events/MouseEvents.h"
 #include "Events/WindowEvents.h"
 #include "Editor/UiLayer.h"
-#include "Core/Inputs/KeyCodes.h"
+#include "Core/Other/KeyCodes.h"
 
 #include "Renderer/ColorBuffer.h"
 #include "Renderer/DepthBuffer.h"
