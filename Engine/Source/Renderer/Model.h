@@ -7,6 +7,7 @@
 
 #include "GLMesh.h"
 #include "Vendor/STB/stb_image.h"
+#include <termcolor/termcolor.hpp>
 
 using namespace fr;
 
@@ -35,7 +36,7 @@ private:
 		directory = filename.substr(0, filename.find_last_of('/')).append("/");
 		const aiScene* scene = loader.ReadFile(filename, aiProcess_Triangulate | aiProcess_FlipUVs);
 		if (!scene || scene->mFlags == AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) {
-			std::cout << "ERROR::ASSIMP::" << loader.GetErrorString() << std::endl;
+			std::cout << termcolor::red << "Assimp Error! : " << loader.GetErrorString() << std::endl;
 			return;
 		}
 		ParseNode(scene->mRootNode, scene);

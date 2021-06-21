@@ -211,7 +211,7 @@ namespace fr {
 			return stringStream.str();
 		}
 		catch (const std::exception&) {
-			std::cerr << "ERROR::SHADER SOURCE NOT LOADED! " << filename << std::endl;
+			std::cerr << termcolor::red << "Shader Source not Loaded! " << termcolor::white << filename << std::endl;
 		}
 		return std::string();
 	}
@@ -226,7 +226,7 @@ namespace fr {
 		GLCALL(glGetShaderiv(shaderID, GL_COMPILE_STATUS, &status));
 		if (!status) {
 			GLCALL(glGetShaderInfoLog(shaderID, 512, nullptr, info_log));
-			std::cerr << "SHADER::COMPILATION FAILED! " << info_log << "\n" << src << std::endl;
+			std::cerr << termcolor::red << " Shader Compilation Failed! " << termcolor::white << info_log << "\n" << src << std::endl;
 		}
 		return shaderID;
 	}
@@ -248,7 +248,7 @@ namespace fr {
 
 		if (!status) {
 			GLCALL(glGetProgramInfoLog(program, 512, nullptr, info_log));
-			std::cerr << "SHADER::LINKING FAILED! " << info_log << std::endl;
+			std::cerr << termcolor::red << " Shader Linking Failed! " << termcolor::white << info_log << std::endl;
 		}
 
 		GLCALL(glDeleteShader(vertexShader));

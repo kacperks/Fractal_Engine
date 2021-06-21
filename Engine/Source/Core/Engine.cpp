@@ -31,6 +31,8 @@ namespace fr {
 	}
 
 	FRuint Engine::Initialize() {
+		UI.AddToConsole(" [Core] Loading Fractal Enigne...");
+
 		// register component list
 		ECS::Manager.RegisterCompList<Camera>();
 		ECS::Manager.RegisterCompList<Transform>();
@@ -96,6 +98,12 @@ namespace fr {
 		Dispatcher.AddListener<WindowCloseEvent>(std::bind(&Engine::OnQuit, this, _1));
 		Dispatcher.AddListener<ViewportResizedEvent>(std::bind(&Engine::OnViewportResized, this, _1));
 
+		UI.AddToConsole(" [Core] Engine loaded successfully!");
+
+		if (commandLineArguments.args[0] == "load") {
+			std::cout << "test" << std::endl;
+		}
+
 		return FR_NULL;
 	}
 
@@ -142,5 +150,11 @@ namespace fr {
 		isGameRunnig = false;
 		ECS::Manager.DeactivateRuntimeSystems();
 		ECS::Manager.ActivateEditorSystems();
+	}
+
+	func Engine::SetCurrentScene(const char* NewScene) {
+		Serializer.LoadScene(NewScene); 
+		CurrentScene = NewScene;
+		return FR_NULL;
 	}
 }

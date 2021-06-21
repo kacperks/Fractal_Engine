@@ -8,12 +8,14 @@
 
 using namespace fr;
 
+LuaScripting Lua;
+
 int main(int argc, char** argv) {
 	Core.SetCommandLineArgs({ argc, argv });
 	Resource.Initialize();
 	Core.Initialize();
 	Timer.Initialize();
-	Serializer.LoadScene("Resource/Scene/scene.fr");
+	Core.SetCurrentScene("Resource/scene/scene.fr");
 
 	while (Core.Run()) {
 		Timer.Tick();

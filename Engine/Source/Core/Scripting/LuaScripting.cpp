@@ -20,8 +20,7 @@ namespace fr {
 		luaL_openlibs(L);
 
 		if (CheckLua(L, luaL_dofile(L, filename.c_str()))){
-			lua_getglobal(L, "A");
-			if (lua_isnumber(L, -1)) std::cout << "[CPP S1] a = " << (int)lua_tointeger(L, -1) << std::endl;
+
 		}
 
 		lua_close(L);

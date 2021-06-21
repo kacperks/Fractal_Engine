@@ -6,7 +6,7 @@ namespace fr {
 	const ImVec4 WhiteGray = ImVec4(0.50f, 0.50f, 0.50f, 1.000f);
 	const ImVec4 Gray = ImVec4(0.40f, 0.40f, 0.40f, 1.000f);
 	const ImVec4 Oranage = ImVec4(0.92f, 0.34f, 0.24f, 1.0f);
-	const ImVec4 Dark = ImVec4(0.12f, 0.12f, 0.12f, 1.000f);
+	const ImVec4 dark = ImVec4(0.17f, 0.17f, 0.17f, 1.0f);
 	const ImVec4 Text = ImVec4(0.9f, 0.9f, 0.9f, 1.000f);;
 	const ImVec4 White = ImVec4(1.0f, 1.0f, 1.0f, 1.000f);
 	const ImVec4 LightGray = ImVec4(0.90f, 0.90f, 0.90f, 1.000f);

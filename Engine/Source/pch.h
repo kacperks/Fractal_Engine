@@ -58,6 +58,7 @@
 	#pragma comment(lib, "Engine/Source/Vendor/Lua535/liblua53.a")
 #elif defined(FR_LINUX)
 	#include <bits/stdc++.h>
+	#pragma comment(lib, "Engine/Source/Vendor/Lua535/liblua53.a")
 #endif
 
 #include "Vendor/Lua535/include/lua.hpp"

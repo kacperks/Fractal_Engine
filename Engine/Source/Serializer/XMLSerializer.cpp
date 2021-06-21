@@ -8,7 +8,8 @@ namespace fr {
 
 	// SCENE
 	void XMLSerializer::LoadScene(const char* filename) {
-		UiLayer::AddToConsole(" [XMLSerializer] Loaded scene.fr!");
+		std::string msg = " [XMLSerializer] Loaded Scene!";
+		UiLayer::AddToConsole(msg);
 		tinyxml2::XMLDocument document;
 		document.LoadFile(filename);
 		if (document.Error()) { 
@@ -26,7 +27,8 @@ namespace fr {
 		}
 	}
 	void XMLSerializer::SaveScene(const char* filename) {
-		UiLayer::AddToConsole(" [XMLSerializer] Saved scene.fr!");
+		std::string msg = (" [XMLSerializer] Saved Scene!");
+		UiLayer::AddToConsole(msg);
 		FILE* pFile;
 		fopen_s(&pFile, filename, "w");
 		tinyxml2::XMLPrinter printer(pFile);

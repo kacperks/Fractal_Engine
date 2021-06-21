@@ -24,12 +24,10 @@
 // Warring this file is pretty messy!
 
 namespace fr {
-	bool ed = true;
-	std::string console = " [UI] Fractal Debug Console";
-	const ImVec4 dark = ImVec4(0.17f, 0.17f, 0.17f, 1.0f);
+	std::string console = "Fractal Engine Debug Console";
+
 	static const char* names[] = { "Camera", "RigidBody", "MeshRenderer",
-		"ModelRenderer", "SpriteRenderer", "Directional Light", "Point Light", "Spot Light", "C# Script" };
-	static const char* AssetNames[] = { "C# script","C++ Script", "Folder" , "Scene" , "GLSL Shader" , "Material", "Mesh"};
+		"ModelRenderer", "SpriteRenderer", "Directional Light", "Point Light", "Spot Light"};
 	UiLayer::UiLayer() {
 		viewRect.W = WINDOW_WIDTH;
 		viewRect.H = WINDOW_HEIGH;
@@ -248,42 +246,15 @@ namespace fr {
 	void UiLayer::MenuBar() {
 		if (ImGui::BeginMenuBar()) {
 			if (ImGui::BeginMenu("File")) {
-				if (ImGui::MenuItem("New Scene", "Ctrl+N")) {
-
-				}
-
-				if (ImGui::MenuItem("Open Scene", "Ctrl+O")) {
-
-				}
-
-				if (ImGui::MenuItem("Save", "Ctrl+S")) { fr::Serializer.SaveScene("Resource/Scene/scene.fr"); }
+				if (ImGui::MenuItem("Save", "Ctrl+S")) { fr::Serializer.SaveScene(Core.GetCurrentScene()); }
 
 				if (ImGui::MenuItem("Save As..")) {}
 				ImGui::EndMenu();
 			}
-			if (ImGui::BeginMenu("Editor")) {
-				if (ImGui::MenuItem("Undo", "CTRL+Z")) {}
-				if (ImGui::MenuItem("Redo", "CTRL+Y", false, false)) {}  // Disabled item
-				ImGui::Separator();
-				if (ImGui::MenuItem("Cut", "CTRL+X")) {}
-				if (ImGui::MenuItem("Copy", "CTRL+C")) {}
-				if (ImGui::MenuItem("Paste", "CTRL+V")) {}
-				ImGui::EndMenu();
-			}
 			if (ImGui::BeginMenu("Settings")) {
-				if (ImGui::MenuItem("Style Editor")) {  }
 				ImGui::EndMenu();
 			}
 			if (ImGui::BeginMenu("Window")) {
-				if (ImGui::MenuItem("Fractal Store", "soon")) {}
-				if (ImGui::MenuItem("Inspector")) { }
-				if (ImGui::MenuItem("Entities")) { Entities(); }
-				if (ImGui::MenuItem("Console")) {  }
-				if (ImGui::MenuItem("Resources")) {  }
-				if (ImGui::MenuItem("Visual Studio Code Scripts")) { 
-					system("cd Resource/Scripts");
-					system("code Resource/Scripts/.");
-				}
 				ImGui::EndMenu();
 			}
 			if (ImGui::BeginMenu("Tools")) {
@@ -297,12 +268,13 @@ namespace fr {
 				if (ImGui::MenuItem("About Fractal Engine")) {}
 				ImGui::EndMenu();
 			}
-			ImGui::Dummy(ImVec2(660, 0));
+			ImGui::Dummy(ImVec2(700, 0));
 			ImGui::Text(" %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
-			if (Widget::ToolButton::Show(icons.at("save"))) { fr::Serializer.SaveScene("Resource/Scene/scene.fr"); console = console + "\n [DEBUG] Saved Scene scene.fr!";}
+			if (Widget::ToolButton::Show(icons.at("save"))) { fr::Serializer.SaveScene(Core.GetCurrentScene()); console = console + "\n [DEBUG] Saved Scene scene.fr!";}
 			if (Widget::ToolButton::Show(icons.at("move"))) { gizmo.Operation = ImGuizmo::OPERATION::TRANSLATE; console = console + "\n [DEBUG] Tool Move "; }
 			if (Widget::ToolButton::Show(icons.at("rotate"))) { gizmo.Operation = ImGuizmo::OPERATION::ROTATE;  console = console + "\n [DEBUG] Tool Rotate "; }
 			if (Widget::ToolButton::Show(icons.at("scale"))) { gizmo.Operation = ImGuizmo::OPERATION::SCALE; console = console + "\n [DEBUG] Tool Scale "; }
+
 			ImGui::Text("Fractal Editor " EDITOR_VERSION);
 
 			ImGui::EndMenuBar();
@@ -402,29 +374,6 @@ namespace fr {
 			ImGui::PushStyleColor(ImGuiCol_FrameBg, dark);
 			ImGui::BeginChildFrame(ImGui::GetID("rframe"), ImVec2(0, 0));
 			{
-				/*
-				if (Widget::ToolButton::Show(icons.at("plus"), 20.0f)) {
-					ImGui::OpenPopup("compPopup2");
-				}
-				*/
-
-				ImGui::SameLine();
-				if (ImGui::BeginPopup("compPopup2")) {
-					ImGui::Text("Add Asset");
-					ImGui::Separator();
-
-					for (size_t i = 0; i < IM_ARRAYSIZE(AssetNames); i++) {
-						if (ImGui::Selectable(AssetNames[i])) {
-							AddAsset(AssetNames[i]);
-							console = console + "\n [DEBUG] Added new Asset! " + AssetNames[i];
-						}
-					}
-					ImGui::EndPopup();
-				}
-				
-				if (ImGui::Button("Open in VsCode")) {
-					system("code .");
-				}
 				OnImGui("Resource");
 			}
 			ImGui::PopStyleColor();
@@ -448,8 +397,8 @@ namespace fr {
 				ImGui::NextColumn();
 
 				if (ImGui::Button("Save Scene")) {
-					fr::Serializer.SaveScene("Resource/Scene/scene.fr");
-					console = console + "\n [DEBUG] Saved Scene scene.fr!";
+					fr::Serializer.SaveScene(Core.GetCurrentScene());
+					console = console + "\n [DEBUG] Saved Scene!";
 				}
 				ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(3, 3));
 					if (ImGui::CollapsingHeader("Engine")) {
@@ -638,61 +587,7 @@ namespace fr {
 		}
 	}
 
-	void UiLayer::AddAsset(const char* Name) {
-		if (Name == "C# script") {
-				std::fstream file;
-				std::string Path = "Resource/Scripts/NewCs";
-				std::string f = ".cs";
-				file.open(Path + f, std::ios::out);
-				std::string code;
-				code = "using Fractal;\n\npublic class TestScript : FractalScript\n{\n    public void Start() { // Start Function \n \n \n    }\n    public void Update(float deltatime, ref Transform transform){ \n \n    } \n }";
-				file << code << std::endl;
-				file.close();
-		}
-		if (Name == "GLSL Shader") {
-			std::fstream file;
-			std::string Path = "Resource/Shaders/Shader";
-			std::string f = ".glsl";
-			file.open(Path + f, std::ios::out);
-			std::string code;
-			code = "#version 330 core\n \n void main() {\n\n }";
-			file << code << std::endl;
-			file.close();
-		}
-		if (Name == "C++ Component") {
-			std::fstream file;
-			std::string Path = "Resource/Components/Component";
-			std::string f = ".h";
-			file.open(Path + f, std::ios::out);
-			std::string code;
-			code = "#pragma once \n\n #include <ECS/Base/BaseComponent.h> \n \n struct Component : public ECS::BaseComponent { \n\n};";
-			file << code << std::endl;
-			file.close();
-		}
-		if (Name == "Scene") {
-			std::fstream file;
-			std::string Path = "Resource/Scene/Scene1";
-			std::string f = ".fr";
-			file.open(Path + f, std::ios::out);
-			file.close();
-		}
-		if (Name == "Folder") {
-			std::fstream file;
-			std::string Path = "Resource/Folder/";
-			file.open(Path, std::ios::out);
-			file.close();
-		}
-		if (Name == "C++ Script") {
-			std::fstream file;
-			std::string Path = "Resource/Scripts/CppScript";
-			std::string f = ".hpp";
-			file.open(Path + f, std::ios::out);
-			std::string code;
-			code = "#pragma once\n #include <fractal.hpp> \n ";
-			file << code << std::endl;
-			file.close();
-		}
-	}
+	void UiLayer::AddAsset(const char* Name) {}
 
 	FRuint UiLayer::AddExistingEntity(const size_t entity) {
 		std::string name = ECS::Manager.GetComponent<EntityName>(entity).Value;
