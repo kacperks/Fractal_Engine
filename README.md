@@ -11,6 +11,7 @@ Fractal Engine is a Cool 3D game engine
 <img src="https://img.shields.io/github/downloads/kacperks/Fractal_Engine/total?label=Downloads" />
 <img src="https://img.shields.io/github/languages/code-size/kacperks/Fractal_Engine?label=Code%20Size" />
 <img src="https://img.shields.io/github/stars/kacperks/Fractal_Engine?label=Stars&logo=github" />
+<img src="https://img.shields.io/tokei/lines/github/kacperks/Fractal_Engine?color=white&label=lines%20of%20code">
 <a href="https://discord.gg/aXHjdQfCMK">
   <img src="https://img.shields.io/discord/836863029080752128?color=aXHjdQfCMK&label=Discord&logo=discord&logoColor=ffffff" alt="discord - users online" />
 </a>
