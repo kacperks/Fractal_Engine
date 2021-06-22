@@ -48,6 +48,7 @@ namespace fr {
 
             printf("%s: ", logLevelName);
             printf("%s", buffer);
+            printf("\033[0m");
         }
 
         static void SetupColor(const log::Color& color) {
