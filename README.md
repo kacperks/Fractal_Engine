@@ -60,7 +60,7 @@ Discord Server! : https://discord.gg/aXHjdQfCMK
 #### Installing these libraries on Linux
 
 * Debian/Ubuntu
-` $ sudo apt install -y libglm-dev libglew-dev libglfw3-dev libassimp-dev assimp-utils libxmu-dev libxi-dev libtinyxml-dev `
+` $ sudo apt install -y libglm-dev libglew-dev libglfw3-dev libassimp-dev libtinyxml-dev `
 * Fedora
 ` $ sudo dnf install glew-devel glm-devel assimp-devel glfw-devel tinyxml2-devel `
 
