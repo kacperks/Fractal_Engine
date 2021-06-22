@@ -60,29 +60,15 @@ Discord Server! : https://discord.gg/aXHjdQfCMK
 #### Installing these libraries on Linux
 
 * Debian/Ubuntu
-```sh
-$ sudo apt install -y libglm-dev libglew-dev libglfw3-dev libassimp-dev assimp-utils libxmu-dev libxi-dev libtinyxml-dev
-```
+` $ sudo apt install -y libglm-dev libglew-dev libglfw3-dev libassimp-dev assimp-utils libxmu-dev libxi-dev libtinyxml-dev `
 * Fedora
-```sh
-$ sudo dnf install glew-devel glm-devel assimp-devel glfw-devel tinyxml2-devel
-```
+` $ sudo dnf install glew-devel glm-devel assimp-devel glfw-devel tinyxml2-devel `
 
 
 ## Setup
-* First you need to Clone Repo
-```sh
-$ git clone https://github.com/kacperks/Fractal_Engine.git
-```
-* Then you need to install scons:
-```sh
-$ pip install scons
-```
-
-* Go to the directory of the Fractal engine and type:
-```sh
-$ scons
-```
+* First you need to Clone Repo ` $ git clone https://github.com/kacperks/Fractal_Engine.git `
+* Then you need to install scons ` $ pip install scons `
+* Go to the directory of the Fractal engine and type ` $ scons `
 
 # Developers
 
