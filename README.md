@@ -47,7 +47,7 @@ Discord Server! : https://discord.gg/aXHjdQfCMK
 * Then you need to install scons ` $ pip install scons `
 * Go to the directory of the Fractal engine and type ` $ scons `
 
-# Dependencies
+## Dependencies
 
 * GLM https://github.com/g-truc/glm
 * GLEW https://github.com/nigels-com/glew
