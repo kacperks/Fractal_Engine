@@ -30,9 +30,8 @@ Features to do:
 * Collision system
 * Physics Engine
 * Custom Scripting Language (FR Script)
-* Python or Lua Scripting
+* Lua Scripting
 * Better Linux and Mac Support
-* Code Cleanup
 * Custom UI library
 
   
@@ -43,9 +42,12 @@ Discord Server! : https://discord.gg/aXHjdQfCMK
   <img src="ScreenShot.png" width="683" height="371">
 </p>
 
-# Building
+# Project Setup
+* First you need to Clone Repo ` $ git clone --recursive https://github.com/kacperks/Fractal_Engine.git `
+* Then you need to install scons ` $ pip install scons `
+* Go to the directory of the Fractal engine and type ` $ scons `
 
-### Dependencies
+# Dependencies
 
 * GLM https://github.com/g-truc/glm
 * GLEW https://github.com/nigels-com/glew
@@ -57,18 +59,11 @@ Discord Server! : https://discord.gg/aXHjdQfCMK
 * ImGuizmo https://github.com/CedricGuillemet/ImGuizmo
 * Scons https://github.com/SCons/scons
 
-#### Installing these libraries on Linux
-
+## Installing the libraries used by the Fractal Engine on Linux
 * Debian/Ubuntu
 ` $ sudo apt install -y libglm-dev libglew-dev libglfw3-dev libassimp-dev libtinyxml-dev `
 * Fedora
 ` $ sudo dnf install glew-devel glm-devel assimp-devel glfw-devel tinyxml2-devel `
-
-
-## Setup
-* First you need to Clone Repo ` $ git clone https://github.com/kacperks/Fractal_Engine.git `
-* Then you need to install scons ` $ pip install scons `
-* Go to the directory of the Fractal engine and type ` $ scons `
 
 # Developers
 
