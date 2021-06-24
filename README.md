@@ -48,13 +48,12 @@ Discord Server! : https://discord.gg/aXHjdQfCMK
 * First You need to install scons ` $ pip install scons `
 * Go to the directory of the Fractal engine and type ` $ scons `
 ## Cmake
-* First You need to install Cmake
+* First You need to install Cmake :
 
-Debian/Ubuntu ` $ sudo apt-get install cmake `
+* Debian/Ubuntu ` $ sudo apt-get install cmake `
+* Fedora ` $ sudo dnf install cmake `
 
-Fedora ` $ sudo dnf install cmake `
-
-* Go to the Directrory of the Fractal Engine and type ` $ cmake -B App `
+* Go to the Directrory of the Fractal Engine and type : ` $ cmake -B App `
 
 ## Dependencies
 
