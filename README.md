@@ -17,23 +17,11 @@ Fractal Engine is a Cool 3D game engine
 </a>
   
 Features:
-* ImGui Editor
-* Loading 3D models with ASSIMP
-* Loading 2D textures with stbimage
 * Fully Featured ECS(Entity-Component-System)
-* Scene System (XML)
-* Light System
-* Gizmos
-
-Features to do:
-
-* Collision system
-* Physics Engine
-* Custom Scripting Language (FR Script)
-* Lua Scripting
-* Better Linux and Mac Support
-* Custom UI library
-
+* OpenGL 3.3+ Rendering Engine
+* Textures, Models and Scenes Serializer (XML)
+* Scene Editor (ImGui)
+* Events System
   
 Discord Server! : https://discord.gg/aXHjdQfCMK
 # Screen Shot
