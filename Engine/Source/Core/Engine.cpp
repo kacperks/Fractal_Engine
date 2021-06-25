@@ -137,6 +137,10 @@ namespace fr {
 			ECS::Manager.Render();
 		}
 
+		#if defined(FR_BULID)
+				Core.StartGame();
+		#endif
+
 		glfwSwapBuffers(window);
 	}
 

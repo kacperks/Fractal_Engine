@@ -22,10 +22,6 @@ int main(int argc, char** argv) {
 		Events.Poll();
 		Core.Update();
 		Core.Render();
-
-		#if defined(FR_BULID)
-			Core.StartGame();
-		#endif
 	}
 
 	return FR_NULL;
