@@ -19,6 +19,7 @@ Fractal Engine is a Cool 3D game engine
 Features:
 * Fully Featured ECS(Entity-Component-System)
 * OpenGL 3.3+ Rendering Engine
+* Loading 3D models and 2D textures via Assimp and STB
 * Textures, Models and Scenes Serializer (XML)
 * Scene Editor (ImGui)
 * Events System
