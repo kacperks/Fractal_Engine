@@ -5,8 +5,13 @@ set(PLATFORM "Linux")
 
 find_package(OpenGL REQUIRED)
 
+add_subdirectory(Thirdparty/cmake/assimp)
+add_subdirectory(Thirdparty/cmake/glew-cmake)
+add_subdirectory(Thirdparty/cmake/glfw)
+add_subdirectory(Thirdparty/cmake/glm)
+add_subdirectory(Thirdparty/cmake/tinyxml2)
 
-file(GLOB_RECURSE Runtime "Source/**.cpp" "Source/**.h" "Source/**.hpp" "Thirdparty/includes/**.cpp" "Thirdparty/includes/**.hpp" "Thirdparty/includes/**.h")
+file(GLOB_RECURSE Runtime "Source/**.cpp" "Source/**.h" "Source/**.hpp")
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/App/")
 

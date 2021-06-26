@@ -3,7 +3,7 @@ import platform
 import glob
 
 env = Environment(CXXCOMSTR="Compiling => $SOURCES", LINKCOMSTR="Linking Program => $TARGET",
-                CPPPATH=["Engine/Source", "Engine/Source/Vendor", "Engine/Thirdparty/includes"], CXXFLAGS="/std:c++17 /EHsc", TARGET_ARCH="x86")
+                CPPPATH=["Engine/Source", "Engine/Source/Vendor", "Engine/Thirdparty/scons/includes"], CXXFLAGS="/std:c++17 /EHsc", TARGET_ARCH="x86")
 
 
 libraries = [
@@ -19,10 +19,10 @@ libraries = [
 ]
 
 sources = glob.glob("Engine/Source/**/*.cpp", recursive=True)
-sources.extend(glob.glob("Engine/Thirdparty/includes/**/*.cpp", recursive=True))
+sources.extend(glob.glob("Engine/Thirdparty/scons/includes/**/*.cpp", recursive=True))
 
 for source in sources:
     n_object = os.path.basename(source).replace(".cpp", ".obj")
     env.Object("App/obj/%s" % n_object, source)
 
-env.Program("App/Fractal_Engine", Glob("App/obj/*.obj"), LIBPATH="Engine/Thirdparty/lib", LIBS=libraries)
+env.Program("App/Fractal_Engine", Glob("App/obj/*.obj"), LIBPATH="Engine/Thirdparty/scons/lib", LIBS=libraries)
