@@ -32,7 +32,9 @@ Discord Server! : https://discord.gg/aXHjdQfCMK
 </p>
 
 # Project Setup
-* First you need to Clone Repo ` $ git clone --recurse-submodules https://github.com/kacperks/Fractal_Engine.git `
+* First you need to Clone Repo 
+
+` $ git clone --recurse-submodules https://github.com/kacperks/Fractal_Engine.git `
 ## Scons
 * First You need to install scons ` $ pip install scons `
 * Go to the directory of the Fractal engine and type ` $ scons `
