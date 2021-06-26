@@ -14,8 +14,8 @@
     <Entity>
         <EntityName value="Cube"/>
         <Transform x="-6.3563194274902344" y="4.2868328094482422" z="6.8768491744995117" rx="0" ry="0" rz="0" sx="3.8911371231079102" sy="3.2376275062561035" sz="3.4837725162506104"/>
-        <MeshRenderer name="CUBE">
-            <Material ao="1" metallic="0.0099999997764825821" roughness="1" albedoR="0.40196084976196289" albedoG="1" albedoB="0"/>
+        <MeshRenderer name="SPHERE">
+            <Material ao="1" metallic="0.10000000149011612" roughness="0.89999997615814209" albedoR="0.60000002384185791" albedoG="0.60000002384185791" albedoB="0.60000002384185791"/>
         </MeshRenderer>
     </Entity>
 </Scene>
