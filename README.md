@@ -22,6 +22,7 @@ Features:
 * Loading 3D models and 2D textures via Assimp and STB
 * Textures, Models and Scenes Serializer (XML)
 * Scene Editor (ImGui)
+* Cross Platform (In Progress)
 * Events System
   
 Discord Server! : https://discord.gg/aXHjdQfCMK
