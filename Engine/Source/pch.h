@@ -3,6 +3,8 @@
 #ifndef FR_PCH_H
 #define FR_PCH_H
 
+#define FR_LUA
+
 #include <set>
 #include <map>
 #include <array>
@@ -56,13 +58,19 @@
 
 #if defined(FR_WINDOWS)
 	#include <windows.h>
-	#pragma comment(lib, "Engine/Source/Vendor/Lua535/liblua53.a")
 #elif defined(FR_LINUX)
 	#include <bits/stdc++.h>
-	#pragma comment(lib, "Engine/Source/Vendor/Lua535/liblua53.a")
 #endif
 
-#include "Vendor/Lua535/include/lua.hpp"
+#if defined(FR_LUA)
+extern "C" {
+#include "Vendor/Lua535/include/lua.h"
+#include "Vendor/Lua535/include/lualib.h"
+#include "Vendor/Lua535/include/lauxlib.h"
+};
+
+#pragma comment(lib, "Engine/Source/Vendor/Lua535/liblua53.a")
+#endif
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>

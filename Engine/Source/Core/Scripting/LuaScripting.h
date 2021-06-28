@@ -2,6 +2,7 @@
 
 #include "pch.h"
 
+#if defined(FR_LUA)
 // not finished yet!
 
 namespace fr {
@@ -22,3 +23,5 @@ namespace fr{
 			std::string CurrentScript;
 	};
 }
+
+#endif

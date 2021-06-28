@@ -2,6 +2,8 @@
 
 #include "LuaScripting.h"
 
+#if defined(FR_LUA)
+
 namespace fr {
 	FRboolean CheckLua(lua_State* L, int r) {
 		if (r != LUA_OK) {
@@ -31,3 +33,5 @@ namespace fr {
 
 	func LuaScripting::LuaUpdate(){ return FR_NULL; }
 }
+
+#endif
