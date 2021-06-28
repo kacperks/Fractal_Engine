@@ -90,7 +90,37 @@ namespace fr {
             return mat;
         }
 
-
+        
+        static Mat4& Mul(Mat4& t, Mat4& other) {
+            Mat4& mat = Mat4(1.0f);
+            float sum = 0.0f;
+            for(int x = 0; x < 4; x++) {
+                for(int y = 0; y < 4; y++) {
+                    for(int i = 0; i < 4; i++) {
+                        sum += t.matrix[x + i * 4] * other.matrix[i + y * 4];   
+                    }
+                }
+            }
+            mat.e0 = sum;
+            mat.e1 = sum;
+            mat.e2 = sum;
+            mat.e3 = sum;
+            mat.e4 = sum;
+            mat.e5 = sum;
+            mat.e6 = sum;
+            mat.e7 = sum;
+            mat.e8 = sum;
+            mat.e9 = sum;
+            mat.e10 = sum;
+            mat.e11 = sum;
+            mat.e12 = sum;
+            mat.e13 = sum;
+            mat.e14 = sum;
+            mat.e15 = sum;
+            mat.InitArray();
+            return mat;
+        }
+        
         float e0, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14, e15;
         float matrix[16];
         void InitArray() {
