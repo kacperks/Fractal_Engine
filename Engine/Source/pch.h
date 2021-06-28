@@ -49,6 +49,7 @@
 #define FR_NULL 0
 #define FR_TRUE true
 #define FR_FALSE false
+#define FR_ERR -1
 #define TERMS 7
 
 #define BIT(x) 1<<x

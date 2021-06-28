@@ -2,16 +2,20 @@
 
 #include "pch.h"
 
+#include "Math/Vector2.h"
+
 namespace fr {
-	struct FRWindow {
-		GLFWwindow* window;
+	class FRWindow {
+		public:
+			FRWindow(const FRchar* title);
 
-		int Width = WINDOW_WIDTH;
-		int Height = WINDOW_HEIGH;
-
-		DepthBuffer* shadowBuffer;
-		SamplerBuffer* outputBuffer;
-
-		FRWindow(const FRchar* title);
+			GLFWwindow* GetWindow() { return window; }
+			Vec2* GetSize() { return Size; }
+			DepthBuffer* GetDepthBuffer() { return shadowBuffer; }
+			SamplerBuffer* outputBuffer;
+		private:
+			GLFWwindow* window;
+			Vec2* Size = new Vec2(WINDOW_WIDTH, WINDOW_HEIGH);
+			DepthBuffer* shadowBuffer;
 	};
 }

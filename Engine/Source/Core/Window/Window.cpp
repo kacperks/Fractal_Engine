@@ -18,7 +18,7 @@ namespace fr {
 		glfwWindowHint(GLFW_GREEN_BITS, vMode->greenBits);
 		glfwWindowHint(GLFW_REFRESH_RATE, vMode->refreshRate);
 
-		window = glfwCreateWindow(Width, Height, title, nullptr, nullptr);
+		window = glfwCreateWindow(Size->x, Size->y, title, nullptr, nullptr);
 		assert(window && "Failed To Create Window!!");
 		glfwMakeContextCurrent(window);
 
@@ -30,7 +30,7 @@ namespace fr {
 		GLCALL(glEnable(GL_MULTISAMPLE))
 
 		shadowBuffer = new DepthBuffer(1024, 1024);
-		outputBuffer = new SamplerBuffer(Width, Height);
-		GLCALL(glViewport(0, 0, Width, Height));
+		outputBuffer = new SamplerBuffer(Size->x, Size->y);
+		GLCALL(glViewport(0, 0, Size->x, Size->y));
 	}
 }

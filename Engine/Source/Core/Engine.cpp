@@ -25,9 +25,9 @@ namespace fr {
 		
 		FRWindow* FRWin = new FRWindow(WinName.c_str());
 
-		shadowBuffer = FRWin->shadowBuffer;
+		shadowBuffer = FRWin->GetDepthBuffer();
 		outputBuffer = FRWin->outputBuffer;
-		window = FRWin->window;
+		window = FRWin->GetWindow();
 	}
 
 	FRuint Engine::Initialize() {
@@ -99,10 +99,6 @@ namespace fr {
 		Dispatcher.AddListener<ViewportResizedEvent>(std::bind(&Engine::OnViewportResized, this, _1));
 
 		UI.AddToConsole(" [Core] Engine loaded successfully!");
-
-		if (commandLineArguments.args[0] == "load") {
-			std::cout << "test" << std::endl;
-		}
 
 		return FR_NULL;
 	}
