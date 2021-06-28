@@ -43,9 +43,6 @@
 #define WINDOW_WIDTH 1280
 #define WINDOW_HEIGH 720
 
-#define BIND_FUNC(fn) std::bind(&fn, this, _1)
-#define STRING(x) #x 
-
 #define FR_NULL 0
 #define FR_TRUE true
 #define FR_FALSE false
@@ -74,6 +71,9 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 using namespace std::placeholders;
+
+#define BIND_FUNC(fn) std::bind(&fn, this, _1)
+#define STRING(x) #x 
 
 namespace fr {
 	using FRuint = uint32_t;
