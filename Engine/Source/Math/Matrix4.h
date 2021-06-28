@@ -36,7 +36,7 @@ namespace fr {
         }
 
         static Mat4& Rotate(float angle, Vec3& axis) {
-            
+
             float angleR = angle * Math::PI() / 180.0;
             float cos = Math::Cos(angleR);
             float Sin = Math::Sine(angleR);
@@ -58,7 +58,7 @@ namespace fr {
             mat.e10 = az * az * omc + cos;
             mat.InitArray();
             return mat;
-            
+
         }
 
         static Mat4& Ortho(float left, float right, float bottom, float top, float near1, float far1) {
@@ -90,14 +90,14 @@ namespace fr {
             return mat;
         }
 
-        
+
         static Mat4& Mul(Mat4& t, Mat4& other) {
             Mat4& mat = Mat4(1.0f);
             float sum = 0.0f;
-            for(int x = 0; x < 4; x++) {
-                for(int y = 0; y < 4; y++) {
-                    for(int i = 0; i < 4; i++) {
-                        sum += t.matrix[x + i * 4] * other.matrix[i + y * 4];   
+            for (int x = 0; x < 4; x++) {
+                for (int y = 0; y < 4; y++) {
+                    for (int i = 0; i < 4; i++) {
+                        sum += t.matrix[x + i * 4] * other.matrix[i + y * 4];
                     }
                 }
             }
@@ -120,7 +120,7 @@ namespace fr {
             mat.InitArray();
             return mat;
         }
-        
+
         float e0, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14, e15;
         float matrix[16];
         void InitArray() {

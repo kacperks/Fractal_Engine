@@ -73,7 +73,12 @@
 #include <glm/gtx/quaternion.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
+#include "Math/Math.h"
+
 using namespace std::placeholders;
+
+#include "Core/Errors/Errors.h"
+#include "Events/EventSystem.h"
 
 namespace fr {
 	using FRuint = uint32_t;
@@ -90,10 +95,6 @@ namespace fr {
 }
 
 // other includes :
-
-#include "Math/Math.h"
-#include "Core/Errors/Errors.h"
-#include "Events/EventSystem.h"
 
 #include "Core/Resource/Resource.h"
 #include "Core/ECS/ECS.h"

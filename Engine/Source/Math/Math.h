@@ -5,8 +5,9 @@
 #define FR_MATH_H
 
 #include "pch.h"
-
+#include "Vector2.h"
 #include "Vector3.h"
+#include "Vector4.h"
 
 namespace fr {
 	using Matrix3 = glm::mat3;
