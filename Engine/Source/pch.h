@@ -3,6 +3,13 @@
 #ifndef FR_PCH_H
 #define FR_PCH_H
 
+//c includes
+#include <stdlib.h>
+#include <stdio.h>
+#include <malloc.h>
+#include <string.h>
+
+// c++ includes
 #include <set>
 #include <map>
 #include <array>
@@ -43,7 +50,7 @@
 #define WINDOW_WIDTH 1280
 #define WINDOW_HEIGH 720
 
-#define BIND_FUNC(fn) std::bind(&fn, this, _1)
+#define BIND_FUNC(fn) std::bind(&fn, this, std::placeholders::_1)
 #define STRING(x) #x 
 
 #define FR_NULL 0
@@ -81,7 +88,7 @@ using namespace std::placeholders;
 #include "Events/EventSystem.h"
 
 namespace fr {
-	using FRuint = uint32_t;
+	using FRuint = unsigned int;
 	using FRuchar = unsigned char;
 	using FRboolean = bool;
 	using FRchar = char;
@@ -89,8 +96,21 @@ namespace fr {
 	using FRfloat = float;
 	using FRlong = long;
 	using FRvoid = void;
+	using FRptr = void*;
+	using FRsize = unsigned long long;
 	typedef void(*func)();
-
+	//for pointers
+	template<typename T>
+	static
+	T* FRnew(FRsize cap) {
+    	return (T*)malloc(cap);	
+	}
+	
+	static
+	FRsize FRStrLength(const char* str) {
+	     if(str) return strlen(str);
+	}
+	
 	struct CommandLineArgs { int argc; char** args; };
 }
 
