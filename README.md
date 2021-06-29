@@ -24,7 +24,7 @@ Features:
 * Scene Editor (ImGui)
 * Cross Platform (In Progress)
 * Events System
-* Math engine(In Progress)
+* Custom Math engine(Not Finished yet!)
   
 Discord Server! : https://discord.gg/aXHjdQfCMK
 # Screen Shot
