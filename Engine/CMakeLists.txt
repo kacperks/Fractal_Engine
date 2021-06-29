@@ -5,10 +5,17 @@ set(PLATFORM "Linux")
 
 find_package(OpenGL REQUIRED)
 
-add_subdirectory(Thirdparty/cmake/assimp)
+include_directories(Thirdparty/cmake/glm)
+include_directories(Thirdparty/cmake/glew-cmake/include)
+include_directories(Thirdparty/cmake/assimp/include)
+include_directories(Thirdparty/cmake/glfw/include)
+include_directories(Thirdparty/cmake/tinyxml2)
+include_directories(Source/)
+
 add_subdirectory(Thirdparty/cmake/glew-cmake)
 add_subdirectory(Thirdparty/cmake/glfw)
 add_subdirectory(Thirdparty/cmake/glm)
+add_subdirectory(Thirdparty/cmake/assimp)
 add_subdirectory(Thirdparty/cmake/tinyxml2)
 
 file(GLOB_RECURSE Runtime "Source/**.cpp" "Source/**.h" "Source/**.hpp")

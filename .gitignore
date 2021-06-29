@@ -17,5 +17,6 @@ App/CMakeFiles/
 *.lastbulidstate
 *.log
 *.pdb
+build/*
 *.idb
 .sconsign.dblite
