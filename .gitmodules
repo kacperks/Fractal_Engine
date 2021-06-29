@@ -1,0 +1,25 @@
+
+[submodule "Engine/Thirdparty/cmake/assimp"]
+	path = Engine/Thirdparty/cmake/assimp
+	url = https://github.com/assimp/assimp.git
+	branch = master
+    
+[submodule "Engine/Thirdparty/cmake/glew-cmake"]
+	path = Engine/Thirdparty/cmake/glew-cmake
+	url = https://github.com/Perlmint/glew-cmake.git
+	branch = master
+    
+[submodule "Engine/Thirdparty/cmake/glfw"]
+	path = Engine/Thirdparty/cmake/glfw
+	url = https://github.com/glfw/glfw.git
+	branch = master
+    
+[submodule "Engine/Thirdparty/cmake/glm"]
+	path = Engine/Thirdparty/cmake/glm
+	url = https://github.com/g-truc/glm.git
+	branch = master
+    
+[submodule "Engine/Thirdparty/cmake/tinyxml2"]
+	path = Engine/Thirdparty/cmake/tinyxml2
+	url = https://github.com/leethomason/tinyxml2.git
+	branch = master
