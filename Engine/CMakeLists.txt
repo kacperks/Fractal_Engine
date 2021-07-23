@@ -18,14 +18,14 @@ add_subdirectory(Thirdparty/cmake/glm)
 add_subdirectory(Thirdparty/cmake/assimp)
 add_subdirectory(Thirdparty/cmake/tinyxml2)
 
-file(GLOB_RECURSE Runtime "Source/**.cpp" "Source/**.h" "Source/**.hpp")
+file(GLOB_RECURSE EngineSources "Source/**.cpp" "Source/**.h" "Source/**.hpp")
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/App/")
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED true)
 
-add_executable(FractalEngine ${Runtime})
+add_library(FractalEngine SHARED ${EngineSources})
 
 if(PLATFORM STREQUAL "Linux") # not tested yet!
 target_link_libraries(FractalEngine -lGL)
