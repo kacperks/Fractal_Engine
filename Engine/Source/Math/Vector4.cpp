@@ -18,5 +18,5 @@ namespace fr {
         return Vec4(x * other.x, y * other.y, z * other.z, w * other.w);
     }
 
-    float Vec4::lenght() { return Math::SQRT(x * x + y * y + z * z + w * w); }
+    float Vec4::lenght() { return Math::Sqrt(x * x + y * y + z * z + w * w); }
 }

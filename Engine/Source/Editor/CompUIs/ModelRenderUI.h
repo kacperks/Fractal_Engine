@@ -10,7 +10,7 @@
 #include "Vendor/IMGUI/imgui_impl_opengl3.h"
 
 #include "Core/ECS/Base/Entity.h"
-#include "Serializer/XMLSerializer.h"
+#include "Scene/XMLSerializer.h"
 
 #include "DirectLightUI.h"
 #include "PointLightUI.h"

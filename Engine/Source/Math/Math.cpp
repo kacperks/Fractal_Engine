@@ -11,7 +11,9 @@ namespace fr {
 
 	float Math::PI() { return 3.14159265359; }
 
-	float Math::SQRT(float num) { float p = 0.000001; float s = num; while ((s - num / s) > p) { s = (s + num / s) / 2; } return s; }
+	float Math::Sqrt(float num) { float p = 0.000001; float s = num; while ((s - num / s) > p) { s = (s + num / s) / 2; } return s; }
+
+	float Math::Q_rsqrt(float num) { return 1.0f / Math::Sqrt(num); }
 
 	float Math::Sin(int deg) {
 		deg %= 360;

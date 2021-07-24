@@ -49,15 +49,14 @@ Discord Server! : https://discord.gg/aXHjdQfCMK
 
 ## Dependencies
 
-* GLM https://github.com/g-truc/glm
+* OpenGL Mathematics (GLM) https://github.com/g-truc/glm
 * GLEW https://github.com/nigels-com/glew
 * GLFW https://github.com/glfw/glfw
-* ASSIMP https://github.com/assimp/assimp
+* Assimp https://github.com/assimp/assimp
 * TinyXML https://github.com/leethomason/tinyxml2
 * ImGui https://github.com/ocornut/imgui
 * stb https://github.com/nothings/stb
 * ImGuizmo https://github.com/CedricGuillemet/ImGuizmo
-* Scons https://github.com/SCons/scons
 
 ## Installing the libraries used by the Fractal Engine on Linux
 * Debian/Ubuntu

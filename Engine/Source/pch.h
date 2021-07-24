@@ -116,8 +116,7 @@ namespace fr {
 #include "Core/ECS/Components/EntityName.h"
 #include "Editor/UiLayer.h"
 
-#include "Serializer/XMLSerializer.h"
-#include "Serializer/ModelsAndTextures.h"
+#include "Scene/XMLSerializer.h"
 
 #include "Events/AppEvents.h"
 #include "Events/Dispatcher.h"

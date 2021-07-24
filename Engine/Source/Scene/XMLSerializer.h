@@ -1,6 +1,6 @@
 #pragma once
 
-#include <TinyXML/tinyxml2.h>
+#include <TinyXML2/tinyxml2.h>
 #include "Core/ECS/Components.h"
 
 namespace fr {
@@ -17,9 +17,17 @@ namespace fr {
 			return reference;
 		}
 
-		// SCENE
+		// Scene stuff
 		void SaveScene(const char* filename);
 		void LoadScene(const char* filename);
+
+
+		void LoadModels(const char* file);
+		void LoadTxts(const char* file);
+
+		void SaveModels(const char* file);
+		void SaveTxts(const char* file);
+
 
 	private:
 		XMLSerializer() = default;
@@ -72,6 +80,14 @@ namespace fr {
 
 		void SaveCsScript(XMLPrinter& printer, const ECS::EntityID entityid);
 		void LoadCsScript(XMLElement* xSharp, const ECS::EntityID entityid);
+
+		// Models And Txt's
+
+		void LoadModel(XMLElement* xModel);
+		void SaveModel(XMLPrinter& printer, std::string name, std::string path);
+
+		void LoadTxt(XMLElement* xTXT);
+		void SaveTxT(XMLPrinter& printer, std::string name, std::string path);
 	};
 
 	static XMLSerializer& Serializer = XMLSerializer::Ref();

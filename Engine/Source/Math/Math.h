@@ -36,7 +36,8 @@ namespace fr {
 			static float Radians(float degrees);
 			static float Degrees(float radians);
 
-			static float SQRT(float num);
+			static float Sqrt(float num);
+			static float Q_rsqrt(float num);
 		private:
 			static float power(float base, int exp);
 			static int fact(int n);
