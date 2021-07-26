@@ -12,7 +12,7 @@ struct Transform;
 
 namespace fr {
 
-	struct ViewPortRect { 
+	struct ViewPortRect {
 		float X, Y, W, H = 0;
 	};
 
@@ -29,10 +29,10 @@ namespace fr {
 
 	class UiLayer {
 
-	public:	
+	public:
 		~UiLayer() = default;
 		UiLayer(const UiLayer&) = delete;
-		UiLayer& operator=(const UiLayer&) = delete;		
+		UiLayer& operator=(const UiLayer&) = delete;
 		static UiLayer& Ref() {
 			static UiLayer ref;
 			return ref;
@@ -44,6 +44,17 @@ namespace fr {
 		FRuint Initialiaze();
 		FRuint AddExistingEntity(const size_t entity);
 
+		void AddComponent(const char* typeName);
+		void RemoveComponent(const char* typeName);
+
+		void MoveEntityUp();
+		void MoveEntityDown();
+
+		void AddNewEntity();
+		void RemoveEntity();
+		void SetLastSelectedEntity(int n) { lastSelectedEntity = n; }
+		void Tg() { TransformGizmo(); }
+
 		void SetGizmoViewProjection(glm::mat4 view, glm::mat4 proj) {
 			gizmo.View = view;
 			gizmo.Proj = proj;
@@ -53,7 +64,16 @@ namespace fr {
 
 		inline const ViewPortRect ViewportRect() const { return viewRect; }
 		inline const bool IsUsingGizmo() const { return ImGuizmo::IsUsing(); }
+		inline const Gizmo GetGizmo() { return gizmo; }
 		inline const glm::vec2 ViewSize() const { return glm::vec2(viewRect.W, viewRect.H); }
+		inline const ImTextureID GetSceneFrameTexture() { return sceneFrameTexture; }
+		inline const int GetSelectedEntity() { return selectedEntity; }
+		inline const int GetLastSelectedEntity() { return lastSelectedEntity; }
+		std::map<std::string, ImTextureID> GetIcons() { return icons; }
+		std::vector<std::shared_ptr<CompUI>> GetActiveCompUIs() { return activeCompUIs; }
+		std::vector<EntityField> GetEntities() { return entities; }
+
+		void SetGizmoOperation(ImGuizmo::OPERATION o) { gizmo.Operation = o; }
 
 	private:
 		UiLayer();
@@ -62,33 +82,14 @@ namespace fr {
 
 		// PANELS
 
-		void MenuBar();
-		void Viewport();
-		void Components();
-		void Console();
 		void Entities();
-		void Resources();
 		void Dockspace();
 		void ToolBar();
-		void About();
 
 		// ACTIONS
 
-		void MoveEntityUp();
-		void MoveEntityDown();
-
-		void AddNewEntity();
-		void RemoveEntity();
-
-		void AddComponent(const char* typeName);
-		void RemoveComponent(const char* typeName);
-
-		void AddAsset(const char* Name);
-
 		void InitCompUI();
 		void TransformGizmo();
-		void OnImGui(std::string directoryPath);
-		std::pair<bool, uint32_t> DirectoryTreeViewRecursive(const std::filesystem::path& path, uint32_t* count, int* selection_mask);
 
 	private:
 		int selectedEntity;

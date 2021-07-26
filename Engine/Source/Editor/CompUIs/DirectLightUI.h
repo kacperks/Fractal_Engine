@@ -2,7 +2,6 @@
 
 #include "CompUI.h"
 #include "Core/ECS/Components/DirectionalLight.h"
-#include "Core/ECS/Components/CsScript.h"
 
 class DirectLightUI : public CompUI {
 public:

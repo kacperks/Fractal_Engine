@@ -18,7 +18,6 @@
 #include "NameTagUI.h"
 #include "MeshUI.h"
 
-#include "Core/ECS/Components/CsScript.h"
 
 #include <fstream>
 

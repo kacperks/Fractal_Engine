@@ -3,8 +3,6 @@
 #ifndef FR_PCH_H
 #define FR_PCH_H
 
-#define FR_LUA
-
 #include <set>
 #include <map>
 #include <array>
@@ -27,13 +25,10 @@
 
 #if defined(_WIN32)
 #define FR_WINDOWS
-#define FR_OS "Windows"
 #elif defined(__linux__)
 #define FR_LINUX
-#define FR_OS "Linux"
 #elif defined(__APPLE__)
 #define FR_APPLE
-#define FR_OS "OSX"
 #else
 #error Not Supported Platform!
 #endif
@@ -69,7 +64,7 @@ extern "C" {
 #include "Vendor/Lua535/include/lauxlib.h"
 };
 
-#pragma comment(lib, "Engine/Source/Vendor/Lua535/liblua53.a")
+#pragma comment(lib, "Source/Vendor/Lua535/liblua53.a")
 #endif
 
 #include <GL/glew.h>
@@ -112,7 +107,6 @@ namespace fr {
 #include "Core/ECS/Base/BaseComponent.h"
 #include "Core/ECS/Base/BaseSystem.h"
 #include "Core/ECS/Base/EntityManager.h"
-#include "Core/ECS/Components/CsScript.h"
 #include "Core/ECS/Components/EntityName.h"
 #include "Editor/UiLayer.h"
 

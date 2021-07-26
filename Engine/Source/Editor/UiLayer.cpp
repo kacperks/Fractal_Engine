@@ -20,14 +20,15 @@
 #include "CompUIs/ModelRenderUI.h"
 #include "CompUIs/RigidbodyUI.h"
 #include "CompUIs/CameraUI.h"
+#include "Panels/MenuBar.h"
+#include "Panels/ViewPort.h"
+#include "Panels/ComponentsList.h"
+#include "Panels/Console.h"
+#include "Panels/Resources.h"
 
 // Warring this file is pretty messy!
 
 namespace fr {
-	std::string console = "Fractal Engine Debug Console";
-
-	static const char* names[] = { "Camera", "RigidBody", "MeshRenderer",
-		"ModelRenderer", "SpriteRenderer", "Directional Light", "Point Light", "Spot Light"};
 	UiLayer::UiLayer() {
 		viewRect.W = WINDOW_WIDTH;
 		viewRect.H = WINDOW_HEIGH;
@@ -70,10 +71,6 @@ namespace fr {
 		compUIs.push_back(std::move(std::make_shared<RBUI>()));
 		compUIs.push_back(std::move(std::make_shared<CamUI>()));
 
-#ifdef FRACTAL_CSHARP
-		compUIs.push_back(std::move(std::make_shared<CsScriptCompUI>()));
-#endif
-
 		AddToConsole(" [Editor] Fractal Editor " EDITOR_VERSION);
 		return FR_NULL;
 	}
@@ -85,12 +82,12 @@ namespace fr {
 		ImGuizmo::BeginFrame();
 
 		Dockspace();
-		Viewport();
-		Components();
+		Panels::ViewPort();
+		Panels::Components();
 		Entities();
-		Resources();
+		Panels::Resources();
 		ToolBar();
-		Console();
+		Panels::Console();
 
 		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
@@ -218,7 +215,7 @@ namespace fr {
 	}
 
 	void UiLayer::AddToConsole(std::string Log) {
-		console += "\n" + Log;
+		Panels::console += "\n" + Log;
 	}
 
 	void UiLayer::Dockspace() {
@@ -236,150 +233,12 @@ namespace fr {
 			ImGui::DockSpace(dockID, ImVec2(0.0f, 0.0f), ImGuiDockNodeFlags_PassthruCentralNode);
 		}
 
-		MenuBar();
+		Panels::MenuBar();
 
 		ImGui::End();
 		ImGui::PopStyleVar(3);
 	}
 
-	void UiLayer::MenuBar() {
-		if (ImGui::BeginMenuBar()) {
-			if (ImGui::BeginMenu("File")) {
-				if (ImGui::MenuItem("Save", "Ctrl+S")) { fr::Serializer.SaveScene(Core.GetCurrentScene()); }
-
-				if (ImGui::MenuItem("Save As..")) {}
-				ImGui::EndMenu();
-			}
-			if (ImGui::BeginMenu("Settings")) {
-				ImGui::EndMenu();
-			}
-			if (ImGui::BeginMenu("Window")) {
-				ImGui::EndMenu();
-			}
-			if (ImGui::BeginMenu("Tools")) {
-				if (ImGui::MenuItem("Rotate")) { gizmo.Operation = ImGuizmo::OPERATION::ROTATE; }
-				if (ImGui::MenuItem("Move")) { gizmo.Operation = ImGuizmo::OPERATION::TRANSLATE; }
-				if (ImGui::MenuItem("Scale")) { gizmo.Operation = ImGuizmo::OPERATION::SCALE; }
-				ImGui::EndMenu();
-			}
-			if (ImGui::BeginMenu("Help")) {
-				if (ImGui::MenuItem("View Help", "Ctrl+H")) {}
-				if (ImGui::MenuItem("About Fractal Engine")) {}
-				ImGui::EndMenu();
-			}
-			ImGui::Dummy(ImVec2(700, 0));
-			ImGui::Text(" %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
-			if (Widget::ToolButton::Show(icons.at("save"))) { fr::Serializer.SaveScene(Core.GetCurrentScene()); console = console + "\n [DEBUG] Saved Scene scene.fr!";}
-			if (Widget::ToolButton::Show(icons.at("move"))) { gizmo.Operation = ImGuizmo::OPERATION::TRANSLATE; console = console + "\n [DEBUG] Tool Move "; }
-			if (Widget::ToolButton::Show(icons.at("rotate"))) { gizmo.Operation = ImGuizmo::OPERATION::ROTATE;  console = console + "\n [DEBUG] Tool Rotate "; }
-			if (Widget::ToolButton::Show(icons.at("scale"))) { gizmo.Operation = ImGuizmo::OPERATION::SCALE; console = console + "\n [DEBUG] Tool Scale "; }
-
-			ImGui::Text("Fractal Editor " EDITOR_VERSION);
-
-			ImGui::EndMenuBar();
-		}
-	}
-
-	void UiLayer::Viewport() {		
-		ImGui::Begin("Scene", nullptr);
-		{			
-			ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(dark));
-			ImGui::PopStyleColor();			
-			ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(0,0));	
-			ImGui::BeginChildFrame(ImGui::GetID("sceneFrame"), ImVec2(0,0), ImGuiWindowFlags_NoScrollbar);
-			{	
-				const ImVec2& size = ImGui::GetWindowSize();
-				ImGui::Image(sceneFrameTexture, size, ImVec2(0,1), ImVec2(1,0));	
-				const ImVec2& pos = ImGui::GetWindowPos();
-				viewRect = { pos.x, pos.y, size.x, size.y };				
-				TransformGizmo();
-			}
-			ImGui::PopStyleVar();			
-			ImGui::EndChildFrame();
-		}
-		ImGui::End();
-	}
-
-	void UiLayer::Components() {
-		ImGui::Begin("Inspector", nullptr);
-		{
-			// toolbar		
-			ImGui::PushStyleColor(ImGuiCol_FrameBg, dark);
-			ImGui::BeginChildFrame(ImGui::GetID("toolbar"), ImVec2(0, 32));
-			{
-				if (ImGui::Button("Add Component")) {
-					ImGui::OpenPopup("compPopup");
-				}
-				ImGui::SameLine();
-				if (Widget::ToolButton::Show(icons.at("trash"), 20.0f)) { ImGui::OpenPopup("compPopup9"); }
-				ImGui::SameLine();
-				if (ImGui::BeginPopup("compPopup")) {
-					ImGui::Text("Components");
-					ImGui::Separator();
-
-					for (size_t i = 0; i < IM_ARRAYSIZE(names); i++) {
-						if (ImGui::Selectable(names[i])) {
-							AddComponent(names[i]);
-							console = console + "\n [ECS] Added Component " + names[i];
-						}
-					}
-					ImGui::EndPopup();
-				}
-				ImGui::SameLine();
-				if (ImGui::BeginPopup("compPopup9")) {
-					ImGui::Text("Components");
-					ImGui::Separator();
-
-					for (size_t i = 0; i < IM_ARRAYSIZE(names); i++) {
-						if (ImGui::Selectable(names[i])) {
-							RemoveComponent(names[i]);
-							console = console + "\n [ECS] Removed Component " + names[i];
-						}
-					}
-					ImGui::EndPopup();
-				}
-			}
-			ImGui::PopStyleColor();
-			ImGui::EndChildFrame();
-			// components			
-			if (selectedEntity > ECS::INVALID_ENTITY) {
-				for (auto compUi : activeCompUIs) {
-					compUi->Show();
-				}
-
-			} 
-
-		}
-		ImGui::End();
-	}
-
-	void UiLayer::Console() {
-		ImGui::Begin("Output", nullptr);
-		{
-			ImGui::PushStyleColor(ImGuiCol_FrameBg, dark);
-			ImGui::BeginChildFrame(ImGui::GetID("cframe"), ImVec2(0,0));
-			{
-				ImGui::Text(console.c_str());
-			}
-			ImGui::PopStyleColor();
-			ImGui::EndChildFrame();
-		}
-		ImGui::End();
-	}
-
-	void UiLayer::Resources() {
-		ImGui::Begin("File System", nullptr);
-		{
-			ImGui::PushStyleColor(ImGuiCol_FrameBg, dark);
-			ImGui::BeginChildFrame(ImGui::GetID("rframe"), ImVec2(0, 0));
-			{
-				OnImGui("Resource");
-			}
-			ImGui::PopStyleColor();
-			ImGui::EndChildFrame();
-		}
-		ImGui::End();		
-	}
 	void UiLayer::ToolBar() {
 		ImGui::Begin("ToolBar", nullptr);
 		{
@@ -397,7 +256,7 @@ namespace fr {
 
 				if (ImGui::Button("Save Scene")) {
 					fr::Serializer.SaveScene(Core.GetCurrentScene());
-					console = console + "\n [DEBUG] Saved Scene!";
+					AddToConsole(" [DEBUG] Saved Scene!");
 				}
 				ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(3, 3));
 					if (ImGui::CollapsingHeader("Engine")) {
@@ -461,25 +320,25 @@ namespace fr {
 			{
 				if (Widget::ToolButton::Show(icons.at("plus"), 20.0f)) {
 					AddNewEntity();
-					console = console + "\n [ECS] Added new Entity!";
+					AddToConsole(" [ECS] Added new Entity!");
 				}
 
 				ImGui::SameLine();
 				if (Widget::ToolButton::Show(icons.at("minus"), 20.0f)) {
 					RemoveEntity();
-					console = console + "\n [ECS] Deleted Entity!";
+					AddToConsole(" [ECS] Deleted Entity!");
 				}
 
 				ImGui::SameLine();
 				if (Widget::ToolButton::Show(icons.at("up"), 20.0f)) {
 					MoveEntityUp();
-					console = console + "\n [EntList] Moved Entity UP";
+					AddToConsole(" [EntList] Moved Entity UP");
 				}
 
 				ImGui::SameLine();
 				if (Widget::ToolButton::Show(icons.at("down"), 20.0f)) {
 					MoveEntityDown();
-					console = console + "\n [EntList] Moved Entity Down";
+					AddToConsole(" [EntList] Moved Entity Down");
 				}
 
 				ImGui::SameLine();
@@ -586,8 +445,6 @@ namespace fr {
 		}
 	}
 
-	void UiLayer::AddAsset(const char* Name) {}
-
 	FRuint UiLayer::AddExistingEntity(const size_t entity) {
 		std::string name = ECS::Manager.GetComponent<EntityName>(entity).Value;
 		ImTextureID icon = icons.at("obj");
@@ -605,7 +462,7 @@ namespace fr {
 		return FR_NULL;
 	}
 
-	void UiLayer::TransformGizmo() {		
+	void UiLayer::TransformGizmo() {
 		if (selectedEntity > -1) {
 			ImGuizmo::SetDrawlist();
 			ImGuizmo::SetOrthographic(false);
@@ -641,94 +498,5 @@ namespace fr {
 				}
 			}
 		}
-	}
-
-	void UiLayer::OnImGui(std::string directoryPath) {
-		uint32_t count = 0;
-		static int selection_mask = 0;
-		for (const auto& entry : std::filesystem::recursive_directory_iterator(directoryPath)) { count++; }
-		auto clickState = DirectoryTreeViewRecursive(directoryPath, &count, &selection_mask); 
-	}
-
-	std::pair<bool, uint32_t> UiLayer::DirectoryTreeViewRecursive(const std::filesystem::path& path, uint32_t* count, int* selection_mask) {
-
-		ImGuiTreeNodeFlags base_flags = /* ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick |*/ ImGuiTreeNodeFlags_SpanAvailWidth |
-			ImGuiTreeNodeFlags_SpanFullWidth;
-
-		bool any_node_clicked = false;
-		uint32_t node_clicked = 0;
-
-		for (const auto& entry : std::filesystem::directory_iterator(path)) {
-			ImGuiTreeNodeFlags node_flags = base_flags;
-			const bool is_selected = (*selection_mask & *count) != 0;
-			if (is_selected)
-				node_flags |= ImGuiTreeNodeFlags_Selected;
-
-			std::string name = entry.path().string();
-
-			auto lastSlash = name.find_last_of("/\\");
-			lastSlash = (lastSlash == std::string::npos) ? 0 : lastSlash + 1;
-			name = name.substr(lastSlash, name.size() - lastSlash);
-
-			bool node_open = false;
-			bool entryIsFile = !std::filesystem::is_directory(entry.path());
-			if (entryIsFile == false) {
-
-				ImGui::Image(icons.at("folder"), ImVec2(15.0f, 15.0f), ImVec2(0, 1), ImVec2(1, 0));
-				ImGui::SameLine();
-				node_open = ImGui::TreeNodeEx((void*)(intptr_t)(*count), node_flags, name.c_str());
-			}
-			else {
-				if (name.find(".fr") < name.length()) { 
-					ImGui::Image(icons.at("Logo"), ImVec2(15.0f, 15.0f), ImVec2(0, 1), ImVec2(1, 0));
-				}
-				else if (name.find(".lua") < name.length()) {
-					ImGui::Image(icons.at("lua"), ImVec2(15.0f, 15.0f), ImVec2(0, 1), ImVec2(1, 0));
-				}
-				else if (name.find(".cs") < name.length()) {
-					ImGui::Image(icons.at("cs"), ImVec2(15.0f, 15.0f), ImVec2(0, 1), ImVec2(1, 0));
-				}
-				else if (name.find(".shader") < name.length()) {
-					ImGui::Image(icons.at("light"), ImVec2(15.0f, 15.0f), ImVec2(0, 1), ImVec2(1, 0));
-				}
-				else if (name.find(".obj") < name.length()) {
-					ImGui::Image(icons.at("mag"), ImVec2(15.0f, 15.0f), ImVec2(0, 1), ImVec2(1, 0));
-				}
-				else if (name.find(".png") < name.length()) {
-					ImGui::Image(icons.at("png"), ImVec2(15.0f, 15.0f), ImVec2(0, 1), ImVec2(1, 0));
-				}
-				else {
-					ImGui::Image(icons.at("obj"), ImVec2(15.0f, 15.0f), ImVec2(0, 1), ImVec2(1, 0));
-				}
-
-				ImGui::SameLine();
-				ImGui::Text(name.c_str());
-			}
-
-			if (ImGui::IsItemClicked()) {
-				node_clicked = *count;
-				any_node_clicked = true;
-			}
-
-			(*count)--;
-
-			if (!entryIsFile) {
-				if (node_open) {
-					auto clickState = DirectoryTreeViewRecursive(entry.path(), count, selection_mask);
-					if (!any_node_clicked) {
-						any_node_clicked = clickState.first;
-						node_clicked = clickState.second;
-					}
-
-					ImGui::TreePop();
-				}
-				else {
-					for (const auto& e : std::filesystem::recursive_directory_iterator(entry.path()))
-						(*count)--;
-				}
-			}
-		}
-
-		return { any_node_clicked, node_clicked };
 	}
 }

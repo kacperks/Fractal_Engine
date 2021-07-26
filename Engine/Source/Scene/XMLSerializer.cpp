@@ -97,10 +97,6 @@ namespace fr {
 				LoadSpriteRenderer(e, entityid);
 				continue;
 			}
-			if (e->Value() == std::string("CsScript")) {
-				LoadCsScript(e, entityid);
-				continue;
-			}
 		}
 	}
 	void XMLSerializer::SaveEntity(XMLPrinter& printer, const ECS::EntityID entityid) {
@@ -115,7 +111,6 @@ namespace fr {
 		SavePointLight(printer, entityid);
 		SaveDirectionalLight(printer, entityid);
 		SaveRigidBody(printer, entityid);
-		SaveCsScript(printer, entityid);
 		printer.CloseElement();
 	}
 
@@ -361,24 +356,6 @@ namespace fr {
 		ECS::Manager.AddComponent(entityid, rigidbody);
 	}
 	// C#
-	void XMLSerializer::SaveCsScript(XMLPrinter& printer, const ECS::EntityID entityid) {
-#ifdef FRACTAL_CSHARP
-		if (!ECS::Manager.HasComponent<CsScript>(entityid)) { return; }
-		const CsScript& script = ECS::Manager.GetComponent<CsScript>(entityid);
-		printer.OpenElement("CsScript");
-		printer.PushAttribute("AssemblyPath", script.AssemblyPath.c_str());
-		printer.PushAttribute("ClassName", script.ClassName.c_str());
-		printer.CloseElement();
-#endif
-	}
-	void XMLSerializer::LoadCsScript(XMLElement* xSharp, const ECS::EntityID entityid) {
-#ifdef FRACTAL_CSHARP
-		CsScript script;
-		script.AssemblyPath = xSharp->Attribute("AssemblyPath");
-		script.ClassName = xSharp->Attribute("ClassName");
-		ECS::Manager.AddComponent(entityid, script);
-#endif
-	}
 
 	void XMLSerializer::SaveModel(XMLPrinter& printer, std::string name, std::string path) {
 		printer.OpenElement("Model");

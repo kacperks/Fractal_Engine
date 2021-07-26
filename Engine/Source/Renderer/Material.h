@@ -10,16 +10,20 @@ struct Material {
 	Material(glm::vec3 albedo, GLfloat metallic, GLfloat roughness, GLfloat ao):
 		Albedo(albedo), Metallic(metallic), Roughness(roughness), Ao(ao) { }
 
-	GLfloat Ao = 1.0f;
-	GLfloat Metallic = 0.1f;
-	GLfloat Roughness = 0.9f;
-	glm::vec3 Albedo = glm::vec3(0.6f);
+		float Ao = 0.1f;
+		float Opacity = 1.0f;
+		float Metallic = 0.4f;
+		float Roughness = 0.2f;
+		float Shininess = 1.0f;
+		float Reflectivity = 0.0f;
+		glm::vec3 Albedo = glm::vec3(0.6f);
 
-	GLuint AoMap = 0;
-	GLuint NormalMap = 0;
-	GLuint AlbedoMap = 0;
-	GLuint MetallicMap = 0;
-	GLuint RoughnessMap = 0;
+		GLuint AoMap = 0;
+		GLuint NormalMap = 0;
+		GLuint AlbedoMap = 0;
+		GLuint MetallicMap = 0;
+		GLuint RoughnessMap = 0;
+		FRuint SpecularBRDFMap = 0;
 
 	void SetUniform(Shader& shader) {
 		shader.Bind();

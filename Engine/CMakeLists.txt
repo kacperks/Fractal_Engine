@@ -9,7 +9,7 @@ include_directories(Thirdparty/cmake/glm)
 include_directories(Thirdparty/cmake/glew-cmake/include)
 include_directories(Thirdparty/cmake/assimp/include)
 include_directories(Thirdparty/cmake/glfw/include)
-include_directories(Thirdparty/cmake/tinyxml2)
+include_directories(Thirdparty/scons/include)
 include_directories(Source/)
 
 add_subdirectory(Thirdparty/cmake/glew-cmake)

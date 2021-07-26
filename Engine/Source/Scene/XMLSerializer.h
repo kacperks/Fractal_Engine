@@ -76,11 +76,6 @@ namespace fr {
 		void SaveRigidBody(XMLPrinter& printer, const ECS::EntityID entityid);
 		void LoadRigidBody(XMLElement* xRigidbody, const ECS::EntityID entityid);
 
-		// C#
-
-		void SaveCsScript(XMLPrinter& printer, const ECS::EntityID entityid);
-		void LoadCsScript(XMLElement* xSharp, const ECS::EntityID entityid);
-
 		// Models And Txt's
 
 		void LoadModel(XMLElement* xModel);
