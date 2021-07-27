@@ -1,15 +1,11 @@
 cmake_minimum_required(VERSION 3.16 FATAL_ERROR)
 project(FractalEngine)
 
-set(PLATFORM "Linux")
+set(PLATFORM "Windows")
 
 find_package(OpenGL REQUIRED)
 
-include_directories(Thirdparty/cmake/glm)
-include_directories(Thirdparty/cmake/glew-cmake/include)
-include_directories(Thirdparty/cmake/assimp/include)
-include_directories(Thirdparty/cmake/glfw/include)
-include_directories(Thirdparty/scons/include)
+include_directories(Thirdparty/scons/includes)
 include_directories(Source/)
 
 add_subdirectory(Thirdparty/cmake/glew-cmake)
@@ -36,5 +32,9 @@ target_link_libraries(FractalEngine -ltinyxml2)
 endif()
 
 if(PLATFORM STREQUAL "Windows") # not tested yet!
-target_link_libraries(FractalEngine -lopengl32 -lglfw3 -lglew32 -lshell32 -lgdi32 -luser32 -lmsvcrt -lassimp-vc142-mt -ltinyxml2d)
+target_link_libraries(FractalEngine opengl32)
+target_link_libraries(FractalEngine glfw3)
+target_link_libraries(FractalEngine glew32s)
+target_link_libraries(FractalEngine tinyxml2)
+target_link_libraries(FractalEngine assimp)
 endif()
