@@ -37,10 +37,13 @@ Discord Server! : https://discord.gg/aXHjdQfCMK
 * First you need to Clone Repo 
 
 ` $ git clone --recursive https://github.com/kacperks/Fractal_Engine.git `
-## Scons
-* First You need to install scons ` $ pip install scons `
-* Go to the directory of the Fractal engine and type ` $ scons `
-## Cmake
+
+## Installing Dependencies
+* Debian/Ubuntu
+` $ sudo apt install -y libglm-dev libglew-dev libglfw3-dev libassimp-dev libtinyxml-dev `
+* Fedora
+` $ sudo dnf install glew-devel glm-devel assimp-devel glfw-devel tinyxml2-devel `
+## Build
 * First You need to install Cmake :
     * Debian/Ubuntu ` $ sudo apt-get install cmake `
     * Fedora ` $ sudo dnf install cmake `
@@ -57,12 +60,6 @@ Discord Server! : https://discord.gg/aXHjdQfCMK
 * ImGui https://github.com/ocornut/imgui
 * stb https://github.com/nothings/stb
 * ImGuizmo https://github.com/CedricGuillemet/ImGuizmo
-
-## Installing the libraries used by the Fractal Engine on Linux
-* Debian/Ubuntu
-` $ sudo apt install -y libglm-dev libglew-dev libglfw3-dev libassimp-dev libtinyxml-dev `
-* Fedora
-` $ sudo dnf install glew-devel glm-devel assimp-devel glfw-devel tinyxml2-devel `
 
 # Developers
 

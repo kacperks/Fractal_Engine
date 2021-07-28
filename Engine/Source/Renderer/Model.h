@@ -1,9 +1,9 @@
 ﻿#pragma once
 
-#include <ASSIMP/scene.h>
-#include <ASSIMP/Importer.hpp>
-#include <ASSIMP/pbrmaterial.h>
-#include <ASSIMP/postprocess.h>
+#include <assimp/scene.h>
+#include <assimp/Importer.hpp>
+#include <assimp/pbrmaterial.h>
+#include <assimp/postprocess.h>
 
 #include "GLMesh.h"
 #include "Vendor/STB/stb_image.h"

@@ -2,17 +2,22 @@ cmake_minimum_required(VERSION 3.16 FATAL_ERROR)
 project(FractalEngine)
 
 set(PLATFORM "Windows")
+set(CONFIGURATION "Debug")
 
 find_package(OpenGL REQUIRED)
 
-include_directories(Thirdparty/scons/includes)
+include_directories(Thirdparty/includes)
 include_directories(Source/)
+
+if(CONFIGURATION STREQUAL "Release")
 
 add_subdirectory(Thirdparty/cmake/glew-cmake)
 add_subdirectory(Thirdparty/cmake/glfw)
 add_subdirectory(Thirdparty/cmake/glm)
 add_subdirectory(Thirdparty/cmake/assimp)
 add_subdirectory(Thirdparty/cmake/tinyxml2)
+
+endif()
 
 file(GLOB_RECURSE EngineSources "Source/**.cpp" "Source/**.h" "Source/**.hpp")
 
@@ -23,7 +28,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED true)
 
 add_library(FractalEngine SHARED ${EngineSources})
 
-if(PLATFORM STREQUAL "Linux") # not tested yet!
+if(PLATFORM STREQUAL "Linux")
 target_link_libraries(FractalEngine -lGL)
 target_link_libraries(FractalEngine -lglfw)
 target_link_libraries(FractalEngine -lGLEW)
@@ -31,7 +36,7 @@ target_link_libraries(FractalEngine -lassimp)
 target_link_libraries(FractalEngine -ltinyxml2)
 endif()
 
-if(PLATFORM STREQUAL "Windows") # not tested yet!
+if(PLATFORM STREQUAL "Windows")
 target_link_libraries(FractalEngine opengl32)
 target_link_libraries(FractalEngine glfw3)
 target_link_libraries(FractalEngine glew32s)

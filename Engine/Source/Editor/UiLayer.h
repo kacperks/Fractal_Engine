@@ -6,9 +6,10 @@
 #include "CompUIs/CompUI.h"
 #include "Vendor/IMGUI/imgui.h"
 #include "Vendor/GUIZMO/ImGuizmo.h"
-#include "Colors.h"
 
 struct Transform;
+
+const ImVec4 dark = ImVec4(0.17f, 0.17f, 0.17f, 1.0f);
 
 namespace fr {
 
@@ -37,8 +38,6 @@ namespace fr {
 			static UiLayer ref;
 			return ref;
 		}
-
-		static const char* FileNameS;
 
 		FRuint Display();
 		FRuint Initialiaze();
@@ -85,6 +84,7 @@ namespace fr {
 		void Entities();
 		void Dockspace();
 		void ToolBar();
+		void Viewport();
 
 		// ACTIONS
 

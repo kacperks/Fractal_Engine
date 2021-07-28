@@ -16,17 +16,13 @@
 #include "CompUIs/NameTagUI.h"
 #include "CompUIs/MeshUI.h"
 
-#include "CompUIs/CSUI.h"
 #include "CompUIs/ModelRenderUI.h"
 #include "CompUIs/RigidbodyUI.h"
 #include "CompUIs/CameraUI.h"
 #include "Panels/MenuBar.h"
-#include "Panels/ViewPort.h"
 #include "Panels/ComponentsList.h"
 #include "Panels/Console.h"
 #include "Panels/Resources.h"
-
-// Warring this file is pretty messy!
 
 namespace fr {
 	UiLayer::UiLayer() {
@@ -82,7 +78,7 @@ namespace fr {
 		ImGuizmo::BeginFrame();
 
 		Dockspace();
-		Panels::ViewPort();
+		Viewport();
 		Panels::Components();
 		Entities();
 		Panels::Resources();
@@ -237,6 +233,26 @@ namespace fr {
 
 		ImGui::End();
 		ImGui::PopStyleVar(3);
+	}
+
+	void UiLayer::Viewport() {
+		ImGui::Begin("Scene", nullptr);
+		{
+			ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(dark));
+			ImGui::PopStyleColor();
+			ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(0, 0));
+			ImGui::BeginChildFrame(ImGui::GetID("sceneFrame"), ImVec2(0, 0), ImGuiWindowFlags_NoScrollbar);
+			{
+				const ImVec2& size = ImGui::GetWindowSize();
+				ImGui::Image(sceneFrameTexture, size, ImVec2(0, 1), ImVec2(1, 0));
+				const ImVec2& pos = ImGui::GetWindowPos();
+				viewRect = { pos.x, pos.y, size.x, size.y };
+				TransformGizmo();
+			}
+			ImGui::PopStyleVar();
+			ImGui::EndChildFrame();
+		}
+		ImGui::End();
 	}
 
 	void UiLayer::ToolBar() {
