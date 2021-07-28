@@ -1,8 +1,15 @@
 cmake_minimum_required(VERSION 3.16 FATAL_ERROR)
 project(FractalEngine)
 
-set(PLATFORM "Windows")
 set(CONFIGURATION "Debug")
+
+if (WIN32)
+    set(PLATFORM "Windows")
+endif (WIN32)
+
+if(UNIX AND NOT APPLE)
+    set(PLATFORM "Linux")
+endif()
 
 find_package(OpenGL REQUIRED)
 
