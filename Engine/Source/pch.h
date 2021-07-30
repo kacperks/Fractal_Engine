@@ -3,6 +3,8 @@
 #ifndef FR_PCH_H
 #define FR_PCH_H
 
+//#define FR_BULID
+
 #include <set>
 #include <map>
 #include <array>
@@ -120,7 +122,7 @@ namespace fr {
 #include "Events/MouseEvents.h"
 #include "Events/WindowEvents.h"
 #include "Editor/UiLayer.h"
-#include "Core/Other/KeyCodes.h"
+#include "Events/KeyCodes.h"
 
 #include "Renderer/ColorBuffer.h"
 #include "Renderer/DepthBuffer.h"

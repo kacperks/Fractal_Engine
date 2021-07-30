@@ -10,6 +10,9 @@
 #include "ECS/ECS.h"
 #include "pch.h"
 
+
+using Vector2i = glm::ivec2;
+
 namespace fr {
 	const int SHADOW_WIDTH = 1024;
 	const int SHADOW_HEIGHT = 1024;
