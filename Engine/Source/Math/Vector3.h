@@ -15,8 +15,18 @@ namespace fr {
 
             Vec3 operator+(const Vec3& other);
             Vec3 operator-(const Vec3& other);
+
             Vec3 operator/(const Vec3& other);
             Vec3 operator*(const Vec3& other);
+
+            bool operator==(Vec3 other);
+            bool operator!=(Vec3 other);
+
+            void operator+=(Vec3 other);
+            void operator-=(Vec3 other);
+
+            void operator*=(Vec3 other);
+            void operator/=(Vec3 other);
 
             float x, y, z;
         };

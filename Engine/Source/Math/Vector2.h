@@ -16,8 +16,18 @@ namespace fr {
 
             Vec2 operator+(const Vec2& other);
             Vec2 operator-(const Vec2& other);
+
             Vec2 operator/(const Vec2& other);
             Vec2 operator*(const Vec2& other);
+
+            bool operator==(Vec2 other);
+            bool operator!=(Vec2 other);
+
+            void operator+=(Vec2 other);
+            void operator-=(Vec2 other);
+
+            void operator*=(Vec2 other);
+            void operator/=(Vec2 other);
 
             float x, y;
         };

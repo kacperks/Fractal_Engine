@@ -14,4 +14,5 @@ namespace fr {
 	void GLClearError() {
 		while (glGetError() != GL_NO_ERROR);
 	}
+
 }

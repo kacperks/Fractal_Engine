@@ -66,7 +66,7 @@ extern "C" {
 #include "Vendor/Lua535/include/lauxlib.h"
 };
 
-#pragma comment(lib, "Source/Vendor/Lua535/liblua53.a")
+#pragma comment(lib, "Engine/Source/Vendor/Lua535/liblua53.a")
 #endif
 
 #include <GL/glew.h>

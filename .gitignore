@@ -20,3 +20,4 @@ App/CMakeFiles/
 build/*
 *.idb
 .sconsign.dblite
+docs/*

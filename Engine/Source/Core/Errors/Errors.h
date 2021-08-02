@@ -7,7 +7,6 @@
 
 namespace fr {
 	extern void GLClearError();
-
 	extern bool GLLogCall(const char* function, const char* file, int line);
 }
 
