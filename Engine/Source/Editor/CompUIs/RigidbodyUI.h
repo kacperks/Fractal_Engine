@@ -38,9 +38,6 @@ public:
 			ImGui::Button("Mass");
 			ImGui::SameLine();
 			ImGui::DragFloat("##Mass", &rb->Mass, 1.0f, 0, 0, "%.1f");
-			ImGui::Button("Gravity scale");
-			ImGui::SameLine();
-			ImGui::DragFloat("##Gs", &rb->GravityScale, 1.0f, 0, 0, "%.1f");
 			ImGui::PopStyleColor();
 			ImGui::PopStyleVar();
 			ImGui::EndChildFrame();

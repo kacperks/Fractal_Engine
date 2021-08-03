@@ -2,15 +2,19 @@
 
 #include "Core/ECS/Base/BaseComponent.h"
 
-constexpr glm::vec3 GRAVITY(0.0f, -9.81f, 0.0f);
+#define RB_STATIC 0
+#define RB_DYNAMIC 1
 
 struct RigidBody : public ECS::BaseComponent {
 	RigidBody() = default;
 	~RigidBody() = default;
+	
+	int type = RB_DYNAMIC;
 
-	GLfloat Mass = 1.0f;
-	GLfloat GravityScale = 1.0f;
-	glm::vec3 Drag = glm::vec3(0.0f);
-	glm::vec3 Force = glm::vec3(0.0f);
-	glm::vec3 Velocity = glm::vec3(0.0f);
+	FRfloat Mass = 1.000f;
+	FRfloat LinearDrag = 0.000f;
+	FRfloat AngularDrag = 0.050f;
+
+	bool Gravity = true;
+	bool IsKinematic = false;
 };

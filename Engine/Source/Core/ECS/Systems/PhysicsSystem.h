@@ -7,6 +7,7 @@
 #include "Events/KeyCodes.h"
 #include "Core/ECS/Components/Transform.h"
 #include "Core/ECS/Components/RigidBody.h"
+#include "Physics/PhysicsBody.h"
 
 using namespace fr;
 
@@ -26,6 +27,8 @@ public:
 		for (auto entity : entities) {
 			auto& transform = ECS::Manager.GetComponent<Transform>(entity);
 			auto& rigidbody = ECS::Manager.GetComponent<RigidBody>(entity);
+
+			PhysicsBody b = PhysicsBody();
 		}
 	}
 };

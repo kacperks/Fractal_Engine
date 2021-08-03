@@ -85,6 +85,7 @@ namespace fr {
 		void Dockspace();
 		void ToolBar();
 		void Viewport();
+		void RendererInfo();
 
 		// ACTIONS
 

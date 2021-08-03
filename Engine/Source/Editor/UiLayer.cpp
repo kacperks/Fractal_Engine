@@ -84,6 +84,7 @@ namespace fr {
 		Panels::Resources();
 		ToolBar();
 		Panels::Console();
+		RendererInfo();
 
 		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
@@ -253,6 +254,14 @@ namespace fr {
 			ImGui::EndChildFrame();
 		}
 		ImGui::End();
+	}
+
+	void UiLayer::RendererInfo() {
+		ImGui::Begin("Renderer", nullptr); {
+			ImGui::Text("vendor: %s \n renderer: %s \n version: %s\n", glGetString(GL_VENDOR), glGetString(GL_RENDERER), glGetString(GL_VERSION));
+		}
+		ImGui::End();
+		
 	}
 
 	void UiLayer::ToolBar() {

@@ -8,23 +8,25 @@ public:
 	PhysicsBody(const Vec3& pos, const Vec3& rot, float _radius) {
 		_position = pos;
 		_old_position = pos;
-		pressure = 0.0f;
-		radius = _radius;
 		_rotation = rot;
 		_old_rotation = rot;
 	}
 
-	virtual ~PhysicsBody();
 	PhysicsBody operator=(PhysicsBody other) const;
 
 	void UpdatePhysics();
 
-	float radius;
-	float pressure;
-	float inertia;
-	float move_acc;
+	Vec3 GetPosition() { return _position; }
+	Vec3 GetRotation() { return _rotation; }
+
+	Vec3 GetOldPosition() { return _old_position; }
+	Vec3 GetOldRotation() { return _old_rotation; }
+
+	RigidBody GetRb() { return rb; }
+	void SetRb(RigidBody other) { rb = other; }
 
 private:
+	RigidBody rb;
 	Vec3 _position;
 	Vec3 _rotation;
 	Vec3 _old_rotation;

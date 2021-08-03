@@ -12,7 +12,7 @@
 
 using namespace fr;
 
-constexpr auto SCROLL_SPEED = 70.0f;;
+constexpr auto SCROLL_SPEED = 60.0f;;
 
 class EditorCameraSystem : public ECS::BaseSystem {
 
@@ -37,6 +37,8 @@ public:
 		Dispatcher.AddListener<MouseScrollEvent>(std::bind(&EditorCameraSystem::OnZoomCallback, this, _1));
 	}
 
+	void Update() { }
+
 	void SetShadersUniforms() {
 		camera.SetUniformVP(skybox, UI.ViewSize(), 0);
 		for (auto& shader : shaders) {
@@ -49,10 +51,8 @@ public:
 		auto e = Dispatcher.Cast<MouseEvent>(event);
 		if (IsMouseOverViewport(e) && !ImGuizmo::IsUsing()) {
 			if (!Events.IsKeyPressed(GLFW_KEY_LEFT_CONTROL) && Events.IsMouseDown(MOUSE_RIGHT)) {
-#ifndef FR_2D
-				camera.Rotation.x -= e.DeltaY() * Timer.DeltaTime();
-				camera.Rotation.y -= e.DeltaX() * Timer.DeltaTime();
-#endif
+				camera.Rotation.x -= e.DeltaY() * 2 * Timer.DeltaTime();
+				camera.Rotation.y -= e.DeltaX() * 2 * Timer.DeltaTime();
 				SetShadersUniforms();
 			}
 

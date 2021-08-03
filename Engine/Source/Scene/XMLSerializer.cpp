@@ -329,29 +329,11 @@ namespace fr {
 		const RigidBody& rigidbody = ECS::Manager.GetComponent<RigidBody>(entityid);
 		printer.OpenElement("RigidBody");
 		printer.PushAttribute("mass", rigidbody.Mass);
-		printer.PushAttribute("gscale", rigidbody.GravityScale);
-
-		printer.PushAttribute("Fx", rigidbody.Force.x);
-		printer.PushAttribute("Fy", rigidbody.Force.y);
-		printer.PushAttribute("Fz", rigidbody.Force.z);
-
-		printer.PushAttribute("Dx", rigidbody.Drag.x);
-		printer.PushAttribute("Dy", rigidbody.Drag.y);
-		printer.PushAttribute("Dz", rigidbody.Drag.z);
 		printer.CloseElement();
 	}
 	void XMLSerializer::LoadRigidBody(XMLElement* xRigidbody, const ECS::EntityID entityid) {
 		RigidBody rigidbody;
 		rigidbody.Mass = xRigidbody->FloatAttribute("mass");
-		rigidbody.GravityScale = xRigidbody->FloatAttribute("gscale");
-
-		rigidbody.Force.x = xRigidbody->FloatAttribute("Fx");
-		rigidbody.Force.y = xRigidbody->FloatAttribute("Fy");
-		rigidbody.Force.z = xRigidbody->FloatAttribute("Fz");
-
-		rigidbody.Drag.x = xRigidbody->FloatAttribute("Dx");
-		rigidbody.Drag.y = xRigidbody->FloatAttribute("Dy");
-		rigidbody.Drag.z = xRigidbody->FloatAttribute("Dz");
 
 		ECS::Manager.AddComponent(entityid, rigidbody);
 	}
