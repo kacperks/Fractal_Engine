@@ -3,37 +3,27 @@
 #include "pch.h"
 #include "Math.h"
 #include "Vector4.h"
+#include "Matrix4.h"
+
 
 namespace fr {
-        struct Quaternion {
-            Quaternion() : xyzw({ 0.0f, 0.0f, 0.0f, 0.0f }) { }
-            Quaternion(Vec4& xyzw) : xyzw(xyzw) { }
+	class Quaternion : public Vec4 {
+	public:
+		Quaternion(Mat4& m);
+		Quaternion(float x, float y, float z, float w);
 
-            Quaternion operator=(Vec4& other) {
-                xyzw = other;
-                return *this;
-            }
+		Quaternion(Vec4& r);
+		Quaternion(Vec3& axis, float angle);
 
-            Quaternion operator+(Quaternion& other) {
-                Vec4 a = xyzw + other.xyzw;
-                return Quaternion(a);
-            }
+		Quaternion sLerp(const Quaternion& q, float lf, bool sp);
+		Quaternion nLerp(const Quaternion& q, float lf, bool sp);
 
-            Quaternion operator-(Quaternion& other) {
-                Vec4 a = xyzw - other.xyzw;
-                return Quaternion(a);
-            }
+		Mat4 ToRotMatrix();
 
-            Quaternion operator*(Quaternion& other) {
-                Vec4 a = xyzw * other.xyzw;
-                return Quaternion(a);
-            }
-
-            Quaternion operator/(Quaternion& other) {
-                Vec4 a = xyzw / other.xyzw;
-                return Quaternion(a);
-            }
-
-            Vec4 xyzw;
-        };
+		Vec3 GetForward();
+		Vec3 GetBack();
+		Vec3 GetDown();
+		Vec3 GetLeft();
+		Vec3 GetRight();
+	};
 }
