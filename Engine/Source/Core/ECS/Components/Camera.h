@@ -46,9 +46,9 @@ struct Camera : public ECS::BaseComponent {
 	glm::mat4 GetView(float tFactor = 1.0f) {
 		glm::vec3 position = Position * tFactor;
 		glm::mat4 view = glm::lookAt(position, (position + FRONT), WORLD_UP);
-		view = glm::rotate(view, glm::radians(Rotation.x), glm::vec3(1, 0, 0));
-		view = glm::rotate(view, glm::radians(Rotation.y), glm::vec3(0, 1, 0));
-		view = glm::rotate(view, glm::radians(Rotation.z), glm::vec3(0, 0, 1));
+		view = glm::rotate(view, Math::Radians(Rotation.x), glm::vec3(1, 0, 0));
+		view = glm::rotate(view, Math::Radians(Rotation.y), glm::vec3(0, 1, 0));
+		view = glm::rotate(view, Math::Radians(Rotation.z), glm::vec3(0, 0, 1));
 		return view;
 	}
 

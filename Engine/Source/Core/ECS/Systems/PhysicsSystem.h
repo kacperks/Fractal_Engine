@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Physics/PhysicsWorld.h"
 #include "Core/Timer/Timer.h"
 #include "Core/Engine.h"
 #include "Core/ECS/Base/BaseSystem.h"
@@ -27,8 +28,6 @@ public:
 		for (auto entity : entities) {
 			auto& transform = ECS::Manager.GetComponent<Transform>(entity);
 			auto& rigidbody = ECS::Manager.GetComponent<RigidBody>(entity);
-
-			PhysicsBody b = PhysicsBody();
 		}
 	}
 };

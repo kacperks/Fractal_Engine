@@ -8,18 +8,25 @@
 #include "Vector.h"
 
 namespace fr {
-        class Vec3 : public Vector<float, 4> {
+        class Vec3 : public Vector<float, 3> {
         public:
             Vec3() : x(0.0f), y(0.0f), z(0.0f) {}
             Vec3(float x, float y, float z) : x(x), y(y), z(z) {}
 
-            inline float lenght();
+            inline Vec2 Normalized();
+            inline float Lenght();
 
             Vec3 operator+(const Vec3& other);
+            Vec3 operator+(float other);
+
             Vec3 operator-(const Vec3& other);
+            Vec3 operator-(float other);
 
             Vec3 operator/(const Vec3& other);
+            Vec3 operator/(float other);
+
             Vec3 operator*(const Vec3& other);
+            Vec3 operator*(float other);
 
             bool operator==(Vec3 other);
             bool operator!=(Vec3 other);

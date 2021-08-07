@@ -78,22 +78,3 @@ private:
 	GLsizei width, height;
 	GLuint bufferID, renderID, textureID;
 };
-
-//GLCALL(glGenTextures(1, &textureID));
-		//GLCALL(glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, textureID));
-		//GLCALL(glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, 4, GL_RGB, width, height, GL_TRUE));
-		//GLCALL(glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, 0));
-
-		//GLCALL(glGenRenderbuffers(1, &renderID));
-		//GLCALL(glBindRenderbuffer(GL_RENDERBUFFER, renderID));
-		//GLCALL(glRenderbufferStorageMultisample(GL_RENDERBUFFER, 4, GL_DEPTH24_STENCIL8, width, height));
-		//GLCALL(glBindRenderbuffer(GL_RENDERBUFFER, 0));
-
-		//// attach to fbo
-		//GLCALL(glGenFramebuffers(1, &bufferID));
-		//GLCALL(glBindFramebuffer(GL_FRAMEBUFFER, bufferID));
-		//GLCALL(glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D_MULTISAMPLE, textureID, 0));
-		//GLCALL(glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, renderID));
-
-		//assert(glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE && "FAILED TO CREATE FBO");
-		//GLCALL(glBindFramebuffer(GL_FRAMEBUFFER, 0));

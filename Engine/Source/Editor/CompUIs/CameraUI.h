@@ -31,9 +31,31 @@ public:
 	}
 	void Show() override {
 		if (ImGui::CollapsingHeader("Camera 3D")) {
+
+			ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.21f, 0.22f, 0.23, 1.0f));
+			ImGui::PushStyleColor(ImGuiCol_Button, BLUE);
+
+			ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(3, 3));
+
+			ImGui::BeginChildFrame(ImGui::GetID("CamUIFrame"), ImVec2(0, 79));
+
 			ImGui::Button("FOV");
 			ImGui::SameLine();
 			ImGui::DragFloat("##FOV", &rb->FieldOfView, 1.0f, 0, 0, "%.1f");
+
+			ImGui::Button("zNear");
+			ImGui::SameLine();
+			ImGui::DragFloat("##zNear", &rb->zNear, 1.0f, 0, 0, "%.1f");
+
+			ImGui::Button("zFar");
+			ImGui::SameLine();
+			ImGui::DragFloat("##zFar", &rb->zFar, 1.0f, 0, 0, "%.1f");
+
+
+			ImGui::PopStyleVar();
+			ImGui::PopStyleColor();
+			ImGui::PopStyleColor();
+			ImGui::EndChildFrame();
 		}
 	}
 
