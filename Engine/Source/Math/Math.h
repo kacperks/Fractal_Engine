@@ -27,6 +27,9 @@ namespace fr {
 			static int fact(int n);
 
 			static float RandomRange(float min, float max);
+		
+			static float abs(float num);
+			static float abs(int num);
 	};
 }
 
