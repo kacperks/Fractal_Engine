@@ -3,8 +3,6 @@
 #ifndef FR_PCH_H
 #define FR_PCH_H
 
-//#define FR_BULID
-
 #include <set>
 #include <map>
 #include <array>
@@ -31,12 +29,14 @@
 #define FR_LINUX
 #elif defined(__APPLE__)
 #define FR_APPLE
+#elif defined(__ANDROID__)
+#define FR_ANDROID
 #else
 #error Not Supported Platform!
 #endif
 
-#define VERSION "BETA 1.14"
-#define EDITOR_VERSION "17.06.2021"
+#define VERSION "BETA 2.0"
+#define EDITOR_VERSION "10.07.2021"
 #define WINDOW_NAME "Game"
 
 #define WINDOW_WIDTH 1280

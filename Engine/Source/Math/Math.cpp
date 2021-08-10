@@ -7,9 +7,9 @@ namespace fr {
 	float Math::Radians(float degrees) { return degrees * PI() / 180; }
 	float Math::Degrees(float radians) { return radians * PI() / 180; }
 
-	float Math::Lerp(float start, float stop, float step) { float v = start; while (v != stop) { v = (stop * step) + (start * 1.0 - step); } return v;}
+	float Math::Lerp(float start, float stop, float step) { float v = start; while (v != stop) { v = (stop * step) + (start * 1.0 - step); } return v; }
 
-	float Math::PI() { return 3.14159265359; }
+	float Math::PI() { return 3.1415926535897932384626433832795; }
 
 	float Math::Sqrt(float num) { float p = 0.000001; float s = num; while ((s - num / s) > p) { s = (s + num / s) / 2; } return s; }
 
@@ -37,6 +37,8 @@ namespace fr {
 		return cos;
 	}
 
+	float Math::Tan(int deg) { return Sin(deg) / Cos(deg); }
+
 	float Math::power(float base, int exp) {
 		if (exp < 0) {
 			if (base == 0)
@@ -53,11 +55,11 @@ namespace fr {
 	int Math::fact(int n) {
 		return n <= 0 ? 1 : n * fact(n - 1);
 	}
-	
+
 	float Math::abs(float num) {
 		return (num < 0.0f) ? -num : num;
 	}
-	
+
 	float Math::abs(int num) {
 		return (num < 0) ? (float)(-num) : (float)(num);
 	}

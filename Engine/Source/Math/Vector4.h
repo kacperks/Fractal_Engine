@@ -9,6 +9,8 @@ namespace fr {
             Vec4() : x(0.0f), y(0.0f), z(0.0f), w(0.0f) { }
             Vec4(float x, float y, float z, float w) : x(x), y(y), z(z), w(w) { }
 
+            inline Vec4 Normalized();
+            inline float Lenght();
 
             Vec4 operator+(const Vec4& other);
             Vec4 operator+(float other);

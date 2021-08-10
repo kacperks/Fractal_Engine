@@ -5,6 +5,7 @@
 class Scene {
 public:
 	Scene();
+	Scene(UiLayer UI, T_Timer timer, XMLSerializer serializer, RsrcManager Resource, EventSystem events, Engine core);
 	~Scene();
 
 	void InitScene();
