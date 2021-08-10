@@ -53,4 +53,12 @@ namespace fr {
 	int Math::fact(int n) {
 		return n <= 0 ? 1 : n * fact(n - 1);
 	}
+	
+	float Math::abs(float num) {
+		return (num < 0.0f) ? -num : num;
+	}
+	
+	float Math::abs(int num) {
+		return (num < 0) ? (float)(-num) : (float)(num);
+	}
 }
