@@ -49,27 +49,27 @@ namespace fr {
         }
       
         bool operator==(const char* str) {
-            return strcmp(data, str); 
-        }
-      
-        bool operator==(const String& str) {
-            return strcmp(data, str.data); 
-        }
-      
-        bool operator==(char c) {
-            return strcmp(data, MakeString(c)); 
-        }
-      
-        bool operator!=(const char* str) {
             return strcmp(data, str) == 0; 
         }
       
-        bool operator!=(const String& str) {
+        bool operator==(const String& str) {
             return strcmp(data, str.data) == 0; 
         }
       
-        bool operator!=(char c) {
+        bool operator==(char c) {
             return strcmp(data, MakeString(c)) == 0; 
+        }
+      
+        bool operator!=(const char* str) {
+            return strcmp(data, str); 
+        }
+      
+        bool operator!=(const String& str) {
+            return strcmp(data, str.data); 
+        }
+      
+        bool operator!=(char c) {
+            return strcmp(data, MakeString(c)); 
         }
       
         void Append(const char* str) {
