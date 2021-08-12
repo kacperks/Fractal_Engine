@@ -12,12 +12,9 @@ struct PlaneCollider : Collider {
 	}
 
 	CollisionPoints TestCollision( const Transform* transform, const SphereCollider* sphere, const Transform* sphereTransform) {
-		// reuse sphere code
 		return sphere->TestCollision(sphereTransform, this, transform);
 	}
 
-	CollisionPoints TestCollision(const Transform* transform, const PlaneCollider* plane, const Transform* planeTransform) {
-		// No plane v plane
-	}
+	CollisionPoints TestCollision(const Transform* transform, const PlaneCollider* plane, const Transform* planeTransform) {}
 };
 */

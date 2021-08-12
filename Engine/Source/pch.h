@@ -1,5 +1,7 @@
 #pragma once
 
+#define FR_BULID
+
 #ifndef FR_PCH_H
 #define FR_PCH_H
 
