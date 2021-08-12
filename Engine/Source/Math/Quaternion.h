@@ -10,9 +10,8 @@ namespace fr {
 	class Quaternion : public Vec4 {
 	public:
 		Quaternion(Mat4& m);
+		Quaternion(Vec4& m);
 		Quaternion(float x, float y, float z, float w);
-
-		Quaternion(Vec4& r);
 		Quaternion(Vec3& axis, float angle);
 
 		Quaternion sLerp(const Quaternion& q, float lf, bool sp);

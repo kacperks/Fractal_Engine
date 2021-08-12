@@ -70,8 +70,8 @@ namespace fr {
         }
 
         void SetRotX(float angle) {
-            float c = std::cosf(Math::Radians(angle));
-            float s = std::sinf(Math::Radians(angle));
+            float c = Math::Cos(Math::Radians(angle));
+            float s = Math::Sin(Math::Radians(angle));
 
             matrix[1][1] = c;
             matrix[1][2] = -s;
@@ -80,8 +80,8 @@ namespace fr {
         }
 
         void SetRotY(float angle) {
-            float c = std::cosf(Math::Radians(angle));
-            float s = std::sinf(Math::Radians(angle));
+            float c = Math::Cos(Math::Radians(angle));
+            float s = Math::Sin(Math::Radians(angle));
 
             matrix[0][0] = c;
             matrix[0][2] = s;
@@ -90,8 +90,8 @@ namespace fr {
         }
 
         void SetRotZ(float angle) {
-            float c = std::cosf(Math::Radians(angle));
-            float s = std::sinf(Math::Radians(angle));
+            float c = Math::Cos(Math::Radians(angle));
+            float s = Math::Sin(Math::Radians(angle));
 
             matrix[0][0] = c;
             matrix[0][1] = -s;

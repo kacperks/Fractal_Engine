@@ -103,6 +103,7 @@ namespace fr {
 
 // other includes :
 
+#include "Core/String.h"
 #include "Core/Resource/Resource.h"
 #include "Core/ECS/ECS.h"
 #include "Core/Engine.h"
