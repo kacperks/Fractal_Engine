@@ -3,9 +3,13 @@
 #include "pch.h"
 
 struct Scene {
-	Scene();
-	Scene(UiLayer UI, T_Timer timer, XMLSerializer serializer, RsrcManager Resource, EventSystem events, Engine core);
-	~Scene();
+	Scene() = default;
+	~Scene() = default;
+
+	void Initialize();
+	void Update();
+
+	ECS::Entity To_Entity(ECS::EntityID _handle);
 
 	UiLayer Editor;
 	T_Timer Timer;

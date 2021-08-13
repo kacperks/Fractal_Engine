@@ -21,6 +21,8 @@ namespace ECS {
 	using ComponentTypeID = int;
 	using Signature = std::set<ComponentTypeID>;
 	using FactoryType = std::shared_ptr<BaseComponent>;
+	using EntityList = std::vector<Entity>;
+	using EntityIDList = std::vector<EntityID>;
 
 	// Runtime type
 	inline int GetRuntimeTypeID() {
