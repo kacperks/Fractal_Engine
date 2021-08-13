@@ -1,7 +1,7 @@
 #pragma once
 
 #include "CompUI.h"
-#include "Core/ECS/Components/PointLight.h"
+#include "Core/Components/PointLight.h"
 
 class PointLightUI : public CompUI {
 public:

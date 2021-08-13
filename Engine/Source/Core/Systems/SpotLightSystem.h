@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Core/ECS/Base/BaseSystem.h"
-#include "Core/ECS/Base/EntityManager.h"
+#include "Scene/BaseSystem.h"
+#include "Scene/EntityManager.h"
 
 #include "Core/Resource/Resource.h"
-#include "Core/ECS/Components/Transform.h"
-#include "Core/ECS/Components/SpotLight.h"
+#include "Core/Components/Transform.h"
+#include "Core/Components/SpotLight.h"
 
 using namespace fr;
 

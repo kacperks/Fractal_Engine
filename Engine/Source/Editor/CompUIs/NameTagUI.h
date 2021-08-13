@@ -1,7 +1,7 @@
 #pragma once
 
 #include "CompUI.h"
-#include "Core/ECS/Components/EntityName.h"
+#include "Core/Components/EntityName.h"
 
 class NameTagUI : public CompUI {
 

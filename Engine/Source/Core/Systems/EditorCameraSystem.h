@@ -4,11 +4,11 @@
 #include "Editor/UiLayer.h"
 #include "Core/Resource/Resource.h"
 
-#include "Core/ECS/Base/BaseSystem.h"
-#include "Core/ECS/Base/EntityManager.h"
+#include "Scene/BaseSystem.h"
+#include "Scene/EntityManager.h"
 
-#include "Core/ECS/Components/Camera.h"
-#include "Core/ECS/Components/Transform.h"
+#include "Core/Components/Camera.h"
+#include "Core/Components/Transform.h"
 
 using namespace fr;
 

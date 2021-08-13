@@ -7,7 +7,7 @@
 #include "Vendor/IMGUI/imgui_impl_glfw.h"
 #include "Vendor/IMGUI/imgui_impl_opengl3.h"
 
-#include "Core/ECS/Base/Entity.h"
+#include "Scene/Entity.h"
 #include "Scene/XMLSerializer.h"
 
 #include "CompUIs/DirectLightUI.h"

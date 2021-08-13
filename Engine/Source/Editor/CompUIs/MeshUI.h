@@ -2,7 +2,7 @@
 
 #include "CompUI.h"
 #include "Core/Resource/Resource.h"
-#include "Core/ECS/Components/MeshRenderer.h"
+#include "Core/Components/MeshRenderer.h"
 
 class MeshUI : public CompUI {
 

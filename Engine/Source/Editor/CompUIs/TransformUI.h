@@ -1,7 +1,7 @@
 #pragma once
 
 #include "CompUI.h"
-#include "Core/ECS/Components/Transform.h"
+#include "Core/Components/Transform.h"
 #include "Editor/Controls/Widgets.h"
 
 class TransformUI : public CompUI {

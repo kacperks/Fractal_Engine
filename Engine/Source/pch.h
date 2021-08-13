@@ -1,7 +1,5 @@
 #pragma once
 
-#define FR_BULID
-
 #ifndef FR_PCH_H
 #define FR_PCH_H
 
@@ -84,7 +82,7 @@ extern "C" {
 
 using namespace std::placeholders;
 
-#include "Core/Errors/Errors.h"
+#include "Core/Errors.h"
 #include "Events/EventSystem.h"
 
 namespace fr {
@@ -105,14 +103,18 @@ namespace fr {
 
 #include "Core/String.h"
 #include "Core/Resource/Resource.h"
-#include "Core/ECS/ECS.h"
 #include "Core/Engine.h"
 #include "Core/Timer/Timer.h"
 
-#include "Core/ECS/Base/BaseComponent.h"
-#include "Core/ECS/Base/BaseSystem.h"
-#include "Core/ECS/Base/EntityManager.h"
-#include "Core/ECS/Components/EntityName.h"
+#include "Scene/Types.h"
+#include "Scene/BaseComponent.h"
+#include "Scene/BaseSystem.h"
+#include "Scene/CompList.h"
+#include "Scene/ComponentFactory.h"
+#include "Scene/Entity.h"
+#include "Scene/EntityManager.h"
+
+#include "Core/Components.h"
 #include "Editor/UiLayer.h"
 
 #include "Scene/XMLSerializer.h"

@@ -3,11 +3,11 @@
 #include "Physics/PhysicsWorld.h"
 #include "Core/Timer/Timer.h"
 #include "Core/Engine.h"
-#include "Core/ECS/Base/BaseSystem.h"
-#include "Core/ECS/Base/EntityManager.h"
+#include "Scene/BaseSystem.h"
+#include "Scene/EntityManager.h"
 #include "Events/KeyCodes.h"
-#include "Core/ECS/Components/Transform.h"
-#include "Core/ECS/Components/RigidBody.h"
+#include "Core/Components/Transform.h"
+#include "Core/Components/RigidBody.h"
 #include "Physics/PhysicsBody.h"
 
 using namespace fr;

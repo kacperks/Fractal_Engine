@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Core/Resource/Resource.h"
-#include "Core/ECS/Base/EntityManager.h"
+#include "Scene/EntityManager.h"
 #include "Editor/Controls/Widgets.h"
 
 static const float DRAG_WIDTH = 60;

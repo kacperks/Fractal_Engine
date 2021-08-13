@@ -1,14 +1,14 @@
 #include "pch.h"
 #include "Engine.h"
 #include "Editor/UiLayer.h"
-#include "Core/ECS/Base/Entity.h"
+#include "Scene/Entity.h"
 
 #include "Events/GLFWImp.h"
 
-#include "Core/ECS/Systems.h"
-#include "Core/ECS/Components.h"
+#include "Core/Systems.h"
+#include "Core/Components.h"
 #include "Scene/XMLSerializer.h"
-#include "Window/Window.h"
+#include "Window.h"
 
 namespace fr {
 

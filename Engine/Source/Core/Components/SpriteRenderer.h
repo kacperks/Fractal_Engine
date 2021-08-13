@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Core/Resource/Resource.h"
-#include "Core/ECS/Base/BaseComponent.h"
+#include "Scene/BaseComponent.h"
 
 struct SpriteRenderer : public ECS::BaseComponent{
 	~SpriteRenderer() = default;

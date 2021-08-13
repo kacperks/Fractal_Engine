@@ -2,11 +2,11 @@
 
 #include "Renderer/GLQuad.h"
 #include "Core/Resource/Resource.h"
-#include "Core/ECS/Base/BaseSystem.h"
-#include "Core/ECS/Base/EntityManager.h"
+#include "Scene/BaseSystem.h"
+#include "Scene/EntityManager.h"
 
-#include "Core/ECS/Components/Transform.h"
-#include "Core/ECS/Components/SpriteRenderer.h"
+#include "Core/Components/Transform.h"
+#include "Core/Components/SpriteRenderer.h"
 
 using namespace fr;
 

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Renderer/Shader.h"
-#include "Core/ECS/Base/BaseComponent.h"
+#include "Scene/BaseComponent.h"
 #include "Math/Math.h"
 
 struct Transform : public ECS::BaseComponent {

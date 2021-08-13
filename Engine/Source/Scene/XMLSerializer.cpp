@@ -2,7 +2,7 @@
 #include "XMLSerializer.h"
 
 #include "Editor/UiLayer.h"
-#include "Core/ECS/Base/EntityManager.h"
+#include "Scene/EntityManager.h"
 
 namespace fr {
 

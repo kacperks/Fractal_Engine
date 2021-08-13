@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Core/ECS/Base/BaseComponent.h"
+#include "Scene/BaseComponent.h"
 
 struct KeyMotion : public ECS::BaseComponent {
 	KeyMotion() = default;

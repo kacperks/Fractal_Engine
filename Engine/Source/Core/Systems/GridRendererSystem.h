@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Core/ECS/Base/BaseSystem.h"
-#include "Core/ECS/Base/EntityManager.h"
+#include "Scene/BaseSystem.h"
+#include "Scene/EntityManager.h"
 
 #include "Renderer/Shader.h"
 #include "Renderer/GLMesh.h"
-#include "Core/ECS/Components/Transform.h"
+#include "Core/Components/Transform.h"
 
 #include "Renderer/Grid.h"
 

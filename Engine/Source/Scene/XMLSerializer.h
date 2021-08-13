@@ -1,7 +1,7 @@
 #pragma once
 
 #include <tinyxml2.h>
-#include "Core/ECS/Components.h"
+#include "Core/Components.h"
 
 namespace fr {
 

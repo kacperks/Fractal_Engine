@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Core/ECS/Base/BaseComponent.h"
+#include "Scene/BaseComponent.h"
 
 #define RB_STATIC 0
 #define RB_DYNAMIC 1

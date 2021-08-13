@@ -3,7 +3,7 @@
 #include "Renderer/Shader.h"
 #include "Core/Resource/Resource.h"
 #include "Renderer/VertexArray.h"
-#include "Core/ECS/Base/BaseSystem.h"
+#include "Scene/BaseSystem.h"
 
 using namespace fr;
 

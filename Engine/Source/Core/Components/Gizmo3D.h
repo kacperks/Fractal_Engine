@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Core/ECS/Base/BaseComponent.h"
+#include "Scene/BaseComponent.h"
 enum GuizmoMode { NONE, TRANSLATE, ROTATE, SCALE };
 
 struct Gizmo3D : public ECS::BaseComponent {

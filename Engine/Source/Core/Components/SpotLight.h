@@ -9,8 +9,8 @@ struct SpotLight : public ECS::BaseComponent {
 	GLfloat Linear = 0.04f;
 	GLfloat Constant = 1.0f;
 	GLfloat Quadratic = 0.006f;
-	GLfloat ICutOff = glm::cos(glm::radians(5.0f));
-	GLfloat OCutOff = glm::cos(glm::radians(120.0f));
+	GLfloat ICutOff = Math::Cos(Math::Radians(5.0f));
+	GLfloat OCutOff = Math::Cos(Math::Radians(120.0f));
 
 	GLfloat Intensity = 1.0f;
 	glm::vec3 Color = glm::vec3(1.0f);
