@@ -12,21 +12,20 @@ struct CollisionPoints {
 	bool HasCollision;
 };
 
-/*
+
 struct Collider {
 	virtual CollisionPoints TestCollision(
-		const Transform* transform,
-		const Collider* collider,
-		const Transform* colliderTransform) const = 0;
+		Transform transform,
+		Collider collider,
+		Transform colliderTransform) const = 0;
 
 	virtual CollisionPoints TestCollision(
-		const Transform* transform,
-		const SphereCollider* sphere,
-		const Transform* sphereTransform) const = 0;
+		Transform transform,
+		SphereCollider sphere,
+		Transform sphereTransform) const = 0;
 
 	virtual CollisionPoints TestCollision(
-		const Transform* transform,
-		const PlaneCollider* plane,
-		const Transform* planeTransform) const = 0;
+		Transform transform,
+		PlaneCollider plane,
+		Transform planeTransform) const = 0;
 };
-*/

@@ -5,7 +5,7 @@
 
 namespace fr {
 	float Math::Radians(float degrees) { return degrees * PI() / 180; }
-	float Math::Degrees(float radians) { return radians * PI() / 180; }
+	float Math::Degrees(float radians) { return radians * 180 / PI(); }
 
 	float Math::Lerp(float start, float stop, float step) { float v = start; while (v != stop) { v = (stop * step) + (start * 1.0 - step); } return v; }
 
