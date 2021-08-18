@@ -5,6 +5,9 @@
 #include "PlaneCollider.h"
 
 struct CollisionPoints {
+	CollisionPoints() = default;
+	~CollisionPoints() = default;
+
 	Vec3 A;
 	Vec3 B;
 	Vec3 Normal = A.Normalized() + B.Normalized();
@@ -13,7 +16,11 @@ struct CollisionPoints {
 };
 
 
-struct Collider {
+class Collider {
+public:
+	Collider() = default;
+	~Collider() = default;
+
 	virtual CollisionPoints TestCollision(
 		Transform transform,
 		Collider collider,

@@ -22,6 +22,12 @@ public:
 	Transform(const glm::vec3& translate) :
 		Position(translate) {}
 
+	void operator=(Transform other) {
+		(*this).Position = other.Position;
+		(*this).Rotation = other.Rotation;
+		(*this).Scale = other.Scale;
+	}
+
 	glm::mat4 Model() {
 		glm::mat4 model = glm::translate(glm::mat4(1.0f), Position);
 		model = glm::rotate(model, Math::Radians(Rotation.x), glm::vec3(1, 0, 0));
