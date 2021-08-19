@@ -7,7 +7,7 @@
 
 #include "Core/Systems.h"
 #include "Core/Components.h"
-#include "Scene/XMLSerializer.h"
+#include "Scene/SceneSerializer.h"
 #include "Window.h"
 
 namespace fr {

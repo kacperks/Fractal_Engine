@@ -8,7 +8,7 @@
 #include "Vendor/IMGUI/imgui_impl_opengl3.h"
 
 #include "Scene/Entity.h"
-#include "Scene/XMLSerializer.h"
+#include "Scene/SceneSerializer.h"
 
 #include "CompUIs/DirectLightUI.h"
 #include "CompUIs/PointLightUI.h"

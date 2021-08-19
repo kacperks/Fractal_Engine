@@ -117,7 +117,7 @@ namespace fr {
 #include "Core/Components.h"
 #include "Editor/UiLayer.h"
 
-#include "Scene/XMLSerializer.h"
+#include "Scene/SceneSerializer.h"
 
 #include "Events/AppEvents.h"
 #include "Events/Dispatcher.h"
