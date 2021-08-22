@@ -1,17 +1,21 @@
 #pragma once
 
 #include "Collider.h"
-#include "algo.h"
 
-class SphereCollider : public Collider
-{
-public:
-	SphereCollider() = default;
-	~SphereCollider() = default;
-	Vec3 Center;
-	float Radius;
+namespace fr::Physics {
+	class BoundingSphere : Collider {
+	public:
+		BoundingSphere(const Vec3& center, float radius) : _center(center), _radius(radius) {}
 
-	virtual CollisionPoints TestCollision(Transform transform, Collider collider, Transform colliderTransform);
-	virtual CollisionPoints TestCollision(Transform transform, SphereCollider sphere, Transform sphereTransform);
-	virtual CollisionPoints TestCollision(Transform transform, PlaneCollider plane, Transform planeTransform);
-};
+		IntersectData IntersectBoundingSphere(const BoundingSphere& other);
+		virtual void Transform(const Vec3& translation);
+		virtual Vec3 GetCenter() const { return _center; }
+
+		inline float GetRadius() const { return _radius; }
+
+		static void Test();
+	private:
+		Vec3  _center;
+		float _radius;
+	};
+}

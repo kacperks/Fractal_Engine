@@ -23,13 +23,13 @@ public:
 	}
 
 	void Start() {
-
+		
 	}
 
 	void Update() {
 		for (auto entity : entities) {
-			auto& transform = ECS::Manager.GetComponent<Transform>(entity);
-			auto& rigidbody = ECS::Manager.GetComponent<RigidBody>(entity);
+			auto& _transform = ECS::Manager.GetComponent<Transform>(entity);
+			auto& _rigidbody = ECS::Manager.GetComponent<RigidBody>(entity);
 		}
 	}
 };

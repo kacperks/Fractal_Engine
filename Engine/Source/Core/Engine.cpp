@@ -9,6 +9,7 @@
 #include "Core/Components.h"
 #include "Scene/SceneSerializer.h"
 #include "Window.h"
+#include "Core/Log.h"
 
 namespace fr {
 
@@ -22,7 +23,7 @@ namespace fr {
 		#else
 			std::string WinName = "Fractal Engine " VERSION;
 		#endif
-		
+
 		FRWindow* FRWin = new FRWindow(WinName.c_str());
 
 		shadowBuffer = FRWin->GetDepthBuffer();
@@ -31,6 +32,7 @@ namespace fr {
 	}
 
 	FRuint Engine::Initialize() {
+		INFO("Loading Fractal Engine!");
 		UI.AddToConsole(" [Core] Loading Fractal Enigne...");
 
 		// register component list
@@ -72,12 +74,6 @@ namespace fr {
 		// runtime systems will be added at runtime
 		ECS::Manager.AddRuntimeSystem<CameraSystem>();
 		ECS::Manager.AddRuntimeSystem<PhysicsSystem>();
-
-		#ifdef FRACTAL_CSHARP
-			ECS::Manager.RegisterCompList<CsScript>();
-			ECS::Registrar<CsScript>("C# Script");
-			ECS::Manager.AddRuntimeSystem<CsharpScriptSystem>();
-		#endif
 
 		ECS::Manager.ActivateEditorSystems();
 		ECS::Manager.Start();
@@ -141,18 +137,21 @@ namespace fr {
 	}
 
 	void Engine::StartGame() {
+		INFO("Starting Game!");
 		ECS::Manager.DeactivateEditorSystems();
 		ECS::Manager.ActivateRuntimeSystems();
 		isGameRunnig = true;
 	}
 
 	void Engine::StopGame() {
+		INFO("Stopping Game");
 		isGameRunnig = false;
 		ECS::Manager.DeactivateRuntimeSystems();
 		ECS::Manager.ActivateEditorSystems();
 	}
 
 	func Engine::SetCurrentScene(const char* NewScene) {
+		INFO("New Current Scene!");
 		Serializer.LoadScene(NewScene); 
 		CurrentScene = NewScene;
 		return FR_NULL;

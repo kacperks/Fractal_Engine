@@ -140,5 +140,6 @@ namespace fr {
 #include "Renderer/Vertex.h"
 #include "Renderer/VertexArray.h"
 #include "Renderer/Grid.h"
+#include "Core/Log.h"
 
 #endif

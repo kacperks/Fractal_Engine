@@ -1,6 +1,12 @@
 #include "pch.h"
 #include "PhysicsWorld.h"
 
-void PhysicsWorld::Step(float dt) {
+namespace fr::Physics {
+	void PhysicsWorld::AddObject(PhysicsBody* Body) {
+		m_objs.push_back(Body);
+	}
 
+	void PhysicsWorld::Step() {
+
+	}
 }

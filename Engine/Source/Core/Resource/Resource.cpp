@@ -22,6 +22,7 @@ namespace fr {
 	}
 
 	void RsrcManager::Initialize() {
+		INFO("Loading Resources...");
 		// meshes
 		LoadMeshes();
 
@@ -45,6 +46,8 @@ namespace fr {
 		facepaths.push_back("Resource/Textures/skybox/back.png");
 		facepaths.push_back("Resource/Textures/skybox/front.png");
 		LoadCubeMap("SKYBOX", facepaths);
+
+		INFO("Resources Loaded!");
 	}
 
 	// texture 2d

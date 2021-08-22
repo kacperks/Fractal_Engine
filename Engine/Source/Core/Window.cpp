@@ -1,9 +1,11 @@
 #include "pch.h"
 
 #include "Window.h"
+#include "Core/Log.h"
 
 namespace fr {
 	FRWindow::FRWindow(const FRchar* title) {
+		INFO("Creating Window...");
 		glfwInit();
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);

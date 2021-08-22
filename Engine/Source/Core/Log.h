@@ -11,7 +11,11 @@ namespace fr {
 	namespace Log {
 		inline void ErrorLog(String log) { std::cout << termcolor::red << "[ERROR] " << log.CString() << termcolor::white << std::endl; }
 		inline void WarnLog(String log) { std::cout << termcolor::bright_magenta << "[WARN] " << log.CString() << termcolor::white << std::endl; }
-		inline void InfoLog(String log) { std::cout << termcolor::bright_green << "[OK] " << log.CString() << termcolor::white << std::endl; }
+		inline void InfoLog(String log) {
+		#ifndef FR_BULID
+			std::cout << "[" << termcolor::bright_green << " OK " << "] " << termcolor::white << log.CString() << std::endl; 
+		#endif
+		}
 	}
 }
 

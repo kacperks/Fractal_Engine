@@ -23,6 +23,7 @@
 #include "Panels/ComponentsList.h"
 #include "Panels/Console.h"
 #include "Panels/Resources.h"
+#include "Core/Log.h"
 
 namespace fr {
 	UiLayer::UiLayer() {
@@ -31,6 +32,7 @@ namespace fr {
 	}
 
 	FRuint UiLayer::Initialiaze() {
+		INFO("Loading Editor...");
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
 		ImGuiIO& IO = ImGui::GetIO(); (void)IO;
@@ -68,6 +70,7 @@ namespace fr {
 		compUIs.push_back(std::move(std::make_shared<CamUI>()));
 
 		AddToConsole(" [Editor] Fractal Editor " EDITOR_VERSION);
+		INFO("Editor Loaded!");
 		return FR_NULL;
 	}
 
@@ -97,6 +100,7 @@ namespace fr {
 	}
 
 	void UiLayer::LoadIcons() {
+		INFO("Loading Icons...");
 		icons.insert({ "obj", (ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/obj.png") });
 		icons.insert({ "light", (ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/light.png") });
 		icons.insert({ "camera", (ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/camera.png") });
@@ -120,6 +124,7 @@ namespace fr {
 		icons.insert({ "png",(ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/png.jpg") });
 		icons.insert({ "error",(ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/error.png") });
 		icons.insert({ "ok",(ImTextureID)fr::Resource.LoadTex2D("Resource/Icons/ok.png") });
+		INFO("Loaded Icons");
 	}
 	void UiLayer::SetGuiStyle() {
 		ImGuiStyle& style = ImGui::GetStyle();

@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Timer.h"
+#include "Core/Log.h"
 
 namespace fr {
 
@@ -12,7 +13,7 @@ namespace fr {
 	}
 
 	void T_Timer::Initialize() {
-
+		INFO("Timer Initialized!");
 	}
 
 	void T_Timer::Tick() {

@@ -1,15 +1,14 @@
 #pragma once
 
 #include "pch.h"
+#include "Core/Window.h"
 
 struct Scene {
 	Scene() = default;
 	~Scene() = default;
 
-	void Initialize();
 	void Update();
-
-	ECS::Entity To_Entity(ECS::EntityID _handle);
+	FRuint Initialize();
 
 	UiLayer Editor;
 	T_Timer Timer;

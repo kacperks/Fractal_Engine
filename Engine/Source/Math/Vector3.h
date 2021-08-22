@@ -18,23 +18,23 @@ namespace fr {
 
             Vec3 operator+(const Vec3& other);
             Vec3 operator+(float other);
-            Vec3 operator+(glm::vec3 other);
+            Vec3 operator+(glm::fvec3 other);
 
             Vec3 operator-(const Vec3& other);
             Vec3 operator-(float other);
-            Vec3 operator-(glm::vec3 other);
+            Vec3 operator-(glm::fvec3 other);
 
             Vec3 operator/(const Vec3& other);
             Vec3 operator/(float other);
-            Vec3 operator/(glm::vec3 other);
+            Vec3 operator/(glm::fvec3 other);
 
             Vec3 operator*(const Vec3& other);
             Vec3 operator*(float other);
-            Vec3 operator*(glm::vec3 other);
+            Vec3 operator*(glm::fvec3 other);
 
-            Vec3 operator=(glm::vec3 other);
-            Vec3 operator=(float other);
-            Vec3 operator=(Vec3 other);
+            void operator=(glm::fvec3 other);
+            void operator=(float other);
+            void operator=(Vec3 other);
 
             bool operator==(Vec3 other);
             bool operator!=(Vec3 other);
