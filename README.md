@@ -21,10 +21,19 @@ Features:
 * OpenGL 3.3+ Rendering Engine
 * Loading 3D models and 2D textures via Assimp and STB
 * Textures, Models and Scenes Serializer (XML)
-* Scene Editor (ImGui)
+* Scene Editor (In Progress)
 * Cross Platform (In Progress)
 * Events System
 * Custom Math engine
+
+Roadmap: 
+* Custom Physics Engine
+* Vulkan Renderer
+* Fully Featured Editor
+* Audio
+* 3D Animations
+* 2D Renderer
+* Docs
   
 Discord Server! : https://discord.gg/aXHjdQfCMK
 # Screen Shot
@@ -61,13 +70,13 @@ Discord Server! : https://discord.gg/aXHjdQfCMK
 * stb https://github.com/nothings/stb
 * ImGuizmo https://github.com/CedricGuillemet/ImGuizmo
 
-# Developers
+# Authors 
 
+Developers
 * <a href = "https://github.com/kacperks"> kacperks </a>
 * <a href = "https://github.com/lubek-dc"> lubek-dc </a>
 * <a href = "https://github.com/BoomerDev"> BoomerDev </a>
 
-# Contributors    
-
+Contributors    
 * <a href = "https://github.com/Yavuz1234567890"> Yavuz1234567890 </a>
 * <a href = "https://github.com/honeystudios"> honeystudios </a>
