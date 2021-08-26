@@ -4,6 +4,8 @@
 
 // By MCL, w/ the help of kacperks
 
+#include "pch.h"
+
 namespace fr::Audio
 {
 	class Audio
