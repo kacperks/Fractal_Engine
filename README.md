@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-Fractal Engine is a Cool 3D game engine
+Fractal Engine is a cool 3D game engine and scene editor.
 </p>
 
 <p align="center">
@@ -17,14 +17,14 @@ Fractal Engine is a Cool 3D game engine
 </a>
   
 Features:
-* Fully Featured ECS(Entity-Component-System)
+* Fully Featured ECS (Entity-Component-System)
 * OpenGL 3.3+ Rendering Engine
-* Loading 3D models and 2D textures via Assimp and STB
+* Loading 3D models and 2D textures with Assimp and STB
 * Textures, Models and Scenes Serializer (XML)
-* Scene Editor (In Progress)
-* Cross Platform (In Progress)
-* Events System
-* Custom Math engine
+* Scene Editor (Work In Progress)
+* Cross Platform (Work In Progress)
+* Event System
+* Custom Math Engine
 
 Roadmap: 
 * Custom Physics Engine
@@ -43,7 +43,7 @@ Discord Server! : https://discord.gg/aXHjdQfCMK
 </p>
 
 # Project Setup
-* First you need to Clone Repo 
+* First, you need to clone the repo.
 
 ` $ git clone --recursive https://github.com/kacperks/Fractal_Engine.git `
 
@@ -53,11 +53,11 @@ Discord Server! : https://discord.gg/aXHjdQfCMK
 * Fedora
 ` $ sudo dnf install glew-devel glm-devel assimp-devel glfw-devel tinyxml2-devel `
 ## Build
-* First You need to install Cmake :
+* First, you need to install CMake:
     * Debian/Ubuntu ` $ sudo apt-get install cmake `
     * Fedora ` $ sudo dnf install cmake `
 
-* Go to the Directrory of the Fractal Engine and type : ` $ cmake -B App `
+* Then, go to the Fractal Engine directory and type, ` $ cmake -B App `
 
 ## Dependencies
 
