@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-Fractal Engine is a cool 3-D game engine and scene editor.
+Fractal Engine is a cool 3D game engine and scene editor.
 </p>
 
 <p align="center">
@@ -25,12 +25,12 @@ Features:
 * Cross Platform (Work In Progress)
 * Event System
 * Custom Math Engine
+* Audio (NEW! Work In Progress)
 
-Roadmap: 
+Planned Features: 
 * Custom Physics Engine
 * Vulkan Renderer
 * Fully Featured Editor
-* Audio
 * 3D Animations
 * 2D Renderer
 * Docs
