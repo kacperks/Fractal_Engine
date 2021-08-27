@@ -12,9 +12,12 @@ namespace fr {
         public:
             Vec3() : x(0.0f), y(0.0f), z(0.0f) {}
             Vec3(float x, float y, float z) : x(x), y(y), z(z) {}
+            Vec3(const Vec3& other) : x(other.x), y(other.y) ,z(other.z) {}
 
-            inline Vec3 Normalized();
-            inline float Lenght();
+            Vec3 Normalized();
+            float Lenght();
+            float Max();
+            Vec3 Max(Vec3 v);
 
             Vec3 operator+(const Vec3& other);
             Vec3 operator+(float other);

@@ -29,42 +29,42 @@
 	REVISION HISTORY
 		1.0  (06/04/2016) initial release
 		1.01 (06/06/2016) load WAV from memory
-		                  separate portable and OS-specific code in cs_mix
-		                  fixed bug causing audio glitches when sounds ended
-		                  added stb_vorbis loaders + demo example
+						  separate portable and OS-specific code in cs_mix
+						  fixed bug causing audio glitches when sounds ended
+						  added stb_vorbis loaders + demo example
 		1.02 (06/08/2016) error checking + strings in vorbis loaders
-		                  SSE2 implementation of mixer
-		                  fix typos on docs/comments
-		                  corrected volume bug introduced in 1.01
+						  SSE2 implementation of mixer
+						  fix typos on docs/comments
+						  corrected volume bug introduced in 1.01
 		1.03 (07/05/2016) size calculation helper (to know size of sound in
-		                  bytes on the heap) cs_sound_size
+						  bytes on the heap) cs_sound_size
 		1.04 (12/06/2016) merged in Aaron Balint's contributions
-		                  SFFT and pitch functions from Stephan M. Bernsee
-		                  cs_mix can run on its own thread with cs_spawn_mix_thread
-		                  updated documentation, typo fixes
-		                  fixed typo in cs_malloc16 that caused heap corruption
+						  SFFT and pitch functions from Stephan M. Bernsee
+						  cs_mix can run on its own thread with cs_spawn_mix_thread
+						  updated documentation, typo fixes
+						  fixed typo in cs_malloc16 that caused heap corruption
 		1.05 (12/08/2016) cs_stop_all_sounds, suggested by Aaron Balint
 		1.06 (02/17/2017) port to CoreAudio for Apple machines
 		1.07 (06/18/2017) SIMD the pitch shift code; swapped out old Bernsee
-		                  code for a new re-write, updated docs as necessary,
-		                  support for compiling as .c and .cpp on Windows,
-		                  port for SDL (for Linux, or any other platform).
-		                  Special thanks to DeXP (Dmitry Hrabrov) for 90% of
-		                  the work on the SDL port!
+						  code for a new re-write, updated docs as necessary,
+						  support for compiling as .c and .cpp on Windows,
+						  port for SDL (for Linux, or any other platform).
+						  Special thanks to DeXP (Dmitry Hrabrov) for 90% of
+						  the work on the SDL port!
 		1.08 (09/06/2017) SDL_RWops support by RobLoach
 		1.09 (05/20/2018) Load wav funcs can skip all irrelevant chunks
-		                  Ref counting for playing sounds
+						  Ref counting for playing sounds
 		1.10 (08/24/2019) Introduced plugin interface, reimplemented pitch shifting
-		                  as a plugin, added optional `ctx` to alloc functions
+						  as a plugin, added optional `ctx` to alloc functions
 		1.11 (04/23/2020) scalar SIMD mode and various compiler warning/error fixes
 	CONTRIBUTORS
 		Aaron Balint      1.04 - real time pitch
-		                  1.04 - separate thread for cs_mix
-		                  1.04 - bugfix, removed extra cs_free16 call for second channel
+						  1.04 - separate thread for cs_mix
+						  1.04 - bugfix, removed extra cs_free16 call for second channel
 		DeXP              1.07 - initial work on SDL port
 		RobLoach          1.08 - SDL_RWops support
 		Matt Rosen        1.10 - Initial experiments with cute_dsp to figure out plugin
-		                         interface needs and use-cases
+								 interface needs and use-cases
 		fluffrabbit       1.11 - scalar SIMD mode and various compiler warning/error fixes
 	DOCUMENTATION (very quick intro)
 		1. create context
@@ -203,13 +203,13 @@
 
 #if defined(_WIN32)
 
-	#if !defined _CRT_SECURE_NO_WARNINGS
-		#define _CRT_SECURE_NO_WARNINGS
-	#endif
+#if !defined _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
+#endif
 
-	#if !defined _CRT_NONSTDC_NO_DEPRECATE
-		#define _CRT_NONSTDC_NO_DEPRECATE
-	#endif
+#if !defined _CRT_NONSTDC_NO_DEPRECATE
+#define _CRT_NONSTDC_NO_DEPRECATE
+#endif
 
 #endif
 
@@ -272,8 +272,8 @@ void cs_read_mem_wav(const void* memory, int size, cs_loaded_sound_t* sound);
 // some functions for dealing with OGG files.
 #ifdef STB_VORBIS_INCLUDE_STB_VORBIS_H
 
-	void cs_read_mem_ogg(const void* memory, int length, cs_loaded_sound_t* sound);
-	cs_loaded_sound_t cs_load_ogg(const char* path);
+void cs_read_mem_ogg(const void* memory, int length, cs_loaded_sound_t* sound);
+cs_loaded_sound_t cs_load_ogg(const char* path);
 
 #endif
 
@@ -379,14 +379,14 @@ void cs_stop_all_sounds(cs_context_t* ctx);
 #if defined(SDL_rwops_h_) && defined(CUTE_SOUND_SDL_RWOPS)
 
 	// Provides the ability to use cs_load_wav with an SDL_RWops object.
-	cs_loaded_sound_t cs_load_wav_rw(SDL_RWops* context);
+cs_loaded_sound_t cs_load_wav_rw(SDL_RWops* context);
 
-	#ifdef STB_VORBIS_INCLUDE_STB_VORBIS_H
+#ifdef STB_VORBIS_INCLUDE_STB_VORBIS_H
 
-		// Provides the ability to use cs_load_ogg with an SDL_RWops object.
-		cs_loaded_sound_t cs_load_ogg_rw(SDL_RWops* rw);
+// Provides the ability to use cs_load_ogg with an SDL_RWops object.
+cs_loaded_sound_t cs_load_ogg_rw(SDL_RWops* rw);
 
-	#endif
+#endif
 
 #endif // SDL_rwops_h_
 
@@ -468,9 +468,9 @@ cs_plugin_id_t cs_add_plugin(cs_context_t* ctx, const cs_plugin_interface_t* plu
 #endif
 
 #if !defined(CUTE_SOUND_ALLOC)
-	#include <stdlib.h>	// malloc, free
-	#define CUTE_SOUND_ALLOC(size, ctx) malloc(size)
-	#define CUTE_SOUND_FREE(mem, ctx) free(mem)
+#include <stdlib.h>	// malloc, free
+#define CUTE_SOUND_ALLOC(size, ctx) malloc(size)
+#define CUTE_SOUND_FREE(mem, ctx) free(mem)
 #endif
 
 #include <stdio.h>	// fopen, fclose
@@ -484,231 +484,231 @@ cs_plugin_id_t cs_add_plugin(cs_context_t* ctx, const cs_plugin_interface_t* plu
 
 #if defined(_WIN32)
 
-	#if !defined _CRT_SECURE_NO_WARNINGS
-		#define _CRT_SECURE_NO_WARNINGS
-	#endif
+#if !defined _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
+#endif
 
-	#if !defined _CRT_NONSTDC_NO_DEPRECATE
-		#define _CRT_NONSTDC_NO_DEPRECATE
-	#endif
+#if !defined _CRT_NONSTDC_NO_DEPRECATE
+#define _CRT_NONSTDC_NO_DEPRECATE
+#endif
 
-	#define CUTE_SOUND_PLATFORM CUTE_SOUND_WINDOWS
+#define CUTE_SOUND_PLATFORM CUTE_SOUND_WINDOWS
 
 #elif defined(__APPLE__)
 
-	#define CUTE_SOUND_PLATFORM CUTE_SOUND_APPLE
+#define CUTE_SOUND_PLATFORM CUTE_SOUND_APPLE
 
 #elif defined(__linux__)
 
-	#define CUTE_SOUND_PLATFORM CUTE_SOUND_LINUX
+#define CUTE_SOUND_PLATFORM CUTE_SOUND_LINUX
 
 #else
 
 	// Just use SDL on other esoteric platforms.
-	#define CUTE_SOUND_PLATFORM CUTE_SOUND_SDL
+#define CUTE_SOUND_PLATFORM CUTE_SOUND_SDL
 
 #endif
 
 // Use CUTE_SOUND_FORCE_SDL to override the above macros and use the SDL port.
 #ifdef CUTE_SOUND_FORCE_SDL
 
-	#undef CUTE_SOUND_PLATFORM
-	#define CUTE_SOUND_PLATFORM CUTE_SOUND_SDL
+#undef CUTE_SOUND_PLATFORM
+#define CUTE_SOUND_PLATFORM CUTE_SOUND_SDL
 
 #endif
 
 // Platform specific file inclusions.
 #if CUTE_SOUND_PLATFORM == CUTE_SOUND_WINDOWS
 
-	#ifndef _WINDOWS_
-		#ifndef WIN32_LEAN_AND_MEAN
-			#define WIN32_LEAN_AND_MEAN
-		#endif
-		#include <windows.h>
-	#endif
+#ifndef _WINDOWS_
+#ifndef WIN32_LEAN_AND_MEAN
+#define WIN32_LEAN_AND_MEAN
+#endif
+#include <windows.h>
+#endif
 
-	#ifndef _WAVEFORMATEX_
-		#include <mmreg.h>
-		#include <mmsystem.h>
-	#endif
+#ifndef _WAVEFORMATEX_
+#include <mmreg.h>
+#include <mmsystem.h>
+#endif
 
-	#include <dsound.h>
-	#undef PlaySound
+#include <dsound.h>
+#undef PlaySound
 
-	#ifdef _MSC_VER
-		#pragma comment(lib, "dsound.lib")
-	#endif
+#ifdef _MSC_VER
+#pragma comment(lib, "dsound.lib")
+#endif
 
 #elif CUTE_SOUND_PLATFORM == CUTE_SOUND_APPLE
 
-	#include <CoreAudio/CoreAudio.h>
-	#include <AudioUnit/AudioUnit.h>
-	#include <pthread.h>
-	#include <mach/mach_time.h>
+#include <CoreAudio/CoreAudio.h>
+#include <AudioUnit/AudioUnit.h>
+#include <pthread.h>
+#include <mach/mach_time.h>
 
 #elif CUTE_SOUND_PLATFORM == CUTE_SOUND_LINUX
 
-	#define ALSA_PCM_NEW_HW_PARAMS_API
-	#include <alsa/asoundlib.h>
-	#include <unistd.h> // nanosleep
-	#include <dlfcn.h> // dlopen, dclose, dlsym
-	#define timespec // Avoids duplicate definitions.
-	#undef timespec // You must compile with POSIX features enabled.
-	#include <pthread.h>
-	#include <alloca.h>
-	#include <assert.h>
+#define ALSA_PCM_NEW_HW_PARAMS_API
+#include <alsa/asoundlib.h>
+#include <unistd.h> // nanosleep
+#include <dlfcn.h> // dlopen, dclose, dlsym
+#define timespec // Avoids duplicate definitions.
+#undef timespec // You must compile with POSIX features enabled.
+#include <pthread.h>
+#include <alloca.h>
+#include <assert.h>
 
 #elif CUTE_SOUND_PLATFORM == CUTE_SOUND_SDL
 
-	#include <SDL2/SDL.h>
-	#ifndef _WIN32
-		#include <alloca.h>
-	#endif
+#include <SDL2/SDL.h>
+#ifndef _WIN32
+#include <alloca.h>
+#endif
 
 #else
 
-	#error Unsupported platform - please choose one of CUTE_SOUND_WINDOWS, CUTE_SOUND_APPLE, CUTE_SOUND_LINUX or CUTE_SOUND_SDL.
+#error Unsupported platform - please choose one of CUTE_SOUND_WINDOWS, CUTE_SOUND_APPLE, CUTE_SOUND_LINUX or CUTE_SOUND_SDL.
 
 #endif
 
 #ifdef CUTE_SOUND_SCALAR_MODE
 
-	#include <limits.h>
+#include <limits.h>
 
-	#define CS_SATURATE16(X) (int16_t)((X) > SHRT_MAX ? SHRT_MAX : ((X) < SHRT_MIN ? SHRT_MIN : (X)))
+#define CS_SATURATE16(X) (int16_t)((X) > SHRT_MAX ? SHRT_MAX : ((X) < SHRT_MIN ? SHRT_MIN : (X)))
 
-	typedef struct cs__m128
-	{
-		float a, b, c, d;
-	} cs__m128;
+typedef struct cs__m128
+{
+	float a, b, c, d;
+} cs__m128;
 
-	typedef struct cs__m128i
-	{
-		int32_t a, b, c, d;
-	} cs__m128i;
+typedef struct cs__m128i
+{
+	int32_t a, b, c, d;
+} cs__m128i;
 
-	cs__m128 cs_mm_set_ps(float e3, float e2, float e1, float e0)
-	{
-		cs__m128 a;
-		a.a = e0;
-		a.b = e1;
-		a.c = e2;
-		a.d = e3;
-		return a;
-	}
+cs__m128 cs_mm_set_ps(float e3, float e2, float e1, float e0)
+{
+	cs__m128 a;
+	a.a = e0;
+	a.b = e1;
+	a.c = e2;
+	a.d = e3;
+	return a;
+}
 
-	cs__m128 cs_mm_set1_ps(float e)
-	{
-		cs__m128 a;
-		a.a = e;
-		a.b = e;
-		a.c = e;
-		a.d = e;
-		return a;
-	}
+cs__m128 cs_mm_set1_ps(float e)
+{
+	cs__m128 a;
+	a.a = e;
+	a.b = e;
+	a.c = e;
+	a.d = e;
+	return a;
+}
 
-	cs__m128 cs_mm_load_ps(float const* mem_addr)
-	{
-		cs__m128 a;
-		a.a = mem_addr[0];
-		a.b = mem_addr[1];
-		a.c = mem_addr[2];
-		a.d = mem_addr[3];
-		return a;
-	}
+cs__m128 cs_mm_load_ps(float const* mem_addr)
+{
+	cs__m128 a;
+	a.a = mem_addr[0];
+	a.b = mem_addr[1];
+	a.c = mem_addr[2];
+	a.d = mem_addr[3];
+	return a;
+}
 
-	cs__m128 cs_mm_add_ps(cs__m128 a, cs__m128 b)
-	{
-		cs__m128 c;
-		c.a = a.a + b.a;
-		c.b = a.b + b.b;
-		c.c = a.c + b.c;
-		c.d = a.d + b.d;
-		return c;
-	}
+cs__m128 cs_mm_add_ps(cs__m128 a, cs__m128 b)
+{
+	cs__m128 c;
+	c.a = a.a + b.a;
+	c.b = a.b + b.b;
+	c.c = a.c + b.c;
+	c.d = a.d + b.d;
+	return c;
+}
 
-	cs__m128 cs_mm_mul_ps(cs__m128 a, cs__m128 b)
-	{
-		cs__m128 c;
-		c.a = a.a * b.a;
-		c.b = a.b * b.b;
-		c.c = a.c * b.c;
-		c.d = a.d * b.d;
-		return c;
-	}
+cs__m128 cs_mm_mul_ps(cs__m128 a, cs__m128 b)
+{
+	cs__m128 c;
+	c.a = a.a * b.a;
+	c.b = a.b * b.b;
+	c.c = a.c * b.c;
+	c.d = a.d * b.d;
+	return c;
+}
 
-	cs__m128i cs_mm_cvtps_epi32(cs__m128 a)
-	{
-		cs__m128i b;
-		b.a = a.a;
-		b.b = a.b;
-		b.c = a.c;
-		b.d = a.d;
-		return b;
-	}
+cs__m128i cs_mm_cvtps_epi32(cs__m128 a)
+{
+	cs__m128i b;
+	b.a = a.a;
+	b.b = a.b;
+	b.c = a.c;
+	b.d = a.d;
+	return b;
+}
 
-	cs__m128i cs_mm_unpacklo_epi32(cs__m128i a, cs__m128i b)
-	{
-		cs__m128i c;
-		c.a = a.a;
-		c.b = b.a;
-		c.c = a.b;
-		c.d = b.b;
-		return c;
-	}
+cs__m128i cs_mm_unpacklo_epi32(cs__m128i a, cs__m128i b)
+{
+	cs__m128i c;
+	c.a = a.a;
+	c.b = b.a;
+	c.c = a.b;
+	c.d = b.b;
+	return c;
+}
 
-	cs__m128i cs_mm_unpackhi_epi32(cs__m128i a, cs__m128i b)
-	{
-		cs__m128i c;
-		c.a = a.c;
-		c.b = b.c;
-		c.c = a.d;
-		c.d = b.d;
-		return c;
-	}
+cs__m128i cs_mm_unpackhi_epi32(cs__m128i a, cs__m128i b)
+{
+	cs__m128i c;
+	c.a = a.c;
+	c.b = b.c;
+	c.c = a.d;
+	c.d = b.d;
+	return c;
+}
 
-	cs__m128i cs_mm_packs_epi32(cs__m128i a, cs__m128i b)
-	{
-		union {
-			int16_t c[8];
-			cs__m128i m;
-		} dst;
-		dst.c[0] = CS_SATURATE16(a.a);
-		dst.c[1] = CS_SATURATE16(a.b);
-		dst.c[2] = CS_SATURATE16(a.c);
-		dst.c[3] = CS_SATURATE16(a.d);
-		dst.c[4] = CS_SATURATE16(b.a);
-		dst.c[5] = CS_SATURATE16(b.b);
-		dst.c[6] = CS_SATURATE16(b.c);
-		dst.c[7] = CS_SATURATE16(b.d);
-		return dst.m;
-	}
+cs__m128i cs_mm_packs_epi32(cs__m128i a, cs__m128i b)
+{
+	union {
+		int16_t c[8];
+		cs__m128i m;
+	} dst;
+	dst.c[0] = CS_SATURATE16(a.a);
+	dst.c[1] = CS_SATURATE16(a.b);
+	dst.c[2] = CS_SATURATE16(a.c);
+	dst.c[3] = CS_SATURATE16(a.d);
+	dst.c[4] = CS_SATURATE16(b.a);
+	dst.c[5] = CS_SATURATE16(b.b);
+	dst.c[6] = CS_SATURATE16(b.c);
+	dst.c[7] = CS_SATURATE16(b.d);
+	return dst.m;
+}
 
 #else
 
-	#include <xmmintrin.h>
-	#include <emmintrin.h>
+#include <xmmintrin.h>
+#include <emmintrin.h>
 
-	#define cs__m128 __m128
-	#define cs__m128i __m128i
+#define cs__m128 __m128
+#define cs__m128i __m128i
 
-	#define cs_mm_set_ps _mm_set_ps
-	#define cs_mm_set1_ps _mm_set1_ps
-	#define cs_mm_load_ps _mm_load_ps
-	#define cs_mm_add_ps _mm_add_ps
-	#define cs_mm_mul_ps _mm_mul_ps
-	#define cs_mm_cvtps_epi32 _mm_cvtps_epi32
-	#define cs_mm_unpacklo_epi32 _mm_unpacklo_epi32
-	#define cs_mm_unpackhi_epi32 _mm_unpackhi_epi32
-	#define cs_mm_packs_epi32 _mm_packs_epi32
+#define cs_mm_set_ps _mm_set_ps
+#define cs_mm_set1_ps _mm_set1_ps
+#define cs_mm_load_ps _mm_load_ps
+#define cs_mm_add_ps _mm_add_ps
+#define cs_mm_mul_ps _mm_mul_ps
+#define cs_mm_cvtps_epi32 _mm_cvtps_epi32
+#define cs_mm_unpacklo_epi32 _mm_unpacklo_epi32
+#define cs_mm_unpackhi_epi32 _mm_unpackhi_epi32
+#define cs_mm_packs_epi32 _mm_packs_epi32
 
 #endif // CUTE_SOUND_SCALAR_MODE
 
 #define CUTE_SOUND_CHECK(X, Y) do { if (!(X)) { cs_error_reason = Y; goto ts_err; } } while (0)
 #ifdef __clang__
-	#define CUTE_SOUND_ASSERT_INTERNAL __builtin_trap()
+#define CUTE_SOUND_ASSERT_INTERNAL __builtin_trap()
 #else
-	#define CUTE_SOUND_ASSERT_INTERNAL *(int*)0 = 0
+#define CUTE_SOUND_ASSERT_INTERNAL *(int*)0 = 0
 #endif
 #define CUTE_SOUND_ASSERT(X) do { if (!(X)) CUTE_SOUND_ASSERT_INTERNAL; } while (0)
 #define CUTE_SOUND_ALIGN(X, Y) ((((size_t)X) + ((Y) - 1)) & ~((Y) - 1))
@@ -766,7 +766,7 @@ static void cs_free16(void* p, void* mem_ctx)
 {
 	(void)mem_ctx;
 	if (!p) return;
-	CUTE_SOUND_FREE((char*)p - (((size_t)*((char*)p - 1)) & 0xFF), NULL);
+	CUTE_SOUND_FREE((char*)p - (((size_t) * ((char*)p - 1)) & 0xFF), NULL);
 }
 
 static void cs_last_element(cs__m128* a, int i, int j, int16_t* samples, int offset)
@@ -793,7 +793,7 @@ static void cs_last_element(cs__m128* a, int i, int j, int16_t* samples, int off
 
 void cs_read_mem_wav(const void* memory, int size, cs_loaded_sound_t* sound)
 {
-	#pragma pack(push, 1)
+#pragma pack(push, 1)
 	typedef struct
 	{
 		uint16_t wFormatTag;
@@ -807,7 +807,7 @@ void cs_read_mem_wav(const void* memory, int size, cs_loaded_sound_t* sound)
 		uint32_t dwChannelMask;
 		uint8_t SubFormat[18];
 	} Fmt;
-	#pragma pack(pop)
+#pragma pack(pop)
 
 	sound->playing_count = 0;
 
@@ -1411,7 +1411,7 @@ static void* cs_ctx_thread(void* udata)
 
 	while (ctx->running)
 	{
-        printf("Entering mix...\n");
+		printf("Entering mix...\n");
 		cs_mix(ctx);
 		if (ctx->sleep_milliseconds) cs_sleep(ctx->sleep_milliseconds);
 		else pthread_yield_np();
@@ -1563,15 +1563,15 @@ typedef struct cs_pcm_functions_t
 	int (*snd_pcm_hw_params_set_period_size_near)(snd_pcm_t*, snd_pcm_hw_params_t*, snd_pcm_uframes_t*, int*);
 	int (*snd_pcm_hw_params_set_periods_min)(snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*, int*);
 	int (*snd_pcm_hw_params_set_periods_first)(snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*, int*);
-    int (*snd_pcm_hw_params)(snd_pcm_t*, snd_pcm_hw_params_t*);
+	int (*snd_pcm_hw_params)(snd_pcm_t*, snd_pcm_hw_params_t*);
 	int (*snd_pcm_sw_params_current)(snd_pcm_t*, snd_pcm_sw_params_t*);
 	int (*snd_pcm_sw_params_set_avail_min)(snd_pcm_t*, snd_pcm_sw_params_t*, snd_pcm_uframes_t);
 	int (*snd_pcm_sw_params_set_start_threshold)(snd_pcm_t*, snd_pcm_sw_params_t*, snd_pcm_uframes_t);
 	int (*snd_pcm_sw_params)(snd_pcm_t*, snd_pcm_sw_params_t*);
-	snd_pcm_sframes_t (*snd_pcm_avail)(snd_pcm_t*);
-	snd_pcm_sframes_t (*snd_pcm_writei)(snd_pcm_t*, const void*, snd_pcm_uframes_t);
-	size_t (*snd_pcm_hw_params_sizeof)(void);
-	size_t (*snd_pcm_sw_params_sizeof)(void);
+	snd_pcm_sframes_t(*snd_pcm_avail)(snd_pcm_t*);
+	snd_pcm_sframes_t(*snd_pcm_writei)(snd_pcm_t*, const void*, snd_pcm_uframes_t);
+	size_t(*snd_pcm_hw_params_sizeof)(void);
+	size_t(*snd_pcm_sw_params_sizeof)(void);
 	int (*snd_pcm_drain)(snd_pcm_t*);
 	int (*snd_pcm_recover)(snd_pcm_t*, int, int);
 } cs_pcm_functions_t;
@@ -1602,7 +1602,7 @@ static void* cs_load_alsa_functions(cs_pcm_functions_t* fns)
 	CUTE_SOUND_DLSYM(snd_pcm_hw_params_set_periods_min);
 	CUTE_SOUND_DLSYM(snd_pcm_hw_params_set_periods_first);
 	CUTE_SOUND_DLSYM(snd_pcm_hw_params);
-    CUTE_SOUND_DLSYM(snd_pcm_sw_params);
+	CUTE_SOUND_DLSYM(snd_pcm_sw_params);
 	CUTE_SOUND_DLSYM(snd_pcm_sw_params_current);
 	CUTE_SOUND_DLSYM(snd_pcm_sw_params_set_avail_min);
 	CUTE_SOUND_DLSYM(snd_pcm_sw_params_set_start_threshold);
@@ -1637,7 +1637,7 @@ struct cs_context_t
 	// Platform specific stuff.
 	snd_pcm_t* pcm_handle;
 	cs_pcm_functions_t fns;
-	void *alsa_so;
+	void* alsa_so;
 
 	// data for cs_mix thread, enable these with cs_spawn_mix_thread
 	pthread_t thread;
@@ -1716,18 +1716,18 @@ cs_context_t* cs_make_context(void* unused, unsigned play_frequency_in_Hz, int b
 	snd_pcm_uframes_t period_size;
 	const char* default_device = "hw:0,0";
 	unsigned int periods = 2;
-    int dir = 0;
-	snd_pcm_hw_params_t *hw_params = NULL;
-	snd_pcm_sw_params_t *sw_params = NULL;
+	int dir = 0;
+	snd_pcm_hw_params_t* hw_params = NULL;
+	snd_pcm_sw_params_t* sw_params = NULL;
 
-// This hack is necessary for some inline'd code in ALSA's headers that tries to
-// call these sizeof functions, which we are loading into the cute sound context manually.
+	// This hack is necessary for some inline'd code in ALSA's headers that tries to
+	// call these sizeof functions, which we are loading into the cute sound context manually.
 #define snd_pcm_hw_params_sizeof fns.snd_pcm_hw_params_sizeof
 #define snd_pcm_sw_params_sizeof fns.snd_pcm_sw_params_sizeof
 
 	void* alsa_so = cs_load_alsa_functions(&fns);
 	CUTE_SOUND_CHECK(alsa_so, "Unable to load ALSA functions from shared library.");
-    printf("%p\n", fns.snd_pcm_open);
+	printf("%p\n", fns.snd_pcm_open);
 	res = fns.snd_pcm_open(&pcm_handle, default_device, SND_PCM_STREAM_PLAYBACK, SND_PCM_NONBLOCK);
 	CUTE_SOUND_CHECK(res >= 0, "Failed to open default audio device.");
 	snd_pcm_hw_params_alloca(&hw_params);
@@ -1750,7 +1750,7 @@ cs_context_t* cs_make_context(void* unused, unsigned play_frequency_in_Hz, int b
 	CUTE_SOUND_CHECK(res >= 0, "Failed to set double buffering (first), likely not enough RAM for these settings.");
 	res = fns.snd_pcm_hw_params(pcm_handle, hw_params);
 	CUTE_SOUND_CHECK(res >= 0, "Failed to send hardware parameters to the driver.");
-    snd_pcm_sw_params_alloca(&sw_params);
+	snd_pcm_sw_params_alloca(&sw_params);
 	CUTE_SOUND_CHECK(res >= 0, "Failed to allocate software parameters.");
 	res = fns.snd_pcm_sw_params_current(pcm_handle, sw_params);
 	CUTE_SOUND_CHECK(res >= 0, "Failed to initialize software parameters.");
@@ -2593,20 +2593,20 @@ void cs_mix(cs_context_t* ctx)
 	// over a ring buffer (accessed by cs_push_bytes and cs_pull_bytes), but
 	// ALSA on Linux has their own memcpy-style function to use... So we don't
 	// need a local ring buffer at all, and can directly hand over the samples.
-	#if CUTE_SOUND_PLATFORM != CUTE_SOUND_LINUX
-		cs_push_bytes(ctx, samples, bytes_to_write);
-	#else
-		ret = ctx->fns.snd_pcm_writei(ctx->pcm_handle, samples, (snd_pcm_sframes_t)samples_to_write);
-		if (ret < 0) ret = ctx->fns.snd_pcm_recover(ctx->pcm_handle, ret, 0);
-		if (ret < 0) {
-			// A fatal error occured.
-			ctx->separate_thread = 0;
-		}
-	#endif
+#if CUTE_SOUND_PLATFORM != CUTE_SOUND_LINUX
+	cs_push_bytes(ctx, samples, bytes_to_write);
+#else
+	ret = ctx->fns.snd_pcm_writei(ctx->pcm_handle, samples, (snd_pcm_sframes_t)samples_to_write);
+	if (ret < 0) ret = ctx->fns.snd_pcm_recover(ctx->pcm_handle, ret, 0);
+	if (ret < 0) {
+		// A fatal error occured.
+		ctx->separate_thread = 0;
+	}
+#endif
 
 #endif
 
-	unlock:
+unlock:
 	cs_unlock(ctx);
 }
 

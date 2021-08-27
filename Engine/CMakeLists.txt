@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.16 FATAL_ERROR)
 project(FractalEngine)
 
-set(CONFIGURATION "Debug")
+set(CONFIGURATION "Release")
 
 if (WIN32)
     set(PLATFORM "Windows")
@@ -46,7 +46,7 @@ endif()
 if(PLATFORM STREQUAL "Windows")
 target_link_libraries(FractalEngine opengl32)
 target_link_libraries(FractalEngine glfw3)
-target_link_libraries(FractalEngine glew32s)
+target_link_libraries(FractalEngine glew)
 target_link_libraries(FractalEngine tinyxml2)
 target_link_libraries(FractalEngine assimp)
 endif()
