@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-Fractal Engine is a cool 3D game engine and scene editor.
+Fractal Engine is a cool 3D game engine.
 </p>
 
 <p align="center">
@@ -76,7 +76,7 @@ Developers
 * <a href = "https://github.com/kacperks"> kacperks </a>
 * <a href = "https://github.com/lubek-dc"> lubek-dc </a>
 * <a href = "https://github.com/BoomerDev"> BoomerDev </a>
+* <a href = "https://github.com/Yavuz1234567890"> Yavuz1234567890 </a>
 
 Contributors    
-* <a href = "https://github.com/Yavuz1234567890"> Yavuz1234567890 </a>
 * <a href = "https://github.com/honeystudios"> honeystudios </a>

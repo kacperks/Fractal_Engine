@@ -1,14 +1,18 @@
 #pragma once
 
 #include "Math/Vector3.h"
-#include "SphereCollider.h"
-#include "PlaneCollider.h"
 
 #define FR_PHYSICS_COLLIDER_TYPE_SPHERE 0
 #define FR_PHYSICS_COLLIDER_TYPE_PLANE 1
 #define FR_PHYSICS_COLLIDER_TYPE_SIZE 2
 
 namespace fr::Physics {
+	enum {
+		COLLIDER_TYPE_SPHERE,
+		COLLIDER_TYPE_AABB,
+		COLLIDER_TYPE_SIZE
+	};
+
 	struct CollisionPoints {
 		CollisionPoints() = default;
 		~CollisionPoints() = default;
@@ -23,7 +27,7 @@ namespace fr::Physics {
 	class IntersectData
 	{
 	public:
-		IntersectData(const bool doesIntersect, const Vec3& direction) : _doesIntersect(doesIntersect), _direction(direction) {}
+		IntersectData(bool doesIntersect, Vec3 direction) : _doesIntersect(doesIntersect), _direction(direction) {}
 		inline bool GetDoesIntersect() { return _doesIntersect; }
 		inline float GetDistance() { return _direction.Lenght(); }
 		inline const Vec3& GetDirection() { return _direction; }
@@ -36,13 +40,6 @@ namespace fr::Physics {
 	class Collider
 	{
 		public:	
-			
-		enum {
-			TYPE_SPHERE,
-			TYPE_AABB,
-			TYPE_SIZE
-		};
-
 		Collider(int type) : _type(type) {}
 		IntersectData Intersect(const Collider& other) const;
 		virtual void Transform(const Vec3& translation) {}
