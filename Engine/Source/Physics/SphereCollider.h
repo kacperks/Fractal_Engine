@@ -3,18 +3,13 @@
 #include "Collider.h"
 
 namespace fr::Physics {
-	class BoundingSphere : Collider {
+	class SphereCollider : Collider {
 	public:
-		BoundingSphere(const Vec3& center, float radius) : _center(center), _radius(radius) {}
-
-		IntersectData IntersectBoundingSphere(const BoundingSphere& other);
-		virtual void Transform(const Vec3& translation);
-		virtual Vec3 GetCenter() const { return _center; }
-
-		inline float GetRadius() const { return _radius; }
-
+		SphereCollider(const Vec3& center, float radius) : Collider(FR_PHYSICS_COLLIDER_TYPE_SPHERE),_center(center), _radius(radius) {}
+		IntersectData IntersectSphereCollider(SphereCollider& other);
+		virtual void Transform(Vec3& translation);
 		static void Test();
-	private:
+
 		Vec3  _center;
 		float _radius;
 	};

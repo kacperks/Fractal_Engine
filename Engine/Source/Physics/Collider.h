@@ -7,12 +7,6 @@
 #define FR_PHYSICS_COLLIDER_TYPE_SIZE 2
 
 namespace fr::Physics {
-	enum {
-		COLLIDER_TYPE_SPHERE,
-		COLLIDER_TYPE_AABB,
-		COLLIDER_TYPE_SIZE
-	};
-
 	struct CollisionPoints {
 		CollisionPoints() = default;
 		~CollisionPoints() = default;
@@ -40,6 +34,7 @@ namespace fr::Physics {
 	class Collider
 	{
 		public:	
+		Collider() {}
 		Collider(int type) : _type(type) {}
 		IntersectData Intersect(const Collider& other) const;
 		virtual void Transform(const Vec3& translation) {}

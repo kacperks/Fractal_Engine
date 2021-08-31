@@ -20,5 +20,5 @@ namespace fr {
 }
 
 #define INFO(...) fr::Log::InfoLog(__VA_ARGS__)
-#define ERROR(...) fr::Log::ErrorLog(__VA_ARGS__)
+#define FR_ERROR(...) fr::Log::ErrorLog(__VA_ARGS__)
 #define WARNING(...) fr::Log::WarnLog(__VA_ARGS__)

@@ -4,8 +4,8 @@
 
 namespace fr::Physics {
 	IntersectData AABB::IntersectAABB(AABB other){
-		Vec3 distances1 = other.GetMinExtents() - _maxExtents;
-		Vec3 distances2 = _minExtents - other.GetMaxExtents();
+		Vec3 distances1 = other.GetMinExtents() - max;
+		Vec3 distances2 = min - other.GetMaxExtents();
 		Vec3 distances = Vec3(distances1.Max(distances2));
 		float maxDistance = distances.Max();
 		return IntersectData(maxDistance < 0, distances);

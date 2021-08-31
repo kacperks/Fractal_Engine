@@ -4,7 +4,7 @@
 #include <tinyxml2.h>
 #include "Log.h"
 
-namespace fr {
+namespace fr::XML {
 	class Reader {
 	public:
 		Reader() = default;

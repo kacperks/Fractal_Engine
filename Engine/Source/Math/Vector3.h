@@ -47,6 +47,7 @@ namespace fr {
 
             void operator*=(Vec3 other);
             void operator/=(Vec3 other);
+            void operator/=(float other);
 
             float x, y, z;
         };
