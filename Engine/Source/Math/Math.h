@@ -14,6 +14,7 @@ namespace fr {
 		static float Cos(int deg);
 		static float Sin(int deg);
 		static float Tan(int deg);
+		static float Kotan(int deg);
 		static float Lerp(float start, float stop, float step);
 		static float PI();
 
