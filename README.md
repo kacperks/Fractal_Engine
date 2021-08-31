@@ -22,17 +22,17 @@ Features:
 * Loading 3D models and 2D textures with Assimp and STB
 * Textures, Models and Scenes Serializer (XML)
 * Scene Editor (Work In Progress)
-* Cross Platform (Work In Progress)
 * Event System
 * Custom Math Engine
-* Audio (NEW! Work In Progress)
+* Audio (Work In Progress)
+* Custom Physics Engine (Work In Progress)
 
 Planned Features: 
-* Custom Physics Engine
 * Vulkan Renderer
 * Fully Featured Editor
 * 3D Animations
 * 2D Renderer
+* Scripting
 * Docs
   
 Discord Server! : https://discord.gg/aXHjdQfCMK
