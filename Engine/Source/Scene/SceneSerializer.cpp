@@ -239,9 +239,9 @@ namespace fr {
 		printer.CloseElement();
 	}
 	void XMLSerializer::LoadModelRenderer(XMLElement* xModelRenderer, const ECS::EntityID entityid) {
-		ModelRenderer model;
+		
 		const char* name = xModelRenderer->Attribute("name");
-		model.Name = std::string(name);
+		ModelRenderer model = ModelRenderer(name);
 		ECS::Manager.AddComponent(entityid, model);
 	}
 

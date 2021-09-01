@@ -32,6 +32,14 @@ public:
 	}
 	void Show() override {
 		if (ImGui::CollapsingHeader("Model Renderer")) {
+			strcpy_s(buf, model->Name.c_str());
+			if (ImGui::InputText("Model Name", buf, IM_ARRAYSIZE(buf))) {
+				model->Name = std::string(buf);
+			}
+			ImGui::SameLine();
+			if (ImGui::Button("OK")) {
+				model->ReFresh();
+			}
 		}
 	}
 

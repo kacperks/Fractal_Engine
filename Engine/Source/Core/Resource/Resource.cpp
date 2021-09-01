@@ -37,6 +37,8 @@ namespace fr {
 		AddTex2D("light", LoadTex2D("Resource/Textures/light.png"));
 		AddTex2D("camera", LoadTex2D("Resource/Textures/camera.png"));
 
+		LoadModel("Sphere", "Resource/Models/Sphere.obj");
+
 		// skybox cubemap
 		std::vector<std::string> facepaths;
 		facepaths.push_back("Resource/Textures/skybox/right.png");

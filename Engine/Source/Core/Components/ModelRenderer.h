@@ -6,11 +6,15 @@
 struct ModelRenderer : public ECS::BaseComponent {
 	~ModelRenderer() = default;
 
-	ModelRenderer(){
+	ModelRenderer() : Name("Sphere"){
 		Renderer = fr::Resource.GetModel(Name);
 	}
 
 	ModelRenderer(std::string name): Name(name) {
+		Renderer = fr::Resource.GetModel(Name);
+	}
+
+	void ReFresh() {
 		Renderer = fr::Resource.GetModel(Name);
 	}
 
