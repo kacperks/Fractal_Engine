@@ -13,7 +13,7 @@ Fractal Engine is a cool 3D game engine.
 <img src="https://img.shields.io/github/stars/kacperks/Fractal_Engine?label=Stars&logo=github" />
 <img src="https://img.shields.io/github/languages/top/kacperks/Fractal_Engine?color=%230xfffff">
 <a href="https://discord.gg/aXHjdQfCMK">
-  <img src="https://img.shields.io/discord/836863029080752128?color=aXHjdQfCMK&label=Discord&logo=discord&logoColor=ffffff" alt="discord - users online" />
+  <img src="https://img.shields.io/discord/812755533907099689?color=aXHjdQfCMK&label=Discord&logo=discord&logoColor=ffffff" alt="discord - users online" />
 </a>
   
 Features:
@@ -22,17 +22,17 @@ Features:
 * Loading 3D models and 2D textures with Assimp and STB
 * Textures, Models and Scenes Serializer (XML)
 * Scene Editor (Work In Progress)
-* Cross Platform (Work In Progress)
 * Event System
 * Custom Math Engine
-* Audio (NEW! Work In Progress)
+* Audio (Work In Progress)
+* Custom Physics Engine (Work In Progress)
 
 Planned Features: 
-* Custom Physics Engine
 * Vulkan Renderer
 * Fully Featured Editor
 * 3D Animations
 * 2D Renderer
+* Scripting
 * Docs
   
 Discord Server! : https://discord.gg/aXHjdQfCMK
