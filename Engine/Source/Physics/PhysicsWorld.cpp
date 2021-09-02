@@ -8,6 +8,7 @@ namespace fr::Physics {
 
 	void PhysicsWorld::Step() {
 		for (PhysicsBody* obj : m_objs) { /*...*/ }
-
 	}
+
+	void PhysicsWorld::ResolveCollisions() { /*...*/ }
 }

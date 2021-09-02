@@ -8,11 +8,10 @@
 #include "Events/KeyCodes.h"
 #include "Core/Components/Transform.h"
 #include "Core/Components/RigidBody.h"
+#include "Physics/PhysicsWorld.h"
 #include "Physics/PhysicsBody.h"
 
 using namespace fr;
-
-// not finished yet!
 
 class PhysicsSystem : public ECS::BaseSystem {
 
@@ -22,14 +21,10 @@ public:
 		AddComponentSignature<RigidBody>();
 	}
 
-	void Start() {
-		
-	}
-
 	void Update() {
-		for (auto entity : entities) {
-			auto& _transform = ECS::Manager.GetComponent<Transform>(entity);
-			auto& _rigidbody = ECS::Manager.GetComponent<RigidBody>(entity);
-		}
+		m_PhysicsEngine.Step();
+		m_PhysicsEngine.ResolveCollisions();
 	}
+private:
+	Physics::PhysicsWorld m_PhysicsEngine;
 };

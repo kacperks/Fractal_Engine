@@ -9,7 +9,7 @@
 struct RigidBody : public ECS::BaseComponent {
 	RigidBody() = default;
 	~RigidBody() = default;
-	
+
 	int type = RB_DYNAMIC;
 
 	FRfloat Mass = 1.0f;
