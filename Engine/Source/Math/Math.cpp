@@ -52,7 +52,9 @@ namespace fr {
 	}
 
 	float Math::Tan(int deg) { return Sin(deg) / Cos(deg); }
-
+	
+	float Math::CoTan(int deg) { /* KOTANJANT */ return Cos(deg) / Sin(deg); }
+	
 	float Math::power(float base, int exp) {
 		if (exp < 0) {
 			if (base == 0)
