@@ -74,8 +74,9 @@ Discord Server! : https://discord.gg/aXHjdQfCMK
 
 Developers
 * <a href = "https://github.com/kacperks"> kacperks </a>
-* <a href = "https://github.com/lubek-dc"> lubek-dc </a>
+* <a href = "https://github.com/lubek-dc"> lubek-dc </a> 
 * <a href = "https://github.com/BoomerDev"> BoomerDev </a>
+* <a href = "https://github.com/MCLx86"> MCLx86 </a>
 * <a href = "https://github.com/Yavuz1234567890"> Yavuz1234567890 </a>
 
 Contributors    
