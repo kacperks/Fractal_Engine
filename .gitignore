@@ -21,3 +21,5 @@ build/*
 *.idb
 .sconsign.dblite
 docs/*
+Bin/*
+App/*

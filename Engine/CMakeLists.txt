@@ -15,8 +15,9 @@ endif()
 
 find_package(OpenGL REQUIRED)
 
-include_directories(Thirdparty/includes)
 include_directories(Source/)
+
+include_directories(Thirdparty/includes)
 
 if(CONFIGURATION STREQUAL "Release")
 
