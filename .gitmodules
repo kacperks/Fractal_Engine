@@ -4,11 +4,6 @@
 	url = https://github.com/assimp/assimp.git
 	branch = master
     
-[submodule "Engine/Thirdparty/cmake/glew-cmake"]
-	path = Engine/Thirdparty/cmake/glew-cmake
-	url = https://github.com/Perlmint/glew-cmake.git
-	branch = master
-    
 [submodule "Engine/Thirdparty/cmake/glfw"]
 	path = Engine/Thirdparty/cmake/glfw
 	url = https://github.com/glfw/glfw.git

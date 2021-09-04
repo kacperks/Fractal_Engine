@@ -62,7 +62,7 @@ Discord Server! : https://discord.gg/aXHjdQfCMK
 ## Dependencies
 
 * OpenGL Mathematics (GLM) https://github.com/g-truc/glm
-* GLEW https://github.com/nigels-com/glew
+* GLAD https://github.com/Dav1dde/glad
 * GLFW https://github.com/glfw/glfw
 * Assimp https://github.com/assimp/assimp
 * TinyXML https://github.com/leethomason/tinyxml2
