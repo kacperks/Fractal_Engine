@@ -57,7 +57,7 @@ Discord Server! : https://discord.gg/aXHjdQfCMK
     * Debian/Ubuntu ` $ sudo apt-get install cmake `
     * Fedora ` $ sudo dnf install cmake `
 
-* Then, go to the Fractal Engine directory and type, ` $ cmake -B App `
+* Then, type, ` $ cmake -B build `
 
 ## Dependencies
 
