@@ -8,30 +8,27 @@
 #include "Vector3.h"
 #include "Vector4.h"
 
-namespace fr {
-	class Math {
-	public:
-		static float Cos(int deg);
-		static float Sin(int deg);
-		static float Tan(int deg);
-		static float CoTan(int deg);
-		static float Lerp(float start, float stop, float step);
-		static float PI();
+namespace fr::Math {
+	static float Cos(int deg);
+	static float Sin(int deg);
+	static float Tan(int deg);
+	static float CoTan(int deg);
+	static float Lerp(float start, float stop, float step);
+	static float PI();
 
-		static float Radians(float degrees);
-		static float Degrees(float radians);
+	static float Radians(float degrees);
+	static float Degrees(float radians);
 
-		static float Sqrt(float num);
-		static float Q_rsqrt(float num);
+	static float Sqrt(float num);
+	static float Q_rsqrt(float num);
 
-		static float power(float base, int exp);
-		static int fact(int n);
+	static float power(float base, int exp);
+	static int fact(int n);
 
-		static float RandomRange(float min, float max);
+	static float RandomRange(float min, float max);
 
-		static float abs(float num);
-		static float abs(int num);
-	};
+	static float abs(float num);
+	static float abs(int num);
 }
 
 #endif
