@@ -63,6 +63,10 @@ public:
 	void SetMatrix4f(const GLchar* uName, const GLfloat* mtx) {
 		GLCALL(glUniformMatrix4fv(glGetUniformLocation(program, uName), 1, GL_FALSE, mtx));
 	}
+	
+	void SetMatrix4f(const GLchar* uName, Math::Matrix4 mat) {
+		SetMatrix4f(uName, mat.ValuePointer());
+	}
 
 	GLuint Program() const {
 		return program;
