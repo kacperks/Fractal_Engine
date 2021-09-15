@@ -6,7 +6,7 @@
 #include "Math.h"
 #include "Vector.h"
 
-namespace fr {
+namespace fr::Math {
     class Vec2 : public Vector<float, 2> {
     public:
         Vec2() : x(0.0f), y(0.0f) {}

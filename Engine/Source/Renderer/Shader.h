@@ -52,16 +52,12 @@ public:
 		Set3f(uName, v.x, v.y, v.z);
 	}
 
-	void SetV3f(const GLchar* uName, Vec3 v) {
+	void SetV3f(const GLchar* uName, Math::Vec3 v) {
 		Set3f(uName, v.x, v.y, v.z);
 	}
 
 	void Set4f(const GLchar* uName, GLfloat x, GLfloat y, GLfloat z, GLfloat w) {
 		GLCALL(glUniform4f(glGetUniformLocation(program, uName), x, y, z, w));
-	}
-
-	void SetV4f(const GLchar* uName, glm::vec4 v) {
-		Set4f(uName, v.x, v.y, v.z, v.z);
 	}
 
 	void SetMatrix4f(const GLchar* uName, const GLfloat* mtx) {

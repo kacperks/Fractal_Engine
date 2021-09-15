@@ -27,8 +27,8 @@ namespace fr::Math {
 
 	static float RandomRange(float min, float max);
 
-	static float abs(float num);
-	static float abs(int num);
+	static float Abs(float num);
+	static float Abs(int num);
 }
 
 #endif

@@ -3,7 +3,7 @@
 #include "pch.h"
 #include <tinyxml2.h>
 #include "Log.h"
-
+using namespace fr::Math;
 namespace fr::XML {
 	class Reader {
 	public:
@@ -20,7 +20,7 @@ namespace fr::XML {
 			_Document.LoadFile(filename);
 			if (_Document.Error()) {
 				String log = _Document.ErrorStr();
-				ERROR(log);
+				FR_ERROR(log);
 				return;
 			}
 		}

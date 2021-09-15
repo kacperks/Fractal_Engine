@@ -7,14 +7,14 @@
 namespace fr::Physics {
 	class AABB {
 	public:
-		AABB(Vec3 minExtents, Vec3 maxExtents) : min(minExtents), max(maxExtents) {}
+		AABB(Math::Vec3 minExtents, Math::Vec3 maxExtents) : min(minExtents), max(maxExtents) {}
 
 		IntersectData IntersectAABB(AABB other);
-		Vec3 GetMinExtents() { return min; }
-		Vec3 GetMaxExtents() { return max; }
+		Math::Vec3 GetMinExtents() { return min; }
+		Math::Vec3 GetMaxExtents() { return max; }
 		static void Test();
 	private:
-		Vec3 min;
-		Vec3 max;
+		Math::Vec3 min;
+		Math::Vec3 max;
 	};
 }

@@ -7,7 +7,7 @@
 #include "Vector3.h"
 #include "Vector4.h"
 
-namespace fr {
+namespace fr::Math {
     class Mat4 {
     private:
         float matrix[4][4];

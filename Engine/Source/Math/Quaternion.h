@@ -6,7 +6,7 @@
 #include "Matrix4.h"
 
 
-namespace fr {
+namespace fr::Math {
 	class Quaternion : public Vec4 {
 	public:
 		Quaternion(Mat4& m);
