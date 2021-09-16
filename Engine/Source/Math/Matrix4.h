@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef FR_MATRIX_4
-#define FR_MATRIX_4
-
 #include "Math.h"
 #include "Vector3.h"
 #include "Vector4.h"
@@ -202,6 +199,3 @@ namespace fr::Math {
         float* ValuePointer() { return &(matrix[0][0]); }
     };
 }
-
-
-#endif

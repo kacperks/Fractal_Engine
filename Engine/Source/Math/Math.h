@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef FR_MATH_H
-#define FR_MATH_H
-
 #include "pch.h"
 #include "Vector2.h"
 #include "Vector3.h"
@@ -30,5 +27,3 @@ namespace fr::Math {
 	static float Abs(float num);
 	static float Abs(int num);
 }
-
-#endif
