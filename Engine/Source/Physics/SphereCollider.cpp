@@ -5,7 +5,7 @@ namespace fr::Physics {
 	IntersectData SphereCollider::IntersectSphereCollider(SphereCollider& other)
 	{
 		float radiusDistance = _radius + other._radius;
-		Math::Vec3 direction = (other._center - _center);
+		Vec3 direction = (other._center - _center);
 		float centerDistance = direction.Lenght();
 		direction /= centerDistance;
 		float distance = centerDistance - radiusDistance;

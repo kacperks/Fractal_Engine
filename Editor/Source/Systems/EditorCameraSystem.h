@@ -21,14 +21,9 @@ public:
 		camera.Position.z = 50.0f;
 		skybox = Shader(Resource.Program("SKYBOX"));
 
-	#ifdef FR_BULID
-		shaders[0] = Shader(Resource.Program("MESH"));
-		shaders[1] = Shader(Resource.Program("GRID"));
-	#else
 		shaders[0] = Shader(Resource.Program("MESH"));
 		shaders[1] = Shader(Resource.Program("GRID"));
 		shaders[2] = Shader(Resource.Program("SPRITE"));
-	#endif
 	}
 
 	void Start() {		
@@ -84,9 +79,5 @@ public:
 private:
 	Camera camera;
 	Shader skybox;
-#ifdef FR_BULID
-	Shader shaders[2];
-#else
 	Shader shaders[3];
-#endif
 };

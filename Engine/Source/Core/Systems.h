@@ -4,7 +4,6 @@
 #include "Systems/PhysicsSystem.h"
 #include "Systems/SpotLightSystem.h"
 #include "Systems/PointLightSystem.h"
-#include "Systems/EditorCameraSystem.h"
 
 #include "Systems/GridRendererSystem.h"
 #include "Systems/MeshRendererSystem.h"

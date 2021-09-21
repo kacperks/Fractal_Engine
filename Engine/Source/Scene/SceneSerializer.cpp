@@ -1,15 +1,11 @@
 #include "pch.h"
 #include "SceneSerializer.h"
-
-#include "Editor/UiLayer.h"
 #include "Scene/EntityManager.h"
 
 namespace fr {
 
 	// SCENE
 	void XMLSerializer::LoadScene(const char* filename) {
-		std::string msg = " [XMLSerializer] Loaded Scene!";
-		UiLayer::AddToConsole(msg);
 		tinyxml2::XMLDocument document;
 		document.LoadFile(filename);
 		if (document.Error()) { 
@@ -22,13 +18,9 @@ namespace fr {
 		for (XMLElement* e = root->FirstChildElement(); e != nullptr; e = e->NextSiblingElement()) {
 			const ECS::EntityID entityid = ECS::Manager.AddNewEntity();			
 			LoadEntity(e, entityid);
-			std::string ID = "ID: " + entityid;
-			fr::UI.AddExistingEntity(entityid);
 		}
 	}
 	void XMLSerializer::SaveScene(const char* filename) {
-		std::string msg = (" [XMLSerializer] Saved Scene!");
-		UiLayer::AddToConsole(msg);
 		FILE* pFile;
 		fopen_s(&pFile, filename, "w");
 		tinyxml2::XMLPrinter printer(pFile);

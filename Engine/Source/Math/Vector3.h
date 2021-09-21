@@ -7,7 +7,7 @@
 
 #include "Vector.h"
 
-namespace fr::Math {
+namespace fr {
         class Vec3 : public Vector<float, 3> {
         public:
             Vec3() : x(0.0f), y(0.0f), z(0.0f) {}

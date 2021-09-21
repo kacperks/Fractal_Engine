@@ -69,7 +69,7 @@ extern "C" {
 #pragma comment(lib, "Engine/Source/Vendor/Lua535/liblua53.a")
 #endif
 
-#include <glad/glad.h>
+#include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
 #define GLM_ENABLE_EXPERIMENTAL
@@ -115,7 +115,6 @@ namespace fr {
 #include "Scene/EntityManager.h"
 
 #include "Core/Components.h"
-#include "Editor/UiLayer.h"
 
 #include "Scene/SceneSerializer.h"
 
@@ -126,7 +125,6 @@ namespace fr {
 #include "Events/KeyEvents.h"
 #include "Events/MouseEvents.h"
 #include "Events/WindowEvents.h"
-#include "Editor/UiLayer.h"
 #include "Events/KeyCodes.h"
 
 #include "Renderer/ColorBuffer.h"

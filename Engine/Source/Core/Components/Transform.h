@@ -5,8 +5,6 @@
 #include "Math/Math.h"
 #include "Math/Matrix4.h"
 
-using namespace fr::Math;
-
 struct Transform : public ECS::BaseComponent {
 public:
 	Transform() = default;
@@ -24,6 +22,8 @@ public:
 
 	Transform(const glm::vec3& translate) :
 		Position(translate) {}
+
+	Transform(const Vec3& translate) { Position.x = translate.x; Position.y = translate.y; Position.z = translate.z;}
 
 	void operator=(Transform other) {
 		(*this).Position = other.Position;

@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "Resource.h"
 #include "Vendor/STB/stb_image.h"
-#include "Editor/UiLayer.h"
 
 namespace fr {
 	RsrcManager::RsrcManager(){}
@@ -193,9 +192,6 @@ namespace fr {
 	}
 	void RsrcManager::LoadModel(std::string name, std::string filename) {
 		models.insert({ name, std::make_shared<Model3D>(filename) });
-		//std::cout << filename << " loaded!" << std::endl;
-		std::string TEXT = " [RsrcManager] "+filename + " loaded!";
-		UiLayer::AddToConsole(TEXT);
 	}
 
 	// shaders

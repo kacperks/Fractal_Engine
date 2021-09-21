@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "Engine.h"
-#include "Editor/UiLayer.h"
 #include "Scene/Entity.h"
 
 #include "Events/GLFWImp.h"
@@ -33,7 +32,6 @@ namespace fr {
 
 	FRuint Engine::Initialize() {
 		INFO("Loading Fractal Engine!");
-		UI.AddToConsole(" [Core] Loading Fractal Enigne...");
 
 		// register component list
 		ECS::Manager.RegisterCompList<Camera>();
@@ -68,7 +66,6 @@ namespace fr {
 		ECS::Manager.AddSystem<SpriteRendererSystem>();
 
 		// editor system will be removed at runtime
-		ECS::Manager.AddEditorSystem<EditorCameraSystem>();
 		ECS::Manager.AddEditorSystem<GridRendererSystem>();
 
 		// runtime systems will be added at runtime
@@ -77,12 +74,6 @@ namespace fr {
 
 		ECS::Manager.ActivateEditorSystems();
 		ECS::Manager.Start();
-
-		#if defined(FR_BULID)
-			// Initialize Game Core	
-		#endif
-
-		fr::UI.Initialiaze();
 
 		glfwSetKeyCallback(window, GlfwImpl::KeyboardCallback);
 		glfwSetScrollCallback(window, GlfwImpl::MouseScrollCallback);
@@ -94,16 +85,13 @@ namespace fr {
 		Dispatcher.AddListener<WindowCloseEvent>(std::bind(&Engine::OnQuit, this, _1));
 		Dispatcher.AddListener<ViewportResizedEvent>(std::bind(&Engine::OnViewportResized, this, _1));
 
-		UI.AddToConsole(" [Core] Engine loaded successfully!");
-
 		return FR_NULL;
 	}
 
 	void Engine::Update() {
 		ECS::Manager.Update();
-
+		
 		if (!isGameRunnig) {
-			SetViewport(UI.ViewSize());
 			outputBuffer->Clear();
 			ECS::Manager.Render();
 		}
@@ -123,7 +111,7 @@ namespace fr {
 		GLCALL(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT));
 
 		if (!isGameRunnig) {
-			fr::UI.Display();
+			
 		}
 		else {
 			ECS::Manager.Render();
@@ -148,12 +136,5 @@ namespace fr {
 		isGameRunnig = false;
 		ECS::Manager.DeactivateRuntimeSystems();
 		ECS::Manager.ActivateEditorSystems();
-	}
-
-	func Engine::SetCurrentScene(const char* NewScene) {
-		INFO("New Current Scene!");
-		Serializer.LoadScene(NewScene); 
-		CurrentScene = NewScene;
-		return FR_NULL;
 	}
 }

@@ -10,14 +10,14 @@ namespace fr {
 			FRWindow(const FRchar* title);
 
 			GLFWwindow* GetWindow() { return window; }
-			Math::Vec2* GetSize() { return Size; }
+			Vec2* GetSize() { return Size; }
 			DepthBuffer* GetDepthBuffer() { return shadowBuffer; }
 			SamplerBuffer* outputBuffer;
 
 			void SetVsync(int interval) { glfwSwapInterval(interval); }
 		private:
 			GLFWwindow* window;
-			Math::Vec2* Size = new Math::Vec2(WINDOW_WIDTH, WINDOW_HEIGH);
+			Vec2* Size = new Vec2(WINDOW_WIDTH, WINDOW_HEIGH);
 			DepthBuffer* shadowBuffer;
 	};
 }

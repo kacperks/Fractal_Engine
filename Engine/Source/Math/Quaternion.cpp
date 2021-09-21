@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Quaternion.h"
 
-namespace fr::Math {
+namespace fr {
     Quaternion::Quaternion(float x, float y, float z, float w) {
         (*this).x = x;
         (*this).y = y;

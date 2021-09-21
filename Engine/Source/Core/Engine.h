@@ -66,9 +66,6 @@ namespace fr {
 		inline const bool Run() const { return isRunning; }
 		inline const bool GameRun() const { return isGameRunnig; }
 
-		inline const char* GetCurrentScene() const { return CurrentScene; }
-		func SetCurrentScene(const char* NewScene);
-
 	private:
 		Engine();
 
@@ -78,7 +75,6 @@ namespace fr {
 		CommandLineArgs commandLineArguments;
 		const char* CurrentScene;
 
-		// I will use FRWindow instead of theese variables:
 		GLFWwindow* window;
 		Vector2i viewSize;
 		DepthBuffer* shadowBuffer;
