@@ -24,8 +24,7 @@ namespace fr {
 		assert(window && "Failed To Create Window!!");
 		glfwMakeContextCurrent(window);
 
-		assert(glewInit() == GLEW_OK && "Glew init Failed!!");
-		glewExperimental = GL_TRUE;
+		assert(gladLoadGLLoader((GLADloadproc)glfwGetProcAddress));
 
 		GLCALL(glEnable(GL_STENCIL_TEST));
 		GLCALL(glEnable(GL_DEPTH_TEST));
