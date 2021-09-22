@@ -29,7 +29,7 @@ namespace fr {
                } else {
                    char* new_data = new char[len];
                    fr_memcpy(new_data, data, len);
-                   delete data;
+                   delete[] data;
                    data = new_data;
                }
                size = len;
@@ -59,6 +59,13 @@ namespace fr {
 
         String(const String& other) {
             Assign(other.data, other.size);
+        }
+        
+        ~String() {
+            if(data) {
+                delete[] data;
+            }
+            size = 0;
         }
 
         const char At(int i) const {
