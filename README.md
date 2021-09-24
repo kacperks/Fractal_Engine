@@ -49,9 +49,9 @@ Discord Server! : https://discord.gg/aXHjdQfCMK
 
 ## Installing Dependencies
 * Debian/Ubuntu
-` $ sudo apt install -y libglm-dev libglew-dev libglfw3-dev libassimp-dev libtinyxml-dev `
+` $ sudo apt install -y libglm-dev libglfw3-dev libassimp-dev libtinyxml-dev `
 * Fedora
-` $ sudo dnf install glew-devel glm-devel assimp-devel glfw-devel tinyxml2-devel `
+` $ sudo dnf install glm-devel assimp-devel glfw-devel tinyxml2-devel `
 ## Build
 * First, you need to install CMake:
     * Debian/Ubuntu ` $ sudo apt-get install cmake `
