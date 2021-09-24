@@ -20,12 +20,11 @@ Features:
 * Fully Featured ECS (Entity-Component-System)
 * OpenGL 3.3+ Rendering Engine
 * Loading 3D models and 2D textures with Assimp and STB
-* Textures, Models and Scenes Serializer (XML)
+* XML Serialization
 * Scene Editor (Work In Progress)
 * Event System
 * Custom Math Engine
-* Audio (Work In Progress)
-* Custom Physics Engine (Work In Progress)
+* Custom Physics Engine (WIP)
 
 Planned Features: 
 * Vulkan Renderer
