@@ -1,7 +1,7 @@
 project(Editor)
 
-add_subdirectory(Engine)
-include_directories(Engine/Source)
+add_subdirectory(../Engine)
+include_directories(../Engine/Source)
 
 file(GLOB_RECURSE EditorSources "Source/**.cpp" "Source/**.h")
 

@@ -43,21 +43,24 @@ Discord Server! : https://discord.gg/aXHjdQfCMK
 </p>
 
 # Project Setup
-* First, you need to clone the repo.
 
-` $ git clone --recursive https://github.com/kacperks/Fractal_Engine.git `
+* Clone Repo with ` $ git clone --recursive https://github.com/kacperks/Fractal_Engine.git `
+
+## Requirements
+* CMake 3.16 +
+* G++(Linux)
+* Visual Studio 2019 and Desktop C++ Development(Windows)
 
 ## Installing Dependencies
-* Debian/Ubuntu
-` $ sudo apt install -y libglm-dev libglfw3-dev libassimp-dev libtinyxml-dev `
-* Fedora
-` $ sudo dnf install glm-devel assimp-devel glfw-devel tinyxml2-devel `
-## Build
-* First, you need to install CMake:
-    * Debian/Ubuntu ` $ sudo apt-get install cmake `
-    * Fedora ` $ sudo dnf install cmake `
+* Debian/Ubuntu ` $ sudo apt install -y libglm-dev libglfw3-dev libassimp-dev libtinyxml-dev `
+* Fedora ` $ sudo dnf install glm-devel assimp-devel glfw-devel tinyxml2-devel `
 
-* Then, type, ` $ cmake -B build `
+## Installing Cmake
+* Debian/Ubuntu ` $ sudo apt-get install cmake `
+* Fedora ` $ sudo dnf install cmake `
+
+## Build
+* Run ` Deploy.bat ` or ` Deploy.sh `
 
 ## Dependencies
 
@@ -69,15 +72,3 @@ Discord Server! : https://discord.gg/aXHjdQfCMK
 * ImGui https://github.com/ocornut/imgui
 * stb https://github.com/nothings/stb
 * ImGuizmo https://github.com/CedricGuillemet/ImGuizmo
-
-# Authors 
-
-Developers
-* <a href = "https://github.com/kacperks"> kacperks </a>
-* <a href = "https://github.com/lubek-dc"> lubek-dc </a> 
-* <a href = "https://github.com/BoomerDev"> BoomerDev </a>
-* <a href = "https://github.com/MCLx86"> MCLx86 </a>
-* <a href = "https://github.com/Yavuz1234567890"> Yavuz1234567890 </a>
-
-Contributors    
-* <a href = "https://github.com/honeystudios"> honeystudios </a>

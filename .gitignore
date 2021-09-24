@@ -23,3 +23,5 @@ build/*
 docs/*
 Bin/*
 App/*
+Editor/Build/*
+Engine/Build/*
