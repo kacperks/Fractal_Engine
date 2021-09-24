@@ -51,6 +51,16 @@ Discord Server! : https://discord.gg/aXHjdQfCMK
 * G++(Linux)
 * Visual Studio 2019 and Desktop C++ Development(Windows)
 
+## Dependencies
+* OpenGL Mathematics (GLM) https://github.com/g-truc/glm
+* GLAD https://github.com/Dav1dde/glad
+* GLFW https://github.com/glfw/glfw
+* Assimp https://github.com/assimp/assimp
+* TinyXML https://github.com/leethomason/tinyxml2
+* ImGui https://github.com/ocornut/imgui
+* stb https://github.com/nothings/stb
+* ImGuizmo https://github.com/CedricGuillemet/ImGuizmo
+
 ## Installing Dependencies
 * Debian/Ubuntu ` $ sudo apt install -y libglm-dev libglfw3-dev libassimp-dev libtinyxml-dev `
 * Fedora ` $ sudo dnf install glm-devel assimp-devel glfw-devel tinyxml2-devel `
@@ -61,14 +71,3 @@ Discord Server! : https://discord.gg/aXHjdQfCMK
 
 ## Build
 * Run ` Deploy.bat ` or ` Deploy.sh `
-
-## Dependencies
-
-* OpenGL Mathematics (GLM) https://github.com/g-truc/glm
-* GLAD https://github.com/Dav1dde/glad
-* GLFW https://github.com/glfw/glfw
-* Assimp https://github.com/assimp/assimp
-* TinyXML https://github.com/leethomason/tinyxml2
-* ImGui https://github.com/ocornut/imgui
-* stb https://github.com/nothings/stb
-* ImGuizmo https://github.com/CedricGuillemet/ImGuizmo
