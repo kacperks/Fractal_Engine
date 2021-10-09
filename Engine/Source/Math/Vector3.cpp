@@ -11,9 +11,9 @@ namespace fr {
         Vec3 Vec3::operator/(float other) { return Vec3(x / other, y / other, z / other); }
         void Vec3::operator=(glm::fvec3 other) { x = other.x; y = other.y; z = other.z; }
         void Vec3::operator/=(float other) { x /= other; y / other; z /= other; }
-        float Vec3::Lenght() { return Math::Sqrt(x * x + y * y + z * z); }
+        float Vec3::Length() { return Math::Sqrt(x * x + y * y + z * z); }
         Vec3 Vec3::Normalized() {
-            Vec3 vec = *this; float n_length = Lenght();
+            Vec3 vec = *this; float n_length = Length();
             return vec / n_length;
         }
         float Vec3::Max(){

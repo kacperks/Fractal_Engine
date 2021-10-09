@@ -15,7 +15,7 @@ namespace fr {
             Vec3(const Vec3& other) : x(other.x), y(other.y) ,z(other.z) {}
 
             Vec3 Normalized();
-            float Lenght();
+            float Length();
             float Max();
             Vec3 Max(Vec3 v);
 
