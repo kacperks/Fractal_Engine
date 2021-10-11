@@ -14,7 +14,7 @@ namespace fr::Physics {
 		Vec3 A;
 		Vec3 B;
 		Vec3 Normal = A.Normalized() + B.Normalized();
-		float Depth = A.Lenght() + B.Lenght();
+		float Depth = A.Length() + B.Length();
 		bool HasCollision;
 	};
 
@@ -23,7 +23,7 @@ namespace fr::Physics {
 	public:
 		IntersectData(bool doesIntersect, Vec3 direction) : _doesIntersect(doesIntersect), _direction(direction) {}
 		inline bool GetDoesIntersect() { return _doesIntersect; }
-		inline float GetDistance() { return _direction.Lenght(); }
+		inline float GetDistance() { return _direction.Length(); }
 		inline const Vec3& GetDirection() { return _direction; }
 	private:
 		bool  _doesIntersect;

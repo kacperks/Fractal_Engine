@@ -13,7 +13,7 @@ namespace fr {
         Vec2(float x, float y) : x(x), y(y) {}
 
         inline Vec2 Normalized();
-        inline float Lenght();
+        inline float Length();
 
         Vec2 operator+(const Vec2& other);
         Vec2 operator+(float other);
