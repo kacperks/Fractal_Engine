@@ -69,7 +69,7 @@ extern "C" {
 #pragma comment(lib, "Engine/Source/Vendor/Lua535/liblua53.a")
 #endif
 
-#include <GL/glew.h>
+#include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
 #define GLM_ENABLE_EXPERIMENTAL

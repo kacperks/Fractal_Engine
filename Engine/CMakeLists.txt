@@ -1,9 +1,11 @@
 cmake_minimum_required(VERSION 3.16 FATAL_ERROR)
 project(FractalEngine)
 
-set(CONFIGURATION "Release")
+set(CONFIGURATION "Debug")
 
 add_subdirectory(Thirdparty/cmake/glad)
+
+add_subdirectory(Thirdparty/cmake/glfw)
 
 if (WIN32)
     set(PLATFORM "Windows")
@@ -21,7 +23,6 @@ include_directories(Thirdparty/includes)
 
 if(CONFIGURATION STREQUAL "Release")
 
-add_subdirectory(Thirdparty/cmake/glfw)
 add_subdirectory(Thirdparty/cmake/glm)
 add_subdirectory(Thirdparty/cmake/assimp)
 add_subdirectory(Thirdparty/cmake/tinyxml2)
@@ -47,7 +48,7 @@ endif()
 
 if(PLATFORM STREQUAL "Windows")
 target_link_libraries(FractalEngine opengl32)
-target_link_libraries(FractalEngine glfw3)
+target_link_libraries(FractalEngine glfw)
 target_link_libraries(FractalEngine glad)
 target_link_libraries(FractalEngine tinyxml2)
 target_link_libraries(FractalEngine assimp)
