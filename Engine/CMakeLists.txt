@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.16 FATAL_ERROR)
 project(FractalEngine)
 
-set(CONFIGURATION "Debug")
+set(CONFIGURATION "Release")
 
 add_subdirectory(Thirdparty/cmake/glad)
 

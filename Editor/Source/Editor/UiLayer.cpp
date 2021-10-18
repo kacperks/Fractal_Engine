@@ -285,7 +285,7 @@ namespace fr {
 				ImGui::NextColumn();
 
 				if (ImGui::Button("Save Scene")) {
-					fr::Serializer.SaveScene(Core.GetCurrentScene());
+					//fr::Serializer.SaveScene(Core.GetCurrentScene());
 					AddToConsole(" [DEBUG] Saved Scene!");
 				}
 				ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(3, 3));

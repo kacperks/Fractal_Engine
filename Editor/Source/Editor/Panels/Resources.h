@@ -3,11 +3,11 @@
 #include "Editor/UiLayer.h"
 
 namespace Panels {
-	std::pair<bool, uint32_t> DirectoryTreeViewRecursive(const std::filesystem::path& path, uint32_t* count, int* selection_mask) {
+	/*
+	inline std::pair<bool, uint32_t> DirectoryTreeViewRecursive(const std::filesystem::path& path, uint32_t* count, int* selection_mask) {
 		std::map<std::string, ImTextureID> icons = UI.GetIcons();
 
-		ImGuiTreeNodeFlags base_flags = /* ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick |*/ ImGuiTreeNodeFlags_SpanAvailWidth |
-			ImGuiTreeNodeFlags_SpanFullWidth;
+		ImGuiTreeNodeFlags base_flags = ImGuiTreeNodeFlags_SpanAvailWidth | ImGuiTreeNodeFlags_SpanFullWidth;
 
 		bool any_node_clicked = false;
 		uint32_t node_clicked = 0;
@@ -85,15 +85,15 @@ namespace Panels {
 
 		return { any_node_clicked, node_clicked };
 	}
-
-	void OnImGui(std::string directoryPath) {
+*/
+	inline void OnImGui(std::string directoryPath) {
 		uint32_t count = 0;
 		static int selection_mask = 0;
-		for (const auto& entry : std::filesystem::recursive_directory_iterator(directoryPath)) { count++; }
-		auto clickState = DirectoryTreeViewRecursive(directoryPath, &count, &selection_mask);
+		//for (const auto& entry : std::filesystem::recursive_directory_iterator(directoryPath)) { count++; }
+		//auto clickState = DirectoryTreeViewRecursive(directoryPath, &count, &selection_mask);
 	}
 
-	void Resources() {
+	inline void Resources() {
 		ImGui::Begin("File System", nullptr);
 		{
 			ImGui::PushStyleColor(ImGuiCol_FrameBg, dark);
