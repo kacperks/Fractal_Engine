@@ -18,3 +18,13 @@
 	path = Engine/Thirdparty/cmake/tinyxml2
 	url = https://github.com/leethomason/tinyxml2.git
 	branch = master
+
+[submodule "Engine/Thirdparty/cmake/libsndfile"]
+	path = Engine/Thirdparty/cmake/libsndfile
+	url = https://github.com/libsndfile/libsndfile.git
+	branch = master
+	
+[submodule "Engine/Thirdparty/cmake/openal-soft"]
+	path = Engine/Thirdparty/cmake/openal-soft
+	url = https://github.com/kcat/openal-soft
+	branch = master

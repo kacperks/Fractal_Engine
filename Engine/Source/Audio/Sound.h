@@ -1,6 +1,11 @@
 #pragma once
 
 #include "pch.h"
+
+extern "C" {
+    
+}
+
 namespace fr::Audio {
     class Sound {
     private:

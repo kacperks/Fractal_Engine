@@ -12,6 +12,7 @@ namespace fr {
         public:
             Vec3() : x(0.0f), y(0.0f), z(0.0f) {}
             Vec3(float x, float y, float z) : x(x), y(y), z(z) {}
+            Vec3(float number) : x(number), y(number), z(number) {}
             Vec3(const Vec3& other) : x(other.x), y(other.y) ,z(other.z) {}
 
             Vec3 Normalized();
