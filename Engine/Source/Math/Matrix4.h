@@ -105,7 +105,7 @@ namespace fr {
             matrix[2][2] = 2.0f / (n - f);
             matrix[3][0] = (left + right) / (left - right);
             matrix[3][1] = (bottom + top) / (bottom - top);
-            matrix[3][2] = (far + n) / (far - f);
+            matrix[3][2] = (f + n) / (f - f);
         }
 
         void SetPerspective(float fov, float aspectRatio, float n, float f) {

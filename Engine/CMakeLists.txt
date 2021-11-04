@@ -5,8 +5,6 @@ set(CONFIGURATION "Release")
 
 add_subdirectory(Thirdparty/cmake/glad)
 
-add_subdirectory(Thirdparty/cmake/glfw)
-
 if (WIN32)
     set(PLATFORM "Windows")
 endif (WIN32)
@@ -23,6 +21,7 @@ include_directories(Thirdparty/includes)
 
 if(CONFIGURATION STREQUAL "Release")
 
+add_subdirectory(Thirdparty/cmake/glfw)
 add_subdirectory(Thirdparty/cmake/glm)
 add_subdirectory(Thirdparty/cmake/assimp)
 add_subdirectory(Thirdparty/cmake/tinyxml2)

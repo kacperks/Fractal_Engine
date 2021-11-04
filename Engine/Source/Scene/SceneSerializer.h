@@ -7,13 +7,13 @@ namespace fr {
 
 	using namespace tinyxml2;
 
-	class XMLSerializer {
+	class SceneSerializer {
 	public:		
-		~XMLSerializer() = default;
-		XMLSerializer(const XMLSerializer&) = delete;
-		XMLSerializer& operator=(const XMLSerializer&) = delete;
-		static XMLSerializer& Ref() {
-			static XMLSerializer reference;
+		~SceneSerializer() = default;
+		SceneSerializer(const SceneSerializer&) = delete;
+		SceneSerializer& operator=(const SceneSerializer&) = delete;
+		static SceneSerializer& Ref() {
+			static SceneSerializer reference;
 			return reference;
 		}
 
@@ -30,7 +30,7 @@ namespace fr {
 
 
 	private:
-		XMLSerializer() = default;
+		SceneSerializer() = default;
 
 		// ENTITY
 		void SaveEntity(XMLPrinter& printer, const ECS::EntityID entityid);
@@ -85,5 +85,5 @@ namespace fr {
 		void SaveTxT(XMLPrinter& printer, std::string name, std::string path);
 	};
 
-	static XMLSerializer& Serializer = XMLSerializer::Ref();
+	static SceneSerializer& Serializer = SceneSerializer::Ref();
 }

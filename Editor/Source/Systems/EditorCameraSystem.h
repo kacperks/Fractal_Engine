@@ -1,14 +1,14 @@
 #pragma once
 
-#include "Core/Engine.h"
+#include <Core/Engine.h>
 #include "Editor/UiLayer.h"
-#include "Core/Resource/Resource.h"
+#include <Core/Resource/Resource.h>
 
-#include "Scene/BaseSystem.h"
-#include "Scene/EntityManager.h"
+#include <Scene/BaseSystem.h>
+#include <Scene/EntityManager.h>
 
-#include "Core/Components/Camera.h"
-#include "Core/Components/Transform.h"
+#include <Core/Components/Camera.h>
+#include <Core/Components/Transform.h>
 
 using namespace fr;
 

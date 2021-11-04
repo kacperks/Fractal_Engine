@@ -75,4 +75,3 @@ namespace fr {
 
 	static RsrcManager& Resource = RsrcManager::Ref();
 }
-

@@ -4,8 +4,8 @@
 #define FR_UILAYER_H
 
 #include "CompUIs/CompUI.h"
-#include "Vendor/IMGUI/imgui.h"
-#include "Vendor/GUIZMO/ImGuizmo.h"
+#include "VendorE/IMGUI/imgui.h"
+#include "VendorE/GUIZMO/ImGuizmo.h"
 
 struct Transform;
 

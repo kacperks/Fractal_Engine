@@ -59,6 +59,7 @@ Discord Server! : https://discord.gg/aXHjdQfCMK
 * ImGui https://github.com/ocornut/imgui
 * stb https://github.com/nothings/stb
 * ImGuizmo https://github.com/CedricGuillemet/ImGuizmo
+* libsndfile 
 
 ## Installing Dependencies
 * Debian/Ubuntu ` $ sudo apt install -y libglm-dev libglfw3-dev libassimp-dev libtinyxml-dev `

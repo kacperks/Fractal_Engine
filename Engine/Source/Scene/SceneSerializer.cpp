@@ -5,7 +5,7 @@
 namespace fr {
 
 	// SCENE
-	void XMLSerializer::LoadScene(const char* filename) {
+	void SceneSerializer::LoadScene(const char* filename) {
 		tinyxml2::XMLDocument document;
 		document.LoadFile(filename);
 		if (document.Error()) { 
@@ -20,7 +20,7 @@ namespace fr {
 			LoadEntity(e, entityid);
 		}
 	}
-	void XMLSerializer::SaveScene(const char* filename) {
+	void SceneSerializer::SaveScene(const char* filename) {
 		FILE* pFile;
 		fopen_s(&pFile, filename, "w");
 		tinyxml2::XMLPrinter printer(pFile);
@@ -38,7 +38,7 @@ namespace fr {
 	}
 
 	// ENTITY
-	void XMLSerializer::LoadEntity(XMLElement* xEntity, const ECS::EntityID entityid) {
+	void SceneSerializer::LoadEntity(XMLElement* xEntity, const ECS::EntityID entityid) {
 		for (XMLElement* e = xEntity->FirstChildElement(); e != nullptr; e = e->NextSiblingElement()) {
 			if (e->Value() == std::string("EntityName")) {
 				LoadEntityName(e, entityid);
@@ -91,7 +91,7 @@ namespace fr {
 			}
 		}
 	}
-	void XMLSerializer::SaveEntity(XMLPrinter& printer, const ECS::EntityID entityid) {
+	void SceneSerializer::SaveEntity(XMLPrinter& printer, const ECS::EntityID entityid) {
 		printer.OpenElement("Entity");
 		SaveEntityName(printer, entityid);
 		SaveTransform(printer, entityid);
@@ -107,7 +107,7 @@ namespace fr {
 	}
 
 	// TRANSFORM
-	void XMLSerializer::LoadTransform(XMLElement* xTransform, const ECS::EntityID entityid) {
+	void SceneSerializer::LoadTransform(XMLElement* xTransform, const ECS::EntityID entityid) {
 		Transform transform;		
 		transform.Position.x = xTransform->FloatAttribute("x");
 		transform.Position.y = xTransform->FloatAttribute("y");
@@ -123,7 +123,7 @@ namespace fr {
 
 		ECS::Manager.AddComponent(entityid, transform);
 	}
-	void XMLSerializer::SaveTransform(XMLPrinter& printer, const ECS::EntityID entityid) {
+	void SceneSerializer::SaveTransform(XMLPrinter& printer, const ECS::EntityID entityid) {
 		const Transform& transform = ECS::Manager.GetComponent<Transform>(entityid);
 		printer.OpenElement("Transform");
 		printer.PushAttribute("x", transform.Position.x);
@@ -141,13 +141,13 @@ namespace fr {
 	}
 
 	// ENTITY NAME
-	void XMLSerializer::SaveEntityName(XMLPrinter& printer, const ECS::EntityID entityid) {
+	void SceneSerializer::SaveEntityName(XMLPrinter& printer, const ECS::EntityID entityid) {
 		const EntityName& name = ECS::Manager.GetComponent<EntityName>(entityid);
 		printer.OpenElement("EntityName");
 		printer.PushAttribute("value", name.Value.c_str());
 		printer.CloseElement();
 	}
-	void XMLSerializer::LoadEntityName(XMLElement* xEntityName, const ECS::EntityID entityid) {
+	void SceneSerializer::LoadEntityName(XMLElement* xEntityName, const ECS::EntityID entityid) {
 		EntityName entityName;
 		const char* name = xEntityName->Attribute("value");
 		entityName.Value = std::string(name);
@@ -155,19 +155,19 @@ namespace fr {
 	}
 
 	// CAMERA
-	void XMLSerializer::SaveCamera(XMLPrinter& printer, const ECS::EntityID entityid) {
+	void SceneSerializer::SaveCamera(XMLPrinter& printer, const ECS::EntityID entityid) {
 		if (!ECS::Manager.HasComponent<Camera>(entityid)) { return; }
 		const Camera& camera = ECS::Manager.GetComponent<Camera>(entityid);
 		printer.OpenElement("Camera");
 		printer.CloseElement();
 	}
-	void XMLSerializer::LoadCamera(XMLElement* xCamera, const ECS::EntityID entityid) {
+	void SceneSerializer::LoadCamera(XMLElement* xCamera, const ECS::EntityID entityid) {
 		Camera camera;
 		ECS::Manager.AddComponent(entityid, camera);
 	}
 
 	// SPRITE RENDERER
-	void XMLSerializer::SaveSpriteRenderer(XMLPrinter& printer, const ECS::EntityID entityid) {
+	void SceneSerializer::SaveSpriteRenderer(XMLPrinter& printer, const ECS::EntityID entityid) {
 		if (!ECS::Manager.HasComponent<SpriteRenderer>(entityid)) { return; }
 		auto& renderer = ECS::Manager.GetComponent<SpriteRenderer>(entityid);
 
@@ -175,14 +175,14 @@ namespace fr {
 		printer.PushAttribute("name", renderer.TexName.c_str());
 		printer.CloseElement();
 	}
-	void XMLSerializer::LoadSpriteRenderer(XMLElement* xSpriteRenderer, const ECS::EntityID entityid) {
+	void SceneSerializer::LoadSpriteRenderer(XMLElement* xSpriteRenderer, const ECS::EntityID entityid) {
 		const char* name = xSpriteRenderer->Attribute("name");
 		SpriteRenderer renderer(name);
 		ECS::Manager.AddComponent(entityid, renderer);
 	}
 
 	// MESH RENDERER
-	void XMLSerializer::SaveMeshRenderer(XMLPrinter& printer, const ECS::EntityID entityid) {
+	void SceneSerializer::SaveMeshRenderer(XMLPrinter& printer, const ECS::EntityID entityid) {
 		if (!ECS::Manager.HasComponent<MeshRenderer>(entityid)) { return; }
 		auto& renderer = ECS::Manager.GetComponent<MeshRenderer>(entityid);
 		auto& material = renderer.Mesh.GetMaterial(); 
@@ -201,7 +201,7 @@ namespace fr {
 
 		printer.CloseElement();
 	}
-	void XMLSerializer::LoadMeshRenderer(XMLElement* xMeshRenderer, const ECS::EntityID entityid) {
+	void SceneSerializer::LoadMeshRenderer(XMLElement* xMeshRenderer, const ECS::EntityID entityid) {
 		const char* name = xMeshRenderer->Attribute("name");
 		MeshRenderer renderer(name);
 		Material material;
@@ -223,14 +223,14 @@ namespace fr {
 	}
 
 	// MODEL RENDERER
-	void XMLSerializer::SaveModelRenderer(XMLPrinter& printer, const ECS::EntityID entityid) {
+	void SceneSerializer::SaveModelRenderer(XMLPrinter& printer, const ECS::EntityID entityid) {
 		if (!ECS::Manager.HasComponent<ModelRenderer>(entityid)) { return; }
 		const ModelRenderer& model = ECS::Manager.GetComponent<ModelRenderer>(entityid);
 		printer.OpenElement("ModelRenderer");
 		printer.PushAttribute("name", model.Name.c_str());
 		printer.CloseElement();
 	}
-	void XMLSerializer::LoadModelRenderer(XMLElement* xModelRenderer, const ECS::EntityID entityid) {
+	void SceneSerializer::LoadModelRenderer(XMLElement* xModelRenderer, const ECS::EntityID entityid) {
 		
 		const char* name = xModelRenderer->Attribute("name");
 		ModelRenderer model = ModelRenderer(name);
@@ -238,7 +238,7 @@ namespace fr {
 	}
 
 	// SPOT LIGHT 
-	void XMLSerializer::SaveSpotLight(XMLPrinter& printer, const ECS::EntityID entityid) {
+	void SceneSerializer::SaveSpotLight(XMLPrinter& printer, const ECS::EntityID entityid) {
 		if (!ECS::Manager.HasComponent<SpotLight>(entityid)) { return; }
 		const SpotLight& light = ECS::Manager.GetComponent<SpotLight>(entityid);
 		printer.OpenElement("SpotLight");
@@ -251,7 +251,7 @@ namespace fr {
 		printer.PushAttribute("intensity", light.Intensity);
 		printer.CloseElement();
 	}
-	void XMLSerializer::LoadSpotLight(XMLElement* xLight, const ECS::EntityID entityid) {
+	void SceneSerializer::LoadSpotLight(XMLElement* xLight, const ECS::EntityID entityid) {
 		SpotLight light;
 		light.Color.r = xLight->FloatAttribute("colorR");
 		light.Color.g = xLight->FloatAttribute("colorG");
@@ -267,7 +267,7 @@ namespace fr {
 	}
 
 	// POINT LIGHT 
-	void XMLSerializer::SavePointLight(XMLPrinter& printer, const ECS::EntityID entityid) {
+	void SceneSerializer::SavePointLight(XMLPrinter& printer, const ECS::EntityID entityid) {
 		if (!ECS::Manager.HasComponent<PointLight>(entityid)) { return; }
 		const PointLight& light = ECS::Manager.GetComponent<PointLight>(entityid);
 		printer.OpenElement("PointLight");
@@ -277,7 +277,7 @@ namespace fr {
 		printer.PushAttribute("intensity", light.Intensity);
 		printer.CloseElement();
 	}
-	void XMLSerializer::LoadPointLight(XMLElement* xLight, const ECS::EntityID entityid) {
+	void SceneSerializer::LoadPointLight(XMLElement* xLight, const ECS::EntityID entityid) {
 		PointLight light;
 		light.Color.r = xLight->FloatAttribute("colorR");
 		light.Color.g = xLight->FloatAttribute("colorG");
@@ -287,7 +287,7 @@ namespace fr {
 	}
 
 	// DIRECTIONAL LIGHT 
-	void XMLSerializer::SaveDirectionalLight(XMLPrinter& printer, const ECS::EntityID entityid) {
+	void SceneSerializer::SaveDirectionalLight(XMLPrinter& printer, const ECS::EntityID entityid) {
 		if (!ECS::Manager.HasComponent<DirectionalLight>(entityid)) { return; }
 		const DirectionalLight& light = ECS::Manager.GetComponent<DirectionalLight>(entityid);
 		printer.OpenElement("DirectionalLight");
@@ -300,7 +300,7 @@ namespace fr {
 		printer.PushAttribute("intensity", light.Intensity);
 		printer.CloseElement();
 	}
-	void XMLSerializer::LoadDirectionalLight(XMLElement* xLight, const ECS::EntityID entityid) {
+	void SceneSerializer::LoadDirectionalLight(XMLElement* xLight, const ECS::EntityID entityid) {
 		DirectionalLight light;
 		light.Color.r = xLight->FloatAttribute("colorR");
 		light.Color.g = xLight->FloatAttribute("colorG");
@@ -316,14 +316,14 @@ namespace fr {
 	}
 
 	// RIGIBODY
-	void XMLSerializer::SaveRigidBody(XMLPrinter& printer, const ECS::EntityID entityid) {
+	void SceneSerializer::SaveRigidBody(XMLPrinter& printer, const ECS::EntityID entityid) {
 		if (!ECS::Manager.HasComponent<RigidBody>(entityid)) { return; }
 		const RigidBody& rigidbody = ECS::Manager.GetComponent<RigidBody>(entityid);
 		printer.OpenElement("RigidBody");
 		printer.PushAttribute("mass", rigidbody.Mass);
 		printer.CloseElement();
 	}
-	void XMLSerializer::LoadRigidBody(XMLElement* xRigidbody, const ECS::EntityID entityid) {
+	void SceneSerializer::LoadRigidBody(XMLElement* xRigidbody, const ECS::EntityID entityid) {
 		RigidBody rigidbody;
 		rigidbody.Mass = xRigidbody->FloatAttribute("mass");
 
@@ -331,27 +331,27 @@ namespace fr {
 	}
 	// C#
 
-	void XMLSerializer::SaveModel(XMLPrinter& printer, std::string name, std::string path) {
+	void SceneSerializer::SaveModel(XMLPrinter& printer, std::string name, std::string path) {
 		printer.OpenElement("Model");
 		printer.PushAttribute("Name", name.c_str());
 		printer.PushAttribute("Path", path.c_str());
 		printer.CloseElement();
 	}
 
-	void XMLSerializer::LoadModel(XMLElement* xModel) {
+	void SceneSerializer::LoadModel(XMLElement* xModel) {
 		const char* Name = xModel->Attribute("Name");
 		const char* Path = xModel->Attribute("Name");
 		Resource.LoadModel(Name, Path);
 	}
 
-	void XMLSerializer::SaveTxT(XMLPrinter& printer, std::string name, std::string path) {
+	void SceneSerializer::SaveTxT(XMLPrinter& printer, std::string name, std::string path) {
 		printer.OpenElement("Texture");
 		printer.PushAttribute("Name", name.c_str());
 		printer.PushAttribute("Path", path.c_str());
 		printer.CloseElement();
 	}
 
-	void XMLSerializer::LoadTxt(XMLElement* xTXT) {
+	void SceneSerializer::LoadTxt(XMLElement* xTXT) {
 		const char* Name = xTXT->Attribute("Name");
 		const char* Path = xTXT->Attribute("Name");
 		Resource.AddTex2D(Name, Resource.LoadTex2D(Path));

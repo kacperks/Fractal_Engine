@@ -5,9 +5,9 @@
 #include "Core/Engine.h"
 #include "Events/EventSystem.h"
 
-#include "Vendor/IMGUI/imgui_internal.h"
-#include "Vendor/IMGUI/imgui_impl_glfw.h"
-#include "Vendor/IMGUI/imgui_impl_opengl3.h"
+#include "VendorE/IMGUI/imgui_internal.h"
+#include "VendorE/IMGUI/imgui_impl_glfw.h"
+#include "VendorE/IMGUI/imgui_impl_opengl3.h"
 
 #include "Scene/Entity.h"
 #include "Scene/SceneSerializer.h"

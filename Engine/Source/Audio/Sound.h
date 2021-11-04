@@ -2,10 +2,6 @@
 
 #include "pch.h"
 
-extern "C" {
-    
-}
-
 namespace fr::Audio {
     class Sound {
     private:
@@ -20,6 +16,9 @@ namespace fr::Audio {
 
         void Load(const char* filename);
         void Play();
+
+        void Init();
+        void Stop();
 
         FRuint GetBuffer() { return m_buffer; }
     };
