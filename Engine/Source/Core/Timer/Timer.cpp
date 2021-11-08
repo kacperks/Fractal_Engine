@@ -8,10 +8,6 @@ namespace fr {
 
 	}
 
-	T_Timer::~T_Timer() {
-
-	}
-
 	void T_Timer::Initialize() {
 		INFO("Timer Initialized!");
 	}

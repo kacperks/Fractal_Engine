@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16 FATAL_ERROR)
 
-project(FractalEditor)
+project(FractalRuntime)
 
 if (WIN32)
     set(PLATFORM "Windows")
@@ -10,11 +10,10 @@ if(UNIX AND NOT APPLE)
     set(PLATFORM "Linux")
 endif()
 
-include_directories(Source)
 include_directories(../Engine/Source)
 include_directories(../Engine/Thirdparty/includes)
 
-file(GLOB_RECURSE EditorSources "Source/**.cpp" "Source/**.h")
+file(GLOB_RECURSE EditorSources "Source/App.cpp")
 
 add_executable(${PROJECT_NAME} ${EditorSources})
 

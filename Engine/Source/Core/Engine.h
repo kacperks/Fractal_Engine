@@ -18,13 +18,8 @@ namespace fr {
 	class Engine {
 
 	public:
+		Engine();
 		~Engine();
-		Engine(const Engine&) = delete;
-		Engine& operator=(const Engine&) = delete;
-		static Engine& Ref() {
-			static Engine reference;
-			return reference;
-		}
 
 		void OnQuit(const Event& e) {
 			isRunning = false;
@@ -67,9 +62,6 @@ namespace fr {
 		inline const bool GameRun() const { return isGameRunnig; }
 
 	private:
-		Engine();
-
-	private:
 		bool isRunning;
 		bool isGameRunnig;
 		CommandLineArgs commandLineArguments;
@@ -81,7 +73,7 @@ namespace fr {
 		SamplerBuffer* outputBuffer;
 	};
 
-	static Engine& Core = Engine::Ref();
+	static Engine Core;
 }
 
 #endif

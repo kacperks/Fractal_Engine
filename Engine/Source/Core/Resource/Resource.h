@@ -13,13 +13,8 @@ namespace fr {
 
 	class RsrcManager{
 	public:
+		RsrcManager();
 		~RsrcManager();
-		RsrcManager(const RsrcManager&) = delete;
-		RsrcManager& operator=(const RsrcManager&) = delete;
-		static RsrcManager& Ref() {
-			static RsrcManager reference;
-			return reference;
-		}
 
 		void Initialize();
 
@@ -60,7 +55,6 @@ namespace fr {
 		void CreateProgram(std::string name, std::string vtxFile, std::string fragFile);
 
 	private:
-		RsrcManager();
 		void CreateSphere(GLuint X_SEGMENTS = 64, GLuint Y_SEGMENTS = 64);
 		std::string LoadShaderSource(std::string filename);
 		const GLuint ComplieShaderSource(GLenum type, const GLchar* src);
@@ -73,5 +67,5 @@ namespace fr {
 		std::map<std::string, std::shared_ptr<Model3D>> models;
 	};
 
-	static RsrcManager& Resource = RsrcManager::Ref();
+	static RsrcManager Resource;
 }
