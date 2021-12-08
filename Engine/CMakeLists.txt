@@ -15,10 +15,10 @@ include_directories(Thirdparty/includes)
 
 file(GLOB_RECURSE EngineSources "Source/**.cpp" "Source/**.h" "Source/**.hpp")
 
-add_library(FractalEngine SHARED ${EngineSources})
+add_library(FractalEngine STATIC ${EngineSources})
 
 if(PLATFORM STREQUAL "Linux")
-target_link_libraries(FractalEngine -lGL)
+target_link_libraries(FractalEngine -lGL) 
 target_link_libraries(FractalEngine -lglfw)
 target_link_libraries(FractalEngine -lglad)
 target_link_libraries(FractalEngine -lassimp)
