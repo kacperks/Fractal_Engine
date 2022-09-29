@@ -6,6 +6,10 @@
 Fractal Engine is a cool 3D game engine.
 </p>
 
+Donate via Monero: ` 471L4C1ChmRWhYXAUUj6Qb5HcYDpy8Cah2bRcX1ZWdzUCVm2Mk6i4Q799L5ZjTyCnpYfsBc84EJnVHcPTRyZ6z7YEKjz9gP `
+
+New version of Fractal Engine coming soon!
+
 <p align="center">
 <img src="https://img.shields.io/github/license/kacperks/Fractal_Engine?label=License" />
 <img src="https://img.shields.io/github/downloads/kacperks/Fractal_Engine/total?label=Downloads" />
