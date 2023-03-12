@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-Fractal Engine is a cool 3D game engine.
+Fractal Engine is a 3-D game engine created in 2021 by Kacper "kacperks" Kostka.
 </p>
 
 <p align="center">
@@ -76,3 +76,4 @@ Discord Server! : https://discord.gg/aXHjdQfCMK
 
 ## Build
 * Run ` Deploy.bat ` or ` Deploy.sh `
+* You might have to run cmake with ` -DCMAKE_CXX_FLAGS="-Wa,-mbig-obj -Wno-use-after-free -Wno-array-bounds -Wno-error=array-compare" ` in some cases.
