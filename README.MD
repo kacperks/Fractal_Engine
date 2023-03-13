@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-Fractal Engine is a 3-D game engine created in 2021 by Kacper "kacperks" Kostka.
+Fractal Engine is a 3D game engine written in C++
 </p>
 
 <p align="center">
