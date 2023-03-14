@@ -12,7 +12,7 @@
 
 using namespace fr;
 
-constexpr auto SCROLL_SPEED = 60.0f;;
+constexpr auto SCROLL_SPEED = 60.0f;
 
 class EditorCameraSystem : public ECS::BaseSystem {
 
